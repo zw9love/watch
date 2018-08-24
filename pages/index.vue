@@ -854,7 +854,7 @@
   export default {
     head: {
       script: [
-        // {src: 'http://api.map.baidu.com/api?v=2.0&ak=L2fFIBoizTO5nxe7ypgsV3pHGmYw6tqx'},
+        {src: 'http://api.map.baidu.com/api?v=2.0&ak=L2fFIBoizTO5nxe7ypgsV3pHGmYw6tqx'},
         // { src: 'https://c.mipcdn.com/static/v1/mip.js'},
       ],
       link: [
@@ -918,22 +918,22 @@
       }
     },
     mounted() {
-      // if (BMap) {
-      //   let map = new BMap.Map("store-map");
-      //   let point = new BMap.Point(116.331398, 39.897445);
-      //   map.centerAndZoom(point, 12);
-      //   // 创建地址解析器实例
-      //   let myGeo = new BMap.Geocoder();
-      //   // 将地址解析结果显示在地图上,并调整地图视野
-      //   myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）", function (point) {
-      //     if (point) {
-      //       map.centerAndZoom(point, 16);
-      //       map.addOverlay(new BMap.Marker(point));
-      //     } else {
-      //       alert("您选择地址没有解析到结果!");
-      //     }
-      //   });
-      // }
+      if (BMap) {
+        let map = new BMap.Map("store-map");
+        let point = new BMap.Point(116.331398, 39.897445);
+        map.centerAndZoom(point, 12);
+        // 创建地址解析器实例
+        let myGeo = new BMap.Geocoder();
+        // 将地址解析结果显示在地图上,并调整地图视野
+        myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）", function (point) {
+          if (point) {
+            map.centerAndZoom(point, 16);
+            map.addOverlay(new BMap.Marker(point));
+          } else {
+            alert("您选择地址没有解析到结果!");
+          }
+        });
+      }
 
       this.stackHeight = parseInt(window.innerWidth * 0.4667)
       this.certificationHeight = this.$refs.certification320[0].clientHeight
