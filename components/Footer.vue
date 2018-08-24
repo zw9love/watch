@@ -3,20 +3,8 @@
   <footer class="bottom-container">
     <div class="bottom-navbar">
       <ul>
-        <li>
-          <nuxt-link to="/">网站首页</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/brand">品牌门店</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/brand">维修案例</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/brand">预约到店</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/brand">维修进度</nuxt-link>
+        <li v-for="(item, key) in navigationList" :key="key">
+          <nuxt-link :to="item.href">{{item.name}}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -79,7 +67,18 @@
 
 <script>
   export default {
-    name: "Footer"
+    name: "Footer",
+    data(){
+      return {
+        navigationList: [
+          {name: '网站首页', href: '/'},
+          {name: '品牌门店', href: '/brand'},
+          {name: '维修案例', href: '/case'},
+          {name: '预约到店', href: '/brand'},
+          {name: '维修进度', href: '/brand'},
+        ]
+      }
+    }
   }
 </script>
 
