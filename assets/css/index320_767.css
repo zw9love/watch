@@ -437,6 +437,7 @@
    */
   .certification320-container{
     display: block;
+    min-height: 100px;
   }
 
   .certification320{

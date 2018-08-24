@@ -457,8 +457,8 @@
       </div>
       <div class="certification320-container">
         <swiper v-model="certificationIndex" @on-index-change="certificationIndexChange" :show-dots="false"
-                :show-desc-mask="false" :height="certificationHeight + 50 + 'px'">
-          <swiper-item v-for="(item, key) in certificationList" :key="key">
+                :show-desc-mask="false" :height="certificationHeight + 50 + 'px'" :aspect-ratio="0.36">
+          <swiper-item v-for="(item, key) in certificationList" :key="key" >
             <div class="certification320" ref="certification320">
               <div class="certification320-imgContainer">
                 <img src="../assets/img/home_certificationtechnician__image@2x.png" alt="">
