@@ -8,7 +8,7 @@
   .container{
     margin-bottom: 53px;
   }
-  .banner-container img.banner_pc, .banner-shadow, .brand-main-wrapper, .service-quality-main-info, .reservation-main, .certification, .service-project-main, .service-quality-container, .adver-wrapper, .reservation-container, .environmental-container{
+  .banner-container img.banner_pc, .banner-shadow, .brand-main-wrapper, .service-quality-main-info, .reservation-main, .certification, .service-project-main, .service-quality-container, .adver-wrapper, .environmental-container{
     display: none;
   }
 
@@ -361,50 +361,6 @@
     vertical-align: middle;
   }
 
-  /**
-    预约流程
-   */
-
-  .reservation-container320{
-    display: flex;
-    padding: 0 10px;
-    margin-top: 20px
-  }
-
-  .reservation-cell320{
-    position: relative;
-    flex: 1;
-  }
-
-  .reservation-cell320:nth-child(odd){
-    flex: 3;
-    margin: 0 4px;
-  }
-
-
-  .reservation-cell320 img{
-    width: 100%;
-    /*width: 40px;*/
-    /*height: 40px;*/
-  }
-
-  .reservation-cell320 img.arrow{
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    /*width: 12px;*/
-    /*height: 12px;*/
-  }
-
-  .reservation-cell320 span{
-    position: absolute;
-    left: 50%;
-    bottom: -20px;
-    transform: translateX(-50%);
-    font-size: 12px;
-    white-space: nowrap;
-  }
 
   /**
       服务环境

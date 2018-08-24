@@ -69,8 +69,8 @@
           {name: '网站首页', href: '/'},
           {name: '品牌门店', href: '/brand'},
           {name: '维修案例', href: '/case'},
-          {name: '预约到店', href: '/brand'},
-          {name: '维修进度', href: '/brand'},
+          {name: '预约到店', href: '/order'},
+          {name: '维修进度', href: '/process'},
         ]
       }
     }
@@ -199,6 +199,8 @@
   .navigation-wrapper ul li.navigation-cell a:hover{
     /*font-weight: 700;*/
     background-color: #BB9875;
+    /*border-left: 1px solid #333;*/
+    /*border-right: 1px solid #333;*/
   }
 
   .navigation-wrapper ul li.navigation-cell a.active{

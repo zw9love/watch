@@ -549,103 +549,7 @@
     <div class="reservation">
       <ServiceTitle info="Reservation process" name="预约流程"
                     content="透明维修，诚信可靠，四重质检"></ServiceTitle>
-      <div class="reservation-container320">
-        <div class="reservation-cell320">
-          <img src="../assets/img/home_reservationprocess_icon1@2x.png" alt="">
-          <span>到店送修</span>
-        </div>
-        <div class="reservation-cell320">
-          <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
-        </div>
-        <div class="reservation-cell320">
-          <img src="../assets/img/home_reservationprocess_icon1@2x.png" alt="">
-          <span>到店送修</span>
-        </div>
-        <div class="reservation-cell320">
-          <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
-        </div>
-        <div class="reservation-cell320">
-          <img src="../assets/img/home_reservationprocess_icon1@2x.png" alt="">
-          <span>到店送修</span>
-        </div>
-        <div class="reservation-cell320">
-          <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
-        </div>
-        <div class="reservation-cell320">
-          <img src="../assets/img/home_reservationprocess_icon1@2x.png" alt="">
-          <span>到店送修</span>
-        </div>
-        <div class="reservation-cell320">
-          <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
-        </div>
-        <div class="reservation-cell320">
-          <img src="../assets/img/home_reservationprocess_icon1@2x.png" alt="">
-          <span>到店送修</span>
-        </div>
-      </div>
-      <div class="reservation-container">
-        <div class="reservation-cell">
-          <div class="reservation-cell-container">
-            <img src="../assets/img/home_reservationprocess_icon1@2x.png" alt="">
-            <span>到店送修</span>
-          </div>
-        </div>
-        <div class="reservation-cell">
-          <div class="reservation-cell-container">
-            <img src="../assets/img/home_reservationprocess_icon@2x.png" alt="" class="arrow">
-          </div>
-        </div>
-        <div class="reservation-cell">
-          <div class="reservation-cell-container">
-            <img src="../assets/img/home_reservationprocess_icon1@2x.png" alt="">
-            <span>预检并报价</span>
-          </div>
-        </div>
-        <div class="reservation-cell">
-          <div class="reservation-cell-container">
-            <img src="../assets/img/home_reservationprocess_icon@2x.png" alt="" class="arrow">
-          </div>
-        </div>
-        <div class="reservation-cell">
-          <div class="reservation-cell-container">
-            <img src="../assets/img/home_reservationprocess_icon1@2x.png" alt="">
-            <span>确认服务</span>
-          </div>
-        </div>
-        <div class="reservation-cell">
-          <div class="reservation-cell-container">
-            <img src="../assets/img/home_reservationprocess_icon@2x.png" alt="" class="arrow">
-          </div>
-        </div>
-        <div class="reservation-cell">
-          <div class="reservation-cell-container">
-            <img src="../assets/img/home_reservationprocess_icon1@2x.png" alt="">
-            <span>维修保养 </span>
-          </div>
-        </div>
-        <div class="reservation-cell">
-          <div class="reservation-cell-container">
-            <img src="../assets/img/home_reservationprocess_icon@2x.png" alt="" class="arrow">
-          </div>
-        </div>
-        <div class="reservation-cell">
-          <div class="reservation-cell-container">
-            <img src="../assets/img/home_reservationprocess_icon1@2x.png" alt="">
-            <span>服务完成</span>
-          </div>
-        </div>
-        <div class="reservation-cell">
-          <div class="reservation-cell-container">
-            <img src="../assets/img/home_reservationprocess_icon@2x.png" alt="" class="arrow">
-          </div>
-        </div>
-        <div class="reservation-cell">
-          <div class="reservation-cell-container">
-            <img src="../assets/img/home_reservationprocess_icon1@2x.png" alt="">
-            <span>告知客户</span>
-          </div>
-        </div>
-      </div>
+      <Reservation />
       <div class="reservation-main">
         <div class="reservation-main-left">
           <div class="reservation-main-left-wrapper">
@@ -847,9 +751,10 @@
   import Indicators from '../components/Indicators.vue'
   import Header from '../components/Header'
   import Footer from '../components/Footer'
+  import Reservation from '../components/Reservation'
   // import {Swipe, SwipeItem, Picker} from 'mint-ui'
   // import 'mint-ui/lib/style.css'
-  import 'element-ui/lib/theme-chalk/index.css';
+  // import 'element-ui/lib/theme-chalk/index.css';
 
   export default {
     head: {
@@ -866,6 +771,7 @@
       Indicators,
       Header,
       Footer,
+      Reservation
     },
     data() {
       return {
@@ -918,7 +824,7 @@
       }
     },
     mounted() {
-      if (BMap) {
+      if (window.BMap) {
         let map = new BMap.Map("store-map");
         let point = new BMap.Point(116.331398, 39.897445);
         map.centerAndZoom(point, 12);
@@ -934,7 +840,8 @@
           }
         });
       }
-
+      // console.log(window.BMap)
+      // console.log(BMap)
       this.stackHeight = parseInt(window.innerWidth * 0.4667)
       this.certificationHeight = this.$refs.certification320[0].clientHeight
       this.brandMainHeight = this.$refs.brandMainImgWrapper[0].clientHeight

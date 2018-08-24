@@ -46,7 +46,7 @@ module.exports = {
   css: [
     {src: '~assets/css/main.css'},
     {src: '~assets/css/common.css'},
-    // {src: 'element-ui/lib/theme-chalk/index.css'},
+    {src: 'element-ui/lib/theme-chalk/index.css'},
   ],
   /*
   ** Customize the progress bar color

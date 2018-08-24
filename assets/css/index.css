@@ -516,57 +516,6 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   margin: 0 auto
 }
 
-.reservation-container320 {
-  display: none;
-}
-
-.reservation-container {
-  /*overflow: hidden;*/
-  margin-right: -40px;
-  margin-top: 50px;
-}
-
-.reservation-container:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.reservation-cell {
-  float: left;
-  width: 9.0909%
-}
-
-.reservation-cell-container {
-  margin-right: 40px;
-  height: 80px;
-  /*background: yellow;*/
-  position: relative;
-}
-
-.reservation-cell-container img {
-  width: 100%;
-  /*border-radius: 10px;*/
-  vertical-align: middle;
-
-}
-
-.reservation-cell-container img.arrow {
-  position: absolute;
-  top: 31px;
-  max-width: 70px;
-}
-
-.reservation-cell-container span {
-  position: absolute;
-  left: 50%;
-  bottom: -50px;
-  transform: translateX(-50%);
-  font-size: 22px;
-  font-family: "PingFangSC-Regular";
-  white-space: nowrap;
-}
-
 .reservation-main {
   margin-right: -40px;
   margin-top: 100px;

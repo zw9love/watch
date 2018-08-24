@@ -32,6 +32,10 @@
   font-size: 18px
 }
 
+.el-time-panel__btn.confirm{
+  color: #BF9571!important;
+}
+
 .el-date-table td.current:not(.disabled) span{
   background-color: #BF9571!important;
 }
