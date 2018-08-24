@@ -1,0 +1,46 @@
+.page-enter-active, .page-leave-active {
+  transition: opacity .5s;
+}
+.page-enter, .page-leave-active {
+  opacity: 0;
+}
+
+
+
+/*
+  强改插件样式
+*/
+.vux-cell-primary{
+  display: none;
+}
+
+.vux-popup-picker-container .vux-popup-header-right{
+  color: #C8936B;
+}
+
+.el-input__inner:focus.is-active.is-focus:not(:active) {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.el-input{
+  width: calc(100% - 170px)
+}
+
+.el-input .el-input__inner{
+  height: 50px;
+  font-size: 18px
+}
+
+.el-date-table td.current:not(.disabled) span{
+  background-color: #BF9571!important;
+}
+
+.el-date-table td.today span{
+  color: #BF9571!important;
+}
+
+.tabbar-icon-class{
+  width: 17px!important;
+  height: 17px!important;
+}

@@ -1,0 +1,96 @@
+/*服务环境*/
+.environmental {
+  background: #1A1A1A;
+  text-align: center;
+  position: relative;
+  margin-top: 100px;
+  min-height: 730px;
+}
+
+.environmental img {
+  width: 100%;
+  max-width: 1920px;
+  vertical-align: middle;
+}
+
+.environmental-container320 {
+  display: none;
+}
+
+.environmental-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  /*max-width: 1280px;*/
+  /*margin: 0 auto;*/
+  /*position: relative;*/
+}
+
+.environmental-main {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.environmental-main .carousel {
+  margin-top: 50px;
+  position: relative;
+}
+
+.environmental-main .carousel img {
+  vertical-align: middle;
+}
+
+.environmental-main .indicator {
+  position: absolute;
+  left: 0;
+  bottom: -50px;
+  width: 100%;
+  height: 30px;
+  /*background-color: yellow;*/
+}
+
+.environmental-main .indicator span {
+  display: inline-block;
+  margin-right: 10px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.environmental-main .indicator span img {
+  vertical-align: middle;
+}
+
+.environmental-main .indicator .indicator-active {
+  width: 60px;
+  height: 6px;
+  background-color: #bf9571;
+  margin: 0;
+  vertical-align: middle;
+  border-radius: 3px;
+}
+
+@media (max-width:768px){
+  .environmental{
+    background-color: transparent;
+    min-height: auto;
+    margin: 0;
+  }
+
+  .environmental>img{
+    display: none;
+  }
+
+  .environmental-container320{
+    display: block;
+  }
+
+  .carousel{
+    margin-top: 20px;
+  }
+
+  .environmental-container320 img{
+    height: 100%;
+  }
+}

@@ -1,0 +1,896 @@
+.container {
+  /*max-width: 1280px;*/
+  overflow-x: hidden
+}
+
+/*
+    移动端隐藏结构
+ */
+.navigation-container320, .tabbar-container {
+  display: none;
+}
+
+/*
+  banner图
+*/
+.banner-container img {
+  width: 100%;
+  max-width: 1280px;
+  vertical-align: middle;
+}
+
+.banner-container img.banner_phone {
+  display: none;
+}
+
+.banner-container {
+  width: 100%;
+  background-color: #000000;
+  text-align: center;
+  position: relative;
+}
+
+.banner-shadow320 {
+  display: none;
+}
+
+.banner-shadow {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(0, 0, 0, .8);
+}
+
+.banner-shadow p {
+  text-align: center;
+  font-family: "PingFang SC";
+  color: rgba(255, 255, 255, .9);
+  font-size: 18px;
+  line-height: 50px;
+
+}
+
+/*
+   品牌
+ */
+.brand-container {
+  max-width: 1280px;
+  margin: 50px auto 0 auto;
+  text-align: center;
+  /*overflow: hidden;*/
+}
+
+.brand-main {
+  max-width: 1280px;
+}
+
+.brand-main-wrapper320 {
+  display: none;
+}
+
+.brand-main-wrapper {
+}
+
+.brand-main-wrapper:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.brand-main-left {
+  float: left;
+  width: 240px;
+}
+
+
+.brand-main-left ul li {
+  /*padding-top: 173px;*/
+  margin-top: 20px;
+  position: relative;
+  margin-right: 20px;
+}
+
+.brand-main-btn{
+  height: 77px;
+  width: 100%;
+  left: 0;
+  line-height: 70px;
+  color: #333333;
+  font-size: 32px;
+  cursor: pointer;
+  border: 1px solid #BF9571;
+  font-weight: 500;
+  max-width: 220px;
+  display: inline-block;
+  transition: all .3s ease;
+}
+
+.brand-main-btn.active {
+  background-color: #C8936B;
+  color: #fff;
+}
+
+.brand-main-right {
+  float: left;
+  width: 80%;
+}
+
+.brand-main-right ul{
+  overflow: hidden;
+}
+
+.brand-main-right ul li {
+  width: calc((100% - 60px) / 4);
+  /*padding-top: 15%;*/
+  padding-top: 174px;;
+  float: left;
+  position: relative;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.brand-main-right ul li:nth-child(4n) {
+  margin-right: 0px;
+}
+
+.brand-main-right ul li img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+
+/*.brand-main-wrapper ul {*/
+/*overflow: hidden;*/
+/*margin-top: 20px;*/
+/*}*/
+
+/*.brand-main-wrapper ul li {*/
+/*float: left;*/
+/*border: 1px solid #BFBFBF;*/
+/*width: calc(20% - 20px);*/
+/*height: 176px;*/
+/*margin: 0 10px;*/
+/*position: relative;*/
+/*}*/
+
+/*.brand-main-wrapper ul li img {*/
+/*width: 100%;*/
+/*height: 100%;*/
+/*}*/
+
+/*.brand-main-wrapper ul li:first-child {*/
+/*border: none;*/
+/*max-width: 220px;*/
+/*}*/
+
+/*.brand-main-btn {*/
+/*position: absolute;*/
+/*height: 77px;*/
+/*width: 100%;*/
+/*!*background-color: #C8936B;*!*/
+/*left: 0;*/
+/*line-height: 77px;*/
+/*color: #333333;*/
+/*font-size: 32px;*/
+/*cursor: pointer;*/
+/*border: 1px solid #BF9571;*/
+/*font-weight: 500;*/
+/*}*/
+
+/*.brand-main-btn.active {*/
+/*background-color: #C8936B;*/
+/*color: #fff;*/
+/*}*/
+
+/*.brand-main-btn-top {*/
+/*top: 0*/
+/*}*/
+
+/*.brand-main-btn-bottom {*/
+/*bottom: 0*/
+/*}*/
+
+/*
+    广告
+ */
+.adver-container {
+  margin-top: 50px;
+  background-color: #151516;
+}
+
+.adver-wrapper320 {
+  display: none;
+}
+
+.adver-wrapper {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.adver-container img {
+  width: 100%;
+}
+
+/*
+    服务项目
+ */
+
+.service-project {
+  max-width: 1280px;
+  /*height: 340px;*/
+  /*background: yellow;*/
+  margin: 0 auto;
+}
+
+.service-project-main320 {
+  display: none;
+}
+
+.service-project-main {
+  margin-top: 50px;
+}
+
+.service-project-main ul {
+  margin-right: -50px;
+}
+
+.service-project-main ul:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.service-project-main ul li {
+  float: left;
+  width: 25%;
+}
+
+.service-project-main-cell {
+  max-width: 280px;
+  padding: 33px 50px;
+  text-align: center;
+  margin-right: 50px;
+  border: 1px solid #BFBFBF;
+  border-radius: 10px;
+
+}
+
+.service-project-main-cell .info {
+  margin-top: 45px;
+  font-size: 32px;
+  color: #333;
+}
+
+.service-project-main-cell .line {
+  display: inline-block;
+  width: 180px;
+  height: 1px;
+  background: #DCDCDC;
+}
+
+.info-container {
+  width: 180px;
+  margin: 26px auto 0 auto;
+  height: 50px;
+  /*background-color: skyblue;*/
+  color: #333;
+  /*line-height: 36px;*/
+  font-size: 20px;
+  font-weight: 400;
+  font-family: 'PingFang SC';
+}
+
+.info-left-container {
+  width: 50%;
+  float: left;
+  text-align: left;
+}
+
+.info-right-container {
+  width: 50%;
+  float: right;
+  text-align: right;
+}
+
+/*
+    服务质量
+ */
+.service-quality {
+  background-color: #141414;
+  margin-top: 104px;
+}
+
+.service-quality-container320 {
+  display: none;
+}
+
+.service-quality-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.service-quality-container img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.service-quality-main {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /*background: yellow;*/
+  left: 0;
+  top: 0
+}
+
+ul.service-quality-main-info {
+  margin-top: 60px;
+  margin-right: -20px;
+  overflow: hidden;
+}
+
+ul.service-quality-main-info li {
+  float: left;
+  width: 25%;
+}
+
+ul.service-quality-main-info li div.imgInfo {
+  /*width: 100%;*/
+  margin-right: 20px;
+  position: relative;
+}
+
+ul.service-quality-main-info li div.imgInfo .imgInfo-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%)
+}
+
+ul.service-quality-main-info li div.imgInfo .imgInfo-container span {
+  display: block;
+  text-align: center;
+}
+
+ul.service-quality-main-info li div.imgInfo .imgInfo-container span img {
+  width: 80px;
+  height: 80px;
+}
+
+ul.service-quality-main-info li div.imgInfo .imgInfo-container span.showy {
+  font-size: 32px;
+  color: #bf9571;
+  margin-top: 15px;
+}
+
+ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
+  font-size: 24px;
+  color: #fff;
+  margin-top: 15px;
+  white-space: nowrap;
+}
+
+/*
+    认证技师
+ */
+.certification320-container {
+  display: none;
+  position: relative
+}
+
+.certification {
+  max-width: 1280px;
+  /*height: 300px;*/
+  /*background: yellowgreen;*/
+  margin: 60px auto 0 auto;
+  /*overflow: hidden;*/
+  border: 2px solid #BF9571;
+  position: relative;
+}
+
+.certification:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.certification-imgContainer {
+  float: left
+}
+
+.certification-imgContainer img {
+  /*width: 100%;*/
+  vertical-align: middle;
+}
+
+.certification-infoContainer {
+  float: left;
+  width: calc(100% - 310px);
+  /*background-color: yellow;*/
+  height: 299px;
+  padding: 45px 70px;
+}
+
+.certification-title {
+  color: #333333;
+  font-size: 30px;
+  font-family: "PingFangSC-Regular";
+  font-weight: 400;
+}
+
+.certification-info {
+  color: #333333;
+  font-size: 20px;
+  font-family: "PingFang SC";
+  font-weight: 400;
+  line-height: 40px;
+  margin-top: 20px;
+}
+
+.left-icon {
+  position: absolute;
+  top: 130px;
+  left: -85px;
+  cursor: pointer;
+  width: auto;
+}
+
+.right-icon {
+  position: absolute;
+  top: 130px;
+  right: -85px;
+  cursor: pointer;
+  width: auto;
+}
+
+/*
+    维修设备
+ */
+.equipment {
+  max-width: 1280px;
+  margin: 0 auto
+}
+
+.equipment-container320 {
+  display: none;
+}
+
+.equipment-container {
+  overflow: hidden;
+  margin-right: -50px;
+}
+
+.equipment-cell {
+  float: left;
+  width: 33.3333%;
+  margin-top: 50px
+}
+
+.equipment-cell-container {
+  margin-right: 50px;
+  /*height: 100px;*/
+  position: relative;
+  padding-top: 61.7%;
+}
+
+.equipment-cell-container img {
+  width: calc(100%);
+  height: 100%;
+  border-radius: 10px;
+  vertical-align: middle;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.equipment-shadow {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  background-color: rgba(51, 51, 51, .7);
+  text-align: center;
+  line-height: 60px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.equipment-shadow span {
+  color: #fff;
+  font-size: 32px;
+  font-family: "PingFangSC-Regular";
+}
+
+/*
+    预约
+ */
+.reservation {
+  max-width: 1280px;
+  margin: 0 auto
+}
+
+.reservation-container320 {
+  display: none;
+}
+
+.reservation-container {
+  /*overflow: hidden;*/
+  margin-right: -40px;
+  margin-top: 50px;
+}
+
+.reservation-container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.reservation-cell {
+  float: left;
+  width: 9.0909%
+}
+
+.reservation-cell-container {
+  margin-right: 40px;
+  height: 80px;
+  /*background: yellow;*/
+  position: relative;
+}
+
+.reservation-cell-container img {
+  width: 100%;
+  /*border-radius: 10px;*/
+  vertical-align: middle;
+
+}
+
+.reservation-cell-container img.arrow {
+  position: absolute;
+  top: 31px;
+  max-width: 70px;
+}
+
+.reservation-cell-container span {
+  position: absolute;
+  left: 50%;
+  bottom: -50px;
+  transform: translateX(-50%);
+  font-size: 22px;
+  font-family: "PingFangSC-Regular";
+  white-space: nowrap;
+}
+
+.reservation-main {
+  margin-right: -40px;
+  margin-top: 100px;
+}
+
+.reservation-main:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.reservation-main-left, .reservation-main-right {
+  float: left;
+  width: 50%;
+}
+
+.reservation-main-left-wrapper, .reservation-main-right-wrapper {
+  margin-right: 40px;
+  height: 730px;
+  /*background: yellow;*/
+  position: relative;
+  /*border: 1px solid #DBB663;*/
+  border-radius: 10px;
+  box-shadow: 0px 8px 7px 1px rgba(51, 51, 51, 0.1);
+  /*box-shadow: 0 5px 20px rgba(0, 0, 0, .3)*/
+}
+
+.reservation-main-left-wrapper {
+  border: 1px solid #DCDCDC;
+}
+
+.reservation-success-title, .reservation-online-title {
+  width: 100%;
+  height: 110px;
+  background-color: #333;
+  line-height: 100px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.reservation-online-title {
+  background-color: #BF9571;
+}
+
+.reservation-online-title h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 40px;
+  font-family: "PingFangSC-Medium";
+  line-height: 110px;
+}
+
+.reservation-success-title h1 {
+  color: #fff;
+  font-family: "PingFang SC";
+  font-size: 32px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.reservation-success-title h1 span {
+  color: #BF9571;
+  font-family: "PingFang SC";
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.reservation-success-list {
+  height: 620px;
+  padding: 20px 65px
+}
+
+.reservation-success-list ul {
+  overflow: hidden;
+  margin-right: -0px;
+}
+
+.reservation-success-list ul li {
+  float: left;
+  width: 33.3333%;
+}
+
+.reservation-success-list li span {
+  display: block;
+  margin-right: 0px;
+  height: 58px;
+  line-height: 58px;
+  font-size: 24px;
+  font-family: "PingFangSC-Regular";
+}
+
+/*预约*/
+.reservation-input {
+  height: 620px;
+  padding: 20px 50px 20px 25px;
+  /*background-color: yellowgreen;*/
+}
+
+.reservation-input-cell {
+  margin-top: 25px;
+  position: relative;
+}
+
+.reservation-key {
+  width: 150px;
+  display: inline-block;
+  font-size: 28px;
+  padding: 0 10px;
+  font-family: "PingFangSC-Regular";
+  vertical-align: middle;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.verification-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 140px;
+  height: 50px;
+  background-color: #333;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.verification-active-container {
+  background-color: #00A629;
+  color: #fff
+}
+
+.verification-container span {
+  color: #fff;
+  font-size: 18px;
+  font-family: "PingFangSC-Regular";
+}
+
+.reservation-btn-container {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.reservation-btn-container img {
+
+}
+
+.reservation-btn-container span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 30px
+}
+
+/*
+  服务环境
+*/
+.environmental {
+  background: #1A1A1A;
+  text-align: center;
+  position: relative;
+  margin-top: 100px;
+  min-height: 730px;
+}
+
+.environmental img {
+  width: 100%;
+  max-width: 1920px;
+  vertical-align: middle;
+}
+
+.environmental-container320 {
+  display: none;
+}
+
+.environmental-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  /*max-width: 1280px;*/
+  /*margin: 0 auto;*/
+  /*position: relative;*/
+}
+
+.environmental-main {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.environmental-main .carousel {
+  margin-top: 50px;
+  position: relative;
+}
+
+.environmental-main .carousel img {
+  vertical-align: middle;
+}
+
+.environmental-main .indicator {
+  position: absolute;
+  left: 0;
+  bottom: -50px;
+  width: 100%;
+  height: 30px;
+  /*background-color: yellow;*/
+}
+
+.environmental-main .indicator span {
+  display: inline-block;
+  margin-right: 10px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.environmental-main .indicator span img {
+  vertical-align: middle;
+}
+
+.environmental-main .indicator .indicator-active {
+  width: 60px;
+  height: 6px;
+  background-color: #bf9571;
+  margin: 0;
+  vertical-align: middle;
+  border-radius: 3px;
+}
+
+/*
+    到店指引
+ */
+.store {
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.store h1 {
+  font-family: "PingFangSC-Medium";
+  font-size: 36px;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.store p {
+  font-size: 24px;
+  line-height: 46px;
+  text-align: center;
+  font-family: "PingFangSC-Regular";
+  color: #000;
+  font-weight: 200;
+}
+
+.store .store-content img, .store .store-content span {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 36px;
+  color: #BF9571;
+}
+
+.store .store-content span {
+  margin-left: 10px;
+  font-weight: 400;
+}
+
+#store-map {
+  height: 400px;
+  margin-top: 60px
+}
+
+/*预约遮罩*/
+.reservation-shadow {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100
+}
+
+.reservation-shadow-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  white-space: nowrap;
+}
+
+.reservation-online-btn {
+  display: inline-block;
+  position: relative;
+  margin-right: 13px;
+  cursor: pointer;
+}
+
+.reservation-online-msg {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.reservation-online-msg img, .reservation-online-msg span {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.reservation-online-msg span {
+  font-family: "PingFangSC-Regular";
+  font-size: 26px;
+  color: #fff;
+}
+
+.reservation-shadow-close {
+  position: absolute;
+  right: 20px;
+  top: 100px;
+  cursor: pointer;
+}

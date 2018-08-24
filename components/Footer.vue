@@ -1,0 +1,238 @@
+<template>
+  <!--底部导航-->
+  <footer class="bottom-container">
+    <div class="bottom-navbar">
+      <ul>
+        <li>
+          <nuxt-link to="/">网站首页</nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/brand">品牌门店</nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/brand">维修案例</nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/brand">预约到店</nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/brand">维修进度</nuxt-link>
+        </li>
+      </ul>
+    </div>
+    <div class="bottom-link">
+      <div class="bottom-link-container">
+        <div class="bottom-link-top">
+          <ul>
+            <li>友情链接：</li>
+            <li>
+              <nuxt-link to="javascript:;">北京西亨名表维修</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link to="javascript:;">北京西亨名表维修</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link to="javascript:;">北京西亨名表维修</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link to="javascript:;">北京西亨名表维修</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link to="javascript:;">北京西亨名表维修</nuxt-link>
+            </li>
+          </ul>
+        </div>
+        <div class="bottom-link-middle">
+          <p>opyright 2016-2018 西亨（www.xiheng.com) All Rights Reserved. 闽公网安备 35020302001030号</p>
+        </div>
+        <div class="bottom-link-bottom">
+          <img src="../assets/img/home_footer_images1@2x.png" alt="">
+          <img src="../assets/img/home_footer_images2@2x.png" alt="">
+          <img src="../assets/img/home_footer_images3@2x.png" alt="">
+          <img src="../assets/img/home_footer_images4@2x.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="bottom-talk">
+      <ul>
+        <li class="bottom-talk-txt">
+          <input type="text" placeholder="请输入您的电话号码，提交后服务中心将会回电">
+        </li>
+        <li class="bottom-talk-btn">
+          <img src="../assets/img/home_footer_button@2x.png" alt="">
+          <span>提交</span>
+        </li>
+        <li class="bottom-talk-btn">
+          <img src="../assets/img/home_footer_button@2x.png" alt="">
+          <span>在线咨询</span>
+        </li>
+        <li>
+          <img src="../assets/img/home_footer_icon_contacts@2x.png" alt="">
+        </li>
+        <li class="bottom-talk-call">
+          <p>服务热线：400-960-8888</p>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</template>
+
+<script>
+  export default {
+    name: "Footer"
+  }
+</script>
+
+<style scoped>
+  /*底部导航*/
+  .bottom-container{
+    margin-top: 80px;
+  }
+
+  .bottom-navbar {
+    background-color: #333;
+  }
+
+  .bottom-navbar ul {
+    max-width: 1280px;
+    text-align: center;
+    margin: 0 auto
+  }
+
+  .bottom-navbar ul li {
+
+    height: 80px;
+    line-height: 80px;
+    display: inline-block;
+    margin-right: 50px;
+    cursor: pointer;
+  }
+
+  .bottom-navbar ul li a{
+    color: #fff;
+    font-family: "PingFangSC-Regular";
+    font-size: 20px;
+  }
+
+  .bottom-link {
+    background-color: #151516;
+    padding-bottom: 30px;
+  }
+
+  .bottom-link-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .bottom-link-top {
+
+  }
+
+  .bottom-link-top ul {
+    text-align: center;
+    padding: 30px 0;
+  }
+
+  .bottom-link-top ul li {
+    margin-right: 30px;
+    display: inline-block;
+    color: #999999;
+    font-family: "PingFangSC-Regular";
+    font-size: 18px;
+  }
+  .bottom-link-top ul li a{
+    color: #999999;
+    font-family: "PingFangSC-Regular";
+    font-size: 18px;
+  }
+
+
+  .bottom-link-top ul li:first-child {
+    margin: 0;
+  }
+
+  .bottom-link-middle {
+    text-align: center;
+  }
+
+  .bottom-link-middle p {
+    color: #999999;
+    font-family: "PingFangSC-Regular";
+    font-size: 18px;
+  }
+
+  .bottom-link-bottom {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .bottom-link-bottom img {
+    display: inline-block;
+    margin-right: 20px;
+    width: auto;
+  }
+
+  .bottom-talk {
+    background-color: #000;
+    padding: 60px 0 100px 0;
+  }
+
+  .bottom-talk ul {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .bottom-talk ul li {
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: middle;
+  }
+
+  .bottom-talk-txt {
+    width: 500px;
+    height: 50px;
+    padding: 10px;
+    background-color: #fff;
+  }
+
+  .bottom-talk-txt input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    font-family: "PingFangSC-Regular";
+    color: #333;
+  }
+
+  .bottom-talk-btn {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .bottom-talk-btn span {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 24px;
+    font-family: "PingFangSC-Regular";
+    font-weight: 600;
+  }
+
+  .bottom-talk-call p {
+    color: #BF9571;
+    font-size: 28px;
+    font-family: "PingFangSC-Medium";
+  }
+
+  @media (max-width:768px){
+    .bottom-container{
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,498 @@
+@media (max-width:768px){
+  html{overflow-x: hidden}
+  body{max-width: 768px;min-width: 320px;overflow-x: hidden}
+
+  /*
+    普通样式
+   */
+  .container{
+    margin-bottom: 53px;
+  }
+  .banner-container img.banner_pc, .banner-shadow, .brand-main-wrapper, .service-quality-main-info, .reservation-main, .certification, .service-project-main, .service-quality-container, .adver-wrapper, .reservation-container, .environmental-container{
+    display: none;
+  }
+
+  .tabbar-container{
+    display: block;
+    position: fixed;
+    left:0;
+    bottom: 0;
+    width: 100%;
+    z-index: 101;
+    background-color: #333;
+  }
+
+  .tabbar-container .weui-tabbar{
+    background-color: #333;
+  }
+
+  .tabbar-container .weui-tabbar .weui-tabbar__label span{
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .tabbar-container .weui-tabbar .weui-bar__item_on span{
+    color: #C8936B
+  }
+
+  .weui-tabbar__item{
+    padding: 10px 0 5px 0;
+  }
+
+
+  .banner-shadow320{
+    display: flex;
+    position: absolute;
+    left: 10px;
+    width: calc(100% - 20px);
+    top: 20px;
+    height: 30px;
+    background-color: rgba(49,49,49,.7);
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 4px;
+  }
+
+  .banner-shadow320 .city{
+    color: #fff;
+    font-size: 15px;
+    font-family: "PingFangSC-Regular";
+  }
+
+  .banner-shadow320 .arrow{
+    width: 8px;
+    height: 8px;
+    margin-left: 8px;
+  }
+
+  .banner-shadow320 .line{
+    height: 20px;
+    width: 1px;
+    background-color: #999999;
+    margin: 0 12px;
+  }
+
+  .banner-shadow320 .txt{
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+  }
+
+  .banner-shadow320 .search-btn{
+    width: 13px;
+    height:  13px;
+    margin-left: 10px;
+  }
+
+  .banner-container img.banner_phone{
+    display: block;
+  }
+
+  .navigation-container320{
+    display: block;
+    box-shadow:0px 10px 12px 0px rgba(0,0,0,0.1);
+    padding: 30px 10px 20px 10px;
+  }
+
+  .navigation-container320 ul{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .navigation-container320 ul li{
+    /*flex: 1;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navigation-container320 ul li img{
+    width: 50px;
+    height: 50px;
+  }
+
+  .navigation-container320 ul li span{
+    font-size: 14px;
+    font-family: "PingFangSC-Medium";
+    color: #333;
+    margin-top: 6px;
+  }
+
+  .brand-container{
+    margin: 0
+  }
+
+  .brand-main{
+    position: relative;
+    padding-top: 56.51%;
+  }
+
+  .brand-main-wrapper320{
+    display: block;
+    /*padding: 0 0 0 10px;*/
+    /*margin: 0 10px;*/
+    /*height: 434px;*/
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: calc(100% - 20px);
+    height: 100%;
+  }
+
+  .brand-main-img-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .brand-main-img-wrapper li{
+    width: calc((100% - 30px) / 4);
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding-top: 18%;
+    position: relative;
+    margin-right: 10px;
+  }
+
+  .brand-main-img-wrapper li:nth-child(4n){
+    margin-right: 0;
+  }
+
+  .brand-main-img-wrapper li img{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  #store-map{
+    height: 200px;
+    margin-top: 20px;
+  }
+
+  .store-info{
+    padding: 0 10px;
+  }
+
+  .store p{
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 5px;
+  }
+
+  .store-info p:first-of-type{
+    margin-top: 20px;
+  }
+
+  .store h1{
+    display: none;
+  }
+
+  .store .store-content img{
+    width: 15px;
+    height: 15px;
+  }
+
+  .store .store-content span{
+    font-size: 18px;
+    margin-left: 7px;
+  }
+
+  /*
+      服务项目
+   */
+
+  .service-project-main320{
+    display: block;
+    padding: 0 10px;
+  }
+
+  .service-project-main320 ul.service-project-main320-cell{
+    display: flex;
+  }
+
+  .service-project-main320 ul.service-project-main320-cell li{
+    flex: 1;
+    display: flex;
+    margin-right: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex-direction: column;
+    padding: 18px 0;
+    margin-top: 15px;
+  }
+
+  .service-project-main320 ul.service-project-main320-cell li:last-child{
+    margin-right: 0
+  }
+
+  .service-project-main320 ul.service-project-main320-cell li img{
+    width: 32px;
+    height: 32px;
+  }
+
+  .service-project-main320 ul.service-project-main320-cell li p{
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  /**
+    服务质量
+   */
+
+  .service-quality-container > img{
+    display: none;
+  }
+
+  .service-quality-container320{
+    display: block;
+  }
+
+  .service-quality{
+    background-color: transparent;
+    margin-top: 30px;
+  }
+
+  .service-quality-container320 ul{
+    display: flex;
+    padding: 0 10px;
+    flex-wrap: wrap;
+  }
+
+  .service-quality-container320 ul li{
+    width: calc(50% - 6px);
+    margin-left: 6px;
+    margin-top: 11px;
+    position: relative;
+  }
+
+  .service-quality-container320 ul li:nth-child(odd){
+    margin-left: 0px;
+    margin-right: 6px
+  }
+
+  .service-quality-container320 ul li>img{
+    width: 100%;
+    vertical-align: middle;
+  }
+
+  .service-quality-container320-main{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .service-quality-container320-main img{
+    width: 30px;
+    height: 30px;
+  }
+
+  .service-quality-container320-maininfo{
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+  }
+
+  .service-quality-container320-maininfo  p:first-child{
+    font-family: "PingFangSC-Medium";
+    color: #C8936B;
+    font-size: 14px;
+  }
+
+  .service-quality-container320-maininfo  p:last-child{
+    margin-top: 5px;
+    font-size: 10px;
+    color: #fff;
+    font-family: "PingFangSC-Regular";
+  }
+
+  /*
+      维修设备
+   */
+
+  .equipment-container{
+    padding:0 10px;
+    margin-right: -12px;
+  }
+
+  .equipment-cell{
+    margin-top: 10px
+  }
+
+  .equipment-cell-container{
+    margin-right: 12px;
+  }
+
+  .equipment-shadow{
+    height: 17px;
+    line-height: 17px;
+  }
+
+  .equipment-shadow span{
+    font-size: 12px;
+  }
+
+  /*
+      广告
+   */
+
+  .adver-container{
+    background-color: transparent;
+  }
+
+  .adver-wrapper320{
+    display: block;
+    padding: 0 10px;
+  }
+
+  .adver-container img{
+    vertical-align: middle;
+  }
+
+  /**
+    预约流程
+   */
+
+  .reservation-container320{
+    display: flex;
+    padding: 0 10px;
+    margin-top: 20px
+  }
+
+  .reservation-cell320{
+    position: relative;
+    flex: 1;
+  }
+
+  .reservation-cell320:nth-child(odd){
+    flex: 3;
+    margin: 0 4px;
+  }
+
+
+  .reservation-cell320 img{
+    width: 100%;
+    /*width: 40px;*/
+    /*height: 40px;*/
+  }
+
+  .reservation-cell320 img.arrow{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /*width: 12px;*/
+    /*height: 12px;*/
+  }
+
+  .reservation-cell320 span{
+    position: absolute;
+    left: 50%;
+    bottom: -20px;
+    transform: translateX(-50%);
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /**
+      服务环境
+   */
+
+  .environmental{
+    background-color: transparent;
+    min-height: auto;
+    margin: 0;
+  }
+
+  .environmental>img{
+    display: none;
+  }
+
+  .environmental-container320{
+    display: block;
+  }
+
+  .carousel{
+    margin-top: 20px;
+  }
+
+  .environmental-container320 img{
+    height: 100%;
+  }
+
+  /*
+      认证技师
+   */
+  .certification320-container{
+    display: block;
+  }
+
+  .certification320{
+    display: flex;
+    margin: 0 10px;
+    margin-top: 20px;
+    border: 2px solid #BF9571;
+  }
+
+  .certification320-imgContainer{
+    flex: 1;
+  }
+
+  .certification320-imgContainer img{
+    width: 100%;
+    vertical-align: middle;
+  }
+
+  .certification320-infoContainer{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*align-items: center;*/
+    padding: 0 15px;
+  }
+
+  .certification320-infoContainer .certification-title320{
+    font-family: "PingFangSC-Medium";
+    font-size: 15px;
+    color: #000;
+    font-weight: 600;
+  }
+
+  .certification-position320{
+    font-size: 12px;
+    color: #333;
+    font-family: "PingFangSC-Regular";
+  }
+
+  .certification-info320{
+    font-size: 12px;
+    color: #333;
+    font-family: "PingFangSC";
+    margin-top: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+}
+
+
+@media (max-width:360px){
+  .certification-info320{
+    -webkit-line-clamp: 2;
+  }
+}

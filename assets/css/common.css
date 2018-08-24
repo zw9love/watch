@@ -1,0 +1,25 @@
+/* 全局 */
+html{overflow-x:hidden}
+a{text-decoration: none}
+*{outline: none; -webkit-tap-highlight-color: transparent;color: #333}
+input,textarea{-webkit-appearance: none;}/*解决input输入框在苹果机上的默认阴影样式*/
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{ margin:0; padding:0; _margin:0; _padding:0;}
+/*body,html,input{line-height:150%; font-family:"微软雅黑",tahoma,arial,sans-serif; font-size:14px;}*/
+/*article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}*/
+/*table,body{border-collapse:collapse;border-spacing:0;}*/
+/*!*fieldset,*!img {border:0}*/
+/*img{ vertical-align:top; padding:0; margin:0;}*/
+/*address,caption,cite,code,dfn,em,th,var {font-style:normal;font-weight:normal}*/
+ul,ol,li {list-style:none}
+/*h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal}*/
+/*q:before,q:after {content:''}*/
+/*abbr,acronym { border:0}*/
+/*area{ outline: none;}*/
+/*a{text-decoration:none; color:#000; -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webkit-user-select: none;}*/
+/*a:link,a:visited,a:hover{ text-decoration:none;}*/
+/*i{ font-style:normal;}*/
+/*在chrome下：*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{-webkit-appearance: none !important;margin: 0;}
+/* Firefox下：*/
+input[type="number"]{-moz-appearance:textfield;}
