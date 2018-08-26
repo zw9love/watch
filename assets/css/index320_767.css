@@ -120,6 +120,10 @@
     margin-top: 6px;
   }
 
+  /*
+    品牌
+  */
+
   .brand-container{
     margin: 0
   }
@@ -168,6 +172,10 @@
     left: 0;
     top: 0;
   }
+
+  /*
+    到店指引
+  */
 
   #store-map{
     height: 200px;

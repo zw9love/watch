@@ -1,32 +1,5 @@
 <template>
   <div class="container">
-    <!--<mip-carousel-->
-    <!--autoplay-->
-    <!--layout="responsive"-->
-    <!--width="600"-->
-    <!--height="400">-->
-    <!--<mip-img-->
-    <!--src="https://www.mipengine.org/static/img/sample_01.jpg">-->
-    <!--</mip-img>-->
-    <!--<mip-img-->
-    <!--src="https://www.mipengine.org/static/img/sample_02.jpg">-->
-    <!--</mip-img>-->
-    <!--<mip-img-->
-    <!--src="https://www.mipengine.org/static/img/sample_03.jpg">-->
-    <!--</mip-img>-->
-    <!--</mip-carousel>-->
-
-    <!--<picker :data='years001' v-model='year001' @on-change='change'></picker>-->
-    <!--<popup-picker :data="years001" v-model="year001" >-->
-    <!--<template slot="title" slot-scope="props">&lt;!&ndash; use scope="props" when vue < 2.5.0 &ndash;&gt;-->
-    <!--<span style="height:24px;">-->
-    <!--<span class="demo-icon demo-icon-big" style="font-size:20px;vertical-align:middle;"></span>-->
-    <!--<span style="vertical-align:middle;">手机</span>-->
-    <!--</span>-->
-    <!--</template>-->
-    <!--</popup-picker>-->
-
-    <!--<mt-picker :slots="slots" @change="onValuesChange"></mt-picker>-->
 
     <!--tabbar-->
     <div class="tabbar-container">
