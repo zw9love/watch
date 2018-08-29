@@ -53,14 +53,18 @@
 </script>
 
 <style scoped>
-  .banner {
-
+  .banner{
+    position: relative;
+    padding-top: 26.04%;
   }
 
-  .banner img {
+  .banner img{
     width: 100%;
     cursor: pointer;
     vertical-align: middle;
+    position: absolute;
+    left: 0;
+    top: 0
   }
 
   .main {

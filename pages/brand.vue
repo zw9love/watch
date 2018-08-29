@@ -203,13 +203,17 @@
   }
 
   .banner{
-
+    position: relative;
+    padding-top: 26.04%;
   }
 
   .banner img{
     width: 100%;
     cursor: pointer;
     vertical-align: middle;
+    position: absolute;
+    left: 0;
+    top: 0
   }
 
   .brand{

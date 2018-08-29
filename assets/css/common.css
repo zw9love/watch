@@ -1,7 +1,7 @@
 /* 全局 */
 html{overflow-x:hidden}
 a{text-decoration: none}
-*{outline: none; -webkit-tap-highlight-color: transparent;color: #333}
+*{outline: none; -webkit-tap-highlight-color: transparent;color: #333;font-family: "PingFangSC-Regular"}
 input,textarea{-webkit-appearance: none;}/*解决input输入框在苹果机上的默认阴影样式*/
 body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{ margin:0; padding:0; _margin:0; _padding:0;}
 /*body,html,input{line-height:150%; font-family:"微软雅黑",tahoma,arial,sans-serif; font-size:14px;}*/
