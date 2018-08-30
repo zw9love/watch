@@ -40,8 +40,21 @@
   background-color: #BF9571!important;
 }
 
+.el-pagination.is-background .el-pager li:not(.disabled).active{
+  background-color: #C29770!important;
+  color: #fff!important;
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled):not(.active):hover{
+  color: #C29770!important;
+}
+
 .el-date-table td.today span{
   color: #BF9571!important;
+}
+
+.weui-cell_access .weui-cell__ft:after{
+  display: none!important;
 }
 
 .tabbar-icon-class{

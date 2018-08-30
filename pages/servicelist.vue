@@ -3,121 +3,42 @@
     <!--Header-->
     <Header :pageIndex="4"/>
 
-    <!--banner-->
-    <div class="banner">
-      <img src="../assets/img/demand_banner@2x.png" alt="">
-    </div>
-
-    <!--main-->
     <main class="main">
-      <div class="main-cell">
-        <div class="main-cell-title">
-          <span class="date">2018-08-20</span>
-          <span class="number">订单编号：1934345698472354</span>
-          <span class="price">维修价格</span>
-          <span class="discount">折扣</span>
-          <span class="realpay">实付款</span>
-          <span class="status">交易状态</span>
+      <div class="main-left">
+        <div class="city">
+
         </div>
-        <div class="main-cell-content">
-          <span class="date">
-            <img src="../assets/img/demand_list_images1@2x.png" alt="">
-          </span>
-          <span class="number">
-            <p class="watch-name"><span>百达斐丽</span></p>
-            <p>手表型号：<span>5327G - 白金款</span></p>
-            <p class="watch-service">手表服务：<span>拆分机芯并清洗手表服务拆分机芯并清洗手表服务拆分机芯并清洗</span></p>
-          </span>
-          <span class="price">¥5000</span>
-          <span class="discount"><span>¥1000</span><br/><span class="discount-info">（在线预约8折优惠）</span></span>
-          <span class="realpay">¥4000</span>
-          <span class="status">
-            <img src="../assets/img/demand_list_button1@2x.png" alt="">
-            <span class="status-info">维修中</span>
-          </span>
-        </div>
-      </div>
-      <div class="main-cell">
-        <div class="main-cell-title">
-          <span class="date">2018-08-20</span>
-          <span class="number">订单编号：1934345698472354</span>
-          <span class="price">维修价格</span>
-          <span class="discount">折扣</span>
-          <span class="realpay">实付款</span>
-          <span class="status">交易状态</span>
-        </div>
-        <div class="main-cell-content">
-          <span class="date">
-            <img src="../assets/img/demand_list_images1@2x.png" alt="">
-          </span>
-          <span class="number">
-            <p class="watch-name"><span>百达斐丽</span></p>
-            <p>手表型号：<span>5327G - 白金款</span></p>
-            <p class="watch-service">手表服务：<span>拆分机芯并清洗手表服务拆分机芯并清洗手表服务拆分机芯并清洗</span></p>
-          </span>
-          <span class="price">¥5000</span>
-          <span class="discount"><span>¥1000</span><br/><span class="discount-info">（在线预约8折优惠）</span></span>
-          <span class="realpay">¥4000</span>
-          <span class="status complete">
-            <img src="../assets/img/demand_list_button3@2x.png" alt="">
-            <span class="status-info">已完成</span>
-          </span>
+        <div class="store-list">
+            <div class="store-cell-wrapper" v-for="item in 7" :key="item">
+              <div class="store-cell">
+                <div class="store-cell-left">
+                  <img src="../assets/img/store_images1@2x.png" alt="">
+                </div>
+                <div class="store-cell-right">
+                  <p><strong>北京（朝阳店）</strong></p>
+                  <div class="store-address">
+                    <span><img src="../assets/img/store_icon1@2x.png" alt=""></span>
+                    <span class="store-address-info">地址：深圳市宝安区宝安大道与金海路交汇处金港华庭首层商铺8182号,深圳市宝安区宝安大道与金海路交汇处金港华庭首层商铺8182号</span>
+                  </div>
+                  <div class="store-phone">
+                    <span><img src="../assets/img/store_icon2@2x.png" alt=""></span>
+                    <span>400-636-8800</span>
+                  </div>
+                  <div class="store-time">
+                    <span><img src="../assets/img/store_icon3@2x.png" alt=""></span>
+                    <span>09:00-21:00</span>
+                  </div>
+                </div>
+                <div class="store-btn">
+                  <img src="../assets/img/store_button1@2x.png" alt="">
+                  <span class="store-btn-info">立即预约</span>
+                </div>
+              </div>
+              <div class="store-line"></div>
+            </div>
         </div>
       </div>
-      <div class="main-cell">
-        <div class="main-cell-title">
-          <span class="date">2018-08-20</span>
-          <span class="number">订单编号：1934345698472354</span>
-          <span class="price">维修价格</span>
-          <span class="discount">折扣</span>
-          <span class="realpay">实付款</span>
-          <span class="status">交易状态</span>
-        </div>
-        <div class="main-cell-content">
-          <span class="date">
-            <img src="../assets/img/demand_list_images1@2x.png" alt="">
-          </span>
-          <span class="number">
-            <p class="watch-name"><span>百达斐丽</span></p>
-            <p>手表型号：<span>5327G - 白金款</span></p>
-            <p class="watch-service">手表服务：<span>拆分机芯并清洗手表服务拆分机芯并清洗手表服务拆分机芯并清洗</span></p>
-          </span>
-          <span class="price">¥5000</span>
-          <span class="discount"><span>¥1000</span><br/><span class="discount-info">（在线预约8折优惠）</span></span>
-          <span class="realpay">¥4000</span>
-          <span class="status">
-            <img src="../assets/img/demand_list_button1@2x.png" alt="">
-            <span class="status-info">维修中</span>
-          </span>
-        </div>
-      </div>
-      <div class="main-cell">
-        <div class="main-cell-title">
-          <span class="date">2018-08-20</span>
-          <span class="number">订单编号：1934345698472354</span>
-          <span class="price">维修价格</span>
-          <span class="discount">折扣</span>
-          <span class="realpay">实付款</span>
-          <span class="status">交易状态</span>
-        </div>
-        <div class="main-cell-content">
-          <span class="date">
-            <img src="../assets/img/demand_list_images1@2x.png" alt="">
-          </span>
-          <span class="number">
-            <p class="watch-name"><span>百达斐丽</span></p>
-            <p>手表型号：<span>5327G - 白金款</span></p>
-            <p class="watch-service">手表服务：<span>拆分机芯并清洗手表服务拆分机芯并清洗手表服务拆分机芯并清洗</span></p>
-          </span>
-          <span class="price">¥5000</span>
-          <span class="discount"><span>¥1000</span><br/><span class="discount-info">（在线预约8折优惠）</span></span>
-          <span class="realpay">¥4000</span>
-          <span class="status complete">
-            <img src="../assets/img/demand_list_button3@2x.png" alt="">
-            <span class="status-info">已完成</span>
-          </span>
-        </div>
-      </div>
+      <Advertisement />
     </main>
 
     <!--Footer-->
@@ -128,12 +49,14 @@
 <script>
   import Header from '../components/Header'
   import Footer from '../components/Footer'
+  import Advertisement from '../components/Advertisement'
 
   export default {
     name: "servicelist",
     components: {
       Header,
       Footer,
+      Advertisement
     },
     data() {
       return {
@@ -144,116 +67,113 @@
 </script>
 
 <style scoped>
-  .banner{
-    position: relative;
-    padding-top: 26.04%;
+
+  img{
+    vertical-align: middle;
   }
 
-  .banner img{
-    width: 100%;
-    cursor: pointer;
-    vertical-align: middle;
-    position: absolute;
-    left: 0;
-    top: 0
-  }
   .main{
-    max-width: 1282px;
-    margin: 100px auto 0 auto;
+    max-width: 1280px;
+    margin: 60px auto 0 auto;
   }
 
-  .main-cell{
-    border: 1px solid #ddd;
-    margin-top: 40px;
+  .main:after{
+    content: "";
+    display: block;
+    clear: both;
   }
 
-  .main-cell .main-cell-title{
-    height: 50px;
-    line-height: 50px;
-    background-color: #F5F5F5
+  .main-left{
+    float: left;
+    width: 800px;
   }
 
-  .main-cell-title span{
-    display: inline-block;
-    text-align: center;
-    font-family: "PingFangSC-Medium";
-    font-size: 18px;
-    font-weight: 600;
+  .city{
+    margin-top: 20px;
+    height: 40px;
+    background-color: #ccc;
   }
 
-  span.date{
-    width: 200px;
-  }
-  span.number{
-    width: 440px;
-    text-align: left;
-  }
+  .store-list{
+     margin-top: 50px;
+   }
 
-  span.price{
-    width: 160px;
-  }
-
-  span.discount{
-    width: 160px;
-  }
-  span.realpay{
-    width: 160px;
-  }
-  span.status{
-    width: 160px;
-  }
-
-  .main-cell-content{
-    padding: 40px 0;
-  }
-
-  .main-cell-content >span{
-    vertical-align: middle;
-    display: inline-block;
-    text-align: center;
+  .store-cell{
+    /*overflow: hidden;*/
     position: relative;
   }
-
-  .main-cell-content p{
-    text-align: left;
-    font-size: 16px;
-    color: #999;
-    line-height: 35px;
+  .store-cell:after{
+    content: "";
+    display: block;
+    clear: both;
   }
 
-  .main-cell-content p.watch-name{
-    color: #333;
-    font-weight: 600;
-    font-size: 20px;
-    /*margin-bottom: 10px*/
+
+  .store-cell-left, .store-cell-right{
+    float: left;
   }
 
-  .main-cell-content p.watch-service{
+  .store-cell-right{
+    width: 580px;
+    padding-left: 20px;
   }
 
-  .discount-info{
+  .store-cell-right span>img{
+    margin-right: 7px;
+  }
+
+  .store-address span{
     display: inline-block;
-    margin-top: 5px;
-    font-size: 14px;
-    color: #999
+    vertical-align: middle;
   }
 
-  .status-info{
+  .store-address, .store-phone, .store-time{
+    margin-top: 10px;
+  }
+
+  .store-address span.store-address-info{
+    width: calc(100% - 28px);
+    vertical-align: top;
+    line-height: 1.6em;
+  }
+  .store-address span img{
+    vertical-align: top;
+  }
+
+  .store-cell-right span{
+    font-size: 16px;
+    color: #666;
+    vertical-align: middle;
+  }
+
+  .store-cell-right strong{
+    color: #333;
+    font-size: 20px;
+  }
+
+  .store-btn{
+    position: absolute;
+    right: 0;
+    bottom: -22px;
+    cursor: pointer;
+  }
+
+  .store-btn-info{
     position: absolute;
     left: 50%;
-    top: 42%;
+    top: 40%;
     transform: translate(-50%, -50%);
     color: #000;
     font-size: 15px;
     font-weight: 600;
   }
 
-  .complete .status-info{
-    color: #666;
-  }
-
-  .main-cell-content .status{
-    cursor: pointer;
+  .store-line{
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    clear: both;
+    margin: 70px 0;
   }
 
 </style>

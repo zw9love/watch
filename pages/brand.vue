@@ -3,9 +3,25 @@
     <!--Header-->
     <Header :pageIndex="1"/>
 
+    <HeaderMobile title="品牌门店" />
+
     <!--banner-->
     <div class="banner">
       <img src="../assets/img/brand_banner@2x.png" alt="">
+    </div>
+
+    <div class="banner320">
+      <swiper :aspect-ratio="200/375" v-model="bannerIndex" dots-position="center">
+        <swiper-item class="banner320-swiper-img">
+          <img style="width: 100%" src="../assets/img/home_serviceenvironment_images@2x.png">
+        </swiper-item>
+        <swiper-item class="banner320-swiper-img">
+          <img style="width: 100%" src="../assets/img/home_serviceenvironment_images1@2x.png">
+        </swiper-item>
+        <swiper-item class="banner320-swiper-img">
+          <img style="width: 100%" src="../assets/img/home_serviceenvironment_images2@2x.png">
+        </swiper-item>
+      </swiper>
     </div>
 
     <!--品牌介绍-->
@@ -24,6 +40,19 @@
           </div>
         </div>
       </div>
+      <div class="brand-container320">
+        <strong class="brand-page-title320">品牌介绍</strong>
+        <div class="brand-main-container320">
+          <img src="../assets/img/brand_bg@2x.png" alt="">
+          <div class="brand-info-container320">
+            <p class="brand-info-txt320">
+              "    西亨-修合无人见，存心有天知。
+              诚信、公道、匠心一直是西亨人至今依然恪守的秉性。
+              西亨名表维修中心设立于50年代，发际于80年代，自成立以来经百年技艺的传承与四代钟表手艺人的刻苦经营，已然成为国内名副其实的钟表世家。百年历程的钟表情缘为西亨积累了丰富的钟表维修经验与行业口碑。"
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!--荣誉资质-->
@@ -31,6 +60,14 @@
       <div class="qualification-container">
         <strong class="brand-page-title">荣誉资质</strong>
         <div class="qualification-img-container">
+          <img src="../assets/img/brand_images1@2x.png" alt="" class="bg">
+          <img src="../assets/img/brand_images2@2x.png" alt="" class="bg">
+          <img src="../assets/img/brand_images3@2x.png" alt="" class="bg">
+        </div>
+      </div>
+      <div class="qualification-container320">
+        <strong class="brand-page-title320">荣誉资质</strong>
+        <div class="qualification-img-container320">
           <img src="../assets/img/brand_images1@2x.png" alt="" class="bg">
           <img src="../assets/img/brand_images2@2x.png" alt="" class="bg">
           <img src="../assets/img/brand_images3@2x.png" alt="" class="bg">
@@ -67,6 +104,8 @@
         </div>
       </div>
       <div class="environmental-container320">
+        <strong class="brand-page-title320">维修案例</strong>
+        <strong class="brand-page-title320" style="margin-top: 0;font-weight: 500"><span>超过</span> <span style="color: #C8936B"> 32567800 </span><span>个成功维修案例</span></strong>
         <div class="carousel">
           <el-carousel type="card" :height="stackHeight + 'px'" :autoplay="false" arrow="never"
                        indicator-position="none"
@@ -115,9 +154,25 @@
               </div>
             </el-carousel-item>
           </el-carousel>
-
         </div>
       </div>
+    </div>
+
+    <!--到店指引-->
+    <div class="store">
+      <ServiceTitle info="store guide" name="到店指引" content="400-960-8888">
+        <span slot="content" class="store-content">
+          <img src="../assets/img/home_storeguide_icon@2x.png" alt="">
+          <span>400-960-8888</span>
+        </span>
+      </ServiceTitle>
+      <div class="store-info">
+        <h1>北京名表维修中心</h1>
+        <p>营业时间：09:00-19:00（节假日不休）</p>
+        <p>店铺地址：北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）</p>
+        <p>乘车线路： 乘坐3路、130路、132路、133路、658路、659路、858路到莲坂北</p>
+      </div>
+      <div id="store-map"></div>
     </div>
 
     <!--广告-->
@@ -134,13 +189,26 @@
   import Header from '../components/Header'
   import Footer from '../components/Footer'
   import Indicators from '../components/Indicators'
+  import ServiceTitle from '../components/ServiceTitle'
+  import HeaderMobile from '../components/HeaderMobile'
   import 'element-ui/lib/theme-chalk/index.css';
   export default {
     name: "brand",
+    head: {
+      script: [
+        {src: 'http://api.map.baidu.com/api?v=2.0&ak=L2fFIBoizTO5nxe7ypgsV3pHGmYw6tqx'},
+        // { src: 'https://c.mipcdn.com/static/v1/mip.js'},
+      ],
+      link: [
+        // { rel: 'stylesheet', href: 'https://c.mipcdn.com/static/v1/mip.css'}
+      ]
+    },
     components: {
       Header,
       Footer,
-      Indicators
+      Indicators,
+      ServiceTitle,
+      HeaderMobile
     },
     data(){
       return {
@@ -149,11 +217,28 @@
         leftActive: false,
         rightActive: false,
         caseIndex: 0,
-        caseCarouselList: [1,1,1,1,1]
+        caseCarouselList: [1,1,1,1,1],
+        bannerIndex: 0
       }
     },
     mounted() {
       this.stackHeight = parseInt(window.innerWidth * 0.4667)
+      if (window.BMap) {
+        let map = new BMap.Map("store-map");
+        let point = new BMap.Point(116.331398, 39.897445);
+        map.centerAndZoom(point, 12);
+        // 创建地址解析器实例
+        let myGeo = new BMap.Geocoder();
+        // 将地址解析结果显示在地图上,并调整地图视野
+        myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）", function (point) {
+          if (point) {
+            map.centerAndZoom(point, 16);
+            map.addOverlay(new BMap.Marker(point));
+          } else {
+            alert("您选择地址没有解析到结果!");
+          }
+        });
+      }
     },
     methods: {
       leftIconEnter() {
@@ -190,7 +275,9 @@
 <style scoped>
   @import "../assets/css/environmental.css";
 
-
+  .banner320, .brand-container320{
+    display: none;
+  }
 
   strong.brand-page-title{
     font-size: 48px;
@@ -339,6 +426,156 @@
   .adver >img{
     width: 100%;
     cursor: pointer;
+  }
+
+  /*
+    到店指引
+ */
+  .store {
+    max-width: 1280px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+
+  .store h1 {
+    font-family: "PingFangSC-Medium";
+    font-size: 36px;
+    text-align: center;
+    margin: 30px 0;
+  }
+
+  .store p {
+    font-size: 24px;
+    line-height: 46px;
+    text-align: center;
+    font-family: "PingFangSC-Regular";
+    color: #000;
+    font-weight: 200;
+  }
+
+  .store .store-content img, .store .store-content span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 36px;
+    color: #BF9571;
+  }
+
+  .store .store-content span {
+    margin-left: 10px;
+    font-weight: 400;
+  }
+
+  #store-map {
+    height: 400px;
+    margin-top: 60px
+  }
+
+
+  @media (max-width: 768px) {
+    .banner, .brand-container, .qualification-container, .environmental >img, .environmental-container, .case-container, .adver{
+      display: none;
+    }
+
+    .banner320, .brand-container320{
+      display: block;
+    }
+
+    .container{
+      margin-top: 46px;
+    }
+
+    .environmental{
+      height:  auto;
+      min-height: auto;
+    }
+
+    .brand-container320{
+    }
+
+    .brand-page-title320{
+      display: block;
+      font-size: 18px;
+      color: #000;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .brand-main-container320{
+      position: relative;
+      padding: 0 10px;
+    }
+
+    .brand-main-container320 img{
+      width: 100%;
+    }
+
+
+    .brand-info-container320{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      padding: 20px 20px;
+    }
+
+    .brand-info-txt320{
+      font-size: 12px;
+      color: #fff;
+    }
+
+    .qualification-container320{
+      padding: 0 10px;
+    }
+
+    .qualification-container320 .qualification-img-container320 img{
+      vertical-align: middle;
+      display: inline-block;
+      width: calc((100% - 20px) / 3);
+      margin-right: 10px;
+    }
+
+    .qualification-container320 .qualification-img-container320 img:last-child{
+      margin-right: 0
+    }
+
+    /*
+    到店指引
+  */
+
+    #store-map{
+      height: 200px;
+      margin-top: 20px;
+    }
+
+    .store-info{
+      padding: 0 10px;
+    }
+
+    .store p{
+      font-size: 12px;
+      line-height: 18px;
+      margin-top: 5px;
+    }
+
+    .store-info p:first-of-type{
+      margin-top: 20px;
+    }
+
+    .store h1{
+      display: none;
+    }
+
+    .store .store-content img{
+      width: 15px;
+      height: 15px;
+    }
+
+    .store .store-content span{
+      font-size: 18px;
+      margin-left: 7px;
+    }
   }
 
 </style>

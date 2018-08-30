@@ -1,24 +1,25 @@
 <template>
-  <div class="container">
-    <!--Header-->
-    <Header :pageIndex="3"/>
+  <div>
+    <div class="container">
+      <!--Header-->
+      <Header :pageIndex="3"/>
 
-    <!--banner-->
-    <div class="banner">
-      <img src="../assets/img/booking_banner@2x.png" alt="">
-    </div>
+      <!--banner-->
+      <div class="banner">
+        <img src="../assets/img/booking_banner@2x.png" alt="">
+      </div>
 
-    <!--main-->
-    <main class="main">
-      <div class="main-cell">
-        <span class="field">手表品牌</span>
-        <span class="input">
+      <!--main-->
+      <main class="main">
+        <div class="main-cell">
+          <span class="field">手表品牌</span>
+          <span class="input">
           <el-input v-model="form.name" placeholder="请输入内容"></el-input>
         </span>
-      </div>
-      <div class="main-cell">
-        <span class="field">手表故障</span>
-        <span class="input">
+        </div>
+        <div class="main-cell">
+          <span class="field">手表故障</span>
+          <span class="input">
           <el-select v-model="form.faultType" placeholder="请选择">
             <el-option
               v-for="item in options"
@@ -28,61 +29,116 @@
             </el-option>
           </el-select>
         </span>
-      </div>
-      <div class="main-cell">
-        <span class="field">姓名</span>
-        <span class="input">
+        </div>
+        <div class="main-cell">
+          <span class="field">姓名</span>
+          <span class="input">
           <el-input v-model="form.name" placeholder="请输入您的姓名"></el-input>
         </span>
-      </div>
-      <div class="main-cell">
-        <span class="field">手机号</span>
-        <span class="input">
+        </div>
+        <div class="main-cell">
+          <span class="field">手机号</span>
+          <span class="input">
           <el-input v-model="form.phone" placeholder="请输入您的真实手机号，便于查询维修进度"></el-input>
         </span>
-      </div>
-      <div class="main-cell">
-        <span class="field">验证码</span>
-        <span class="input">
+        </div>
+        <div class="main-cell">
+          <span class="field">验证码</span>
+          <span class="input">
           <el-input v-model="form.verification" placeholder="请输入验证码"></el-input>
           <span class="verification-btn">获取验证码</span>
         </span>
-      </div>
-      <div class="main-cell">
-        <span class="field">预约时间</span>
-        <span class="input">
-          <el-col :span="11">
-            <el-date-picker type="date" placeholder="请选择预约日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
-          </el-col>
-          <span class="split">-</span>
-          <el-col :span="11">
-            <el-time-picker type="fixed-time" placeholder="请选择预约时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
-          </el-col>
-        </span>
-      </div>
-      <div class="main-cell">
-        <span class="field"></span>
-        <nuxt-link class="commit" to="/successorder" >提交预约</nuxt-link>
-      </div>
-    </main>
+        </div>
+        <div class="main-cell">
+          <span class="field">预约时间</span>
+          <span class="input">
+            <el-col :span="11">
+              <el-date-picker type="date" placeholder="请选择预约日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
+            </el-col>
+            <span class="split">-</span>
+            <el-col :span="11">
+              <el-time-picker type="fixed-time" placeholder="请选择预约时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
+            </el-col>
+          </span>
+        </div>
+        <div class="main-cell">
+          <span class="field"></span>
+          <nuxt-link class="commit" to="/successorder" >提交预约</nuxt-link>
+        </div>
+      </main>
 
-    <!--Footer-->
-    <Footer/>
+      <!--Footer-->
+      <Footer/>
+    </div>
+    <div class="container320">
+
+      <!--header-->
+      <HeaderMobile title="预约到店"></HeaderMobile>
+
+      <!--main-->
+      <main class="main320">
+          <div class="main-cell320">
+            <span class="field320">手表品牌</span>
+            <span class="input320">
+              <x-input title="" name="mobile" placeholder="请输入您的手表品牌" keyboard="number" is-type="china-mobile"></x-input>
+            </span>
+          </div>
+          <div class="main-cell320">
+            <span class="field320">手表故障</span>
+            <span class="input320">
+              <popup-radio title="111" :options="options1" v-model="option1" placeholder="请选择手表故障类型">
+                <p slot="popup-header" class="vux-1px-b demo3-slot">Please select</p>
+              </popup-radio>
+            </span>
+          </div>
+          <div class="main-cell320">
+            <span class="field320">姓名</span>
+            <span class="input320">
+              <x-input title="" name="mobile" placeholder="请输入您的姓名" keyboard="number" is-type="china-mobile"></x-input>
+            </span>
+          </div>
+          <div class="main-cell320">
+            <span class="field320">手机号</span>
+            <span class="input320">
+              <x-input title="" name="mobile" placeholder="请输入您的手机号" keyboard="number" is-type="china-mobile"></x-input>
+            </span>
+          </div>
+          <div class="main-cell320">
+            <span class="field320">验证码</span>
+            <span class="input320">
+              <x-input title="" name="mobile" placeholder="请输入验证码" keyboard="number" is-type="china-mobile"></x-input>
+            </span>
+          </div>
+          <div class="main-cell320">
+            <span class="field320">预约时间</span>
+            <span class="input320">
+              <datetime :title="datetime" v-model="date" @on-change="datetimeChange"></datetime>
+            </span>
+          </div>
+          <div class="main-cell320" >
+            <span class="commit-order-btn">提交预约</span>
+          </div>
+      </main>
+    </div>
   </div>
 </template>
 
 <script>
   import Header from '../components/Header'
   import Footer from '../components/Footer'
+  import HeaderMobile from '../components/HeaderMobile'
   // import 'element-ui/lib/theme-chalk/index.css';
   export default {
     name: "order",
     components: {
       Header,
       Footer,
+      HeaderMobile
     },
     data() {
       return {
+        date: '',
+        datetime: '请选择预约时间',
         form: {
           brand: '',
           name: '',
@@ -109,11 +165,15 @@
           value: '选项5',
           label: '北京烤鸭'
         }],
-        value: ''
+        value: '',
+        option1: '',
+        options1: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
       };
     },
     methods: {
-
+      datetimeChange(val){
+        this.datetime = val
+      }
     }
   }
 </script>
@@ -122,6 +182,10 @@
 
   .el-select {
     width: 100%;
+  }
+
+  .container320{
+    display: none;
   }
 
   .banner{
@@ -208,4 +272,57 @@
     font-family: "PingFangSC-Regular";
     font-size: 20px;
   }
+
+  @media (max-width:768px){
+    .container{
+      display: none;
+    }
+    .container320{
+      display: block;
+      margin-top: 46px;
+    }
+
+    .main320{
+      padding: 0 10px;
+    }
+
+    .main-cell320{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .field320{
+      width: 80px;
+      padding: 0 10px 0 0;
+      text-align: right;
+      font-weight: 500;
+    }
+
+    .input320{
+      flex: 1;
+      border: 1px solid #dadada;
+      border-radius: 5px;
+    }
+
+    .demo3-slot {
+      text-align: center;
+      padding: 8px 0;
+      color: #888;
+    }
+
+    .commit-order-btn{
+      height: 40px;
+      line-height: 40px;
+      display: inline-block;
+      width: 100%;
+      background-color: #c8936b;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+
 </style>
