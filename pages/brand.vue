@@ -43,12 +43,12 @@
       <div class="brand-container320">
         <strong class="brand-page-title320">品牌介绍</strong>
         <div class="brand-main-container320">
-          <img src="../assets/img/brand_bg@2x.png" alt="">
+          <img src="../assets/img/brand_bg320@2x.jpg" alt="">
           <div class="brand-info-container320">
             <p class="brand-info-txt320">
-              "    西亨-修合无人见，存心有天知。
-              诚信、公道、匠心一直是西亨人至今依然恪守的秉性。
-              西亨名表维修中心设立于50年代，发际于80年代，自成立以来经百年技艺的传承与四代钟表手艺人的刻苦经营，已然成为国内名副其实的钟表世家。百年历程的钟表情缘为西亨积累了丰富的钟表维修经验与行业口碑。"
+              西亨-修合无人见，存心有天知。<br>
+              诚信、公道、匠心一直是西亨人至今依然恪守的秉性。<br>
+              西亨名表维修中心设立于50年代，发际于80年代，自成立以来经百年技艺的传承与四代钟表手艺人的刻苦经营，已然成为国内名副其实的钟表世家。百年历程的钟表情缘为西亨积累了丰富的钟表维修经验与行业口碑。
             </p>
           </div>
         </div>
@@ -517,12 +517,17 @@
       height: 100%;
       left: 0;
       top: 0;
-      padding: 20px 20px;
+      padding: 20px 30px;
     }
 
     .brand-info-txt320{
       font-size: 12px;
       color: #fff;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 60px);
     }
 
     .qualification-container320{
@@ -575,6 +580,15 @@
     .store .store-content span{
       font-size: 18px;
       margin-left: 7px;
+    }
+
+    @media (max-width: 370px) {
+      .brand-info-txt320{
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
     }
   }
 

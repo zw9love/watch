@@ -75,12 +75,16 @@
       <!--header-->
       <HeaderMobile title="预约到店"></HeaderMobile>
 
+      <div class="banner320">
+        <img src="../assets/img/order_banner320.jpg" alt="">
+      </div>
+
       <!--main-->
       <main class="main320">
           <div class="main-cell320">
             <span class="field320">手表品牌</span>
             <span class="input320">
-              <x-input title="" name="mobile" placeholder="请输入您的手表品牌" keyboard="number" is-type="china-mobile"></x-input>
+              <x-input title="" name="mobile" placeholder="请输入您的手表品牌" keyboard="text" ></x-input>
             </span>
           </div>
           <div class="main-cell320">
@@ -94,7 +98,7 @@
           <div class="main-cell320">
             <span class="field320">姓名</span>
             <span class="input320">
-              <x-input title="" name="mobile" placeholder="请输入您的姓名" keyboard="number" is-type="china-mobile"></x-input>
+              <x-input title="" name="mobile" placeholder="请输入您的姓名" keyboard="text" ></x-input>
             </span>
           </div>
           <div class="main-cell320">
@@ -106,13 +110,13 @@
           <div class="main-cell320">
             <span class="field320">验证码</span>
             <span class="input320">
-              <x-input title="" name="mobile" placeholder="请输入验证码" keyboard="number" is-type="china-mobile"></x-input>
+              <x-input title="" name="mobile" placeholder="请输入验证码" keyboard="number"></x-input>
             </span>
           </div>
           <div class="main-cell320">
             <span class="field320">预约时间</span>
             <span class="input320">
-              <datetime :title="datetime" v-model="date" @on-change="datetimeChange"></datetime>
+              <datetime :title="datetime" v-model="date" format="YYYY-MM-DD HH:mm" :hour-list="['09', '10', '11', '12', '13', '14', '15', '16']" :minute-list="['00', '30']" @on-change="datetimeChange"></datetime>
             </span>
           </div>
           <div class="main-cell320" >
@@ -282,8 +286,23 @@
       margin-top: 46px;
     }
 
+    .banner320{
+      padding-top: 37.3333%;
+      position: relative;
+    }
+
+    .banner320 img{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      vertical-align: middle;
+      left: 0;
+      top: 0;
+    }
+
     .main320{
       padding: 0 10px;
+      margin-bottom: 20px;
     }
 
     .main-cell320{

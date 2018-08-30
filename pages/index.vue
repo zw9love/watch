@@ -47,21 +47,9 @@
     <!--navigation320-->
     <div class="navigation-container320">
       <ul>
-        <li>
+        <li v-for="(item, key) in mobileNavList" :key="key" @click="goto(item)">
           <img src="../assets/img/home_nav_icon1@2x.png" alt="">
-          <span>品牌门店</span>
-        </li>
-        <li>
-          <img src="../assets/img/home_nav_icon1@2x.png" alt="">
-          <span>维修案例</span>
-        </li>
-        <li>
-          <img src="../assets/img/home_nav_icon1@2x.png" alt="">
-          <span>维修进度</span>
-        </li>
-        <li>
-          <img src="../assets/img/home_nav_icon1@2x.png" alt="">
-          <span>维修地址</span>
+          <nuxt-link :to="item.href">{{item.name}}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -793,7 +781,13 @@
           {name: '时尚品牌', url: 'fashion'},
         ],
         technicianIndex: 0,
-        technicianCarouselList: [1,1,1,1,1]
+        technicianCarouselList: [1,1,1,1,1],
+        mobileNavList: [
+          {name: '品牌门店', href: '/brand'},
+          {name: '维修案例', href: '/case'},
+          {name: '维修进度', href: '/order'},
+          {name: '维修地址', href: '/address'},
+        ]
       }
     },
     mounted() {
@@ -861,6 +855,9 @@
       brandClick(url, key) {
         this.brandIndex = key
         // this.$router.push({path: url})
+      },
+      goto(item){
+        this.$router.push({path: item.href})
       }
     }
   }

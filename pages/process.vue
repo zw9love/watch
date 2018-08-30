@@ -23,7 +23,7 @@
           <span class="verification-btn">获取验证码</span>
         </span>
       </div>
-      <nuxt-link to="/searchprocess" class="search-process-btn">查询进度</nuxt-link>
+      <nuxt-link to="/orderlist" class="search-process-btn">查询进度</nuxt-link>
     </main>
 
     <!--Footer-->

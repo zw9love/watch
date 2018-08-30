@@ -70,9 +70,11 @@
 
     <div class="container320">
 
-      <div class="nav320">
-        <span class="nav320-title">在线客服</span>
-      </div>
+      <HeaderMobile title="在线客服"></HeaderMobile>
+
+      <!--<div class="nav320">-->
+        <!--<span class="nav320-title">在线客服</span>-->
+      <!--</div>-->
 
       <main class="main320">
         <div class="main-container320">
@@ -167,8 +169,12 @@
 </template>
 
 <script>
+  import HeaderMobile from '../components/HeaderMobile'
   export default {
     name: "customerservice",
+    components: {
+      HeaderMobile
+    },
     data(){
       return {
       }
