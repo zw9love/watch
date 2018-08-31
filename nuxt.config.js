@@ -27,7 +27,8 @@ module.exports = {
     {src:'~plugins/element-ui', ssr: true},
     {src: '~/plugins/mint-ui', ssr: true },
     {src: '~/plugins/vux-plugins', ssr: false},
-    {src: '~/plugins/vux-components', ssr: true}
+    {src: '~/plugins/vux-components', ssr: true},
+    {src: '~/plugins/v-distpicker', ssr: false},
   ],
   axios: {
     prefix: '/api/',

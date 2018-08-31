@@ -33,6 +33,13 @@
         <img src="../assets/img/home_reservationprocess_icon5@2x.png" alt="">
         <span>到店送修</span>
       </div>
+      <div class="reservation-cell320">
+        <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
+      </div>
+      <div class="reservation-cell320">
+        <img src="../assets/img/home_reservationprocess_icon6@2x.png" alt="">
+        <span>到店送修</span>
+      </div>
     </div>
     <div class="reservation-container">
       <div class="reservation-cell">

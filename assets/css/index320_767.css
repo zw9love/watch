@@ -7,6 +7,7 @@
    */
   .container{
     margin-bottom: 53px;
+    margin-top: 46px;
   }
   .banner-container img.banner_pc, .banner-shadow, .brand-main-wrapper, .service-quality-main-info, .reservation-main, .certification, .service-project-main, .service-quality-container, .adver-wrapper, .environmental-container{
     display: none;

@@ -17,6 +17,7 @@
     "element-ui": "^2.4.6",
     "mint-ui": "^2.2.13",
     "nuxt": "^1.0.0",
+    "v-distpicker": "^1.0.17",
     "vux": "^2.9.2"
   },
   "devDependencies": {

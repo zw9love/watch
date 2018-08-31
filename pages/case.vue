@@ -1,4 +1,5 @@
 <template>
+  <div>
     <div class="container">
       <!--Header-->
       <Header :pageIndex="2"/>
@@ -12,10 +13,10 @@
       <main class="main">
 
         <div class="video">
-         <div class="video-banner">
-           <img src="../assets/img/case_images1@2x.png" alt="">
-           <img src="../assets/img/case_icon1@2x.png" alt="" class="open-icon">
-         </div>
+          <div class="video-banner">
+            <img src="../assets/img/case_images1@2x.png" alt="">
+            <img src="../assets/img/case_icon1@2x.png" alt="" class="open-icon">
+          </div>
           <div class="video-list">
             <div class="video-list-title">
               <span>热门案例</span>
@@ -123,7 +124,7 @@
       <!--用户评价-->
       <div class="comment">
         <h1>用户评价</h1>
-        <div class="comment-cell">
+        <div class="comment-cell" v-for="x in 5" :key="x">
           <div class="comment-cell-top">
             <div class="comment-img">
               <img src="../assets/img/case_images_head1@2x.png" alt="">
@@ -161,82 +162,7 @@
           </div>
           <div class="comment-cell-line"></div>
         </div>
-        <div class="comment-cell">
-          <div class="comment-cell-top">
-            <div class="comment-img">
-              <img src="../assets/img/case_images_head1@2x.png" alt="">
-            </div>
-            <div class="comment-user">
-              <p class="phone">158****4333</p>
-              <p class="count">
-                <span class="count-info">评分</span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-              </p>
-            </div>
-            <div class="comment-date">
-              <span>2018-08-04</span>
-            </div>
-          </div>
-          <div class="comment-cell-content">
-            <p>
-              擔心给路边维修的人偷梁换柱，就选择了西亨维修服务中心，全程录像，工程师也让我全程可以看着他维修，听安担心给路边维修的人偷梁换柱
-            </p>
-            <ul class="content-img">
-              <li>
-                <img src="../assets/img/case_images12@2x.png" alt="">
-              </li>
-              <li>
-                <img src="../assets/img/case_images12@2x.png" alt="">
-              </li>
-              <li>
-                <img src="../assets/img/case_images12@2x.png" alt="">
-              </li>
-            </ul>
-          </div>
-          <div class="comment-cell-line"></div>
-        </div>
-        <div class="comment-cell">
-          <div class="comment-cell-top">
-            <div class="comment-img">
-              <img src="../assets/img/case_images_head1@2x.png" alt="">
-            </div>
-            <div class="comment-user">
-              <p class="phone">158****4333</p>
-              <p class="count">
-                <span class="count-info">评分</span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-              </p>
-            </div>
-            <div class="comment-date">
-              <span>2018-08-04</span>
-            </div>
-          </div>
-          <div class="comment-cell-content">
-            <p>
-              擔心给路边维修的人偷梁换柱，就选择了西亨维修服务中心，全程录像，工程师也让我全程可以看着他维修，听安担心给路边维修的人偷梁换柱
-            </p>
-            <ul class="content-img">
-              <li>
-                <img src="../assets/img/case_images12@2x.png" alt="">
-              </li>
-              <li>
-                <img src="../assets/img/case_images12@2x.png" alt="">
-              </li>
-              <li>
-                <img src="../assets/img/case_images12@2x.png" alt="">
-              </li>
-            </ul>
-          </div>
-          <div class="comment-cell-line"></div>
-        </div>
+
         <div class="more-comment">
           <span>查看更多 >></span>
         </div>
@@ -246,21 +172,76 @@
       <!--Footer-->
       <Footer />
     </div>
+
+    <div class="container320">
+      <HeaderMobile title="维修案例"/>
+      <div class="main320">
+
+      </div>
+      <div class="line320"></div>
+      <div class="comment320">
+        <p class="comment-title">用户评价</p>
+        <div class="comment320-cell">
+          <div class="comment320-cell-top">
+            <div class="comment320-img">
+              <img src="../assets/img/case_images_head1@2x.png" alt="">
+            </div>
+            <div class="comment320-user">
+              <p class="phone320">158****4333</p>
+              <p class="count320">
+                <span class="count-info320">评分</span>
+                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
+                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
+                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
+                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
+                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
+              </p>
+            </div>
+            <div class="comment320-date">
+              <span>2018-08-04</span>
+            </div>
+          </div>
+          <div class="comment320-cell-content">
+            <p>
+              擔心给路边维修的人偷梁换柱，就选择了西亨维修服务中心，全程录像，工程师也让我全程可以看着他维修，听安担心给路边维修的人偷梁换柱
+            </p>
+            <ul class="content320-img">
+              <li>
+                <img src="../assets/img/case_images12@2x.png" alt="">
+              </li>
+              <li>
+                <img src="../assets/img/case_images12@2x.png" alt="">
+              </li>
+              <li>
+                <img src="../assets/img/case_images12@2x.png" alt="">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
   import Header from '../components/Header'
   import Footer from '../components/Footer'
+  import HeaderMobile from '../components/HeaderMobile'
   export default {
     name: "case",
     components: {
       Header,
       Footer,
+      HeaderMobile
     },
   }
 </script>
 
 <style scoped>
+  .container320{
+    display: none;
+  }
+
   .banner{
     position: relative;
     padding-top: 26.04%;
@@ -597,5 +578,101 @@
   .more-comment span{
     color: #666;
     font-size: 24px;
+  }
+
+  @media (max-width:768px){
+    .container{
+      display: none;
+    }
+
+    .container320{
+      display: block;
+    }
+
+    .main320{
+      padding:  0 10px;
+      margin-top: 46px;
+    }
+
+    .line320{
+      height: 10px;
+      background-color: #f5f4f8;
+    }
+
+    .comment-title{
+      height: 60px;
+      line-height: 60px;
+      border-bottom: 1px solid #eee;
+      color: #000;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .comment320-cell-top{
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      position: relative;
+    }
+
+    .comment320-img{
+      margin-right: 10px;
+    }
+
+    .comment320-img img{
+      width: 50px;
+      height: 50px;
+    }
+
+    .count320{
+      margin-top: 5px;
+    }
+
+    .count320 img{
+      width:13px;
+      height: 13px;
+      margin-right: 2px;
+    }
+
+    .count-info320{
+      margin-right: 3px
+    }
+
+    .comment320-date{
+      /*align-self: flex-start;*/
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .comment320-cell-content{
+      margin-top: 10px;
+      padding: 0 10px 0 70px;
+    }
+
+    .comment320-cell-content p{
+      color: #666;
+      line-height: 1.5em;
+      font-size: 14px;
+    }
+
+    .content320-img{
+      display: flex;
+    }
+    .content320-img li{
+      flex: 1;
+      padding-right: 5px;
+      margin-top: 10px;
+    }
+
+    .content320-img li:last-child{
+      padding-right: 0;
+    }
+
+    .content320-img li img{
+      width: 100%
+    }
+
   }
 </style>

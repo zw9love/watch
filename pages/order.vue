@@ -112,6 +112,7 @@
             <span class="input320">
               <x-input title="" name="mobile" placeholder="请输入验证码" keyboard="number"></x-input>
             </span>
+            <span class="phone-verification">获取验证码</span>
           </div>
           <div class="main-cell320">
             <span class="field320">预约时间</span>
@@ -310,6 +311,7 @@
       justify-content: center;
       align-items: center;
       margin-top: 15px;
+      position: relative;
     }
 
     .field320{
@@ -331,6 +333,22 @@
       color: #888;
     }
 
+    .phone-verification{
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 100px;
+      line-height: 40px;
+      background-color: #1aac19;
+      font-size: 14px;
+      color: #fff;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+      text-align: center;
+
+    }
+
     .commit-order-btn{
       height: 40px;
       line-height: 40px;
@@ -339,9 +357,11 @@
       background-color: #c8936b;
       border-radius: 5px;
       color: #fff;
-      font-size: 16px;
+      font-size: 18px;
       text-align: center;
     }
+
+
   }
 
 </style>

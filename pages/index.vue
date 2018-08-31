@@ -3,26 +3,27 @@
 
     <!--tabbar-->
     <div class="tabbar-container">
-      <tabbar>
-        <tabbar-item selected icon-class="tabbar-icon-class">
-          <img slot="icon" src="../assets/img/home_behind_icon1_no@2x.png">
-          <img slot="icon-active" src="../assets/img/home_behind_icon1_yes@2x.png">
-          <span slot="label">在线客服</span>
-        </tabbar-item>
-        <tabbar-item icon-class="tabbar-icon-class">
-          <img slot="icon" src="../assets/img/home_behind_icon2_no@2x.png">
-          <img slot="icon-active" src="../assets/img/home_behind_icon1_yes@2x.png">
-          <span slot="label">预约到店</span>
-        </tabbar-item>
-        <tabbar-item icon-class="tabbar-icon-class">
-          <img slot="icon" src="../assets/img/home_behind_icon3_no@2x.png">
-          <img slot="icon-active" src="../assets/img/home_behind_icon3_yes@2x.png">
-          <span slot="label">电话咨询</span>
-        </tabbar-item>
-      </tabbar>
+      <!--<tabbar>-->
+        <!--<tabbar-item selected icon-class="tabbar-icon-class">-->
+          <!--<img slot="icon" src="../assets/img/home_behind_icon1_no@2x.png">-->
+          <!--<img slot="icon-active" src="../assets/img/home_behind_icon1_yes@2x.png">-->
+          <!--<span slot="label">在线客服</span>-->
+        <!--</tabbar-item>-->
+        <!--<tabbar-item icon-class="tabbar-icon-class">-->
+          <!--<img slot="icon" src="../assets/img/home_behind_icon2_no@2x.png">-->
+          <!--<img slot="icon-active" src="../assets/img/home_behind_icon1_yes@2x.png">-->
+          <!--<span slot="label">预约到店</span>-->
+        <!--</tabbar-item>-->
+        <!--<tabbar-item icon-class="tabbar-icon-class">-->
+          <!--<img slot="icon" src="../assets/img/home_behind_icon3_no@2x.png">-->
+          <!--<img slot="icon-active" src="../assets/img/home_behind_icon3_yes@2x.png">-->
+          <!--<span slot="label">电话咨询</span>-->
+        <!--</tabbar-item>-->
+      <!--</tabbar>-->
     </div>
 
     <Header/>
+    <HeaderMobile title="北京名表维修中心" :showBack="false" :showMore="true"/>
     <!--banner-->
     <div class="banner-container">
       <img src="../assets/img/home_banner_bg@2x.png" alt="" class="banner_pc">
@@ -713,6 +714,7 @@
   import Header from '../components/Header'
   import Footer from '../components/Footer'
   import Reservation from '../components/Reservation'
+  import HeaderMobile from '../components/HeaderMobile'
   // import {Swipe, SwipeItem, Picker} from 'mint-ui'
   // import 'mint-ui/lib/style.css'
   // import 'element-ui/lib/theme-chalk/index.css';
@@ -732,7 +734,8 @@
       Indicators,
       Header,
       Footer,
-      Reservation
+      Reservation,
+      HeaderMobile
     },
     data() {
       return {
@@ -786,7 +789,7 @@
           {name: '品牌门店', href: '/brand'},
           {name: '维修案例', href: '/case'},
           {name: '维修进度', href: '/order'},
-          {name: '维修地址', href: '/address'},
+          {name: '维修地址', href: '/servicelist'},
         ]
       }
     },

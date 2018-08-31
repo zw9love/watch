@@ -57,7 +57,28 @@
   display: none!important;
 }
 
+.weui-input{
+  font-size: 12px!important;
+}
+
+.vux-cell-placeholder, .weui-cell_access{
+  font-size: 12px;
+}
+
 .tabbar-icon-class{
   width: 17px!important;
   height: 17px!important;
 }
+
+/*.container320{*/
+  /*display: none;*/
+/*}*/
+
+/*@media (max-width:768px){*/
+  /*.container{*/
+    /*display: none!important;*/
+  /*}*/
+  /*.container320{*/
+    /*display: block!important;*/
+  /*}*/
+/*}*/

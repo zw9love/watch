@@ -1,38 +1,66 @@
 <template>
-  <div class="container">
-    <!--Header-->
-    <Header :pageIndex="4"/>
+  <div>
+    <div class="container">
+      <!--Header-->
+      <Header :pageIndex="4"/>
 
-    <!--banner-->
-    <div class="banner">
-      <img src="../assets/img/demand_banner@2x.png" alt="">
-    </div>
+      <!--banner-->
+      <div class="banner">
+        <img src="../assets/img/demand_banner@2x.png" alt="">
+      </div>
 
-    <!--process-->
-    <main class="main">
-      <div class="main-cell">
-        <span class="field">手机号</span>
-        <span class="input">
+      <!--process-->
+      <main class="main">
+        <div class="main-cell">
+          <span class="field">手机号</span>
+          <span class="input">
           <el-input v-model="form.phone" placeholder="请输入您的真实手机号，便于查询维修进度"></el-input>
         </span>
-      </div>
-      <div class="main-cell">
-        <span class="field">验证码</span>
-        <span class="input">
+        </div>
+        <div class="main-cell">
+          <span class="field">验证码</span>
+          <span class="input">
           <el-input v-model="form.verification" placeholder="请输入验证码"></el-input>
           <span class="verification-btn">获取验证码</span>
         </span>
-      </div>
-      <nuxt-link to="/orderlist" class="search-process-btn">查询进度</nuxt-link>
-    </main>
+        </div>
+        <nuxt-link to="/orderlist" class="search-process-btn">查询进度</nuxt-link>
+      </main>
 
-    <!--Footer-->
-    <Footer/>
+      <!--Footer-->
+      <Footer/>
+    </div>
+
+    <div class="container320">
+      <HeaderMobile title="维修进度"/>
+      <div class="banner320">
+        <img src="../assets/img/process.jpg" alt="">
+      </div>
+      <div class="main320">
+        <div class="main-cell320">
+          <span class="field320">手机号</span>
+          <span class="input320">
+              <x-input title="" name="mobile" placeholder="请输入您的手机号" keyboard="number" is-type="china-mobile"></x-input>
+            </span>
+        </div>
+        <div class="main-cell320">
+          <span class="field320">验证码</span>
+          <span class="input320">
+              <x-input title="" name="mobile" placeholder="请输入验证码" keyboard="number"></x-input>
+            </span>
+          <span class="phone-verification">获取验证码</span>
+        </div>
+        <div class="main-cell320" >
+          <span class="commit-order-btn">查询进度</span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
   import Header from '../components/Header'
+  import HeaderMobile from '../components/HeaderMobile'
   import Footer from '../components/Footer'
 
   export default {
@@ -40,6 +68,7 @@
     components: {
       Header,
       Footer,
+      HeaderMobile
     },
     data() {
       return {
@@ -53,6 +82,10 @@
 </script>
 
 <style scoped>
+  .container320{
+    display: none;
+  }
+
   .banner{
     position: relative;
     padding-top: 26.04%;
@@ -128,6 +161,83 @@
     font-family: "PingFangSC-Regular";
     font-size: 24px;
     border-radius: 5px;
+  }
+
+  @media (max-width:768px){
+    .container{display: none}
+    .container320{
+      display: block;
+      margin-top: 45px;
+    }
+    .banner320{
+      position: relative;
+      padding-top: 37.7333%;
+    }
+
+    .banner320 img{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .main320{
+      padding: 0 10px;
+      margin-bottom: 20px;
+      margin-top: 30px;
+    }
+
+    .main-cell320{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15px;
+      position: relative;
+    }
+
+    .field320{
+      /*width: 80px;*/
+      padding: 0;
+      text-align: left;
+      font-weight: 500;
+      margin-right: 10px;
+    }
+
+    .input320{
+      flex: 1;
+      border: 1px solid #dadada;
+      border-radius: 5px;
+    }
+
+    .phone-verification{
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 100px;
+      line-height: 40px;
+      background-color: #1aac19;
+      font-size: 14px;
+      color: #fff;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+      text-align: center;
+
+    }
+
+    .commit-order-btn{
+      height: 40px;
+      line-height: 40px;
+      display: inline-block;
+      width: 100%;
+      background-color: #c8936b;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 18px;
+      text-align: center;
+    }
+
   }
 
 </style>

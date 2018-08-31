@@ -1,6 +1,9 @@
 <template>
   <div class="header-mobile">
-    <x-header :left-options="{backText: ''}">{{title}}</x-header>
+    <x-header :left-options="{backText: '', showBack}" :right-options="{showMore}" @on-click-more="showMenus = true">{{title}}</x-header>
+    <div v-transfer-dom>
+      <actionsheet :menus="menus" v-model="showMenus" show-cancel></actionsheet>
+    </div>
   </div>
 </template>
 
@@ -11,6 +14,23 @@
       title: {
         type: String,
         default: ''
+      },
+      showBack: {
+        type: Boolean,
+        default: true
+      },
+      showMore: {
+        type: Boolean,
+        default: true
+      }
+    },
+    data(){
+      return {
+        menus: {
+          menu1: 'Take Photo',
+          menu2: 'Choose from photos'
+        },
+        showMenus: false
       }
     }
   }

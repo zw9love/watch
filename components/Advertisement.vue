@@ -39,4 +39,10 @@
     cursor: pointer;
   }
 
+  @media (max-width:768px){
+    .main-right{
+      display: none;
+    }
+  }
+
 </style>

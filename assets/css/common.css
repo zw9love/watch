@@ -1,5 +1,6 @@
 /* 全局 */
 html{overflow-x:hidden}
+html, body{height: 100%}
 a{text-decoration: none}
 *{outline: none; -webkit-tap-highlight-color: transparent;color: #333;font-family: "PingFangSC-Regular"}
 input,textarea{-webkit-appearance: none;}/*解决input输入框在苹果机上的默认阴影样式*/

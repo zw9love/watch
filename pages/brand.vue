@@ -275,7 +275,7 @@
 <style scoped>
   @import "../assets/css/environmental.css";
 
-  .banner320, .brand-container320{
+  .banner320, .brand-container320, .qualification-container320{
     display: none;
   }
 
