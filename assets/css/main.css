@@ -18,6 +18,10 @@
   color: #C8936B;
 }
 
+.vux-cell-box:not(:first-child):before{
+  display: none;
+}
+
 .el-input__inner:focus.is-active.is-focus:not(:active) {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
@@ -29,7 +33,7 @@
 
 .el-input .el-input__inner{
   height: 50px;
-  font-size: 18px
+  font-size: 16px
 }
 
 .el-time-panel__btn.confirm{

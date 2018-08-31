@@ -57,7 +57,17 @@
             </el-col>
             <span class="split">-</span>
             <el-col :span="11">
-              <el-time-picker type="fixed-time" placeholder="请选择预约时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
+              <!--<el-time-picker type="fixed-time" placeholder="请选择预约时间" v-model="form.date2" style="width: 100%;"></el-time-picker>-->
+              <el-time-select
+                v-model="form.date2"
+                :picker-options="{
+                  start: '08:30',
+                  step: '00:30',
+                  end: '18:30'
+                }"
+                style="width: 100%;"
+                placeholder="请选择预约时间">
+              </el-time-select>
             </el-col>
           </span>
         </div>
@@ -121,7 +131,9 @@
             </span>
           </div>
           <div class="main-cell320" >
-            <span class="commit-order-btn">提交预约</span>
+            <!--<span >-->
+              <nuxt-link class="commit-order-btn" to="/successorder" >提交预约</nuxt-link>
+            <!--</span>-->
           </div>
       </main>
     </div>
@@ -226,7 +238,7 @@
     height: 50px;
     line-height: 50px;
     font-family: "PingFangSC-Regular";
-    font-size: 26px;
+    font-size: 20px;
     margin-right: 25px;
     text-align: right;
   }
@@ -244,12 +256,12 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 194px;
+    width: 150px;
     height: 50px;
     background-color: #18AC18;
     color: #fff;
     font-family: "PingFangSC-Regular";
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
     line-height: 50px;
     border-bottom-right-radius: 4px;
@@ -315,10 +327,11 @@
     }
 
     .field320{
-      width: 80px;
+      width: 70px;
       padding: 0 10px 0 0;
       text-align: right;
       font-weight: 500;
+      font-size: 14px;
     }
 
     .input320{
@@ -339,7 +352,7 @@
       top: 0;
       height: 100%;
       width: 100px;
-      line-height: 40px;
+      line-height: 44px;
       background-color: #1aac19;
       font-size: 14px;
       color: #fff;
@@ -356,11 +369,10 @@
       width: 100%;
       background-color: #c8936b;
       border-radius: 5px;
-      color: #fff;
-      font-size: 18px;
       text-align: center;
+      color: #fff;
+      font-size: 16px;
     }
-
 
   }
 

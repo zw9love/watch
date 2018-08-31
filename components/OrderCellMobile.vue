@@ -5,7 +5,9 @@
     </div>
     <div class="main320-order-main">
       <div class="main320-order-watch">
-        <img src="../assets/img/demand_list_images1@2x.png" alt="">
+        <div class="main320-order-watch-img">
+          <img style="width: 100px;height: 100px" src="../assets/img/demand_list_images1@2x.png" alt="">
+        </div>
         <div class="main320-order-watch-info">
           <div class="main320-order-status">
             <h3>百达斐丽</h3>
@@ -79,16 +81,26 @@
       position: relative;
     }
 
-    .main320-order-watch img{
+    .main320-order-watch-img{
+      margin-right: 10px;
       width: 100px;
       height: 100px;
-      margin-right: 10px;
+      position: relative;
+    }
+
+    .main320-order-watch img{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
     }
 
     .main320-order-watch-info{
       display: flex;
       flex-direction: column;
       justify-content: center;
+      flex: 1;
     }
 
     .main320-order-watch-info h3{

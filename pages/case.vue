@@ -181,7 +181,7 @@
       <div class="line320"></div>
       <div class="comment320">
         <p class="comment-title">用户评价</p>
-        <div class="comment320-cell">
+        <div class="comment320-cell" v-for="x in 5" :key="x">
           <div class="comment320-cell-top">
             <div class="comment320-img">
               <img src="../assets/img/case_images_head1@2x.png" alt="">
@@ -216,6 +216,12 @@
                 <img src="../assets/img/case_images12@2x.png" alt="">
               </li>
             </ul>
+            <div class="seller">
+              <p>
+                <span>商家回复：</span>
+                <span>感谢您选择西亨维修服务中心，祝您生活愉快，欢迎下次光临。</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -484,7 +490,7 @@
   .comment-cell{
     position: relative;
   }
-  
+
   .comment-cell-top{
     position: relative;
   }
@@ -608,6 +614,12 @@
       text-align: center;
     }
 
+    .comment320-cell{
+      margin-top: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
     .comment320-cell-top{
       display: flex;
       align-items: center;
@@ -638,12 +650,20 @@
       margin-right: 3px
     }
 
+    .comment320-user{
+      font-size: 13px
+    }
+
     .comment320-date{
       /*align-self: flex-start;*/
       position: absolute;
       right: 10px;
       top: 50%;
       transform: translateY(-50%);
+    }
+
+    .comment320-date span{
+      font-size: 12px;
     }
 
     .comment320-cell-content{
@@ -654,7 +674,7 @@
     .comment320-cell-content p{
       color: #666;
       line-height: 1.5em;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .content320-img{
@@ -672,6 +692,22 @@
 
     .content320-img li img{
       width: 100%
+    }
+
+    .seller{
+      padding: 10px;
+      background-color: #f8f8f8;
+      margin-top: 10px;
+    }
+
+    .seller p span:first-child{
+      font-size: 13px;
+      color: #c8936b;
+    }
+
+    .seller p span:last-child{
+      font-size: 13px;
+      color: #999
     }
 
   }

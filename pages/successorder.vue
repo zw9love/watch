@@ -19,6 +19,7 @@
       <!--预约具体信息-->
       <main class="reservation-main">
         <img src="../assets/img/booking_make_icon1@2x.png" alt="">
+        <img src="../assets/img/booking_make_icon1@2x.png" alt="">
         <div class="reservation-main-container">
           <p class="phone">
             您的联系手机：18059236533
@@ -127,7 +128,7 @@
   .reservation-main-container .address{
     font-family: "PingFangSC-Regular";
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   .btn-container{
@@ -148,14 +149,14 @@
   .btn-container .process{
     color: #fff;
     font-family: "PingFangSC-Regular";
-    font-size: 20px;
+    font-size: 16px;
     background-color: #C8936B;
   }
 
   .btn-container .back{
     color: #BF9571;
     font-family: "PingFangSC-Regular";
-    font-size: 20px;
+    font-size: 16px;
     margin-left: 60px;
     border: 1px solid #C8936B;
   }

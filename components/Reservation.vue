@@ -10,35 +10,35 @@
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_reservationprocess_icon2@2x.png" alt="">
-        <span>到店送修</span>
+        <span>预检并报价</span>
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_reservationprocess_icon3@2x.png" alt="">
-        <span>到店送修</span>
+        <span>确认服务</span>
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_reservationprocess_icon4@2x.png" alt="">
-        <span>到店送修</span>
+        <span>维修保养</span>
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_reservationprocess_icon5@2x.png" alt="">
-        <span>到店送修</span>
+        <span>服务完成</span>
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_reservationprocess_icon6@2x.png" alt="">
-        <span>到店送修</span>
+        <span>告知客户</span>
       </div>
     </div>
     <div class="reservation-container">
@@ -78,7 +78,7 @@
       <div class="reservation-cell">
         <div class="reservation-cell-container">
           <img src="../assets/img/home_reservationprocess_icon4@2x.png" alt="">
-          <span>维修保养 </span>
+          <span>维修保养</span>
         </div>
       </div>
       <div class="reservation-cell">
@@ -217,7 +217,7 @@
       left: 50%;
       bottom: -20px;
       transform: translateX(-50%);
-      font-size: 12px;
+      font-size: 10px;
       white-space: nowrap;
     }
   }
