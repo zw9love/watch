@@ -29,6 +29,8 @@ module.exports = {
     {src: '~/plugins/vux-plugins', ssr: false},
     {src: '~/plugins/vux-components', ssr: true},
     {src: '~/plugins/v-distpicker', ssr: false},
+    {src: '~/plugins/vue-picture-preview', ssr: false},
+    {src: '~plugins/video-player-plugin.js', ssr: false }
   ],
   axios: {
     prefix: '/api/',
@@ -45,6 +47,7 @@ module.exports = {
   },
   // 样式
   css: [
+    {src: 'video.js/dist/video-js.css'},
     {src: '~assets/css/main.css'},
     {src: '~assets/css/common.css'},
     {src: 'element-ui/lib/theme-chalk/index.css'},

@@ -14,14 +14,33 @@
 
         <div class="video">
           <div class="video-banner">
-            <img src="../assets/img/case_images1@2x.png" alt="">
-            <img src="../assets/img/case_icon1@2x.png" alt="" class="open-icon">
+            <div class="video-player-box"
+                 v-for="(item, key) in list"
+                 :key="key"
+                 v-if="key === videoIndex && !mobileActive"
+                 :playsinline="playsinline"
+                 @play="onPlayerPlay($event)"
+                 @pause="onPlayerPause($event)"
+                 @ended="onPlayerEnded($event)"
+                 @loadeddata="onPlayerLoadeddata($event)"
+                 @waiting="onPlayerWaiting($event)"
+                 @playing="onPlayerPlaying($event)"
+                 @timeupdate="onPlayerTimeupdate($event)"
+                 @canplay="onPlayerCanplay($event)"
+                 @canplaythrough="onPlayerCanplaythrough($event)"
+                 @ready="playerReadied"
+                 @statechanged="playerStateChanged($event)"
+                 v-video-player:myVideoPlayer="item.playerOptions">
+            </div>
+            <!--<img src="../assets/img/case_images1@2x.png" alt="">-->
+            <!--<img src="../assets/img/case_icon1@2x.png" alt="" class="open-icon" @click="openVideo" v-if="!openActive">-->
           </div>
           <div class="video-list">
             <div class="video-list-title">
               <span>热门案例</span>
             </div>
-            <div class="video-list-cell" style="margin-top: 0">
+            <div class="video-list-cell" v-for="(item, key) in list" :key="key" :style="{margin: key === 0 ? '0': ''}"
+                 @click="videoCellClick(item, key)">
               <img src="../assets/img/case_images2@2x.png" alt="">
               <div class="content">
                 <p>修表即修行，西亨给您的腕表一份尊贵礼遇</p>
@@ -31,46 +50,7 @@
                 </div>
               </div>
             </div>
-            <div class="video-list-cell">
-              <img src="../assets/img/case_images2@2x.png" alt="">
-              <div class="content">
-                <p>修表即修行，西亨给您的腕表一份尊贵礼遇</p>
-                <div class="fixed">
-                  <span class="fixed-icon"></span>
-                  <span class="fixed-num">42</span>
-                </div>
-              </div>
-            </div>
-            <div class="video-list-cell">
-              <img src="../assets/img/case_images2@2x.png" alt="">
-              <div class="content">
-                <p>修表即修行，西亨给您的腕表一份尊贵礼遇</p>
-                <div class="fixed">
-                  <span class="fixed-icon"></span>
-                  <span class="fixed-num">42</span>
-                </div>
-              </div>
-            </div>
-            <div class="video-list-cell">
-              <img src="../assets/img/case_images2@2x.png" alt="">
-              <div class="content">
-                <p>修表即修行，西亨给您的腕表一份尊贵礼遇</p>
-                <div class="fixed">
-                  <span class="fixed-icon"></span>
-                  <span class="fixed-num">42</span>
-                </div>
-              </div>
-            </div>
-            <div class="video-list-cell">
-              <img src="../assets/img/case_images2@2x.png" alt="">
-              <div class="content">
-                <p>修表即修行，西亨给您的腕表一份尊贵礼遇</p>
-                <div class="fixed">
-                  <span class="fixed-icon"></span>
-                  <span class="fixed-num">42</span>
-                </div>
-              </div>
-            </div>
+
           </div>
           <div class="title-bottom">
             <p>追光机：百达翡丽手工精饰机芯部件 (Caliber CHR 29-535 PS)</p>
@@ -170,13 +150,33 @@
 
 
       <!--Footer-->
-      <Footer />
+      <Footer/>
     </div>
 
     <div class="container320">
       <HeaderMobile title="维修案例"/>
       <div class="main320">
-
+        <div class="main320-cell">
+          <video class="video-player-box320" v-for="(item, key) in list" :key="key" controls src="http://vjs.zencdn.net/v/oceans.mp4"></video>
+          <!--<div class="video-player-box320"-->
+               <!--v-for="(item, key) in list"-->
+               <!--:key="'mobile' + key"-->
+               <!--v-if="key === 1 && mobileActive"-->
+               <!--:playsinline="playsinline"-->
+               <!--@play="onPlayerPlay($event)"-->
+               <!--@pause="onPlayerPause($event)"-->
+               <!--@ended="onPlayerEnded($event)"-->
+               <!--@loadeddata="onPlayerLoadeddata($event)"-->
+               <!--@waiting="onPlayerWaiting($event)"-->
+               <!--@playing="onPlayerPlaying($event)"-->
+               <!--@timeupdate="onPlayerTimeupdate($event)"-->
+               <!--@canplay="onPlayerCanplay($event)"-->
+               <!--@canplaythrough="onPlayerCanplaythrough($event)"-->
+               <!--@ready="playerReadied"-->
+               <!--@statechanged="playerStateChanged($event)"-->
+               <!--v-video-player:myVideoPlayer="item.playerOptions">-->
+          <!--</div>-->
+        </div>
       </div>
       <div class="line320"></div>
       <div class="comment320">
@@ -233,6 +233,7 @@
   import Header from '../components/Header'
   import Footer from '../components/Footer'
   import HeaderMobile from '../components/HeaderMobile'
+
   export default {
     name: "case",
     components: {
@@ -240,20 +241,155 @@
       Footer,
       HeaderMobile
     },
+    data() {
+      return {
+        playsinline: true,
+        mobileActive: false,
+        // videojs options
+        // playerOptions: {
+        //   autoplay: false,
+        //   muted: true,
+        //   language: 'ch',
+        //   playbackRates: [0.7, 1.0, 1.5, 2.0],
+        //   // https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg
+        //   poster: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535116654791&di=4291caaeb7eda1d8bf3336f39ff8b30b&imgtype=0&src=http%3A%2F%2Fa1.hoopchina.com.cn%2Fattachment%2FDay_090602%2F49_709415_948e4af50e5ed27.jpg',
+        //   sources: [
+        //     {
+        //       type: "video/mp4",
+        //       src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm"
+        //     },
+        //     // {
+        //     //   type: "video/mp4",
+        //     //   src: "http://v.hoopchina.com.cn/w/20180902/3970d2df9575cbb0d72c6c557b10b7c37a4379e8b2f5a2868914debc7a9cfed7.mp4?auth_key=1535915569-0-0-6155fd2f42451e6e420975e589527370"
+        //     // }
+        //   ],
+        //   // poster: "/static/images/author.jpg",
+        // },
+        player: null,
+        videoIndex: 0,
+        list: [
+          {
+            playerOptions: {
+              height: '100%',
+              width: '100%',
+              autoplay: false,
+              muted: true,
+              language: 'ch',
+              playbackRates: [0.7, 1.0, 1.5, 2.0],
+              // https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg
+              poster: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535116654791&di=4291caaeb7eda1d8bf3336f39ff8b30b&imgtype=0&src=http%3A%2F%2Fa1.hoopchina.com.cn%2Fattachment%2FDay_090602%2F49_709415_948e4af50e5ed27.jpg',
+              sources: [
+                {
+                  type: "video/mp4",
+                  src: "http://vjs.zencdn.net/v/oceans.mp4"
+                }
+              ]
+            }
+          },
+          {
+            playerOptions: {
+              height: '100%',
+              width: '100%',
+              autoplay: false,
+              muted: true,
+              language: 'ch',
+              playbackRates: [0.7, 1.0, 1.5, 2.0],
+              poster: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg',
+              sources: [
+                {
+                  type: "video/mp4",
+                  src: "http://v.hoopchina.com.cn/w/20180902/3970d2df9575cbb0d72c6c557b10b7c37a4379e8b2f5a2868914debc7a9cfed7.mp4?auth_key=1535915569-0-0-6155fd2f42451e6e420975e589527370"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    mounted(){
+      this.mobileActive = window.innerWidth <= 768
+    },
+    // computed: {
+    //   player() {
+    //     return this.$refs.videoPlayer.player
+    //   }
+    // },
+    methods: {
+      // listen event
+      onPlayerPlay(player) {
+        // this.openActive = true
+        player.play()
+        // console.log('player play!', player)
+      },
+      onPlayerPause(player) {
+        // console.log('player pause!', player)
+      },
+      onPlayerEnded(player) {
+        // console.log('player ended!', player)
+      },
+      onPlayerLoadeddata(player) {
+        // console.log('player Loadeddata!', player)
+      },
+      onPlayerWaiting(player) {
+        // console.log('player Waiting!', player)
+      },
+      onPlayerPlaying(player) {
+        // console.log('player Playing!', player)
+      },
+      onPlayerTimeupdate(player) {
+        // console.log('player Timeupdate!', player.currentTime())
+      },
+      onPlayerCanplay(player) {
+        // console.log('player Canplay!', player)
+      },
+      onPlayerCanplaythrough(player) {
+        // console.log('player Canplaythrough!', player)
+      },
+      // or listen state event
+      playerStateChanged(playerCurrentState) {
+        // console.log('player current update state', playerCurrentState)
+      },
+      // player is ready
+      playerReadied(player) {
+        // console.log('example 01: the player is readied', player)
+        // setTimeout(o => {player.muted(false)}, 3000)
+        // console.log(player.languages())
+        this.player = player
+        // console.log(this.player)
+      },
+      videoCellClick(item, key) {
+        // this.playerOptions.sources[0].src = 'http://v.hoopchina.com.cn/w/20180902/3970d2df9575cbb0d72c6c557b10b7c37a4379e8b2f5a2868914debc7a9cfed7.mp4?auth_key=1535915569-0-0-6155fd2f42451e6e420975e589527370'
+        // console.log(this.playerOptions.sources[0].src)
+        // this.playerOptions.poster = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'
+        this.videoIndex = key
+      }
+    }
   }
 </script>
 
 <style scoped>
-  .container320{
+  .video-player-box {
+    height: 534px;
+    width: 928px;
+  }
+
+  .video-player-box320{
+    width: 100%;
+    height: 300px;
+    margin-top: 10px;
+    background-color: #000;
+  }
+
+  .container320 {
     display: none;
   }
 
-  .banner{
+  .banner {
     position: relative;
     padding-top: 26.04%;
   }
 
-  .banner img{
+  .banner img {
     width: 100%;
     cursor: pointer;
     vertical-align: middle;
@@ -262,7 +398,7 @@
     top: 0
   }
 
-  .main{
+  .main {
     max-width: 1280px;
     margin: 0 auto;
   }
@@ -274,18 +410,18 @@
     position: relative;
   }
 
-  .video .video-banner{
+  .video .video-banner {
     position: absolute;
     left: 0;
     top: 0;
   }
 
-  .video .video-banner >img{
+  .video .video-banner > img {
     width: 100%;
     vertical-align: middle;
   }
 
-  .video .video-banner >img.open-icon{
+  .video .video-banner > img.open-icon {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -295,32 +431,33 @@
     cursor: pointer;
   }
 
-  .video-list{
+  .video-list {
     position: absolute;
     width: 352px;
-    height: 100%;
+    height: 534px;
     right: 0;
     top: 0;
-    padding: 0 20px
+    padding: 0 20px;
+    overflow-y: auto;
   }
 
-  .video-list-title{
+  .video-list-title {
     height: 60px;
     line-height: 60px;
   }
 
-  .video-list-title span{
+  .video-list-title span {
     font-size: 18px;
     color: #fff;
   }
 
-  .video-list-cell{
+  .video-list-cell {
     height: 80px;
     margin-top: 20px;
     /*background-color: skyblue;*/
   }
 
-  .video-list-cell >img{
+  .video-list-cell > img {
     width: 145px;
     height: 100%;
     margin-right: 20px;
@@ -328,7 +465,7 @@
     cursor: pointer;
   }
 
-  .video-list-cell .content{
+  .video-list-cell .content {
     width: 147px;
     height: 100%;
     /*background-color: yellow;*/
@@ -336,24 +473,24 @@
     position: relative;
   }
 
-  .video-list-cell .content p{
+  .video-list-cell .content p {
     font-size: 14px;
     color: #999;
     line-height: 2em;
     cursor: pointer;
   }
 
-  .video-list-cell .content p:hover{
+  .video-list-cell .content p:hover {
     text-decoration: underline;
   }
 
-  .video-list-cell .content .fixed{
+  .video-list-cell .content .fixed {
     position: absolute;
     bottom: 0;
     left: 0;
   }
 
-  .fixed .fixed-icon{
+  .fixed .fixed-icon {
     width: 20px;
     height: 15px;
     background-color: #666;
@@ -364,7 +501,7 @@
     cursor: pointer;
   }
 
-  .fixed .fixed-icon:after{
+  .fixed .fixed-icon:after {
     content: "";
     position: absolute;
     left: calc(50% + 3px);
@@ -378,7 +515,7 @@
     border-bottom: 4px solid transparent;
   }
 
-  .fixed .fixed-num{
+  .fixed .fixed-num {
     color: #666;
     font-size: 13px;
     display: inline-block;
@@ -386,7 +523,7 @@
     margin-left: 5px;
   }
 
-  .title-bottom{
+  .title-bottom {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -395,20 +532,20 @@
     background-color: #1F1F1F;
   }
 
-  .title-bottom p{
+  .title-bottom p {
     padding: 0 20px;
     color: #BF9571;
     font-size: 26px;
     line-height: 76px;
   }
 
-  .image-artical{
+  .image-artical {
     padding-top: 53.125%;
     position: relative;
     margin-top: 60px;
   }
 
-  .image-artical-container{
+  .image-artical-container {
     position: absolute;
     left: 0;
     top: 0;
@@ -416,70 +553,70 @@
     height: 100%;
   }
 
-  .image-artical-left{
+  .image-artical-left {
     float: left;
     width: 630px;
     height: 100%;
     cursor: pointer;
   }
 
-  .image-artical img{
+  .image-artical img {
     vertical-align: middle;
     width: 100%;
     height: 100%
   }
 
-  .image-artical-left .title-bottom{
+  .image-artical-left .title-bottom {
     width: 630px;
     /*bottom: -76px*/
   }
 
-  .image-artical-right{
+  .image-artical-right {
     float: right;
     width: 630px;
     height: 100%;
   }
 
-  .image-artical-right-cell{
+  .image-artical-right-cell {
     height: 330px;
     position: relative;
     cursor: pointer;
   }
 
-  .image-artical-right-cell:last-child{
+  .image-artical-right-cell:last-child {
     margin-top: 20px;
   }
 
-  .image-artical-right-cell img{
+  .image-artical-right-cell img {
     width: 100%;
     height: 100%;
   }
 
-  .single-artical{
+  .single-artical {
     position: relative;
     margin-top: 60px;
     /*padding-top: 47.96875%;*/
   }
 
-  .single-artical img{
+  .single-artical img {
     /*position: absolute;*/
     width: 100%;
   }
 
-  .line{
+  .line {
     margin: 60px 0;
     height: 20px;
     background-color: #F5F4F8
   }
 
-  .comment{
+  .comment {
     max-width: 1280px;
     background-color: #1F1F1F;
     margin: 0 auto;
     padding: 50px 45px;
   }
 
-  .comment h1{
+  .comment h1 {
     color: #fff;
     font-family: "PingFangSC-Medium";
     font-size: 48px;
@@ -487,125 +624,125 @@
     font-weight: 500;
   }
 
-  .comment-cell{
+  .comment-cell {
     position: relative;
   }
 
-  .comment-cell-top{
+  .comment-cell-top {
     position: relative;
   }
 
-  .comment-img{
+  .comment-img {
     /*float: left;*/
     display: inline-block;
     vertical-align: middle;
   }
 
-  .comment-img img{
+  .comment-img img {
     width: 80px;
   }
 
-  .comment-user{
+  .comment-user {
     display: inline-block;
     vertical-align: middle;
     margin-left: 30px;
   }
 
-  .comment-user .phone{
+  .comment-user .phone {
     color: #fff;
     font-size: 26px;
   }
 
-  .comment-user .count span{
+  .comment-user .count span {
     display: inline-block;
     vertical-align: middle;
     margin-right: 10px
   }
 
-  .comment-user .count span img{
+  .comment-user .count span img {
     vertical-align: middle;
   }
 
-  .comment-user .count span.count-info{
+  .comment-user .count span.count-info {
     color: #fff;
     opacity: 0.5;
     font-size: 24px;
   }
 
-  .comment-date{
+  .comment-date {
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
   }
 
-  .comment-date span{
+  .comment-date span {
     color: #fff;
     font-size: 20px;
   }
 
-  .comment-cell-content{
+  .comment-cell-content {
     padding-left: 110px;
   }
 
-  .comment-cell-content p{
+  .comment-cell-content p {
     color: #BF9571;
-    line-height:58px;
+    line-height: 58px;
     font-size: 24px;
   }
 
-  .content-img{
+  .content-img {
     overflow: hidden;
     margin-top: 10px;
   }
 
-  .content-img li{
+  .content-img li {
     width: calc((100% - 80px) / 3);
     float: left;
     margin-right: 40px;
   }
 
-  .content-img li:last-child{
+  .content-img li:last-child {
     margin: 0
   }
 
-  .comment-cell-line{
+  .comment-cell-line {
     height: 1px;
     background-color: #aaa;
     margin: 60px 0;
     opacity: .1;
   }
 
-  .more-comment{
+  .more-comment {
     text-align: center;
     cursor: pointer;
   }
 
-  .more-comment span{
+  .more-comment span {
     color: #666;
     font-size: 24px;
   }
 
-  @media (max-width:768px){
-    .container{
+  @media (max-width: 768px) {
+    .container {
       display: none;
     }
 
-    .container320{
+    .container320 {
       display: block;
     }
 
-    .main320{
-      padding:  0 10px;
+    .main320 {
+      padding: 0 10px;
       margin-top: 46px;
     }
 
-    .line320{
+    .line320 {
       height: 10px;
       background-color: #f5f4f8;
     }
 
-    .comment-title{
+    .comment-title {
       height: 60px;
       line-height: 60px;
       border-bottom: 1px solid #eee;
@@ -614,47 +751,47 @@
       text-align: center;
     }
 
-    .comment320-cell{
+    .comment320-cell {
       margin-top: 20px;
       padding-bottom: 20px;
       border-bottom: 1px solid #eee;
     }
 
-    .comment320-cell-top{
+    .comment320-cell-top {
       display: flex;
       align-items: center;
       padding: 0 10px;
       position: relative;
     }
 
-    .comment320-img{
+    .comment320-img {
       margin-right: 10px;
     }
 
-    .comment320-img img{
+    .comment320-img img {
       width: 50px;
       height: 50px;
     }
 
-    .count320{
+    .count320 {
       margin-top: 5px;
     }
 
-    .count320 img{
-      width:13px;
+    .count320 img {
+      width: 13px;
       height: 13px;
       margin-right: 2px;
     }
 
-    .count-info320{
+    .count-info320 {
       margin-right: 3px
     }
 
-    .comment320-user{
+    .comment320-user {
       font-size: 13px
     }
 
-    .comment320-date{
+    .comment320-date {
       /*align-self: flex-start;*/
       position: absolute;
       right: 10px;
@@ -662,50 +799,51 @@
       transform: translateY(-50%);
     }
 
-    .comment320-date span{
+    .comment320-date span {
       font-size: 12px;
     }
 
-    .comment320-cell-content{
+    .comment320-cell-content {
       margin-top: 10px;
       padding: 0 10px 0 70px;
     }
 
-    .comment320-cell-content p{
+    .comment320-cell-content p {
       color: #666;
       line-height: 1.5em;
       font-size: 13px;
     }
 
-    .content320-img{
+    .content320-img {
       display: flex;
     }
-    .content320-img li{
+
+    .content320-img li {
       flex: 1;
       padding-right: 5px;
       margin-top: 10px;
     }
 
-    .content320-img li:last-child{
+    .content320-img li:last-child {
       padding-right: 0;
     }
 
-    .content320-img li img{
+    .content320-img li img {
       width: 100%
     }
 
-    .seller{
+    .seller {
       padding: 10px;
       background-color: #f8f8f8;
       margin-top: 10px;
     }
 
-    .seller p span:first-child{
+    .seller p span:first-child {
       font-size: 13px;
       color: #c8936b;
     }
 
-    .seller p span:last-child{
+    .seller p span:last-child {
       font-size: 13px;
       color: #999
     }

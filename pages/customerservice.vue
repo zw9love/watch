@@ -19,52 +19,28 @@
       <!--</div>-->
 
       <!--main-->
-      <main class="main">
-        <div class="main-container">
+      <main class="main" ref="main">
+        <div class="main-container" ref="mainContainer">
           <!--<div class="main-tip"><span>2018-8-10 09:23:23 请求了对话</span></div>-->
-          <div class="main-cell main-service-cell">
-            <div class="main-cell-head">
-              <img src="../assets/img/customer_service_logo.png"/>
-            </div>
-            <div class="main-cell-info">
-              <p class="title">
-                <span class="service-name">在线客服08号-小雅</span>
-                <span class="time">2018-08-04  12:33:06</span>
-              </p>
-              <p class="content">
-                您好，欢迎咨询西亨维修客服， 我是客服小雅，请问有什么可以帮助您呢？如果打字不方便可拔打服务热线：400-960-8888
-              </p>
-            </div>
-          </div>
-          <div class="main-cell main-customer-cell">
-            <div class="main-cell-head">
-              <img src="../assets/img/customer_service_logo.png"/>
-
-            </div>
-            <div class="main-cell-info">
-              <!--<p class="title">-->
-              <!--<span class="service-name">在线客服08号-小雅</span>-->
-              <!--<span class="time">2018-08-04  12:33:06</span>-->
-              <!--</p>-->
-              <p class="content">
-                手表进水的了，还可以修吗？
-              </p>
-            </div>
-          </div>
-          <!--<div class="main-tip"><span>客服已关闭会话，如需继续咨询，<a href="#">请重新连接客服</a></span></div>-->
+          <ChatCell v-for="(entry, key) in list" :key="key" :entry="entry"/>
         </div>
       </main>
 
       <!--用户输入-->
       <div class="input">
         <div class="input-nav">
-          <img src="../assets/img/customer_service_logo.png" alt="" id="btn"/>
+          <img src="../assets/img/smile.png" alt="" id="btn" @click.stop="smilePCClick"/>
           <!--onclick="document.getElementById('upload-txt').click()"-->
-          <img src="../assets/img/customer_service_logo.png" alt="" id="upload"/>
-          <input type="file" hidden id="upload-txt" accept="image/*">
+          <img src="../assets/img/add.png" alt="" id="upload" @click.stop="uploadPc"/>
+          <input type="file" hidden id="upload-txt" accept="image/*" ref="uploadPc" @change="uploadPcChange">
         </div>
-        <div id="editor" class="input-txt" placeholder="请在此输入..." contenteditable="true"></div>
-        <button class="send">发送</button>
+        <div id="editor" class="input-txt" placeholder="请在此输入..." contenteditable="true" ref="editorPC" @keydown="editorPCKeydown"></div>
+        <button class="send" @click.stop="send">发送</button>
+        <div class="emoji" v-show="emojiActive">
+          <ul class="emoji-container">
+            <li v-for="(item, key) in emojis" :key="key" @click.stop="emojiClick(item)">{{item}}</li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -76,47 +52,16 @@
         <!--<span class="nav320-title">在线客服</span>-->
       <!--</div>-->
 
-      <main class="main320">
-        <div class="main-container320">
+      <main class="main320" @click.stop="mainMobileClick" ref="mainMobile" :style="{paddingBottom}">
+        <div class="main-container320" ref="mainContainerMobile">
           <!--<p class="store-info">您正在咨询深圳数码-南山店</p>-->
 
           <div class="welcome">
             <span>欢迎咨询在线客服，本次由小雅为您服务</span>
           </div>
 
-          <div>
-            <p class="store-info">2018-08-04 12:33:06</p>
-            <div class="main-cell320 main-service-cell320">
-              <img src="../assets/img/customer_service_logo.png" alt="">
-              <div class="main-cell-info">
-                <!--<p class="name">在线客服08号-小张</p>-->
-                <p class="content">
-                  您好，欢迎咨询西亨维修客服，请问有什么可以
-                  协助您呢？
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div v-for="x in 10" :key="x">
-            <p class="store-info">2018-08-04 12:33:06</p>
-            <div class="main-cell320 main-customer-cell320">
-              <div class="main-cell-info">
-                <p class="content">
-                  手机进水了，还可以修吗？2
-                </p>
-              </div>
-              <img src="../assets/img/customer_service_logo.png" alt="">
-            </div>
-          </div>
-
+          <ChatCellMobile v-for="(entry, key) in list" :key="key" :entry="entry"/>
         </div>
-        <!--<p class="chat-end-info"></p>-->
-        <!--<p class="chat-end-info">您的聊天会话已结束</p>-->
-        <!--<p class="main-tip"><span>客服已关闭会话，如需继续咨询，<a href="#">请重新连接客服</a></span></p>-->
-        <!--<div class="connect-btn320">-->
-        <!--<span>重新连接</span>-->
-        <!--</div>-->
       </main>
 
       <!--底部输入和按钮-->
@@ -124,39 +69,47 @@
         <span>重新连接</span>
       </div>
 
-      <div class="input320">
+      <div class="input320" :style="{bottom}">
         <div class="operation">
-          <img src="../assets/img/smile.png" alt="" id="btn320">
-          <img src="../assets/img/add.png" alt="" class="add">
+          <span>
+            <img src="../assets/img/smile.png" alt="" id="btn320" @click.stop="smileMobileClick">
+          </span>
+          <span>
+            <img src="../assets/img/add.png" alt="" class="add" @click.stop="addMobileClick">
+          </span>
           <!--<input id="editor320" class="input-txt320" placeholder="请在此输入111..." type="search" autocomplete="off" autocomplete="off">-->
-          <input id="editor320" class="input-txt320" placeholder="请在此输入..." type=input>
+          <div class="test-textarea" contenteditable="true" @focus="editorMobileFocus" @blur="editorMobileBlur" ref="editorMobile"></div>
           <!--<textarea id="editor320" class="input-txt320" placeholder="请在此输入..."></textarea>-->
           <!--<button class="send320">发送</button>-->
           <!--<button id="openwebsocket">开启</button>-->
-          <button class="send320" id="send">发送</button>
+          <button class="send320" id="send" @click="sendMobile">发送</button>
         </div>
         <div class="popup">
-          <div class="popup-emoji"></div>
-          <div class="popup-photo">
-            <div class="popup-photo-cell">
-                         <span class="popup-photo-img">
-                            <img src="../assets/img/write.png" alt="">
-                        </span>
+          <div class="popup-emoji" v-if="emojiActive">
+            <ul>
+              <li v-for="(item, key) in emojis" :key="key" @click.stop="emojisMobileClick(item)">{{item}}</li>
+            </ul>
+          </div>
+          <div class="popup-photo" v-else>
+            <div class="popup-photo-cell" @click.stop="orderStore">
+               <span class="popup-photo-img">
+                  <img src="../assets/img/write.png" alt="">
+              </span>
               <span class="popup-photo-info">预约到店</span>
             </div>
-            <div class="popup-photo-cell">
-                        <span class="popup-photo-img" id="photo-wrapper">
-                            <img src="../assets/img/photo.png" alt="">
-                        </span>
+            <div class="popup-photo-cell" @click.stop="photoMobile">
+              <span class="popup-photo-img" id="photo-wrapper">
+                  <img src="../assets/img/photo.png" alt="">
+              </span>
               <span class="popup-photo-info">相册</span>
-              <input type="file" accept="image/*" class="upload-txt320" hidden>
+              <input type="file" accept="image/*" class="upload-txt320" hidden ref="photoMobile" @change="photoMobileChange">
             </div>
-            <div class="popup-photo-cell">
-                        <span class="popup-photo-img" id="camera-wrapper">
-                            <img src="../assets/img/camera.png" alt="">
-                        </span>
+            <div class="popup-photo-cell" @click.stop="camera">
+              <span class="popup-photo-img" id="camera-wrapper">
+                  <img src="../assets/img/camera.png" alt="">
+              </span>
               <span class="popup-photo-info">拍照</span>
-              <input type="file" accept="image/*" capture="camera" class="camera-txt" hidden>
+              <input type="file" accept="image/*" capture="camera" class="camera-txt" hidden ref="camera" @change="photoMobileChange">
             </div>
           </div>
         </div>
@@ -170,25 +123,197 @@
 
 <script>
   import HeaderMobile from '../components/HeaderMobile'
+  import ChatCell from '../components/ChatCell'
+  import ChatCellMobile from '../components/ChatCellMobile'
   export default {
     name: "customerservice",
     components: {
-      HeaderMobile
+      HeaderMobile,
+      ChatCell,
+      ChatCellMobile
     },
     data(){
       return {
+        inputVal: '',
+        bottom: '-125px',
+        paddingBottom: '0',
+        emojiActive: false,
+        emojis: ['😂', '🙏', '😄', '😏', '😇', '😅', '😌', '😘', '😍', '🤓', '😜', '😎', '😊', '😳', '🙄', '😱', '😒', '😔', '😷', '👿', '🤗', '😩', '😤', '😣', '😰', '😴', '😬', '😭', '👻', '👍', '✌️', '👉', '👀', '🐶', '🐷', '😹', '⚡️', '🔥', '🌈', '🍏', '⚽️', '❤️', '🇨🇳'],
+        list: [
+          {time: '2018-08-04 12:33:06', content: '手机进水了，还可以修吗？', type: 'customer', infoType: 'text'},
+          {time: '2018-08-04 12:33:06', content: '手机进水了，还可以修吗？', type: 'customer', infoType: 'text'},
+          {time: '2018-08-04 12:33:06', content: '手机进水了，还可以修吗？', type: 'customer', infoType: 'text'},
+          {time: '2018-08-04 12:33:06', content: '手机进水了，还可以修吗？', type: 'customer', infoType: 'text'},
+          {time: '2018-08-04 12:33:06', type: 'customer', infoType: 'image', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535116654791&di=4291caaeb7eda1d8bf3336f39ff8b30b&imgtype=0&src=http%3A%2F%2Fa1.hoopchina.com.cn%2Fattachment%2FDay_090602%2F49_709415_948e4af50e5ed27.jpg'},
+        ]
       }
     },
     mounted(){
-      // let windowHeight = window.innerHeight
-      // let windowWidth = window.innerWidth
-      // let mobileFlag = windowWidth <= 768
-      // if(!mobileFlag){
-      //   this.mainHeight = windowHeight - 60 - 210 + 'px'
-      // }else{
-      //   this.mainHeight320 = windowHeight - 50 + 'px'
-      // }
-      // $('.main').height(mainHeight)
+      window.addEventListener('click', () => {
+        this.bottom = '-125px'
+        this.paddingBottom = '0'
+        this.emojiActive = false
+      })
+    },
+    methods:{
+      getDouble(val) {
+        val = val + ''
+        if (val.length > 1) {
+          return val
+        } else {
+          return '0' + val
+        }
+      },
+      getTime() {
+        let date = new Date()
+        return date.getFullYear() + '-' + this.getDouble(date.getMonth() + 1) + '-' + this.getDouble(date.getDate()) + ' ' + this.getDouble(date.getHours()) + ':' + this.getDouble(date.getMinutes()) + ':' + this.getDouble(date.getSeconds())
+      },
+      emojiClick(item){
+        this.$refs.editorPC.innerHTML += item
+        this.emojiActive = false
+      },
+      smilePCClick(){
+        this.emojiActive = true
+      },
+      uploadPcChange(e){
+        let reads = new FileReader();
+        let file = e.target.files[0];
+        let root = this
+        if (file) {
+          reads.readAsDataURL(file)
+          reads.onload = function () {
+            let img = new Image()
+            let result = this.result
+            img.src = result
+            img.onload = function () {
+              let width = this.width < 760 ? this.width : 760
+              let time = root.getTime()
+              root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
+              root.$nextTick(function () {
+                root.pcToBottom()
+              })
+            }
+          }
+        }
+      },
+      uploadPc(){
+        this.$refs.uploadPc.click()
+      },
+      pcToBottom(){
+        setTimeout(o => {this.$refs.main.scrollTop = this.$refs.mainContainer.clientHeight}, 0)
+      },
+      send(){
+        let editorPC = this.$refs.editorPC
+        let html = this.$refs.editorPC.innerHTML
+        if(!html) return
+        let time = this.getTime()
+        this.list.push({time, content: html, infoType: 'text', type: 'customer'})
+        editorPC.innerHTML = ''
+        this.$nextTick(function () {
+          // DOM 现在更新了
+          this.pcToBottom()
+        })
+      },
+      editorPCKeydown(e){
+        let editorPC = this.$refs.editorPC
+        if (e.keyCode === 13 && e.ctrlKey) {
+          console.log(editorPC.innerHTML)
+          editorPC.innerHTML += '\n'
+          // editorPC.innerHTML += 100
+          // 这里实现换行
+          // $('.input-txt').val($('.input-txt').val() + "\n")
+        } else if (e.keyCode === 13) {
+          e.preventDefault();
+          // 避免回车键换行
+          // 下面写你的发送消息的代码
+          this.send()
+        }
+      },
+      smileMobileClick(){
+        this.bottom = '0'
+        this.emojiActive = true
+        this.mobilePaddingBottom()
+      },
+      addMobileClick(){
+        this.bottom = '0'
+        this.emojiActive = false
+        this.mobilePaddingBottom()
+      },
+      mainMobileClick(){
+        this.bottom = '-125px'
+        this.paddingBottom = '0'
+      },
+      emojisMobileClick(item){
+        let editorMobile = this.$refs.editorMobile
+        editorMobile.scrollTop = 1000000
+        editorMobile.innerHTML += item
+      },
+      mobileToBottom(){
+        setTimeout(o => {this.$refs.mainMobile.scrollTop = this.$refs.mainContainerMobile.clientHeight}, 0)
+      },
+      mobilePaddingBottom(){
+        this.paddingBottom = '125px'
+        this.$nextTick(function () {
+          // DOM 现在更新了
+          // `this` 绑定到当前实例
+          this.mobileToBottom()
+        })
+      },
+      sendMobile(){
+        // console.log(this.$refs.mainMobile.scrollTop)
+        // console.log(this.$refs.mainContainerMobile.clientHeight)
+        let editorMobile = this.$refs.editorMobile
+        let editorMobileHtml = editorMobile.innerHTML.trim()
+        if(!editorMobileHtml) return
+        let time = this.getTime()
+        this.list.push({time: time, content: editorMobileHtml, infoType: 'text', type: 'customer'})
+        editorMobile.innerHTML = ''
+        this.$nextTick(function () {
+          // DOM 现在更新了
+          // `this` 绑定到当前实例
+          this.mobileToBottom()
+        })
+      },
+      orderStore(){
+        this.$router.push({path: '/order'})
+      },
+      photoMobile(){
+        this.$refs.photoMobile.click()
+      },
+      camera(){
+        this.$refs.camera.click()
+      },
+      editorMobileFocus(){
+        this.mobileToBottom()
+        setTimeout(() => {
+          document.body.scrollTop = 1000000
+        }, 200)
+      },
+      editorMobileBlur(){
+        // console.log(this.$refs.editorMobile.innerHTML)
+      },
+      photoMobileChange(e){
+        let reads = new FileReader();
+        let file = e.target.files[0];
+        let root = this
+        console.log(file)
+        if (file) {
+          reads.readAsDataURL(file)
+          reads.onload = function () {
+            let img = new Image()
+            let result = this.result
+            img.src = result
+            img.onload = function () {
+              let width = this.width < 230 ? this.width : 230
+              let time = root.getTime()
+              root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
+              root.$nextTick(function () {
+                root.mobileToBottom()
+              })
+            }
+          }
+        }
+      }
     }
   }
 </script>
@@ -287,123 +412,6 @@
     color: #C8936B
   }
 
-  .main-cell {
-    /*max-width: 800px;*/
-    overflow: hidden;
-    margin: 30px 0;
-  }
-
-  .main-service-cell, .main-customer-cell {
-    position: relative;
-  }
-
-  .main-customer-cell .main-cell-head, .main-customer-cell .main-cell-info {
-    float: right;
-  }
-
-  .main-service-cell .main-cell-head, .main-service-cell .main-cell-info {
-    float: left;
-  }
-
-  /*.main-customer-cell:before{*/
-  /*content: "";*/
-  /*position: absolute;*/
-  /*right: 90px;*/
-  /*top: 45px;*/
-  /*border-top: 6px solid transparent;*/
-  /*border-bottom: 6px solid transparent;*/
-  /*border-left: 10px solid #42a1ec;*/
-  /*}*/
-
-  .main-customer-cell:after {
-    content: "";
-    position: absolute;
-    right: 91px;
-    top: 30px;
-    width: 0;
-    height: 0;
-    border-width: 5px 0 5px 10px;
-    border-style: solid;
-    border-color: transparent transparent transparent #C8936B; /*透明 黄 透明 透明 */
-  }
-
-  .main-service-cell:before {
-    content: "";
-    position: absolute;
-    left: 90px;
-    top: 45px;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-right: 10px solid #ccc;
-  }
-
-  .main-service-cell:after {
-    content: "";
-    position: absolute;
-    left: 91px;
-    top: 45px;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-right: 10px solid #fff;
-  }
-
-  .main-cell-head {
-    width: 70px;
-    height: 70px;
-    /*display: inline-block;*/
-    /*vertical-align: top;*/
-    margin-top: 15px;
-  }
-
-  .main-cell-info {
-    max-width: 800px;
-    /*height: 300px;*/
-    background: #fff;
-    display: inline-block;
-    vertical-align: middle;
-    padding: 20px;
-    border: 1px solid #e5e5e5;
-    border-radius: 4px;
-    position: relative;
-    margin-left: 30px;
-    margin-right: 30px;
-  }
-
-  .main-cell-info > p.content {
-    margin-top: 20px;
-    color: #333;
-    font-family: "PingFangSC-Regular";
-    line-height: 36px;
-    font-size: 18px;
-    word-break: break-all;
-  }
-
-  .main-cell-info span.service-name, .main-cell-info span.time {
-    font-family: "PingFangSC-Regular";
-    color: #666;
-    font-size: 14px;
-    line-height: 1em;
-  }
-
-  .main-cell-info span.time {
-    margin-left: 10px;
-  }
-
-  /*main-customer-cell*/
-
-  .main-customer-cell .main-cell-info {
-    background-color: #C8936B
-  }
-
-  .main-customer-cell .main-cell-info > p.content {
-    margin-top: 0;
-    color: #fff;
-  }
-
-  .main-customer-cell .main-cell-head {
-    margin-top: 0px;
-  }
-
   .input {
     position: fixed;
     bottom: 0;
@@ -416,12 +424,13 @@
     background-color: #f1f1f1;
     position: relative;
     padding: 0 20px;
+    line-height: 50px;
   }
 
   .input-nav img {
-    width: 22px;
+    width: 30px;
     vertical-align: middle;
-    margin-top: 14px;
+    /*margin-top: 14px;*/
     margin-right: 20px
   }
 
@@ -434,6 +443,11 @@
     height: 160px;
     resize: none;
     font-family: "PingFangSC-Regular";
+    font-size: 20px;
+  }
+
+  .input-txt span.input-txt-emoji{
+    font-size: 24px;
   }
 
   .input-txt img {
@@ -444,7 +458,7 @@
     width: 100px;
     border-radius: 3px;
     border: 1px solid #C8936B;
-    font-size: 12px;
+    font-size: 16px;
     padding: 10px 0;
     text-align: center;
     position: absolute;
@@ -454,6 +468,37 @@
     cursor: pointer;
     color: #C8936B;
     outline: none;
+  }
+
+  .emoji{
+    position: absolute;
+    left: 35px;
+    top: -270px;
+    width: 540px;
+    height: 277px;
+    padding: 5px;
+    background-color: #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 300ms ease;
+  }
+
+  .emoji ul.emoji-container:after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .emoji ul.emoji-container li{
+    float: left;
+    width: 54px;
+    height: 54px;
+    border: 1px solid #e3e3e3;
+    margin-top: -1px;
+    margin-left: -1px;
+    font-size: 32px;
+    line-height: 54px;
+    text-align: center;
   }
 
   @media (max-width: 768px) {
@@ -554,35 +599,57 @@
     }
 
     .operation {
-      height: 50px;
+      /*height: 50px;*/
       background-color: #f3f3f3;
-      padding: 0 10px;
+      padding: 10px 10px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      /*align-items: center;*/
     }
 
-    .operation img:first-child {
+    .operation >span:first-child {
       margin-right: 10px;
     }
 
-    .operation > img {
+    .operation >span img {
       width: 35px;
       height: 35px;
     }
 
     .operation > #editor320 {
+      /*min-height: 30px;*/
       height: 30px;
+      max-height: 120px;
       flex: 1;
       margin: 0 10px;
       background-color: #fff;
-      border-radius: 20px;
+      border-radius: 7px;
       outline: none;
       border: none;
       padding: 0 15px;
       line-height: 30px;
       font-size: 12px;
       /*overflow: hidden;*/
+
+    }
+
+    .test-textarea {
+      flex: 1;
+      min-height: 30px;
+      line-height: 2em;
+      _height: 30px;
+      max-height: 100px;
+      margin: 0 10px;
+      padding: 0 15px;
+      outline: 0;
+      background-color: #fff;
+      /*border: 1px solid #ccc;*/
+      font-size: 12px;
+      word-wrap: break-word;
+      overflow-x: hidden;
+      overflow-y: auto;
+      /*-webkit-user-modify: read-write-plaintext-only;*/
+      border-radius: 4px;
     }
 
     .popup {
@@ -590,30 +657,39 @@
       height: 125px;
     }
 
-    .popup-emoji {
+    .popup-emoji ul{
       display: flex;
       /*justify-content: space-between;*/
       padding: 0 10px;
       flex-wrap: wrap;
-      height: 114px;
+      height: 125px;
       overflow-y: auto;
-      margin-bottom: 11px;
+      /*padding-bottom: 11px;*/
       background-color: #f3f3f3;
     }
 
-    .popup-emoji > span {
+    .popup-emoji ul li{
+      font-size: 25px;
+      /*padding: 2px;*/
       display: flex;
       width: 11.11%;
       justify-content: center;
       margin-top: 5px;
     }
 
-    .popup-emoji > span img {
-      width: 32px;
-      height: 32px;
-      vertical-align: middle;
-      /*padding: 0 10px*/
-    }
+    /*.popup-emoji > span {*/
+      /*display: flex;*/
+      /*width: 11.11%;*/
+      /*justify-content: center;*/
+      /*margin-top: 5px;*/
+    /*}*/
+
+    /*.popup-emoji > span img {*/
+      /*width: 32px;*/
+      /*height: 32px;*/
+      /*vertical-align: middle;*/
+      /*!*padding: 0 10px*!*/
+    /*}*/
 
     .popup-photo {
       display: flex;
@@ -664,119 +740,15 @@
       font-weight: 600;
     }
 
-    .main320 .store-info {
-      font-family: "PingFangSC-Regular";
-      font-size: 12px;
-      color: #666;
-      text-align: center;
-      margin: 30px 0;
-    }
-
-    .main-cell320 {
-      display: flex;
-      margin: 30px 0;
-      position: relative;
-    }
-
-    .main-cell320 > img {
-      width: 40px;
-      height: 40px;
-      margin-right: 20px;
-      margin-top: 10px;
-      margin-left: 0;
-    }
-
-    .main-cell-info {
-      max-width: 250px;
-      border: 1px solid #ccc;
-      margin: 0;
-      padding: 10px;
-    }
-
-    .main-cell-info > p.name {
-      color: #999;
-      font-family: PingFangSC-Regular;
-      font-size: 12px;
-    }
-
-    .main-cell-info > p.content {
-      margin-top: 0px;
-      color: #333;
-      font-family: PingFangSC-Regular;
-      font-size: 12px;
-      line-height: 20px;
-      font-weight: 500;
-    }
-
-    .main-cell-info > p.content img:not(.upload-img) {
-      width: 24px;
-    }
-
-    .main-cell-info > p.content img.upload-img {
-      width: 100%;
-    }
-
-    .main-customer-cell320 {
-      justify-content: flex-end;
-      border: none;
-    }
-
-    .main-customer-cell320 .main-cell-info {
-      margin-right: 10px;
-      background-color: #C8936B;
-    }
-
-    .main-customer-cell320 .main-cell-info > p.content {
-      color: #fff;
-      margin-top: 0px;
-      font-weight: 400;
-    }
-
-    .main-customer-cell320 > img {
-      margin: 0;
-      margin-left: 10px;
-    }
-
-    .main-service-cell320:before {
-      content: "";
-      position: absolute;
-      left: 50px;
-      top: 25px;
-      border-top: 5px solid transparent;
-      border-bottom: 5px solid transparent;
-      border-right: 10px solid #ccc;
-    }
-
-    .main-service-cell320:after {
-      content: "";
-      position: absolute;
-      left: 52px;
-      top: 25px;
-      border-top: 5px solid transparent;
-      border-bottom: 5px solid transparent;
-      border-right: 10px solid #fff;
-    }
-
-    .main-customer-cell320:after {
-      content: "";
-      position: absolute;
-      right: 51px;
-      top: 15px;
-      width: 0;
-      height: 0;
-      border-width: 5px 0 5px 10px;
-      border-style: solid;
-      border-color: transparent transparent transparent #C8936B; /*透明 黄 透明 透明 */
-    }
-
     .send320 {
       width: 60px;
-      height: 30px;
+      /*height: 30px;*/
       border: 1px solid #C8936B;
       outline: none;
       background-color: #C8936B;
       border-radius: 3px;
       color: #fff;
+      max-height: 35px;
     }
 
   }

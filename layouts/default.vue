@@ -1,6 +1,7 @@
 <template>
   <div>
     <nuxt/>
+    <lg-preview></lg-preview>
   </div>
 </template>
 
