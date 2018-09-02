@@ -218,9 +218,9 @@
 
   .city{
     margin-top: 20px;
-    height: 40px;
+    height: 42px;
     overflow: hidden;
-    line-height: 40px;
+    line-height: 42px;
     /*background-color: #ccc;*/
   }
 

@@ -119,7 +119,7 @@
 
   .main-title{
     margin-top: 60px;
-    font-size: 26px;
+    font-size: 22px;
     font-family: "PingFangSC-Medium";
     color: #000;
     font-weight: 600;
@@ -153,7 +153,7 @@
   .reservation-details-cell >span{
     display: inline-block;
     vertical-align: middle;
-    font-size: 24px;
+    font-size: 20px;
     color: #999;
   }
   .reservation-details-active >span{

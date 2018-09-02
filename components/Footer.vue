@@ -157,7 +157,7 @@
   .bottom-link-middle p {
     color: #999999;
     font-family: "PingFangSC-Regular";
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .bottom-link-bottom {
@@ -201,7 +201,7 @@
     height: 100%;
     outline: none;
     border: none;
-    font-size: 18px;
+    font-size: 16px;
     font-family: "PingFangSC-Regular";
     color: #333;
   }
@@ -218,14 +218,14 @@
     top: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    font-size: 24px;
+    font-size: 20px;
     font-family: "PingFangSC-Regular";
     font-weight: 600;
   }
 
   .bottom-talk-call p {
     color: #BF9571;
-    font-size: 28px;
+    font-size: 24px;
     font-family: "PingFangSC-Medium";
   }
 

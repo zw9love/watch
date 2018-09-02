@@ -122,7 +122,7 @@
     height: 50px;
     line-height: 50px;
     font-family: "PingFangSC-Regular";
-    font-size: 26px;
+    font-size: 20px;
     margin-right: 25px;
     text-align: left;
   }
@@ -136,12 +136,12 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 194px;
+    width: 150px;
     height: 50px;
     background-color: #18AC18;
     color: #fff;
     font-family: "PingFangSC-Regular";
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
     line-height: 50px;
     border-bottom-right-radius: 4px;
@@ -159,7 +159,7 @@
     background-color: #C8936B;
     text-align: center;
     font-family: "PingFangSC-Regular";
-    font-size: 24px;
+    font-size: 20px;
     border-radius: 5px;
   }
 

@@ -18,7 +18,7 @@
 
       <!--预约具体信息-->
       <main class="reservation-main">
-        <img src="../assets/img/booking_make_icon1@2x.png" alt="">
+        <!--<img src="../assets/img/booking_make_icon1@2x.png" alt="">-->
         <img src="../assets/img/booking_make_icon1@2x.png" alt="">
         <div class="reservation-main-container">
           <p class="phone">

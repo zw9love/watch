@@ -65,13 +65,13 @@
   .title-info {
     font-family: "PingFangSC-Medium";
     font-weight: 400;
-    font-size: 32px;
+    font-size: 24px;
     color: rgba(51, 51, 51, .2);
   }
 
   .title-name {
     font-family: "FZLTZHK--GBK1-0";
-    font-size: 40px;
+    font-size: 30px;
     color: #333333
   }
 
@@ -89,7 +89,7 @@
 
   .title-content {
     /*font-family: "FZLTZHK--GBK1-0";*/
-    font-size: 24px;
+    font-size: 18px;
     color: #BF9571;
     font-weight: 400;
   }

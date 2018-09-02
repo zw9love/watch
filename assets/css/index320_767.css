@@ -6,7 +6,7 @@
     普通样式
    */
   .container{
-    margin-bottom: 53px;
+    padding-bottom: 14.285714%;
     margin-top: 46px;
   }
   .banner-container img.banner_pc, .banner-shadow, .brand-main-wrapper, .service-quality-main-info, .reservation-main, .certification, .service-project-main, .service-quality-container, .adver-wrapper, .environmental-container{
@@ -20,8 +20,70 @@
     bottom: 0;
     width: 100%;
     z-index: 101;
-    background-color: #333;
+    /*background-color: #333;*/
   }
+
+  .tabbar-container img{
+    width: 100%;
+    vertical-align: middle;
+  }
+
+  .tabbar-wrapper{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60%;
+    padding: 0 10px;
+    display: flex;
+    z-index: 10000;
+  }
+
+  .tabbar-wrapper .tabbar-cell{
+    display: flex;
+    flex:1;
+    align-items: center;
+    /*justify-content: center;*/
+  }
+
+  .tabbar-wrapper .tabbar-cell:first-child{
+    margin-left: 40px;
+  }
+
+  .tabbar-wrapper .tabbar-cell:last-child{
+   justify-content: flex-end;
+    margin-right: 40px;
+  }
+
+  .tabbar-wrapper .tabbar-cell >a{
+    display: flex;
+    align-items: center;
+  }
+
+  .tabbar-wrapper .tabbar-cell span{
+    color: #C8936B;
+    font-size: 18px;
+  }
+
+
+  .tabbar-cell  img{
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+
+  }
+
+  .tabbar-vip{
+    position: absolute;
+    height: 100px;
+    width: 26.6666%;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    opacity: 0;
+    z-index: 10001;
+  }
+
 
   .tabbar-container .weui-tabbar{
     background-color: #333;
@@ -422,11 +484,12 @@
   }
 
   .certification320-imgContainer{
-    flex: 1;
+    /*flex: 1;*/
   }
 
   .certification320-imgContainer img{
-    width: 100%;
+    /*width: 120px;*/
+    height: 120px;
     vertical-align: middle;
   }
 
@@ -465,9 +528,47 @@
 
 }
 
+@media (max-width:480px){
+  .tabbar-wrapper .tabbar-cell  img{
+    width: 25px;
+    height: auto;
+    margin-right: 5px;
+  }
+
+  .tabbar-wrapper .tabbar-cell span{
+    color: #C8936B;
+    font-size: 14px;
+  }
+
+  .tabbar-wrapper .tabbar-cell:first-child{
+    margin-left: 20px;
+  }
+
+  .tabbar-wrapper .tabbar-cell:last-child{
+    margin-right: 20px;
+  }
+}
+
 
 @media (max-width:360px){
   .certification-info320{
     -webkit-line-clamp: 2;
+  }
+
+  .tabbar-wrapper .tabbar-cell  img{
+    width: 20px;
+    margin-right: 5px;
+  }
+
+  .tabbar-wrapper .tabbar-cell span{
+    font-size: 12px;
+  }
+
+  .tabbar-wrapper .tabbar-cell:first-child{
+    margin-left: 15px;
+  }
+
+  .tabbar-wrapper .tabbar-cell:last-child{
+    margin-right: 15px;
   }
 }

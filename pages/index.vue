@@ -3,6 +3,24 @@
 
     <!--tabbar-->
     <div class="tabbar-container">
+      <img src="../assets/img/bottom_fix.png" alt="">
+      <div class="tabbar-wrapper">
+        <div class="tabbar-cell">
+          <nuxt-link to="/customerservice">
+            <img src="../assets/img/online_service.png" alt="">
+            <span>在线客服</span>
+          </nuxt-link>
+          <!--<img src="../assets/img/service_info.png" alt="">-->
+        </div>
+        <div class="tabbar-cell">
+          <nuxt-link to="/order">
+            <img src="../assets/img/order_store.png" alt="">
+            <span>预约到店</span>
+          </nuxt-link>
+          <!--<img src="../assets/img/service_info.png" alt="">-->
+        </div>
+      </div>
+      <span class="tabbar-vip"></span>
       <!--<tabbar>-->
         <!--<tabbar-item selected icon-class="tabbar-icon-class">-->
           <!--<img slot="icon" src="../assets/img/home_behind_icon1_no@2x.png">-->
@@ -131,7 +149,7 @@
                   </ul>
                 </swiper-item>
               </swiper>
-              <Indicators v-model="brandIndex" :list="brandList"></Indicators>
+              <Indicators v-model="brandIndex" :indicatorsStyle="{bottom: '-30px'}" :list="brandList"></Indicators>
             </div>
           </div>
         </div>
@@ -140,7 +158,7 @@
     <!--广告-->
     <div class="adver-container">
       <div class="adver-wrapper">
-        <img src="../assets/img/home_incentive_bg@2x.png" alt="">
+        <img src="../assets/img/brand_images9@2x.png" alt="">
       </div>
       <div class="adver-wrapper320">
         <img src="../assets/img/home_booking_banner@2x.png" alt="">
@@ -419,7 +437,7 @@
       </div>
       <div class="certification320-container">
         <swiper v-model="certificationIndex" @on-index-change="certificationIndexChange" :show-dots="false"
-                :show-desc-mask="false" :height="certificationHeight + 50 + 'px'" :aspect-ratio="0.36">
+                :show-desc-mask="false" height="166px">
           <swiper-item v-for="(item, key) in certificationList" :key="key" >
             <div class="certification320" ref="certification320">
               <div class="certification320-imgContainer">
@@ -437,7 +455,7 @@
             </div>
           </swiper-item>
         </swiper>
-        <Indicators v-model="certificationIndex" :indicatorsStyle="{bottom: 0}" :list="certificationList"></Indicators>
+        <Indicators v-model="certificationIndex"  :list="certificationList"></Indicators>
       </div>
     </div>
     <!--进口维修设备及零件-->
@@ -519,7 +537,7 @@
               <h1>今日已有<span>68</span>位用户在线预约成功</h1>
             </div>
             <div class="reservation-success-list">
-              <ul v-for="(item, key) in [1,1,1,1,1,1,1,1,1,1]" :key="key">
+              <ul v-for="item in 10" :key="item">
                 <li class="reservation-success-name">
                   <span>金女士</span>
                 </li>
@@ -541,12 +559,12 @@
             <div class="reservation-input">
               <div class="reservation-input-cell">
                 <span class="reservation-key">手表品牌</span>
-                <el-input v-model="brand" placeholder="请输入您的手表品牌" resize="both" clearable></el-input>
+                <el-input v-model="form.brand" placeholder="请输入您的手表品牌" resize="both" clearable></el-input>
               </div>
 
               <div class="reservation-input-cell">
                 <span class="reservation-key">手表故障</span>
-                <el-select v-model="faultValue" placeholder="请选择故障类型" clearable>
+                <el-select v-model="form.faultValue" placeholder="请选择故障类型" clearable>
                   <el-option
                     v-for="item in options"
                     :key="item.value"
@@ -558,17 +576,17 @@
 
               <div class="reservation-input-cell">
                 <span class="reservation-key">姓名</span>
-                <el-input v-model="name" placeholder="请输入您的姓名" resize="both" clearable></el-input>
+                <el-input v-model="form.name" placeholder="请输入您的姓名" resize="both" clearable></el-input>
               </div>
 
               <div class="reservation-input-cell">
                 <span class="reservation-key">手机号</span>
-                <el-input v-model="phone" placeholder="请输入您的真实手机号，便于查询维修进度" resize="both" clearable></el-input>
+                <el-input v-model="form.phone" placeholder="请输入您的真实手机号，便于查询维修进度" resize="both" clearable></el-input>
               </div>
 
               <div class="reservation-input-cell">
                 <span class="reservation-key">验证码</span>
-                <el-input v-model="verification" placeholder="获取验证码" resize="both" clearable></el-input>
+                <el-input v-model="form.verification" placeholder="获取验证码" resize="both" clearable></el-input>
                 <div class="verification-container" :class="{'verification-active-container': verificationActive}"
                      @click="verificationClick">
                   <span>{{verificationInfo}}</span>
@@ -577,26 +595,45 @@
 
               <div class="reservation-input-cell">
                 <span class="reservation-key">预约时间</span>
-                <el-date-picker
-                  v-model="reservationTime"
-                  type="date"
-                  placeholder="选择日期"
-                  style="width: 180px"
-                >
-                </el-date-picker>
-                <el-time-picker
-                  is-range
-                  v-model="value4"
-                  :picker-options="{
-                    selectableRange: '18:30:00 - 20:30:00',
-                    format: 'HH:mm'
-                  }"
-                  style="width: 190px; margin-left: 5px; height: 50px; line-height: 50px;"
-                  range-separator=""
-                  start-placeholder="开始时间"
-                  end-placeholder="结束时间"
-                  placeholder="选择时间范围">
-                </el-time-picker>
+                <span class="reservation-time-input">
+                  <el-col :span="11">
+                  <el-date-picker type="date" placeholder="请选择预约日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
+                </el-col>
+                <span class="split">-</span>
+                <el-col :span="11">
+                  <!--<el-time-picker type="fixed-time" placeholder="请选择预约时间" v-model="form.date2" style="width: 100%;"></el-time-picker>-->
+                  <el-time-select
+                    v-model="form.date2"
+                    :picker-options="{
+                  start: '08:30',
+                  step: '00:30',
+                  end: '18:30'
+                }"
+                    style="width: 100%;"
+                    placeholder="请选择预约时间">
+                  </el-time-select>
+                </el-col>
+                </span>
+                <!--<el-date-picker-->
+                  <!--v-model="reservationTime"-->
+                  <!--type="date"-->
+                  <!--placeholder="选择日期"-->
+                  <!--style="width: 180px"-->
+                <!--&gt;-->
+                <!--</el-date-picker>-->
+                <!--<el-time-picker-->
+                  <!--is-range-->
+                  <!--v-model="value4"-->
+                  <!--:picker-options="{-->
+                    <!--selectableRange: '18:30:00 - 20:30:00',-->
+                    <!--format: 'HH:mm'-->
+                  <!--}"-->
+                  <!--style="width: 190px; margin-left: 5px; height: 50px; line-height: 50px;"-->
+                  <!--range-separator=""-->
+                  <!--start-placeholder="开始时间"-->
+                  <!--end-placeholder="结束时间"-->
+                  <!--placeholder="选择时间范围">-->
+                <!--</el-time-picker>-->
               </div>
 
               <div class="reservation-btn-container">
@@ -790,7 +827,17 @@
           {name: '维修案例', href: '/case'},
           {name: '维修进度', href: '/order'},
           {name: '维修地址', href: '/servicelist'},
-        ]
+        ],
+        form: {
+          brand: '',
+          name: '',
+          verification: '',
+          phone: '',
+          time: '',
+          faultType: '',
+          date1:  '',
+          date2:  '',
+        },
       }
     },
     mounted() {

@@ -38,7 +38,8 @@
     height: 20px;
     position: absolute;
     left:0;
-    bottom: -30px;
+    /*bottom: -30px;*/
+    bottom: -10px;
     display: flex;
     justify-content: center;
     align-items: center;

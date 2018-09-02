@@ -280,7 +280,7 @@
   }
 
   strong.brand-page-title{
-    font-size: 48px;
+    font-size: 36px;
     font-family: "FZLTZHK--GBK1-0";
     color: #333;
     text-align: center;
@@ -366,7 +366,7 @@
 
   .environmental-main-title {
     font-family: "FZLTZHK--GBK1-0";
-    font-size: 40px;
+    font-size: 36px;
     color: #fff;
     margin-top: 60px;
   }
@@ -439,13 +439,13 @@
 
   .store h1 {
     font-family: "PingFangSC-Medium";
-    font-size: 36px;
+    font-size: 32px;
     text-align: center;
     margin: 30px 0;
   }
 
   .store p {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 46px;
     text-align: center;
     font-family: "PingFangSC-Regular";
@@ -463,6 +463,7 @@
   .store .store-content span {
     margin-left: 10px;
     font-weight: 400;
+    font-size: 22px;
   }
 
   #store-map {

@@ -107,7 +107,7 @@
   left: 0;
   line-height: 70px;
   color: #333333;
-  font-size: 32px;
+  font-size: 28px;
   cursor: pointer;
   border: 1px solid #BF9571;
   font-weight: 500;
@@ -219,6 +219,7 @@
 .adver-wrapper {
   max-width: 1920px;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .adver-container img {
@@ -271,7 +272,7 @@
 
 .service-project-main-cell .info {
   margin-top: 45px;
-  font-size: 32px;
+  font-size: 28px;
   color: #333;
 }
 
@@ -373,13 +374,13 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span img {
 }
 
 ul.service-quality-main-info li div.imgInfo .imgInfo-container span.showy {
-  font-size: 32px;
+  font-size: 28px;
   color: #bf9571;
   margin-top: 15px;
 }
 
 ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
-  font-size: 24px;
+  font-size: 20px;
   color: #fff;
   margin-top: 15px;
   white-space: nowrap;
@@ -428,14 +429,14 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
 
 .certification-title {
   color: #333333;
-  font-size: 30px;
+  font-size: 26px;
   font-family: "PingFangSC-Regular";
   font-weight: 400;
 }
 
 .certification-info {
   color: #333333;
-  font-size: 20px;
+  font-size: 18px;
   font-family: "PingFang SC";
   font-weight: 400;
   line-height: 40px;
@@ -519,7 +520,7 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
 
 .equipment-shadow span {
   color: #fff;
-  font-size: 32px;
+  font-size: 26px;
   font-family: "PingFangSC-Regular";
 }
 
@@ -618,7 +619,7 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   margin-right: 0px;
   height: 58px;
   line-height: 58px;
-  font-size: 24px;
+  font-size: 22px;
   font-family: "PingFangSC-Regular";
 }
 
@@ -637,12 +638,18 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
 .reservation-key {
   width: 150px;
   display: inline-block;
-  font-size: 28px;
+  font-size: 20px;
   padding: 0 10px;
   font-family: "PingFangSC-Regular";
   vertical-align: middle;
   text-align: right;
   margin-right: 20px;
+}
+
+.reservation-time-input{
+  display: inline-block;
+  width: calc(100% - 170px);
+  vertical-align: middle
 }
 
 .verification-container {
@@ -777,13 +784,13 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
 
 .store h1 {
   font-family: "PingFangSC-Medium";
-  font-size: 36px;
+  font-size: 32px;
   text-align: center;
   margin: 30px 0;
 }
 
 .store p {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 46px;
   text-align: center;
   font-family: "PingFangSC-Regular";
@@ -801,6 +808,7 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
 .store .store-content span {
   margin-left: 10px;
   font-weight: 400;
+  font-size: 22px;
 }
 
 #store-map {
@@ -857,4 +865,12 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   right: 20px;
   top: 100px;
   cursor: pointer;
+}
+
+.split{
+  display: inline-block;
+  width: 8.3333%;
+  float: left;
+  line-height: 50px;
+  text-align: center;
 }

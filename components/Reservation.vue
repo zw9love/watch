@@ -166,9 +166,9 @@
   .reservation-cell-container span {
     position: absolute;
     left: 50%;
-    bottom: -50px;
+    bottom: -35px;
     transform: translateX(-50%);
-    font-size: 22px;
+    font-size: 18px;
     font-family: "PingFangSC-Regular";
     white-space: nowrap;
   }
