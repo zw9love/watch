@@ -6,7 +6,7 @@
     <HeaderMobile title="品牌门店" />
 
     <!--banner-->
-    <div class="banner">
+    <div class="banner" @click="$router.push({path: '/order'})">
       <img src="../assets/img/brand_banner@2x.png" alt="">
     </div>
 
@@ -177,7 +177,7 @@
 
     <!--广告-->
     <div class="adver">
-      <img src="../assets/img/brand_images9@2x.png" alt="">
+      <img src="../assets/img/brand_images9@2x.png" alt="" @click="$router.push({path: '/order'})">
     </div>
 
     <!--Footer-->

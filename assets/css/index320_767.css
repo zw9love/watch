@@ -9,7 +9,7 @@
     padding-bottom: 14.285714%;
     margin-top: 46px;
   }
-  .banner-container img.banner_pc, .banner-shadow, .brand-main-wrapper, .service-quality-main-info, .reservation-main, .certification, .service-project-main, .service-quality-container, .adver-wrapper, .environmental-container{
+  .reservation-shadow, .banner-container img.banner_pc, .banner-shadow, .brand-main-wrapper, .service-quality-main-info, .reservation-main, .certification, .service-project-main, .service-quality-container, .adver-wrapper, .environmental-container{
     display: none;
   }
 
@@ -84,6 +84,52 @@
     z-index: 10001;
   }
 
+  .phone-shadow{
+    width: 100%;
+    height: 166px;
+    background-color: rgba(0, 0, 0, .8);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .phone-shadow-info{
+    text-align: center;
+  }
+  .phone-shadow-info .content{
+    color: #fff;
+    font-size: 14px;
+  }
+
+  .phone-shadow-info .phone{
+    margin-top: 10px;
+    color: #C8936B;
+    font-size: 24px;
+  }
+
+  .phone-shadow-info .phone-shadow-button{
+    margin-top: 20px;
+  }
+  .phone-shadow-button >span, .phone-shadow-button >a{
+    margin-left: 10px;
+    height: 30px;
+    border-radius: 8px;
+    display: inline-block;
+    line-height: 30px;
+    color: #fff;
+    font-size: 14px;
+    width: 100px;
+  }
+
+
+  .phone-shadow-button .phone-shadow-button-confirm{
+    background-color: #C8936B;
+  }
+  .phone-shadow-button .phone-shadow-button-cancel{
+    border: 1px solid #C8936B;
+  }
 
   .tabbar-container .weui-tabbar{
     background-color: #333;
@@ -150,6 +196,7 @@
 
   .banner-container{
     padding-top: 52.0639%;
+    height: auto;
   }
 
   .banner-container img.banner_phone{
@@ -526,6 +573,58 @@
     overflow: hidden;
   }
 
+  .reservation-shadow320{
+    display: block;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 66.6667%;
+    z-index: 10000;
+  }
+
+  .reservation-shadow320 >img{
+    width:100%;
+  }
+
+  .reservation-shadow320 img.close320{
+    width:30px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    top: 45px;
+  }
+
+  .reservation-shadow320-button{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .reservation-shadow320-button >a{
+    width: 100px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+
+  .reservation-shadow320-button >a:first-child{
+    background-color: #C8936B;
+    color: #fff;
+  }
+
+  .reservation-shadow320-button >a:last-child{
+    border: 1px solid #C8936B;
+    color: #C8936B;
+  }
+
 }
 
 @media (max-width:480px){
@@ -570,5 +669,10 @@
 
   .tabbar-wrapper .tabbar-cell:last-child{
     margin-right: 15px;
+  }
+
+  .reservation-shadow320-button >span{
+    width: 80px;
+    height:30px;
   }
 }

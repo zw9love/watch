@@ -52,7 +52,7 @@
         </li>
         <li class="bottom-talk-btn">
           <img src="../assets/img/home_footer_button@2x.png" alt="">
-          <span>在线咨询</span>
+          <span @click="$router.push({path: '/customerservice'})">在线咨询</span>
         </li>
         <li>
           <img src="../assets/img/home_footer_icon_contacts@2x.png" alt="">

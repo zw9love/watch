@@ -28,15 +28,19 @@
   background-color: #000000;
   text-align: center;
   position: relative;
-  padding-top: 39.0625%;
+  /*padding-top: 39.0625%;*/
+  /*max-width: 1280px;*/
+  height: 500px
 }
 
 .banner-container img.banner_pc{
   position: absolute;
-  left: 0;
+  left: 50%;
   top: 0;
+  max-width: 1280px;
   width: 100%;
   height: 100%;
+  transform: translateX(-50%);
 }
 
 .banner-shadow320 {
@@ -695,7 +699,7 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   top: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  font-size: 30px
+  font-size: 24px
 }
 
 /*
@@ -848,13 +852,13 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   white-space: nowrap;
 }
 
-.reservation-online-msg img, .reservation-online-msg span {
+.reservation-online-msg img, .reservation-online-msg a {
   display: inline-block;
   vertical-align: middle;
   margin-right: 10px;
 }
 
-.reservation-online-msg span {
+.reservation-online-msg a {
   font-family: "PingFangSC-Regular";
   font-size: 26px;
   color: #fff;

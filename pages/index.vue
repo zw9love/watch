@@ -1,6 +1,9 @@
 <template>
   <div class="container">
 
+    <!--<div style="height: 50px; background: linear-gradient(to bottom, #000, #333 60%, #999 100%);"></div>-->
+    <!--<div style="height: 50px; background: linear-gradient(to bottom, #000, #666 100%);"></div>-->
+
     <!--tabbar-->
     <div class="tabbar-container">
       <img src="../assets/img/bottom_fix.png" alt="">
@@ -20,7 +23,22 @@
           <!--<img src="../assets/img/service_info.png" alt="">-->
         </div>
       </div>
-      <span class="tabbar-vip"></span>
+      <span class="tabbar-vip" @click="phoneCall"></span>
+      <div v-transfer-dom>
+        <popup v-model="phoneShadowActive" is-transparent position="bottom" width="100%">
+          <div class="phone-shadow">
+            <div class="phone-shadow-info">
+              <p class="content">维修服务中心咨询电话</p>
+              <p class="phone">400-617-1383</p>
+              <div class="phone-shadow-button">
+                <span class="phone-shadow-button-cancel" @click="cancelShadow">取消</span>
+                <a href="tel:110" class="phone-shadow-button-confirm" @click="confirmShadow">呼叫</a>
+                <!--<span class="phone-shadow-button-confirm" @click="confirmShadow">呼叫</span>-->
+              </div>
+            </div>
+          </div>
+        </popup>
+      </div>
       <!--<tabbar>-->
         <!--<tabbar-item selected icon-class="tabbar-icon-class">-->
           <!--<img slot="icon" src="../assets/img/home_behind_icon1_no@2x.png">-->
@@ -41,7 +59,7 @@
     </div>
 
     <Header/>
-    <HeaderMobile title="北京名表维修中心" :showBack="false" :showMore="true"/>
+    <HeaderMobile title="北京名表维修中心" :showBack="false"/>
     <!--banner-->
     <div class="banner-container">
       <img src="../assets/img/home_banner_bg@2x.png" alt="" class="banner_pc">
@@ -66,7 +84,7 @@
     <!--navigation320-->
     <div class="navigation-container320">
       <ul>
-        <li v-for="(item, key) in mobileNavList" :key="key" @click="goto(item)">
+        <li v-for="(item, key) in mobileNavList" :key="key" @click="goto(item.href)">
           <img src="../assets/img/home_nav_icon1@2x.png" alt="">
           <nuxt-link :to="item.href">{{item.name}}</nuxt-link>
         </li>
@@ -157,7 +175,7 @@
     </div>
     <!--广告-->
     <div class="adver-container">
-      <div class="adver-wrapper">
+      <div class="adver-wrapper" @click="$router.push({path: '/order'})">
         <img src="../assets/img/brand_images9@2x.png" alt="">
       </div>
       <div class="adver-wrapper320">
@@ -534,18 +552,18 @@
         <div class="reservation-main-left">
           <div class="reservation-main-left-wrapper">
             <div class="reservation-success-title">
-              <h1>今日已有<span>68</span>位用户在线预约成功</h1>
+              <h1>今日已有<span>89</span>位用户在线预约成功</h1>
             </div>
             <div class="reservation-success-list">
-              <ul v-for="item in 10" :key="item">
+              <ul v-for="(item, key) in orderList" :key="key">
                 <li class="reservation-success-name">
-                  <span>金女士</span>
+                  <span>{{item.name}}</span>
                 </li>
                 <li class="reservation-success-watch">
-                  <span>劳力士</span>
+                  <span>{{item.brand}}</span>
                 </li>
                 <li class="reservation-success-phone">
-                  <span>180****6539</span>
+                  <span>{{item.phone}}</span>
                 </li>
               </ul>
             </div>
@@ -695,7 +713,7 @@
               <img src="../assets/img/home_serviceenvironment_images2@2x.png" alt="">
             </el-carousel-item>
           </el-carousel>
-          <Indicators v-model="indicatorKey" :list="[1,1,1]"></Indicators>
+          <Indicators v-model="indicatorKey" :indicatorsStyle="{bottom: '-30px'}" :list="[1,1,1]"></Indicators>
         </div>
       </div>
     </div>
@@ -723,24 +741,52 @@
     <div class="reservation-shadow" v-show="reservationActive">
       <img src="../assets/img/home_popup_bg@2x.png" alt="">
       <div class="reservation-shadow-container">
-        <div class="reservation-online-btn">
+        <div class="reservation-online-btn" @click="goto('/customerservice')">
           <img src="../assets/img/home_popup_button@2x.png" alt="">
           <div class="reservation-online-msg">
             <img src="../assets/img/home_popup_button_icon@2x.png" alt="">
-            <span>在线咨询</span>
+            <nuxt-link to="/customerservice" >在线咨询</nuxt-link>
           </div>
         </div>
-        <div class="reservation-online-btn">
+        <div class="reservation-online-btn" @click="goto('/order')">
           <img src="../assets/img/home_popup_button1@2x.png" alt="">
           <div class="reservation-online-msg">
             <img src="../assets/img/home_popup_button_icon1@2x.png" alt="">
-            <span>在线咨询</span>
+            <nuxt-link to="/order" >在线预约</nuxt-link>
           </div>
         </div>
       </div>
       <div class="reservation-shadow-close" @click="reservationClose">
         <img src="../assets/img/close.png" alt="">
       </div>
+    </div>
+
+    <div class="reservation-shadow320" v-show="reservationActive">
+      <img src="../assets/img/home_popup_bg_mobile.png" alt="">
+      <img src="../assets/img/close.png" alt="" class="close320" @click="closeMobile">
+      <div class="reservation-shadow320-button">
+        <nuxt-link to="/customerservice" >在线咨询</nuxt-link>
+        <nuxt-link to="/order" >在线预约</nuxt-link>
+      </div>
+      <!--<div class="reservation-shadow-container">-->
+        <!--<div class="reservation-online-btn">-->
+          <!--<img src="../assets/img/home_popup_button@2x.png" alt="">-->
+          <!--<div class="reservation-online-msg">-->
+            <!--<img src="../assets/img/home_popup_button_icon@2x.png" alt="">-->
+            <!--<span>在线咨询</span>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="reservation-online-btn">-->
+          <!--<img src="../assets/img/home_popup_button1@2x.png" alt="">-->
+          <!--<div class="reservation-online-msg">-->
+            <!--<img src="../assets/img/home_popup_button_icon1@2x.png" alt="">-->
+            <!--<span>在线咨询</span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="reservation-shadow-close" @click="reservationClose">-->
+        <!--<img src="../assets/img/close.png" alt="">-->
+      <!--</div>-->
     </div>
   </div>
 </template>
@@ -838,6 +884,19 @@
           date1:  '',
           date2:  '',
         },
+        phoneShadowActive: false,
+        orderList: [
+          {name: '钟女士', brand: '百达翡丽', phone: '153*****882'},
+          {name: '文先生', brand: '劳力士', phone: '137*****888'},
+          {name: '梁女士', brand: '浪琴', phone: '158*****200'},
+          {name: '阳先生', brand: '欧米茄', phone: '187*****999'},
+          {name: '王女士', brand: '宝玑', phone: '131*****296'},
+          {name: '黄先生', brand: '劳力士', phone: '187*****758'},
+          {name: '李先生', brand: '卡地亚', phone: '181*****876'},
+          {name: '林先生', brand: '积家', phone: '188*****199'},
+          {name: '刘先生', brand: '真力时', phone: '139*****620'},
+          {name: '郝先生', brand: '万国', phone: '138*****513'},
+        ]
       }
     },
     mounted() {
@@ -906,8 +965,20 @@
         this.brandIndex = key
         // this.$router.push({path: url})
       },
-      goto(item){
-        this.$router.push({path: item.href})
+      goto(path){
+        this.$router.push({path})
+      },
+      phoneCall(){
+        this.phoneShadowActive = true
+      },
+      cancelShadow(){
+        this.phoneShadowActive = false
+      },
+      confirmShadow(){
+
+      },
+      closeMobile(){
+        this.reservationActive = false
       }
     }
   }

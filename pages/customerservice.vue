@@ -3,15 +3,15 @@
     <div class="container">
       <!--nav-->
       <div class="nav">
-        <div class="nav-title">
-          <span><span class="spe-info">北京名表维修服务中心</span> 08号客服 正在为您服务...</span>
-        </div>
-        <div class="nav-end">
-        <span class="nav-end-icon">
-            <img src="../assets/img/customer_service_end.png"/>
-        </span>
-          <span class="nav-end-info">结束对话</span>
-        </div>
+          <div class="nav-title">
+            <span><span class="spe-info">北京名表维修服务中心</span> 08号客服 正在为您服务...</span>
+          </div>
+          <div class="nav-end">
+            <span class="nav-end-icon">
+                <img src="../assets/img/customer_service_end.png"/>
+            </span>
+            <span class="nav-end-info">结束对话</span>
+          </div>
       </div>
       <!--banner-->
       <!--<div class="banner">-->
@@ -33,6 +33,10 @@
           <!--onclick="document.getElementById('upload-txt').click()"-->
           <img src="../assets/img/add.png" alt="" id="upload" @click.stop="uploadPc"/>
           <input type="file" hidden id="upload-txt" accept="image/*" ref="uploadPc" @change="uploadPcChange">
+          <div class="call-back">
+            <input type="tel" class="call-back-txt">
+            <span class="call-back-btn">给您回电</span>
+          </div>
         </div>
         <div id="editor" class="input-txt" placeholder="请在此输入..." contenteditable="true" ref="editorPC" @keydown="editorPCKeydown"></div>
         <button class="send" @click.stop="send">发送</button>
@@ -365,8 +369,8 @@
 
   .nav-end > span {
     display: inline-block;
-    vertical-align: middle;
     cursor: pointer;
+    line-height: 60px;
   }
 
   .nav-end > span.nav-end-icon {
@@ -376,7 +380,7 @@
   .nav-end > span.nav-end-info {
     color: #fff;
     font-size: 14px;
-    margin-left: 5px;
+    margin-left: 10px;
   }
 
   main {
@@ -432,6 +436,41 @@
     vertical-align: middle;
     /*margin-top: 14px;*/
     margin-right: 20px
+  }
+
+  .input-nav .call-back{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 36px;
+    line-height: 36px;
+    width: 302px;
+    border-radius: 5px;
+    /*border: 1px solid #C8936B;*/
+  }
+
+  .call-back .call-back-txt{
+    display: inline-block;
+    width: 180px;
+    color: #333;
+    font-size: 16px;
+    padding: 5px 10px;
+    /*border: none;*/
+    height: 100%;
+    border: 1px solid #C8936B
+  }
+
+  .call-back .call-back-btn{
+    display: inline-block;
+    width:120px;
+    background-color: #C8936B;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
   }
 
   .input-txt {

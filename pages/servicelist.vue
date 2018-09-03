@@ -52,12 +52,18 @@
       <HeaderMobile :title="getTitle"/>
       <main class="main320">
         <div class="select-city">
-          <strong>按省份选择：</strong>
-          <popup-picker :data="list1" v-model="value1" :columns="3" ref="picker">
+          <strong>请选择城市：</strong>
+          <x-address title="title" v-model="value1" :list="addressData" :hide-district="true" @on-shadow-change="addressChange" ref="picker">
             <template slot="title" slot-scope="props">
-              <span class="province">{{ ($refs.picker && $refs.picker.getNameValues().split(' ')[1]) || '省份'}}</span>
+              <!--<span class="province">{{ ($refs.picker && $refs.picker.getNameValues().split(' ')[1]) || '北京'}}</span>-->
+              <span class="province">{{cityName}}</span>
             </template>
-          </popup-picker>
+          </x-address>
+          <!--<popup-picker :data="list1" v-model="value1" :columns="3" ref="picker">-->
+            <!--<template slot="title" slot-scope="props">-->
+              <!--<span class="province">{{ ($refs.picker && $refs.picker.getNameValues().split(' ')[1]) || '省份'}}</span>-->
+            <!--</template>-->
+          <!--</popup-picker>-->
           <!--<popup-picker :data="list1" v-model="value1" :columns="2" ref="picker">-->
             <!--<template slot="title" slot-scope="props">-->
               <!--<span class="province">{{ ($refs.picker && $refs.picker.getNameValues().split(' ')[1]) || '城市'}}</span>-->
@@ -120,6 +126,7 @@
   import Footer from '../components/Footer'
   import Advertisement from '../components/Advertisement'
   import HeaderMobile from '../components/HeaderMobile'
+  import { ChinaAddressV4Data} from 'vux'
 
   export default {
     head: {
@@ -149,7 +156,9 @@
           {name: '南宁', value: 'nn', parent: 'gx'},
           {name: '桂林', value: 'gl', parent: 'gx'}
         ],
-        addressActive: false
+        addressActive: false,
+        addressData: ChinaAddressV4Data,
+        cityName: ''
       }
     },
     computed: {
@@ -185,6 +194,9 @@
       },
       lastSelect(val){
         console.log(val.area.value)
+      },
+      addressChange(ids, name){
+        this.cityName = name[0].indexOf('市') !== - 1 ? name[0] : name[1]
       }
     }
   }
@@ -405,15 +417,18 @@
 
 
     .select-city .province{
-      width: 60px;
+      /*width: 60px;*/
       height: 30px;
       line-height: 30px;
       border:1px solid #ccc;
       border-radius: 3px;
       display: inline-block;
       font-size: 12px;
-      padding-left: 5px;
+      padding: 0 5px;
       margin-right: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      min-width: 60px;
     }
 
     .search-container320{
@@ -429,10 +444,12 @@
       padding: 0 10px;
       min-width: 0px;
       width: 100%;
+      max-width: 300px;
     }
 
     #store-map{
-      height: calc(100vh - 136px)
+      /*height: calc(100vh - 136px);*/
+      height: 100vh;
     }
 
     .address-info{
@@ -443,6 +460,9 @@
       align-items: center;
       background-color: #fff;
       box-shadow: 20px 20px 20px 20px rgba(0,0,0,.3);
+      position: fixed;
+      bottom: 0;
+      left: 0;
     }
 
     .address-info-left{
