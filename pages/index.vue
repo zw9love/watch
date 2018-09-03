@@ -68,12 +68,18 @@
         <p>维修中心地址：北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）</p>
       </div>
       <div class="banner-shadow320">
-        <popup-picker :data="list1" v-model="value1" :columns="3" ref="picker">
+        <x-address title="title" v-model="value1" :list="addressData" :hide-district="true" @on-shadow-change="addressChange" ref="picker">
           <template slot="title" slot-scope="props">
-            <span class="city">{{ ($refs.picker && $refs.picker.getNameValues().split(' ')[1]) || '广州'}}</span>
+            <span class="city">{{cityName}}</span>
             <img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow">
           </template>
-        </popup-picker>
+        </x-address>
+        <!--<popup-picker :data="list1" v-model="value1" :columns="3" ref="picker">-->
+          <!--<template slot="title" slot-scope="props">-->
+            <!--<span class="city">{{ ($refs.picker && $refs.picker.getNameValues().split(' ')[1]) || '广州'}}</span>-->
+            <!--<img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow">-->
+          <!--</template>-->
+        <!--</popup-picker>-->
         <!--<span class="city">北京</span>-->
         <!--<img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow">-->
         <div class="line"></div>
@@ -798,6 +804,7 @@
   import Footer from '../components/Footer'
   import Reservation from '../components/Reservation'
   import HeaderMobile from '../components/HeaderMobile'
+  import { ChinaAddressV4Data} from 'vux'
   // import {Swipe, SwipeItem, Picker} from 'mint-ui'
   // import 'mint-ui/lib/style.css'
   // import 'element-ui/lib/theme-chalk/index.css';
@@ -896,11 +903,23 @@
           {name: '林先生', brand: '积家', phone: '188*****199'},
           {name: '刘先生', brand: '真力时', phone: '139*****620'},
           {name: '郝先生', brand: '万国', phone: '138*****513'},
-        ]
+        ],
+        addressData: ChinaAddressV4Data,
+        cityName: '',
+        bmap: undefined
       }
     },
     mounted() {
-      if (window.BMap) {
+      this.bmap = window.BMap
+      console.log('mounted')
+      console.log(this.bmap)
+      this.stackHeight = parseInt(window.innerWidth * 0.4667)
+      this.certificationHeight = this.$refs.certification320[0].clientHeight
+      this.brandMainHeight = this.$refs.brandMainImgWrapper[0].clientHeight
+    },
+    watch: {
+      bmap: function(){
+        console.log('bmap加载完成')
         let map = new BMap.Map("store-map");
         let point = new BMap.Point(116.331398, 39.897445);
         map.centerAndZoom(point, 12);
@@ -916,11 +935,6 @@
           }
         });
       }
-      // console.log(window.BMap)
-      // console.log(BMap)
-      this.stackHeight = parseInt(window.innerWidth * 0.4667)
-      this.certificationHeight = this.$refs.certification320[0].clientHeight
-      this.brandMainHeight = this.$refs.brandMainImgWrapper[0].clientHeight
     },
     methods: {
       carouselChange(nowIndex, useIndex) {
@@ -979,6 +993,9 @@
       },
       closeMobile(){
         this.reservationActive = false
+      },
+      addressChange(ids, name){
+        this.cityName = name[0].indexOf('市') !== - 1 ? name[0].slice(0, name[0].length - 1) : name[1].slice(0, name[1].length - 1)
       }
     }
   }

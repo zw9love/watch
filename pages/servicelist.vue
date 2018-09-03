@@ -196,7 +196,7 @@
         console.log(val.area.value)
       },
       addressChange(ids, name){
-        this.cityName = name[0].indexOf('市') !== - 1 ? name[0] : name[1]
+        this.cityName = name[0].indexOf('市') !== - 1 ? name[0].slice(0, name[0].length - 1) : name[1].slice(0, name[1].length - 1)
       }
     }
   }

@@ -144,22 +144,22 @@
       <HeaderMobile title="维修案例"/>
       <div class="main320">
         <div class="main320-video">
-          <div class="video-player-wrapper320" style="width: 0; height: 0">
-            <div class="video-player-box320"
-                 @play="onPlayerPlay($event)"
-                 @pause="onPlayerPause($event)"
-                 @ended="onPlayerEnded($event)"
-                 @loadeddata="onPlayerLoadeddata($event)"
-                 @waiting="onPlayerWaiting($event)"
-                 @playing="onPlayerPlaying($event)"
-                 @timeupdate="onPlayerTimeupdate($event)"
-                 @canplay="onPlayerCanplay($event)"
-                 @canplaythrough="onPlayerCanplaythrough($event)"
-                 @ready="playerReadied"
-                 @statechanged="playerStateChanged($event)"
-                 v-video-player:myVideoPlayer="playerOptions">
-            </div>
-          </div>
+          <!--<div class="video-player-wrapper320" style="width: 0; height: 0">-->
+            <!--<div class="video-player-box320"-->
+                 <!--@play="onPlayerPlay($event)"-->
+                 <!--@pause="onPlayerPause($event)"-->
+                 <!--@ended="onPlayerEnded($event)"-->
+                 <!--@loadeddata="onPlayerLoadeddata($event)"-->
+                 <!--@waiting="onPlayerWaiting($event)"-->
+                 <!--@playing="onPlayerPlaying($event)"-->
+                 <!--@timeupdate="onPlayerTimeupdate($event)"-->
+                 <!--@canplay="onPlayerCanplay($event)"-->
+                 <!--@canplaythrough="onPlayerCanplaythrough($event)"-->
+                 <!--@ready="playerReadied"-->
+                 <!--@statechanged="playerStateChanged($event)"-->
+                 <!--v-video-player:myVideoPlayer="playerOptions">-->
+            <!--</div>-->
+          <!--</div>-->
           <!--v-for="(item, key) in list" v-if="key === 0 && mobileActive" :key="'mobile' + key"-->
           <!--<video class="video-player-box320" v-for="(item, key) in list" :key="key" controls src="http://vjs.zencdn.net/v/oceans.mp4"></video>-->
           <div class="video-player-container320" v-if="mobileActive" v-for="(item, key) in list" :key="key">
