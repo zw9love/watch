@@ -28,7 +28,7 @@ module.exports = {
     {src: '~/plugins/mint-ui', ssr: true },
     {src: '~/plugins/vux-plugins', ssr: false},
     {src: '~/plugins/vux-components', ssr: true},
-    {src: '~/plugins/v-distpicker', ssr: false},
+    // {src: '~/plugins/v-distpicker', ssr: false},
     {src: '~/plugins/vue-picture-preview', ssr: false},
     {src: '~plugins/video-player-plugin.js', ssr: false }
   ],

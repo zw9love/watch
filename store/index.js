@@ -12,7 +12,9 @@ Vue.use(Vuex)
 const store = () => new Vuex.Store({
   state: {
     counter: 100,
-    token: 'a1234567890'
+    token: 'a1234567890',
+    cityName: '北京',
+    cityIndex: 0
   },
   mutations: {
     increment (state) {

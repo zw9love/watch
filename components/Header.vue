@@ -18,11 +18,24 @@
             <div class="line"></div>
           </li>
           <li>
-            <span class="city-name">北京</span>
+            <span class="city-name">{{cityName}}</span>
+            <img src="../assets/img/home_top_icon@2x.png" alt="" style="margin-left: 10px">
+            <div class="city-popup">
+              <h3>服务城市</h3>
+              <div class="city-popup-line"></div>
+              <ul class="city-popup-wrapper">
+                <li v-for="(item, key) in cityList" :key="key">
+                  <a href="#" @click="cityClick(item, key)" :class="{active: cityIndex === key}">{{item}}</a>
+                </li>
+              </ul>
+              <div class="more-city">
+                <span @click="$router.push({path: '/servicelist'})">更多城市 >></span>
+              </div>
+            </div>
           </li>
-          <li>
-            <img src="../assets/img/home_top_icon@2x.png" alt="">
-          </li>
+          <!--<li>-->
+            <!--<img src="../assets/img/home_top_icon@2x.png" alt="">-->
+          <!--</li>-->
         </ul>
       </div>
       <div class="navbar-right">
@@ -71,7 +84,24 @@
           {name: '维修案例', href: '/case'},
           {name: '预约到店', href: '/order'},
           {name: '维修进度', href: '/process'},
-        ]
+        ],
+        cityList: ['北京', '天津','青岛', '常州', '潍坊', '济南', '昆明'],
+        // cityName: '北京',
+        // cityIndex: 0
+      }
+    },
+    computed: {
+      cityName: function(){
+        return this.$store.state.cityName
+      },
+      cityIndex: function(){
+        return this.$store.state.cityIndex
+      }
+    },
+    methods: {
+      cityClick(city, key){
+        this.$store.state.cityName = city
+        this.$store.state.cityIndex = key
       }
     }
   }
@@ -81,47 +111,54 @@
   .navbar-container {
     max-width: 1280px;
     margin: 60px auto 0 auto;
-    overflow: hidden;
+  }
+
+  .navbar-container:after{
+    content: "";
+    display: block;
+    clear: both;
   }
 
   .navbar-left {
     float: left;
   }
 
-  .navbar-left ul {
+  .navbar-left >ul {
 
   }
 
-  .navbar-left ul li {
+  .navbar-left >ul >li {
     display: inline-block;
     vertical-align: middle;
     margin-right: 18px;
+    position: relative;
+    padding-bottom: 20px;
   }
 
-  .navbar-left ul li img {
+  .navbar-left >ul >li img {
     cursor: pointer;
   }
 
-  .navbar-left ul li p.ch-name {
+  .navbar-left >ul >li p.ch-name {
     color: #333;
     font-size: 30px;
     font-family: "PingFangSC-Semibold";
   }
 
-  .navbar-left ul li p.en-name {
+  .navbar-left >ul >li p.en-name {
     color: #999;
     font-family: "PingFangSC-Semibold";
     font-size: 18px;
   }
 
-  .navbar-left ul li span.city-name {
-    font-size: 30px;
+  .navbar-left >ul >li span.city-name {
+    font-size: 26px;
     color: #BF9571;
     font-family: "PingFangSC-Regular";
     cursor: pointer;
   }
 
-  .navbar-left ul li .line {
+  .navbar-left >ul >li .line {
     width: 1px;
     height: 50px;
     background-color: #E5E5E5;
@@ -157,7 +194,7 @@
   .navigation-container {
     height: 60px;
     background-color: #333333;
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
 
@@ -250,6 +287,68 @@
     left: 12px;
     width: auto
   }
+
+  .navbar-left >ul >li:last-child:hover .city-popup{
+    display: block;
+  }
+
+  .city-popup{
+    width: 300px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border:1px solid #ddd;
+    z-index: 3;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: none;
+  }
+
+  .city-popup h3{
+    font-size: 16px;
+  }
+  .city-popup .city-popup-line{
+    width: 100%;
+    height: 1px;
+    background-color: #eee;
+    margin: 20px 0;
+  }
+
+  .city-popup-wrapper{
+    overflow: hidden;
+  }
+
+  .city-popup-wrapper li{
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+  }
+
+  .city-popup-wrapper li a{
+    color: #666;
+    font-size: 14px;
+  }
+
+
+  .more-city{
+    text-align: right;
+    margin:  10px 0;
+  }
+
+  .more-city span{
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .city-popup-wrapper li a.active, .city-popup-wrapper li a:hover, .more-city span:hover{
+    color: #C8936B;
+  }
+
 
   @media (max-width:768px){
     .navbar-container, .navigation-container{

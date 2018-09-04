@@ -1,9 +1,5 @@
 <template>
   <div class="container">
-
-    <!--<div style="height: 50px; background: linear-gradient(to bottom, #000, #333 60%, #999 100%);"></div>-->
-    <!--<div style="height: 50px; background: linear-gradient(to bottom, #000, #666 100%);"></div>-->
-
     <!--tabbar-->
     <div class="tabbar-container">
       <img src="../assets/img/bottom_fix.png" alt="">
@@ -212,7 +208,7 @@
           </li>
           <li>
             <div class="service-project-main-cell">
-              <img src="../assets/img/home_serviceitems_icon1@2x.png" alt="">
+              <img src="../assets/img/home_serviceitems_icon2@2x.png" alt="">
               <h3 class="info">零件损坏</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -229,7 +225,7 @@
           </li>
           <li>
             <div class="service-project-main-cell">
-              <img src="../assets/img/home_serviceitems_icon1@2x.png" alt="">
+              <img src="../assets/img/home_serviceitems_icon3@2x.png" alt="">
               <h3 class="info">清洗保养</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -246,7 +242,7 @@
           </li>
           <li>
             <div class="service-project-main-cell">
-              <img src="../assets/img/home_serviceitems_icon1@2x.png" alt="">
+              <img src="../assets/img/home_serviceitems_icon4@2x.png" alt="">
               <h3 class="info">全套保养</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -461,25 +457,35 @@
       </div>
       <div class="certification320-container">
         <swiper v-model="certificationIndex" @on-index-change="certificationIndexChange" :show-dots="false"
-                :show-desc-mask="false" height="166px">
+                :show-desc-mask="false" height="260px">
           <swiper-item v-for="(item, key) in certificationList" :key="key" >
+            <!--<div class="certification320" ref="certification320">-->
+              <!--<div class="certification320-imgContainer">-->
+                <!--<img src="../assets/img/home_certificationtechnician__image@2x.png" alt="">-->
+              <!--</div>-->
+              <!--<div class="certification320-infoContainer">-->
+                <!--<h1 class="certification-title320">Charlie Peter {{key}}</h1>-->
+                <!--<p class="certification-position320">高级技师顾问</p>-->
+                <!--<p class="certification-info320">-->
+                  <!--现任瑞士国际钟表协会委员、西亨名表维修技术-->
+                  <!--总监、前百达翡丽英才中心技术讲师、前瑞士-->
+                  <!--SMH培训讲师。-->
+                <!--</p>-->
+              <!--</div>-->
+            <!--</div>-->
             <div class="certification320" ref="certification320">
-              <div class="certification320-imgContainer">
-                <img src="../assets/img/home_certificationtechnician__image@2x.png" alt="">
-              </div>
-              <div class="certification320-infoContainer">
-                <h1 class="certification-title320">Charlie Peter {{key}}</h1>
-                <p class="certification-position320">高级技师顾问</p>
-                <p class="certification-info320">
-                  现任瑞士国际钟表协会委员、西亨名表维修技术
-                  总监、前百达翡丽英才中心技术讲师、前瑞士
-                  SMH培训讲师。
-                </p>
-              </div>
+              <img src="../assets/img/customer_service_logo.png" alt="">
+              <strong>Charlie Peter{{key}}</strong>
+              <span class="level-info">国家高级技师</span>
+              <p class="certification320-info">
+                现任瑞士国际钟表协会委员、西亨名表维修技术
+                总监、前百达翡丽英才中心技术讲师、前瑞士
+                SMH培训讲师。
+              </p>
             </div>
           </swiper-item>
         </swiper>
-        <Indicators v-model="certificationIndex"  :list="certificationList"></Indicators>
+        <!--<Indicators v-model="certificationIndex"  :list="certificationList"></Indicators>-->
       </div>
     </div>
     <!--进口维修设备及零件-->
@@ -492,7 +498,7 @@
             <img v-lazy="require('../assets/img/home_maintenanceequipment__images@2x.png')" alt="">
             <!--<x-img src="../assets/img/home_maintenanceequipment__images@2x.png" :webp-src="`../assets/img/home_maintenanceequipment__images@2x.png?type=webp`" :offset="-100" container="#vux_view_box_body"></x-img>-->
             <div class="equipment-shadow">
-              <span>名表测试仪</span>
+              <span>多功能校表仪</span>
             </div>
           </div>
         </div>
@@ -501,7 +507,7 @@
             <img v-lazy="require('../assets/img/home_maintenanceequipment__images@2x.png')" alt="">
             <!--<x-img src="../assets/img/home_maintenanceequipment__images@2x.png" :webp-src="`../assets/img/home_maintenanceequipment__images@2x.png?type=webp`" :offset="-100" container="#vux_view_box_body"></x-img>-->
             <div class="equipment-shadow">
-              <span>名表测试仪</span>
+              <span>真空试水机</span>
             </div>
           </div>
         </div>
@@ -510,7 +516,7 @@
             <img v-lazy="require('../assets/img/home_maintenanceequipment__images@2x.png')" alt="">
             <!--<x-img src="../assets/img/home_maintenanceequipment__images@2x.png" :webp-src="`../assets/img/home_maintenanceequipment__images@2x.png?type=webp`" :offset="-100" container="#vux_view_box_body"></x-img>-->
             <div class="equipment-shadow">
-              <span>名表测试仪</span>
+              <span>隔尘抛光机</span>
             </div>
           </div>
         </div>
@@ -519,7 +525,7 @@
             <img v-lazy="require('../assets/img/home_maintenanceequipment__images@2x.png')" alt="">
             <!--<x-img src="../assets/img/home_maintenanceequipment__images@2x.png" :webp-src="`../assets/img/home_maintenanceequipment__images@2x.png?type=webp`" :offset="-100" container="#vux_view_box_body"></x-img>-->
             <div class="equipment-shadow">
-              <span>名表测试仪</span>
+              <span>多功能校表仪</span>
             </div>
           </div>
         </div>
@@ -528,7 +534,7 @@
             <img v-lazy="require('../assets/img/home_maintenanceequipment__images@2x.png')" alt="">
             <!--<x-img src="../assets/img/home_maintenanceequipment__images@2x.png" :webp-src="`../assets/img/home_maintenanceequipment__images@2x.png?type=webp`" :offset="-100" container="#vux_view_box_body"></x-img>-->
             <div class="equipment-shadow">
-              <span>名表测试仪</span>
+              <span>真空试水机</span>
             </div>
           </div>
         </div>
@@ -537,7 +543,7 @@
             <img v-lazy="require('../assets/img/home_maintenanceequipment__images@2x.png')" alt="">
             <!--<x-img src="../assets/img/home_maintenanceequipment__images@2x.png" :webp-src="`../assets/img/home_maintenanceequipment__images@2x.png?type=webp`" :offset="-100" container="#vux_view_box_body"></x-img>-->
             <div class="equipment-shadow">
-              <span>名表测试仪</span>
+              <span>隔尘抛光机</span>
             </div>
           </div>
         </div>
@@ -794,6 +800,45 @@
         <!--<img src="../assets/img/close.png" alt="">-->
       <!--</div>-->
     </div>
+    <div class="sidebar">
+      <div class="sidebar-online" @click="goto('/customerservice')">
+        <img src="../assets/img/home_suspend_bg@2x.png" alt="">
+        <span>在线客服</span>
+      </div>
+      <div class="sidebar-cell sidebar-cell-advice" @click="goto('/customerservice')">
+        <!--<img src="../assets/img/home_suspend_button_no4@2x.png" alt="">-->
+        <span>立即咨询</span>
+      </div>
+      <div class="sidebar-cell sidebar-cell-order" @click="goto('/order')">
+        <!--<img src="../assets/img/home_suspend_button_no2@2x.png" alt="">-->
+        <span>预约到店</span>
+      </div>
+      <div class="sidebar-cell sidebar-cell-phone">
+        <!--<img src="../assets/img/home_suspend_button_no3@2x.png" alt="">-->
+        <span style="color: #BB9875">电话咨询</span>
+        <div class="sidebar-cell-popup call-back">
+          <input type="tel" class="call-back-txt" placeholder="请输入您的手机号码">
+          <span class="call-back-btn">给您回电</span>
+        </div>
+      </div>
+      <div class="sidebar-cell sidebar-cell-wechat">
+        <!--<img src="../assets/img/home_suspend_button_no1@2x.png" alt="">-->
+        <span>微信联系</span>
+        <div class="sidebar-cell-popup sidebar-cell-popup-qr">
+          <img src="../assets/img/qr_code.jpg" alt="">
+        </div>
+      </div>
+      <div class="sidebar-back-top" @click="backTop">
+        <div class="sidebar-back-top-wrapper">
+          <div>
+            <img src="../assets/img/home_suspend_icon_top@2x.png" alt="">
+          </div>
+          <div>
+            <span>回到顶部</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -996,6 +1041,9 @@
       },
       addressChange(ids, name){
         this.cityName = name[0].indexOf('市') !== - 1 ? name[0].slice(0, name[0].length - 1) : name[1].slice(0, name[1].length - 1)
+      },
+      backTop(){
+        document.documentElement.scrollTop = document.body.scrollTop = 0;
       }
     }
   }

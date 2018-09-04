@@ -470,7 +470,6 @@
     text-align: center;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
-    cursor: pointer;
   }
 
   .input-txt {
@@ -565,7 +564,6 @@
 
     .nav320-title{
       color: #fff;
-      font-family: 16px;
     }
 
     .banner320 {

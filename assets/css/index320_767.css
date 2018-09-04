@@ -463,8 +463,18 @@
   }
 
   .equipment-shadow{
-    height: 17px;
-    line-height: 17px;
+    /*height: 17px;*/
+    /*line-height: 17px;*/
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+  }
+
+  .equipment-cell-container img{
+    border-radius: 5px;
   }
 
   .equipment-shadow span{
@@ -518,60 +528,97 @@
   /*
       认证技师
    */
+  /*.certification320-container{*/
+    /*display: block;*/
+    /*min-height: 100px;*/
+  /*}*/
+
+  /*.certification320{*/
+    /*display: flex;*/
+    /*margin: 0 10px;*/
+    /*margin-top: 20px;*/
+    /*border: 2px solid #BF9571;*/
+  /*}*/
+
+  /*.certification320-imgContainer{*/
+    /*!*flex: 1;*!*/
+  /*}*/
+
+  /*.certification320-imgContainer img{*/
+    /*!*width: 120px;*!*/
+    /*height: 120px;*/
+    /*vertical-align: middle;*/
+  /*}*/
+
+  /*.certification320-infoContainer{*/
+    /*flex: 2;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*!*align-items: center;*!*/
+    /*padding: 0 15px;*/
+  /*}*/
+
+  /*.certification320-infoContainer .certification-title320{*/
+    /*font-family: "PingFangSC-Medium";*/
+    /*font-size: 15px;*/
+    /*color: #000;*/
+    /*font-weight: 600;*/
+  /*}*/
+
+  /*.certification-position320{*/
+    /*font-size: 12px;*/
+    /*color: #333;*/
+    /*font-family: "PingFangSC-Regular";*/
+  /*}*/
+
+  /*.certification-info320{*/
+    /*font-size: 12px;*/
+    /*color: #333;*/
+    /*font-family: "PingFangSC";*/
+    /*margin-top: 8px;*/
+    /*display: -webkit-box;*/
+    /*-webkit-line-clamp: 3;*/
+    /*-webkit-box-orient: vertical;*/
+    /*overflow: hidden;*/
+  /*}*/
+
   .certification320-container{
     display: block;
-    min-height: 100px;
   }
 
   .certification320{
     display: flex;
-    margin: 0 10px;
-    margin-top: 20px;
-    border: 2px solid #BF9571;
-  }
-
-  .certification320-imgContainer{
-    /*flex: 1;*/
-  }
-
-  .certification320-imgContainer img{
-    /*width: 120px;*/
-    height: 120px;
-    vertical-align: middle;
-  }
-
-  .certification320-infoContainer{
-    flex: 2;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    /*align-items: center;*/
-    padding: 0 15px;
+    align-items: center;
+    padding: 20px 40px;
+  }
+  .certification320 img{
+    width: 85px;
+    height: 85px;
   }
 
-  .certification320-infoContainer .certification-title320{
-    font-family: "PingFangSC-Medium";
-    font-size: 15px;
-    color: #000;
+  .certification320 strong{
+    margin-top: 10px;
+  }
+
+  .certification320 .level-info{
+    color: #666;
+    font-size: 14px;
     font-weight: 600;
+    margin-top: 10px;
   }
 
-  .certification-position320{
+  .certification320-info{
+    margin-top: 10px;
+    line-height: 1.8em;
+    color: #666;
     font-size: 12px;
-    color: #333;
-    font-family: "PingFangSC-Regular";
   }
 
-  .certification-info320{
-    font-size: 12px;
-    color: #333;
-    font-family: "PingFangSC";
-    margin-top: 8px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+
+
+  /*预约服务*/
 
   .reservation-shadow320{
     display: block;
@@ -623,6 +670,10 @@
   .reservation-shadow320-button >a:last-child{
     border: 1px solid #C8936B;
     color: #C8936B;
+  }
+
+  .sidebar{
+    display: none;
   }
 
 }

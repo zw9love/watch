@@ -7,12 +7,13 @@
       <main class="main">
         <div class="main-left">
           <div class="city">
-            <div class="select-container"><v-distpicker @province="provinceSelect" @city="citySelect" @selected="lastSelect"></v-distpicker></div>
-            <strong>直接搜索:</strong>
-            <input type="text" class="search-txt" placeholder="请输入城市中文或拼音">
+            <CityPicker />
+            <!--<div class="select-container"><v-distpicker @province="provinceSelect" @city="citySelect" @selected="lastSelect"></v-distpicker></div>-->
+            <!--<strong>直接搜索:</strong>-->
+            <!--<input type="text" class="search-txt" placeholder="请输入城市中文或拼音">-->
           </div>
           <div class="store-list">
-            <div class="store-cell-wrapper" v-for="item in 7" :key="item">
+            <div class="store-cell-wrapper" v-for="item in 5" :key="item">
               <div class="store-cell" >
                 <div class="store-cell-left">
                   <img src="../assets/img/store_images1@2x.png" alt="">
@@ -39,6 +40,9 @@
               </div>
               <div class="store-line"></div>
             </div>
+            <div class="get-more">
+              <span @click="getMore">查看更多 >></span>
+            </div>
           </div>
         </div>
         <Advertisement />
@@ -49,7 +53,7 @@
     </div>
 
     <div class="container320">
-      <HeaderMobile :title="getTitle"/>
+      <HeaderMobile v-show="!addressActive" title="维修服务中心列表"/>
       <main class="main320">
         <div class="select-city">
           <strong>请选择城市：</strong>
@@ -100,7 +104,13 @@
       <div v-transfer-dom>
         <popup v-model="addressActive" position="right" width="100%">
           <div style="margin-top: 46px">
-            <HeaderMobile title="维修地址"/>
+            <div class="address-header vux-header">
+             <div class="vux-header-left">
+               <div class="left-arrow" @click="backList"></div>
+             </div>
+              <span class="address-header-info">维修地址</span>
+            </div>
+              <!--<x-header title="维修地址" :left-options="{backText: ''}"></x-header>-->
             <div>
               <div id="store-map"></div>
               <div class="address-info">
@@ -126,6 +136,7 @@
   import Footer from '../components/Footer'
   import Advertisement from '../components/Advertisement'
   import HeaderMobile from '../components/HeaderMobile'
+  import CityPicker from '../components/CityPicker'
   import { ChinaAddressV4Data} from 'vux'
 
   export default {
@@ -143,7 +154,8 @@
       Header,
       Footer,
       Advertisement,
-      HeaderMobile
+      HeaderMobile,
+      CityPicker
     },
     data() {
       return {
@@ -158,14 +170,14 @@
         ],
         addressActive: false,
         addressData: ChinaAddressV4Data,
-        cityName: ''
+        cityName: '',
       }
     },
-    computed: {
-      getTitle(){
-        return this.addressActive ? '维修地址' : '维修服务中心列表'
-      }
-    },
+    // computed: {
+    //   getTitle(){
+    //     return this.addressActive ? '维修地址' : '维修服务中心列表'
+    //   }
+    // },
     methods:{
       goAddress(){
         this.addressActive = true
@@ -197,6 +209,12 @@
       },
       addressChange(ids, name){
         this.cityName = name[0].indexOf('市') !== - 1 ? name[0].slice(0, name[0].length - 1) : name[1].slice(0, name[1].length - 1)
+      },
+      getMore(){
+
+      },
+      backList(){
+        this.addressActive = false
       }
     }
   }
@@ -231,7 +249,7 @@
   .city{
     margin-top: 20px;
     height: 42px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     line-height: 42px;
     /*background-color: #ccc;*/
   }
@@ -257,6 +275,16 @@
   .store-list{
      margin-top: 50px;
    }
+
+  .get-more{
+    text-align: center;
+  }
+
+  .get-more span{
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+  }
 
   .store-cell{
     /*overflow: hidden;*/
@@ -484,6 +512,24 @@
     .address-info-right img{
       width: 50px;
       height: 50px;
+    }
+
+    .address-header{
+      position: fixed;
+      left: 0;
+      top: 0;
+      background: linear-gradient(to bottom, #000, #666 100%);
+      width: 100%;
+      height: 46px;
+      text-align: center;
+    }
+
+    .address-header-info{
+      line-height: 40px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 400;
+      color: #fff;
     }
   }
 
