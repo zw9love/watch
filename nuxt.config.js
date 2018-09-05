@@ -8,16 +8,19 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'watch',
+    title: '北京名表维修中心',
     meta: [
       { charset: 'utf-8' },
+      // <meta name=”renderer” content=”webkit”>
+      { name :'renderer', content: 'webkit'},
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0' },
       { hid: 'description', name: 'description', content: '手表手表劳力士修理' },
       { name: 'keywords', content: '手表手表劳力士修理'}
       // <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/logo.png' }
     ],
     script: [
       {src: 'http://api.map.baidu.com/api?v=2.0&ak=L2fFIBoizTO5nxe7ypgsV3pHGmYw6tqx'},

@@ -376,7 +376,7 @@
   .environmental{
     height: 650px;
     min-height: 620px;
-    /*overflow: hidden;*/
+    overflow: hidden;
   }
 
   .case{}

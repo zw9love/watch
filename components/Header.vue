@@ -25,7 +25,7 @@
               <div class="city-popup-line"></div>
               <ul class="city-popup-wrapper">
                 <li v-for="(item, key) in cityList" :key="key">
-                  <a href="#" @click="cityClick(item, key)" :class="{active: cityIndex === key}">{{item}}</a>
+                  <a :href="'/servicelist/' + item.spell" @click="cityClick(item, key)" :class="{active: cityIndex === key}">{{item.name}}</a>
                 </li>
               </ul>
               <div class="more-city">
@@ -85,7 +85,7 @@
           {name: '预约到店', href: '/order'},
           {name: '维修进度', href: '/process'},
         ],
-        cityList: ['北京', '天津','青岛', '常州', '潍坊', '济南', '昆明'],
+        cityList: [{name: '北京', spell: 'beijing'}, {name: '天津', spell: 'tianjin'}, {name: '青岛', spell: 'qingdao'}, {name: '常州', spell: 'changzhou'}, {name: '潍坊', spell: 'lanfang'}, {name: '济南', spell: 'jinan'}, {name: '昆明', spell: 'kunming'}],
         // cityName: '北京',
         // cityIndex: 0
       }
@@ -100,7 +100,7 @@
     },
     methods: {
       cityClick(city, key){
-        this.$store.dispatch({type: 'setCityName', val: city })
+        this.$store.dispatch({type: 'setCityName', val: city.name })
         this.$store.dispatch({type: 'setCityIndex', val: key })
       }
     }
