@@ -265,7 +265,7 @@
     border-top-left-radius: 5px;
     outline: none;
     border: none;
-    font-size: 18px;
+    font-size: 15px;
     padding: 0 10px;
   }
 

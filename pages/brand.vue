@@ -82,7 +82,7 @@
         <div class="environmental-main">
           <h1 class="environmental-main-title">服务环境</h1>
           <div class="carousel">
-            <el-carousel type="card" height="340px" :autoplay="false" arrow="never" indicator-position="none"
+            <el-carousel type="card" height="410px" :autoplay="false" arrow="never" indicator-position="none"
                          @change="carouselChange" ref="carousel">
               <el-carousel-item name="0">
                 <img src="../assets/img/home_serviceenvironment_images@2x.png" alt="">
@@ -114,13 +114,13 @@
             <!--<h3>{{ item }}</h3>-->
             <!--</el-carousel-item>-->
             <el-carousel-item name="0">
-              <img src="../assets/img/home_serviceenvironment_images@2x.png" alt="">
+              <img src="../assets/img/brand_images8@2x.png" alt="">
             </el-carousel-item>
             <el-carousel-item name="1">
-              <img src="../assets/img/home_serviceenvironment_images1@2x.png" alt="">
+              <img src="../assets/img/brand_images8@2x.png" alt="">
             </el-carousel-item>
             <el-carousel-item name="2">
-              <img src="../assets/img/home_serviceenvironment_images2@2x.png" alt="">
+              <img src="../assets/img/brand_images8@2x.png" alt="">
             </el-carousel-item>
           </el-carousel>
           <Indicators v-model="indicatorKey" :indicatorsStyle="{bottom: '-30px'}" :list="[1,1,1]" ></Indicators>
@@ -222,7 +222,7 @@
       }
     },
     mounted() {
-      this.stackHeight = parseInt(window.innerWidth * 0.4667)
+      this.stackHeight = parseInt(window.innerWidth * 0.421875)
       console.log('mounted钩子')
       if (window.BMap) {
         console.log('BMap加载完成。')
@@ -374,7 +374,7 @@
   }
 
   .environmental{
-    height: 620px;
+    height: 650px;
     min-height: 620px;
     /*overflow: hidden;*/
   }
@@ -387,6 +387,7 @@
 
   .case-main-cell img{
     vertical-align: middle;
+    width: 100%;
   }
 
   .case-info-container{
@@ -531,6 +532,7 @@
       top: 50%;
       transform: translate(-50%, -50%);
       width: calc(100% - 60px);
+      line-height: 1.6em
     }
 
     .qualification-container320{
@@ -591,6 +593,7 @@
         -webkit-line-clamp: 6;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        line-height: 1.4em;
       }
     }
   }

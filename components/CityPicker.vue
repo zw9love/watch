@@ -244,6 +244,7 @@
     z-index: 1;
     padding: 80px 20px 20px 20px;
     min-width: 430px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,.4);
   }
 
   .city-popup-wrapper{

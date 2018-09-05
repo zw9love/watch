@@ -417,8 +417,10 @@
     width:100%;
     height: 100%;
     display: flex;
+    /*justify-content: space-between;*/
     justify-content: center;
     align-items: center;
+    /*padding: 0 40px;*/
   }
 
   .service-quality-container320-main img{
@@ -430,6 +432,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 16px;
+    text-align: center;
   }
 
   .service-quality-container320-maininfo  p:first-child{
@@ -443,6 +446,7 @@
     font-size: 10px;
     color: #fff;
     font-family: "PingFangSC-Regular";
+    white-space: nowrap;
   }
 
   /*

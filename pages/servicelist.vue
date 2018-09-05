@@ -85,10 +85,10 @@
                 <img src="../assets/img/store_images1@2x.png" alt="">
               </div>
               <div class="store-cell320-right">
-                <p><strong>北京（朝阳店）</strong></p>
+                <p><strong>北京（西城店）</strong></p>
                 <div class="store-cell320-info" @click="goAddress">
                   <img src="../assets/img/store_icon1@2x.png" alt="">
-                  <span>北京市静安区南京西路891号中创大厦13楼1310室</span>
+                  <span>北京市西城区西单北大街甲133号西亨钟表维修中心</span>
                 </div>
                 <div class="store-cell320-info">
                   <img src="../assets/img/store_icon2@2x.png" alt="">
@@ -115,8 +115,8 @@
               <div id="store-map"></div>
               <div class="address-info">
                 <div class="address-info-left">
-                  <strong>厦滘店</strong>
-                  <p>广州市信基沙溪酒店用品博览城（夏滘区）市场1-1号铺</p>
+                  <strong>北京店</strong>
+                  <p>北京市西城区西单北大街甲133号西亨钟表维修中心</p>
                 </div>
                 <div class="address-info-right">
                   <img src="../assets/img/service-address.png" alt="">
@@ -140,15 +140,15 @@
   import { ChinaAddressV4Data} from 'vux'
 
   export default {
-    head: {
-      script: [
-        {src: 'http://api.map.baidu.com/api?v=2.0&ak=L2fFIBoizTO5nxe7ypgsV3pHGmYw6tqx'},
-        // { src: 'https://c.mipcdn.com/static/v1/mip.js'},
-      ],
-      link: [
-        // { rel: 'stylesheet', href: 'https://c.mipcdn.com/static/v1/mip.css'}
-      ]
-    },
+    // head: {
+    //   script: [
+    //     {src: 'http://api.map.baidu.com/api?v=2.0&ak=L2fFIBoizTO5nxe7ypgsV3pHGmYw6tqx'},
+    //     // { src: 'https://c.mipcdn.com/static/v1/mip.js'},
+    //   ],
+    //   link: [
+    //     // { rel: 'stylesheet', href: 'https://c.mipcdn.com/static/v1/mip.css'}
+    //   ]
+    // },
     name: "servicelist",
     components: {
       Header,
@@ -188,7 +188,7 @@
           // 创建地址解析器实例
           let myGeo = new BMap.Geocoder();
           // 将地址解析结果显示在地图上,并调整地图视野
-          myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）", function (point) {
+          myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心", function (point) {
             if (point) {
               map.centerAndZoom(point, 16);
               map.addOverlay(new BMap.Marker(point));
@@ -497,16 +497,21 @@
       display: flex;
       flex: 1;
       flex-direction: column;
+      padding-right: 10px;
     }
 
     .address-info-left strong{
-      font-size: 18px;
+      font-size: 16px;
     }
 
     .address-info-left p{
       color: #999;
-      font-size: 14px;
+      font-size: 12px;
       margin-top: 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .address-info-right img{

@@ -710,7 +710,7 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   text-align: center;
   position: relative;
   margin-top: 100px;
-  min-height: 730px;
+  min-height: 760px;
 }
 
 .environmental img {
@@ -746,6 +746,8 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
 
 .environmental-main .carousel img {
   vertical-align: middle;
+  width: 100%;
+  height: 100%
 }
 
 .environmental-main .indicator {

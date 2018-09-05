@@ -266,26 +266,26 @@
             <p>走时故障</p>
           </li>
           <li>
-            <img src="../assets/img/home_serviceitems_icon1@2x.png" alt="">
-            <p>走时故障</p>
+            <img src="../assets/img/home_serviceitems_icon2@2x.png" alt="">
+            <p>零件损坏</p>
           </li>
           <li>
-            <img src="../assets/img/home_serviceitems_icon1@2x.png" alt="">
-            <p>走时故障</p>
+            <img src="../assets/img/home_serviceitems_icon3@2x.png" alt="">
+            <p>零件翻新</p>
           </li>
         </ul>
         <ul class="service-project-main320-cell">
           <li>
-            <img src="../assets/img/home_serviceitems_icon1@2x.png" alt="">
-            <p>走时故障</p>
+            <img src="../assets/img/home_serviceitems_icon4@2x.png" alt="">
+            <p>全套保养</p>
           </li>
           <li>
-            <img src="../assets/img/home_serviceitems_icon1@2x.png" alt="">
-            <p>走时故障</p>
+            <img src="../assets/img/home_serviceitems_icon4@2x.png" alt="">
+            <p>机芯保养</p>
           </li>
           <li>
-            <img src="../assets/img/home_serviceitems_icon1@2x.png" alt="">
-            <p>走时故障</p>
+            <img src="../assets/img/home_serviceitems_icon4@2x.png" alt="">
+            <p>外观清洗</p>
           </li>
         </ul>
       </div>
@@ -381,30 +381,30 @@
           <li>
             <img src="../assets/img/home_servicequality_bg1@2x.png" alt="">
             <div class="service-quality-container320-main">
-              <img src="../assets/img/home_qualitycommitment__icon1@2x.png" alt="">
+              <img src="../assets/img/home_qualitycommitment__icon2@2x.png" alt="">
               <div class="service-quality-container320-maininfo">
-                <p>实体门店</p>
-                <p>百年坚实口碑</p>
+                <p>原厂品质</p>
+                <p>修后同原厂规格</p>
               </div>
             </div>
           </li>
           <li>
             <img src="../assets/img/home_servicequality_bg1@2x.png" alt="">
             <div class="service-quality-container320-main">
-              <img src="../assets/img/home_qualitycommitment__icon1@2x.png" alt="">
+              <img src="../assets/img/home_qualitycommitment__icon3@2x.png" alt="">
               <div class="service-quality-container320-maininfo">
-                <p>实体门店</p>
-                <p>百年坚实口碑</p>
+                <p>价格公道</p>
+                <p>实惠透明合理</p>
               </div>
             </div>
           </li>
           <li>
             <img src="../assets/img/home_servicequality_bg1@2x.png" alt="">
             <div class="service-quality-container320-main">
-              <img src="../assets/img/home_qualitycommitment__icon1@2x.png" alt="">
+              <img src="../assets/img/home_qualitycommitment__icon4@2x.png" alt="">
               <div class="service-quality-container320-maininfo">
-                <p>实体门店</p>
-                <p>百年坚实口碑</p>
+                <p>质保一年</p>
+                <p>原故障点免费重修</p>
               </div>
             </div>
           </li>
@@ -703,7 +703,7 @@
         <div class="environmental-main">
           <ServiceTitle info="SERVICE ITEMS" name="服务环境" content="提供舒适清爽的一对一服务空间" :bgActive="true"></ServiceTitle>
           <div class="carousel">
-            <el-carousel type="card" height="340px" :autoplay="false" arrow="never" indicator-position="none"
+            <el-carousel type="card" height="410px" :autoplay="false" arrow="never" indicator-position="none"
                          @change="carouselChange" ref="carousel">
               <!--<el-carousel-item v-for="item in 3" :key="item">-->
               <!--<h3>{{ item }}</h3>-->
@@ -1012,7 +1012,7 @@
           }
         })
       }
-      this.stackHeight = parseInt(window.innerWidth * 0.4667)
+      this.stackHeight = parseInt(window.innerWidth * 0.3203125)
       // this.certificationHeight = this.$refs.certification320[0].clientHeight
       this.brandMainHeight = this.$refs.brandMainImgWrapper[0].clientHeight
     },
