@@ -2,42 +2,42 @@
   <div class="reservation">
     <div class="reservation-container320">
       <div class="reservation-cell320">
-        <img src="../assets/img/home_reservationprocess_icon1@2x.png" alt="">
+        <img src="../assets/img/home_reservationprocess_icon1_mobile@2x.png" alt="">
         <span>到店送修</span>
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
       </div>
       <div class="reservation-cell320">
-        <img src="../assets/img/home_reservationprocess_icon2@2x.png" alt="">
+        <img src="../assets/img/home_reservationprocess_icon2_mobile@2x.png" alt="">
         <span>预检并报价</span>
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
       </div>
       <div class="reservation-cell320">
-        <img src="../assets/img/home_reservationprocess_icon3@2x.png" alt="">
+        <img src="../assets/img/home_reservationprocess_icon3_mobile@2x.png" alt="">
         <span>确认服务</span>
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
       </div>
       <div class="reservation-cell320">
-        <img src="../assets/img/home_reservationprocess_icon4@2x.png" alt="">
+        <img src="../assets/img/home_reservationprocess_icon4_mobile@2x.png" alt="">
         <span>维修保养</span>
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
       </div>
       <div class="reservation-cell320">
-        <img src="../assets/img/home_reservationprocess_icon5@2x.png" alt="">
+        <img src="../assets/img/home_reservationprocess_icon5_mobile@2x.png" alt="">
         <span>服务完成</span>
       </div>
       <div class="reservation-cell320">
         <img src="../assets/img/home_flow_icon0@2x.png" alt="" class="arrow">
       </div>
       <div class="reservation-cell320">
-        <img src="../assets/img/home_reservationprocess_icon6@2x.png" alt="">
+        <img src="../assets/img/home_reservationprocess_icon6_mobile@2x.png" alt="">
         <span>告知客户</span>
       </div>
     </div>
