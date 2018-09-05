@@ -100,8 +100,8 @@
     },
     methods: {
       cityClick(city, key){
-        this.$store.state.cityName = city
-        this.$store.state.cityIndex = key
+        this.$store.dispatch({type: 'setCityName', val: city })
+        this.$store.dispatch({type: 'setCityIndex', val: key })
       }
     }
   }

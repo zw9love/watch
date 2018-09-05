@@ -17,8 +17,19 @@ const store = () => new Vuex.Store({
     cityIndex: 0
   },
   mutations: {
-    increment (state) {
-      state.counter++
+    setCityName: (state, {val}) => {
+      state.cityName = val
+    },
+    setCityIndex: (state, {val}) => {
+      state.cityIndex = val
+    }
+  },
+  actions: {
+    setCityName: (context, data) => {
+      context.commit('setCityName', data)
+    },
+    setCityIndex: (context, data) => {
+      context.commit('setCityIndex', data)
     }
   }
 })
