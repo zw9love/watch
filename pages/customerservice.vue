@@ -173,7 +173,9 @@
         return date.getFullYear() + '-' + this.getDouble(date.getMonth() + 1) + '-' + this.getDouble(date.getDate()) + ' ' + this.getDouble(date.getHours()) + ':' + this.getDouble(date.getMinutes()) + ':' + this.getDouble(date.getSeconds())
       },
       emojiClick(item){
-        this.$refs.editorPC.innerHTML += item
+        let editorPC = this.$refs.editorPC
+        editorPC.innerHTML += item
+        // editorPC.focus()
         this.emojiActive = false
       },
       smilePCClick(){

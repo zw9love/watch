@@ -456,35 +456,54 @@
         <!--</div>-->
       </div>
       <div class="certification320-container">
-        <swiper v-model="certificationIndex" @on-index-change="certificationIndexChange" :show-dots="false"
-                :show-desc-mask="false" height="260px">
-          <swiper-item v-for="(item, key) in certificationList" :key="key" >
+        <div class="carousel">
+          <el-carousel type="card" :height="320 + 'px'" :autoplay="false" arrow="never"
+                       indicator-position="none" @change="cerCarouselChange"
+                       >
+            <el-carousel-item v-for="x in 3" :key="x" :name="x+''">
+              <div class="certification320">
+                <img src="../assets/img/customer_service_logo.png" alt="">
+                <strong>Charlie Peter{{x}}</strong>
+                <span class="level-info">国家高级技师</span>
+                <p class="certification320-info">
+                  现任瑞士国际钟表协会委员、西亨名表维修技术
+                  总监、前百达翡丽英才中心技术讲师、前瑞士
+                  SMH培训讲师。
+                </p>
+              </div>
+            </el-carousel-item>
+          </el-carousel>
+          <Indicators v-model="cerIndicatorKey" :indicatorsStyle="{bottom: '-10px'}" :list="[1,1,1]"></Indicators>
+        </div>
+        <!--<swiper v-model="certificationIndex" @on-index-change="certificationIndexChange" :show-dots="false"-->
+                <!--:show-desc-mask="false" height="260px">-->
+          <!--<swiper-item v-for="(item, key) in certificationList" :key="key" >-->
+            <!--&lt;!&ndash;<div class="certification320" ref="certification320">&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="certification320-imgContainer">&ndash;&gt;-->
+                <!--&lt;!&ndash;<img src="../assets/img/home_certificationtechnician__image@2x.png" alt="">&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="certification320-infoContainer">&ndash;&gt;-->
+                <!--&lt;!&ndash;<h1 class="certification-title320">Charlie Peter {{key}}</h1>&ndash;&gt;-->
+                <!--&lt;!&ndash;<p class="certification-position320">高级技师顾问</p>&ndash;&gt;-->
+                <!--&lt;!&ndash;<p class="certification-info320">&ndash;&gt;-->
+                  <!--&lt;!&ndash;现任瑞士国际钟表协会委员、西亨名表维修技术&ndash;&gt;-->
+                  <!--&lt;!&ndash;总监、前百达翡丽英才中心技术讲师、前瑞士&ndash;&gt;-->
+                  <!--&lt;!&ndash;SMH培训讲师。&ndash;&gt;-->
+                <!--&lt;!&ndash;</p>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
             <!--<div class="certification320" ref="certification320">-->
-              <!--<div class="certification320-imgContainer">-->
-                <!--<img src="../assets/img/home_certificationtechnician__image@2x.png" alt="">-->
-              <!--</div>-->
-              <!--<div class="certification320-infoContainer">-->
-                <!--<h1 class="certification-title320">Charlie Peter {{key}}</h1>-->
-                <!--<p class="certification-position320">高级技师顾问</p>-->
-                <!--<p class="certification-info320">-->
-                  <!--现任瑞士国际钟表协会委员、西亨名表维修技术-->
-                  <!--总监、前百达翡丽英才中心技术讲师、前瑞士-->
-                  <!--SMH培训讲师。-->
-                <!--</p>-->
-              <!--</div>-->
+              <!--<img src="../assets/img/customer_service_logo.png" alt="">-->
+              <!--<strong>Charlie Peter{{key}}</strong>-->
+              <!--<span class="level-info">国家高级技师</span>-->
+              <!--<p class="certification320-info">-->
+                <!--现任瑞士国际钟表协会委员、西亨名表维修技术-->
+                <!--总监、前百达翡丽英才中心技术讲师、前瑞士-->
+                <!--SMH培训讲师。-->
+              <!--</p>-->
             <!--</div>-->
-            <div class="certification320" ref="certification320">
-              <img src="../assets/img/customer_service_logo.png" alt="">
-              <strong>Charlie Peter{{key}}</strong>
-              <span class="level-info">国家高级技师</span>
-              <p class="certification320-info">
-                现任瑞士国际钟表协会委员、西亨名表维修技术
-                总监、前百达翡丽英才中心技术讲师、前瑞士
-                SMH培训讲师。
-              </p>
-            </div>
-          </swiper-item>
-        </swiper>
+          <!--</swiper-item>-->
+        <!--</swiper>-->
         <!--<Indicators v-model="certificationIndex"  :list="certificationList"></Indicators>-->
       </div>
     </div>
@@ -885,6 +904,7 @@
           {value: '选项4', label: '走快走慢4'}
         ],
         indicatorKey: 0,
+        cerIndicatorKey: 0,
         value: '',
         reservationTime: '',
         faultValue: '选项1',
@@ -955,16 +975,9 @@
       }
     },
     mounted() {
-      this.bmap = window.BMap
+      // this.bmap = window.BMap
       console.log('mounted')
-      console.log(this.bmap)
-      this.stackHeight = parseInt(window.innerWidth * 0.4667)
-      this.certificationHeight = this.$refs.certification320[0].clientHeight
-      this.brandMainHeight = this.$refs.brandMainImgWrapper[0].clientHeight
-    },
-    watch: {
-      bmap: function(){
-        console.log('bmap加载完成')
+      if(window.BMap){
         let map = new BMap.Map("store-map");
         let point = new BMap.Point(116.331398, 39.897445);
         map.centerAndZoom(point, 12);
@@ -978,10 +991,38 @@
           } else {
             alert("您选择地址没有解析到结果!");
           }
-        });
+        })
       }
+      this.stackHeight = parseInt(window.innerWidth * 0.4667)
+      // this.certificationHeight = this.$refs.certification320[0].clientHeight
+      this.brandMainHeight = this.$refs.brandMainImgWrapper[0].clientHeight
+    },
+    watch: {
+      // bmap: function(){
+      //   console.log('bmap加载完成')
+      //   console.log(this.bmap)
+      //   if(this.bmap){
+      //     let map = new BMap.Map("store-map");
+      //     let point = new BMap.Point(116.331398, 39.897445);
+      //     map.centerAndZoom(point, 12);
+      //     // 创建地址解析器实例
+      //     let myGeo = new BMap.Geocoder();
+      //     // 将地址解析结果显示在地图上,并调整地图视野
+      //     myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）", function (point) {
+      //       if (point) {
+      //         map.centerAndZoom(point, 16);
+      //         map.addOverlay(new BMap.Marker(point));
+      //       } else {
+      //         alert("您选择地址没有解析到结果!");
+      //       }
+      //     })
+      //   }
+      // }
     },
     methods: {
+      cerCarouselChange(nowIndex){
+        this.cerIndicatorKey = nowIndex
+      },
       carouselChange(nowIndex, useIndex) {
         this.indicatorKey = nowIndex
       },

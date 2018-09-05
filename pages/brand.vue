@@ -123,7 +123,7 @@
               <img src="../assets/img/home_serviceenvironment_images2@2x.png" alt="">
             </el-carousel-item>
           </el-carousel>
-          <Indicators v-model="indicatorKey" :list="[1,1,1]" ></Indicators>
+          <Indicators v-model="indicatorKey" :indicatorsStyle="{bottom: '-30px'}" :list="[1,1,1]" ></Indicators>
         </div>
       </div>
     </div>
@@ -374,7 +374,7 @@
   .environmental{
     height: 620px;
     min-height: 620px;
-    overflow: hidden;
+    /*overflow: hidden;*/
   }
 
   .case{}

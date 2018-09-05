@@ -968,17 +968,32 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   font-size: 14px;
 }
 
-.sidebar-cell:hover .sidebar-cell-popup{
-  display: block;
-}
+
 
 .sidebar-cell-popup{
   position: absolute;
   right: 100%;
+  /*left: 100%;*/
   top: 0;
   transition: all .3s ease;
+  /*opacity: 0;*/
   display: none;
 }
+
+.sidebar-cell:hover .sidebar-cell-popup{
+  display: block;
+}
+
+/*.sidebar-cell:hover .call-back{*/
+  /*!*display: block;*!*/
+  /*left: -300px;*/
+  /*opacity: 1;*/
+/*}*/
+
+/*.sidebar-cell:hover .sidebar-cell-popup-qr{*/
+  /*left: -120px;*/
+  /*opacity: 1;*/
+/*}*/
 
 .sidebar-cell-popup-qr{
   width: 120px;
