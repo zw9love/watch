@@ -194,15 +194,15 @@
   import 'element-ui/lib/theme-chalk/index.css';
   export default {
     name: "brand",
-    head: {
-      script: [
-        {src: 'http://api.map.baidu.com/api?v=2.0&ak=L2fFIBoizTO5nxe7ypgsV3pHGmYw6tqx'},
-        // { src: 'https://c.mipcdn.com/static/v1/mip.js'},
-      ],
-      link: [
-        // { rel: 'stylesheet', href: 'https://c.mipcdn.com/static/v1/mip.css'}
-      ]
-    },
+    // head: {
+    //   script: [
+    //     {src: 'http://api.map.baidu.com/api?v=2.0&ak=L2fFIBoizTO5nxe7ypgsV3pHGmYw6tqx'},
+    //     // { src: 'https://c.mipcdn.com/static/v1/mip.js'},
+    //   ],
+    //   link: [
+    //     // { rel: 'stylesheet', href: 'https://c.mipcdn.com/static/v1/mip.css'}
+    //   ]
+    // },
     components: {
       Header,
       Footer,
@@ -223,7 +223,9 @@
     },
     mounted() {
       this.stackHeight = parseInt(window.innerWidth * 0.4667)
+      console.log('mounted钩子')
       if (window.BMap) {
+        console.log('BMap加载完成。')
         let map = new BMap.Map("store-map");
         let point = new BMap.Point(116.331398, 39.897445);
         map.centerAndZoom(point, 12);
