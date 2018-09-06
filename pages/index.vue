@@ -28,7 +28,7 @@
               <p class="phone">400-617-1383</p>
               <div class="phone-shadow-button">
                 <span class="phone-shadow-button-cancel" @click="cancelShadow">取消</span>
-                <a href="tel:110" class="phone-shadow-button-confirm" @click="confirmShadow">呼叫</a>
+                <a href="tel:4006171383" class="phone-shadow-button-confirm" @click="confirmShadow">呼叫</a>
                 <!--<span class="phone-shadow-button-confirm" @click="confirmShadow">呼叫</span>-->
               </div>
             </div>
@@ -64,7 +64,7 @@
         <p>维修中心地址：北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）</p>
       </div>
       <div class="banner-shadow320">
-        <x-address title="title" v-model="value1" :list="addressData" :hide-district="true" @on-shadow-change="addressChange" ref="picker">
+        <x-address title="title" v-model="addressValue" :list="addressData" :hide-district="true">
           <template slot="title" slot-scope="props">
             <span class="city">{{cityName}}</span>
             <img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow">
@@ -869,6 +869,7 @@
   import Reservation from '../components/Reservation'
   import HeaderMobile from '../components/HeaderMobile'
   import { ChinaAddressV4Data} from 'vux'
+  import address from '../assets/json/address'
   import {MP} from '../util/map.js'
   // import {Swipe, SwipeItem, Picker} from 'mint-ui'
   // import 'mint-ui/lib/style.css'
@@ -892,6 +893,9 @@
       Reservation,
       HeaderMobile
     },
+    // validate({ params, query }) {
+    //   return false // 参数无效，Nuxt.js 停止渲染当前页面并显示错误页面
+    // },
     data() {
       return {
         brand: '',
@@ -919,7 +923,7 @@
         stackHeight: 0,
         brandIndex: 0,
         certificationIndex: 0,
-        value1: [],
+        addressValue: [],
         list1: [
           {name: '广东', value: 'gd', parent: 0},
           {name: '广西', value: 'gx', parent: 0},
@@ -944,7 +948,7 @@
         mobileNavList: [
           {name: '品牌门店', href: '/brand'},
           {name: '维修案例', href: '/case'},
-          {name: '维修进度', href: '/order'},
+          {name: '维修进度', href: '/process'},
           {name: '维修地址', href: '/servicelist'},
         ],
         form: {
@@ -971,29 +975,10 @@
           {name: '郝先生', brand: '万国', phone: '138*****513'},
         ],
         addressData: ChinaAddressV4Data,
-        cityName: '',
+        cityName: '北京',
       }
     },
     mounted() {
-      // this.$nextTick(function() {
-      //   MP().then(BMap => {
-      //     //在此调用api
-      //     let map = new BMap.Map("store-map");
-      //     let point = new BMap.Point(116.331398, 39.897445);
-      //     map.centerAndZoom(point, 12);
-      //     // 创建地址解析器实例
-      //     let myGeo = new BMap.Geocoder();
-      //     // 将地址解析结果显示在地图上,并调整地图视野
-      //     myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）", function (point) {
-      //       if (point) {
-      //         map.centerAndZoom(point, 16);
-      //         map.addOverlay(new BMap.Marker(point));
-      //       } else {
-      //         alert("您选择地址没有解析到结果!");
-      //       }
-      //     })
-      //   })
-      // })
       console.log('mounted钩子')
       if(window.BMap){
         console.log('BMap加载完成。')
@@ -1015,6 +1000,17 @@
       this.stackHeight = parseInt(window.innerWidth * 0.3203125)
       // this.certificationHeight = this.$refs.certification320[0].clientHeight
       this.brandMainHeight = this.$refs.brandMainImgWrapper[0].clientHeight
+    },
+    watch: {
+      addressValue: function(newVal){
+        let provinceName = address['86'][newVal[0]]
+        let cityName = address[newVal[0]][newVal[1]]
+        this.$router.push({path: '/servicelist/city', query: {province: provinceName, city: cityName, area: ''}})
+      },
+      // '$route': function(newVal){
+      //   this.cityName = newVal.query.city ? newVal.query.city : '请选择'
+      //   this.txtVal = this.$route.query.address ? this.$route.query.address : ''
+      // }
     },
     methods: {
       cerCarouselChange(nowIndex){

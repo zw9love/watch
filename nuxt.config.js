@@ -1,7 +1,11 @@
 
 
 const path = require('path')
+const resolve = path.resolve
 const vuxLoader = require('vux-loader')
+// import index from './pages/index.vue'
+// import order from './pages/order.vue'
+// import NotFound from './pages/notfound.vue'
 
 module.exports = {
   /*
@@ -93,7 +97,31 @@ module.exports = {
   },
   // 路由
   router: {
-    middleware: ['auth']
+    base: '/',
+    middleware: ['auth'],
+    extendRoutes (routes) {
+      routes.push({
+        name: 'custom',
+        path: '*',
+        component: resolve(__dirname, 'pages/notfound.vue')
+      })
+    },
+    routes: [
+      {
+        name: 'index',
+        path: '/',
+        // component: index
+        component: '~pages/index.vue'
+      },
+      {
+        name: 'order',
+        path: '/order1',
+        // component: order
+        component: '~pages/order.vue'
+      },
+      // { path: '*', component: NotFound }
+      { path: '*', component: '~pages/notfound.vue' }
+    ]
   }
 }
 

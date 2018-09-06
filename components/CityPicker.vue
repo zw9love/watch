@@ -1,5 +1,5 @@
 <template>
-  <div class="city-container" @click.stop>
+  <div class="city-container">
     <span class="city-province" :title="provinceName" @click.stop="showProvince">{{provinceName}}
       <img src="../assets/img/store_down@2x.png" alt="" class="arrow">
     </span>
@@ -11,28 +11,31 @@
     </span>
     <div class="city-popup" v-show="provincePopupActive">
       <ul class="city-popup-wrapper">
-        <li v-for="(item, key) in provinceList" :key="key" >
-          <a href="#" :class="{active: provinceIndex === key}" @click.stop="provinceCellClick(item.key, item.val, key)">{{item.val}}</a>
+        <li v-for="(item, key) in provinceList" :key="key">
+          <a href="javascript:;" :class="{active:  item.val === provinceName}"
+             @click.stop="provinceCellClick(item.key, item.val, key)">{{item.val}}</a>
         </li>
       </ul>
     </div>
     <div class="city-popup" v-show="cityPopupActive">
       <ul class="city-popup-wrapper">
-        <li v-for="(item, key) in cityList" :key="key"  >
-          <a href="#" :class="{active: cityIndex === key}" @click.stop="cityCellClick(item.key, item.val, key)">{{item.val}}</a>
+        <li v-for="(item, key) in cityList" :key="key">
+          <a href="javascript:;" :class="{active: item.val === cityName}"
+             @click.stop="cityCellClick(item.key, item.val, key)">{{item.val}}</a>
         </li>
       </ul>
     </div>
     <div class="city-popup" v-show="areaPopupActive">
       <ul class="city-popup-wrapper">
-        <li v-for="(item, key) in areaList" :key="key" >
-          <a href="#" :class="{active: areaIndex === key}" @click.stop="areaCellClick(item.key, item.val, key)">{{item.val}}</a>
+        <li v-for="(item, key) in areaList" :key="key">
+          <a href="javascript:;" :class="{active: item.val === areaName}"
+             @click.stop="areaCellClick(item.key, item.val, key)">{{item.val}}</a>
         </li>
       </ul>
     </div>
     <span class="city-search-info">直接搜索：</span>
-    <input type="text" class="city-search-txt" placeholder="请输入城市中文或拼音">
-    <span  class="city-search-btn">
+    <input type="text" class="city-search-txt" placeholder="请输入城市中文或拼音" @keydown.enter="searchCity" v-model="txtVal">
+    <span class="city-search-btn" @click.stop="searchCity">
       <img src="../assets/img/home_top_search@2x.png" alt="">
     </span>
   </div>
@@ -40,9 +43,13 @@
 
 <script>
   import cityData from '../assets/json/address'
+
   export default {
     name: "CityPicker",
-    data(){
+    asyncData({ env }) {
+      return { users: 'daxiong' }
+    },
+    data() {
       return {
         cityData: cityData,
         cityKey: '86',
@@ -60,71 +67,115 @@
         provinceIndex: -1,
         cityIndex: -1,
         areaIndex: -1,
+        txtVal: ''
       }
     },
-    created(){
-      this.getList()
+    watch: {
+      '$route': function(newVal){
+        if(!newVal.query.province){
+          this.provinceName = '省份'
+          this.cityName = '城市'
+          this.areaName = '区'
+        }
+
+        if(!newVal.query.address){
+          this.txtVal = ''
+        }
+      }
     },
-    mounted(){
+    created() {
+      console.log(this.users)
+      let {query} = this.$route
+      if(query.province){
+        let provinceName = query.province
+        let cityName = query.city
+        let areaName = query.area
+        this.provinceName = provinceName
+        this.cityName = cityName
+        this.areaName = areaName
+      }else{
+        this.provinceName = '省份'
+        this.cityName = '城市'
+        this.areaName = '区'
+      }
+      if(query.address){
+        this.txtVal = query.address
+      }
+    },
+    mounted() {
       window.addEventListener('click', () => {
         this.provincePopupActive = false
         this.cityPopupActive = false
         this.areaPopupActive = false
       })
     },
+    destroyed() {
+      window.removeEventListener('click', function () {
+      })
+    },
     methods: {
-      isEmpty(obj){
+      allClose() {
+        this.provincePopupActive = false
+        this.cityPopupActive = false
+        this.areaPopupActive = false
+        let provinceName = this.provinceName === '省份' ? '' : this.provinceName
+        let cityName = this.cityName === '城市' ? '' : this.cityName
+        let areaName = this.areaName === '区' ? '' : this.areaName
+        let addressName = provinceName + cityName + areaName
+        // address: addressName
+        this.$router.push({path: '/servicelist/city', query: {province: provinceName, city: cityName, area: areaName}})
+      },
+      isEmpty(obj) {
         let hasAttr = false
-        for (let i in obj){
+        for (let i in obj) {
           hasAttr = true
           break
         }
         return hasAttr
       },
-      getList(){
+      getList() {
         let temp = this.cityData[this.cityKey]
         let hasAttr = this.isEmpty(temp)
-        if(hasAttr){
-          let list = []
-          for (let i in temp){
+        let list = []
+        if (hasAttr) {
+          for (let i in temp) {
             list.push({key: i, val: temp[i]})
           }
-          return list
         }
+        return list
       },
-      showProvince(){
+      showProvince() {
         this.provincePopupActive = true
         this.cityPopupActive = false
         this.areaPopupActive = false
         this.cityKey = '86'
         this.provinceList = this.getList()
       },
-      showCity(){
-
-        if(this.provinceIndex >= 0){
+      showCity() {
+        if (this.provinceIndex >= 0) {
           this.provincePopupActive = false
           this.cityPopupActive = true
           this.areaPopupActive = false
-        }else{
+        } else {
           this.showProvince()
         }
       },
-      showArea(){
+      showArea() {
         let provinceCheck = this.provinceIndex >= 0
         let cityCheck = this.cityIndex >= 0
-        if(provinceCheck && cityCheck){
+        if (provinceCheck && cityCheck) {
           this.provincePopupActive = false
           this.cityPopupActive = false
           this.areaPopupActive = true
         }
-        else if(provinceCheck && !cityCheck ){
+        else if (provinceCheck && !cityCheck) {
           this.showCity()
         }
-        else{
+        else {
           this.showProvince()
         }
       },
-      provinceCellClick(key, val, index){
+      provinceCellClick(key, val, index) {
         this.cityKey = key
         this.provinceIndex = index
         this.cityList = this.getList()
@@ -135,22 +186,27 @@
         this.areaName = '区'
         this.showCity()
       },
-      cityCellClick(key, val, index){
+      cityCellClick(key, val, index) {
         this.cityKey = key
         this.cityIndex = index
         this.areaList = this.getList()
         this.cityName = val
         this.areaName = '区'
         this.areaIndex = -1
-        this.showArea()
+        if (this.areaList.length > 0) {
+          this.showArea()
+        } else {
+          this.allClose()
+        }
       },
-      areaCellClick(key, val, index){
+      areaCellClick(key, val, index) {
         this.areaName = val
         this.areaIndex = index
-        this.provincePopupActive = false
-        this.cityPopupActive = false
-        this.areaPopupActive = false
+        this.allClose()
       },
+      searchCity(){
+        if(this.txtVal.trim()) this.$router.push({path: '/servicelist/city', query: {address: this.txtVal}})
+      }
     }
   }
 </script>
@@ -177,7 +233,7 @@
     text-overflow: ellipsis;
   }
 
-  .city-container > span .arrow{
+  .city-container > span .arrow {
     position: absolute;
     top: 50%;
     right: 10px;
@@ -185,17 +241,17 @@
   }
 
   /*span.city-province{*/
-    /*width: 120px;*/
+  /*width: 120px;*/
   /*}*/
 
-  span.city-search-info{
+  span.city-search-info {
     border: none;
     width: 100px;
     font-weight: 600;
     z-index: 0;
   }
 
-  .city-search-txt{
+  .city-search-txt {
     height: 40px;
     border: 1px solid #ddd;
     width: 220px;
@@ -206,7 +262,7 @@
     vertical-align: top;
   }
 
-  span.city-search-btn{
+  span.city-search-btn {
     width: 60px;
     background-color: #BF9571;
     text-align: center;
@@ -215,7 +271,7 @@
     z-index: 0;
   }
 
-  .city-search-btn >img{
+  .city-search-btn > img {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -244,13 +300,14 @@
     z-index: 1;
     padding: 80px 20px 20px 20px;
     min-width: 430px;
-    box-shadow: 0px 2px 5px rgba(0,0,0,.4);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, .4);
   }
 
-  .city-popup-wrapper{
+  .city-popup-wrapper {
     overflow: hidden;
   }
-  .city-popup-wrapper li{
+
+  .city-popup-wrapper li {
     float: left;
     /*width: 20%;*/
     padding-right: 30px;
@@ -260,16 +317,17 @@
     /*white-space: nowrap;*/
     /*text-overflow: ellipsis;*/
   }
-  .city-popup-wrapper li a{
+
+  .city-popup-wrapper li a {
     color: #000;
   }
 
-  .city-popup-wrapper li a.active{
+  .city-popup-wrapper li a.active {
     color: #C8936B;
   }
 
   /*.city-popup-wrapper li a:active{*/
-    /*color: #C8936B;*/
+  /*color: #C8936B;*/
   /*}*/
 
 

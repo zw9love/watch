@@ -5,7 +5,7 @@
       <div class="navbar-left">
         <ul>
           <li>
-            <nuxt-link to="/">
+            <nuxt-link to="/" @click.native.stop>
               <img src="../assets/img/home_top_logo@2x.png" alt="">
             </nuxt-link>
           </li>
@@ -27,11 +27,11 @@
               <div class="city-popup-line"></div>
               <ul class="city-popup-wrapper">
                 <li v-for="(item, key) in cityList" :key="key">
-                  <nuxt-link :to="'/servicelist/' + item.spell" @click.native="cityClick(item.name, key)" :class="{active: cityIndex === key}">{{item.name}}</nuxt-link>
+                  <nuxt-link :to="'/servicelist/' + item.spell" @click.native.stop="cityClick(item.name, key)" :class="{active: item.name === cityName}">{{item.name}}</nuxt-link>
                 </li>
               </ul>
               <div class="more-city">
-                <nuxt-link to="/servicelist/beijing" @click.native="cityClick('北京', 0)">更多城市 >></nuxt-link>
+                <nuxt-link to="/servicelist" @click.native.stop="cityClick('北京', 0)">更多城市 >></nuxt-link>
               </div>
             </div>
           </li>
@@ -55,7 +55,7 @@
       <div class="navigation-wrapper">
         <ul>
           <li class="navigation-cell" v-for="(item, key) in navigationList" :key="key">
-            <nuxt-link :to="item.href" :class="{active: key === pageIndex}">{{item.name}}</nuxt-link>
+            <nuxt-link :to="item.href" :class="{active: key === pageIndex}" @click.native.stop>{{item.name}}</nuxt-link>
           </li>
         </ul>
         <div class="navigation-search-wrapper">
@@ -92,9 +92,12 @@
         // cityIndex: 0
       }
     },
+    created(){
+
+    },
     computed: {
       cityName: function(){
-        return this.$store.state.cityName
+        return (this.$route.query.province + this.$route.query.city  + this.$route.query.area) || this.$store.state.cityName
       },
       cityIndex: function(){
         return this.$store.state.cityIndex

@@ -4,7 +4,7 @@
     <div class="bottom-navbar">
       <ul>
         <li v-for="(item, key) in navigationList" :key="key">
-          <nuxt-link :to="item.href">{{item.name}}</nuxt-link>
+          <nuxt-link :to="item.href" @click.native.stop>{{item.name}}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -13,20 +13,8 @@
         <div class="bottom-link-top">
           <ul>
             <li>友情链接：</li>
-            <li>
-              <nuxt-link to="javascript:;">北京西亨名表维修</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="javascript:;">北京西亨名表维修</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="javascript:;">北京西亨名表维修</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="javascript:;">北京西亨名表维修</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="javascript:;">北京西亨名表维修</nuxt-link>
+            <li v-for="x in 5" :key="x">
+              <nuxt-link to="javascript:;"  @click.native.stop>北京西亨名表维修</nuxt-link>
             </li>
           </ul>
         </div>
@@ -52,7 +40,7 @@
         </li>
         <li class="bottom-talk-btn">
           <img src="../assets/img/home_footer_button@2x.png" alt="">
-          <span @click="$router.push({path: '/customerservice'})">在线咨询</span>
+          <span @click.stop="$router.push({path: '/customerservice'})">在线咨询</span>
         </li>
         <li>
           <img src="../assets/img/home_footer_icon_contacts@2x.png" alt="">
