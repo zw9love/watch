@@ -1,0 +1,105 @@
+@import "./store_list.css";
+
+.container320{
+  display: none;
+}
+
+img{
+  vertical-align: middle;
+}
+
+.main{
+  max-width: 1280px;
+  margin: 60px auto 0 auto;
+}
+
+.main:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.main-left{
+  float: left;
+  width: 800px;
+}
+
+.city{
+  margin-top: 20px;
+  height: 42px;
+  /*overflow: hidden;*/
+  line-height: 42px;
+  /*background-color: #ccc;*/
+}
+
+.city .select-container{
+  float: left;
+}
+
+.city strong{
+  margin: 0 20px;
+}
+
+.city .search-txt{
+  display: inline-block;
+  border: 1px solid #ddd;
+  color: #333;
+  border-radius: 4px;
+  width: 160px;
+  height: 38px;
+  padding: 5px 10px;
+}
+@media (max-width:768px){
+  .container{
+    display: none;
+  }
+
+  .container320{
+    display: block;
+    margin-top: 46px;
+  }
+
+  .select-city{
+    padding:20px 10px;
+    display: flex;
+    align-items: center;
+  }
+  .select-city strong{
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+
+  .select-city .province{
+    /*width: 60px;*/
+    height: 30px;
+    line-height: 30px;
+    border:1px solid #ccc;
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 12px;
+    padding: 0 5px;
+    margin-right: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    min-width: 60px;
+  }
+
+  .search-container320{
+    flex: 1;
+  }
+
+  .select-city .search-container320 .search-txt320{
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 12px;
+    padding: 0 10px;
+    min-width: 0px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+}

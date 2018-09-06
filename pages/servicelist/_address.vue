@@ -1,59 +1,84 @@
 <template>
   <div>
-    <!--<h1>{{name}}</h1>-->
-    <div class="store-list" v-if="active">
-      <div class="store-cell-wrapper" v-for="item in 10" :key="item">
-        <div class="store-cell">
-          <div class="store-cell-left">
-            <img src="../../assets/img/store_images1@2x.png" alt="">
+    <div class="container">
+      <!--Header-->
+      <Header :pageIndex="4"/>
+
+      <main class="main">
+        <div class="main-left">
+          <div class="city">
+            <CityPicker/>
           </div>
-          <div class="store-cell-right">
-            <p><strong>{{name}}</strong></p>
-            <div class="store-address">
-              <span><img src="../../assets/img/store_icon1@2x.png" alt=""></span>
-              <span class="store-address-info">地址：{{name}}宝安大道与金海路交汇处金港华庭首层商铺8182号</span>
+          <div class="store-list">
+            <div class="store-cell-wrapper" v-for="item in 5" :key="item">
+              <div class="store-cell">
+                <div class="store-cell-left">
+                  <img src="../../assets/img/store_images1@2x.png" alt="">
+                </div>
+                <div class="store-cell-right">
+                  <p><strong>{{name}}</strong></p>
+                  <div class="store-address">
+                    <span><img src="../../assets/img/store_icon1@2x.png" alt=""></span>
+                    <span
+                      class="store-address-info">地址：{{name}}宝安大道与金海路交汇处金港华庭首层商铺8182号,深圳市宝安区宝安大道与金海路交汇处金港华庭首层商铺8182号</span>
+                  </div>
+                  <div class="store-phone">
+                    <span><img src="../../assets/img/store_icon2@2x.png" alt=""></span>
+                    <span>400-636-8800</span>
+                  </div>
+                  <div class="store-time">
+                    <span><img src="../../assets/img/store_icon3@2x.png" alt=""></span>
+                    <span>09:00-21:00</span>
+                  </div>
+                </div>
+                <div class="store-btn">
+                  <img src="../../assets/img/store_button1@2x.png" alt="">
+                  <span class="store-btn-info">立即预约</span>
+                </div>
+              </div>
+              <div class="store-line"></div>
             </div>
-            <div class="store-phone">
-              <span><img src="../../assets/img/store_icon2@2x.png" alt=""></span>
-              <span>400-636-8800</span>
+            <div class="get-more">
+              <span @click="getMore">查看更多 >></span>
             </div>
-            <div class="store-time">
-              <span><img src="../../assets/img/store_icon3@2x.png" alt=""></span>
-              <span>09:00-21:00</span>
-            </div>
-          </div>
-          <div class="store-btn">
-            <img src="../../assets/img/store_button1@2x.png" alt="">
-            <span class="store-btn-info">立即预约</span>
           </div>
         </div>
-        <div class="store-line"></div>
-      </div>
-      <div class="get-more">
-        <span @click="getMore">查看更多 >></span>
-      </div>
+        <Advertisement/>
+      </main>
+
+      <!--Footer-->
+      <Footer/>
     </div>
-    <div class="store-list320" v-else>
-      <div class="store-cell320" v-for="item in 10" :key="item">
-        <div class="store-cell320-container">
-          <div class="store-cell320-left">
-            <img src="../../assets/img/store_images1@2x.png" alt="">
-          </div>
-          <div class="store-cell320-right">
-            <p><strong>{{name}}</strong></p>
-            <div class="store-cell320-info" @click="goAddress">
-              <img src="../../assets/img/store_icon1@2x.png" alt="">
-              <span>{{name}}西单北大街甲133号西亨钟表维修中心</span>
+
+    <div class="container320">
+      <HeaderMobile title="维修服务中心列表"/>
+      <main class="main320">
+        <CityPickerMobile/>
+        <div class="store-list320">
+          <div class="store-cell320" v-for="item in 5" :key="item">
+            <div class="store-cell320-container">
+              <div class="store-cell320-left">
+                <img src="../../assets/img/store_images1@2x.png" alt="">
+              </div>
+              <div class="store-cell320-right">
+                <p><strong>{{name}}</strong></p>
+                <div class="store-cell320-info" @click="goAddress">
+                  <img src="../../assets/img/store_icon1@2x.png" alt="">
+                  <span>地址：{{name}}宝安大道与金海路交汇处金港华庭首层商铺8182号,深圳市宝安区宝安大道与金海路交汇处金港华庭首层商铺8182号</span>
+                </div>
+                <a href="tel:4006368800" class="store-cell320-info">
+                  <img src="../../assets/img/store_icon2@2x.png" alt="">
+                  <span>400-636-8800</span>
+                </a>
+              </div>
             </div>
-            <a href="tel:4006368800" class="store-cell320-info">
-              <img src="../../assets/img/store_icon2@2x.png" alt="">
-              <span>400-636-8800</span>
-            </a>
+            <div class="store-cell320-line"></div>
           </div>
         </div>
-        <div class="store-cell320-line"></div>
-      </div>
+      </main>
     </div>
+
+
     <div v-transfer-dom>
       <popup v-model="addressActive" position="right" width="100%" style="z-index: 1000">
         <div style="margin-top: 46px">
@@ -83,78 +108,83 @@
 </template>
 
 <script>
-    export default {
-      watch: {
-        '$route': function({params, query}){
-          console.log(query)
-          let queryAddress = ''
-          if( query.address){
-            queryAddress = query.address
-          }else if(query.province){
-            queryAddress = query.province + query.city + query.area
-          }
-          this.name = queryAddress
-        }
-      },
-      asyncData({params, env, error, query}) {
-        // console.log(params)
-        // let queryAddress = query.address ? query.address : ''
+  import Header from '../../components/Header'
+  import Footer from '../../components/Footer'
+  import Advertisement from '../../components/Advertisement'
+  import HeaderMobile from '../../components/HeaderMobile'
+  import CityPicker from '../../components/CityPicker'
+  import CityPickerMobile from '../../components/CityPickerMobile'
+
+  export default {
+    components: {
+      Header,
+      Footer,
+      Advertisement,
+      HeaderMobile,
+      CityPicker,
+      CityPickerMobile
+    },
+    watch: {
+      '$route': function ({params, query}) {
+        console.log(query)
         let queryAddress = ''
-        if( query.address){
+        if (query.address) {
           queryAddress = query.address
-        }else if(query.province){
+        } else if (query.province) {
           queryAddress = query.province + query.city + query.area
         }
-        return {name: queryAddress}
-      },
-      data(){
-        return {
-          addressActive: false,
-          active: ''
-        }
-      },
-      created(){
-        // console.log('---------------------------')
-        // console.log(window)
-        // console.log('---------------------------')
-      },
-      mounted(){
-        this.active = window.innerWidth >= 768
-        // console.log(this.active)
-      },
-      methods: {
-        getMore() {
+        this.name = queryAddress
+      }
+    },
+    asyncData({params, env, error, query}) {
+      // console.log(params)
+      // let queryAddress = query.address ? query.address : ''
+      let queryAddress = ''
+      if (query.address) {
+        queryAddress = query.address
+      } else if (query.province) {
+        queryAddress = query.province + query.city + query.area
+      }
+      return {name: queryAddress}
+    },
+    data() {
+      return {
+        addressActive: false,
+      }
+    },
+    methods: {
+      getMore() {
 
-        },
-        goAddress(){
-          this.addressActive = true
-          this.$nextTick(function () {
-            //   // DOM 现在更新了
-            if (window.BMap) {
-              let map = new BMap.Map("store-map");
-              let point = new BMap.Point(116.331398, 39.897445);
-              map.centerAndZoom(point, 12);
-              // 创建地址解析器实例
-              let myGeo = new BMap.Geocoder();
-              // 将地址解析结果显示在地图上,并调整地图视野
-              myGeo.getPoint("韶关", function (point) {
-                if (point) {
-                  map.centerAndZoom(point, 16);
-                  map.addOverlay(new BMap.Marker(point));
-                } else {
-                  alert("您选择地址没有解析到结果!");
-                }
-              });
-            }
-          })
-        },
-        backList(){
-          this.addressActive = false
-        }
+      },
+      goAddress() {
+        this.addressActive = true
+        this.$nextTick(function () {
+          //   // DOM 现在更新了
+          if (window.BMap) {
+            let map = new BMap.Map("store-map");
+            let point = new BMap.Point(116.331398, 39.897445);
+            map.centerAndZoom(point, 12);
+            // 创建地址解析器实例
+            let myGeo = new BMap.Geocoder();
+            // 将地址解析结果显示在地图上,并调整地图视野
+            myGeo.getPoint("韶关", function (point) {
+              if (point) {
+                map.centerAndZoom(point, 16);
+                map.addOverlay(new BMap.Marker(point));
+              } else {
+                alert("您选择地址没有解析到结果!");
+              }
+            });
+          }
+        })
+      },
+      backList() {
+        this.addressActive = false
       }
     }
+  }
 </script>
 
 <style scoped>
-  @import "../../assets/css/store_list.css";
+  @import "../../assets/css/servicelist.css";
 </style>

@@ -28,7 +28,7 @@
               <ul class="city-popup-wrapper">
                 <li v-for="(item, key) in cityList" :key="key">
                   <nuxt-link :to="item.path" @click.native.stop="cityClick(item.name, key)"
-                             :class="{active: item.name === cityName}">{{item.name}}
+                             :class="{active: item.address === cityName}">{{item.name}}
                   </nuxt-link>
                 </li>
               </ul>
@@ -90,13 +90,13 @@
           {name: '维修进度', href: '/process'},
         ],
         cityList: [
-          {name: '北京', path: '/servicelist/city?province=北京市&city=市辖区&area='},
-          {name: '天津', path: '/servicelist/city?province=天津市&city=市辖区&area='},
-          {name: '青岛', path: '/servicelist/city?province=山东省&city=青岛市&area='},
-          {name: '常州', path: '/servicelist/city?province=江苏省&city=常州&area='},
-          {name: '潍坊', path: '/servicelist/city?province=山东省&city=潍坊市&area='},
-          {name: '济南', path: '/servicelist/city?province=山东省&city=济南市&area='},
-          {name: '昆明', path: '/servicelist/city?province=云南省&city=昆明市&area='}
+          {name: '北京', path: '/servicelist/city?province=北京市&city=市辖区&area=',address: '北京市市辖区'},
+          {name: '天津', path: '/servicelist/city?province=天津市&city=市辖区&area=',address: '天津市市辖区'},
+          {name: '青岛', path: '/servicelist/city?province=山东省&city=青岛市&area=',address: '山东省青岛市'},
+          {name: '常州', path: '/servicelist/city?province=江苏省&city=常州市&area=',address: '江苏省常州市'},
+          {name: '潍坊', path: '/servicelist/city?province=山东省&city=潍坊市&area=',address: '山东省潍坊市'},
+          {name: '济南', path: '/servicelist/city?province=山东省&city=济南市&area=',address: '山东省济南市'},
+          {name: '昆明', path: '/servicelist/city?province=云南省&city=昆明市&area=',address: '云南省昆明市'}
         ],
         // cityName: '北京',
         // cityIndex: 0
