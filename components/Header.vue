@@ -5,7 +5,9 @@
       <div class="navbar-left">
         <ul>
           <li>
-            <img src="../assets/img/home_top_logo@2x.png" alt="">
+            <nuxt-link to="/">
+              <img src="../assets/img/home_top_logo@2x.png" alt="">
+            </nuxt-link>
           </li>
           <li>
             <div class="line"></div>
@@ -25,11 +27,11 @@
               <div class="city-popup-line"></div>
               <ul class="city-popup-wrapper">
                 <li v-for="(item, key) in cityList" :key="key">
-                  <a :href="'/servicelist/' + item.spell" @click="cityClick(item, key)" :class="{active: cityIndex === key}">{{item.name}}</a>
+                  <nuxt-link :to="'/servicelist/' + item.spell" @click.native="cityClick(item.name, key)" :class="{active: cityIndex === key}">{{item.name}}</nuxt-link>
                 </li>
               </ul>
               <div class="more-city">
-                <span @click="$router.push({path: '/servicelist'})">更多城市 >></span>
+                <nuxt-link to="/servicelist/beijing" @click.native="cityClick('北京', 0)">更多城市 >></nuxt-link>
               </div>
             </div>
           </li>
@@ -100,7 +102,7 @@
     },
     methods: {
       cityClick(city, key){
-        this.$store.dispatch({type: 'setCityName', val: city.name })
+        this.$store.dispatch({type: 'setCityName', val: city })
         this.$store.dispatch({type: 'setCityIndex', val: key })
       }
     }
@@ -339,7 +341,7 @@
     margin:  10px 0;
   }
 
-  .more-city span{
+  .more-city a{
     color: #666;
     font-size: 14px;
     cursor: pointer;
