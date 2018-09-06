@@ -76,6 +76,10 @@
           this.provinceName = '省份'
           this.cityName = '城市'
           this.areaName = '区'
+        }else{
+          this.provinceName = newVal.query.province
+          this.cityName = newVal.query.city
+          this.areaName = newVal.query.area
         }
 
         if(!newVal.query.address){
@@ -84,7 +88,7 @@
       }
     },
     created() {
-      console.log(this.users)
+      // console.log(this.users)
       let {query} = this.$route
       if(query.province){
         let provinceName = query.province

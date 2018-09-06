@@ -38,6 +38,7 @@
 
 .store-cell-right span > img {
   margin-right: 7px;
+  vertical-align: middle;
 }
 
 .store-address span {

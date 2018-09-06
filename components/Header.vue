@@ -27,7 +27,9 @@
               <div class="city-popup-line"></div>
               <ul class="city-popup-wrapper">
                 <li v-for="(item, key) in cityList" :key="key">
-                  <nuxt-link :to="'/servicelist/' + item.spell" @click.native.stop="cityClick(item.name, key)" :class="{active: item.name === cityName}">{{item.name}}</nuxt-link>
+                  <nuxt-link :to="item.path" @click.native.stop="cityClick(item.name, key)"
+                             :class="{active: item.name === cityName}">{{item.name}}
+                  </nuxt-link>
                 </li>
               </ul>
               <div class="more-city">
@@ -36,7 +38,7 @@
             </div>
           </li>
           <!--<li>-->
-            <!--<img src="../assets/img/home_top_icon@2x.png" alt="">-->
+          <!--<img src="../assets/img/home_top_icon@2x.png" alt="">-->
           <!--</li>-->
         </ul>
       </div>
@@ -87,26 +89,34 @@
           {name: '预约到店', href: '/order'},
           {name: '维修进度', href: '/process'},
         ],
-        cityList: [{name: '北京', spell: 'beijing'}, {name: '天津', spell: 'tianjin'}, {name: '青岛', spell: 'qingdao'}, {name: '常州', spell: 'changzhou'}, {name: '潍坊', spell: 'lanfang'}, {name: '济南', spell: 'jinan'}, {name: '昆明', spell: 'kunming'}],
+        cityList: [
+          {name: '北京', path: '/servicelist/city?province=北京市&city=市辖区&area='},
+          {name: '天津', path: '/servicelist/city?province=天津市&city=市辖区&area='},
+          {name: '青岛', path: '/servicelist/city?province=山东省&city=青岛市&area='},
+          {name: '常州', path: '/servicelist/city?province=江苏省&city=常州&area='},
+          {name: '潍坊', path: '/servicelist/city?province=山东省&city=潍坊市&area='},
+          {name: '济南', path: '/servicelist/city?province=山东省&city=济南市&area='},
+          {name: '昆明', path: '/servicelist/city?province=云南省&city=昆明市&area='}
+        ],
         // cityName: '北京',
         // cityIndex: 0
       }
     },
-    created(){
+    created() {
 
     },
     computed: {
-      cityName: function(){
-        return (this.$route.query.province + this.$route.query.city  + this.$route.query.area) || this.$store.state.cityName
+      cityName: function () {
+        return (this.$route.query.province + this.$route.query.city + this.$route.query.area) || this.$store.state.cityName
       },
-      cityIndex: function(){
+      cityIndex: function () {
         return this.$store.state.cityIndex
       }
     },
     methods: {
-      cityClick(city, key){
-        this.$store.dispatch({type: 'setCityName', val: city })
-        this.$store.dispatch({type: 'setCityIndex', val: key })
+      cityClick(city, key) {
+        this.$store.dispatch({type: 'setCityName', val: city})
+        this.$store.dispatch({type: 'setCityIndex', val: key})
       }
     }
   }
@@ -118,7 +128,7 @@
     margin: 60px auto 0 auto;
   }
 
-  .navbar-container:after{
+  .navbar-container:after {
     content: "";
     display: block;
     clear: both;
@@ -128,11 +138,11 @@
     float: left;
   }
 
-  .navbar-left >ul {
+  .navbar-left > ul {
 
   }
 
-  .navbar-left >ul >li {
+  .navbar-left > ul > li {
     display: inline-block;
     vertical-align: middle;
     margin-right: 18px;
@@ -140,30 +150,30 @@
     padding-bottom: 20px;
   }
 
-  .navbar-left >ul >li img {
+  .navbar-left > ul > li img {
     cursor: pointer;
   }
 
-  .navbar-left >ul >li p.ch-name {
+  .navbar-left > ul > li p.ch-name {
     color: #333;
     font-size: 30px;
     font-family: "PingFangSC-Semibold";
   }
 
-  .navbar-left >ul >li p.en-name {
+  .navbar-left > ul > li p.en-name {
     color: #999;
     font-family: "PingFangSC-Semibold";
     font-size: 18px;
   }
 
-  .navbar-left >ul >li span.city-name {
+  .navbar-left > ul > li span.city-name {
     font-size: 26px;
     color: #BF9571;
     font-family: "PingFangSC-Regular";
     cursor: pointer;
   }
 
-  .navbar-left >ul >li .line {
+  .navbar-left > ul > li .line {
     width: 1px;
     height: 50px;
     background-color: #E5E5E5;
@@ -202,7 +212,6 @@
     margin-top: 20px;
   }
 
-
   .navigation-wrapper {
     max-width: 1280px;
     height: 100%;
@@ -217,7 +226,7 @@
     overflow: hidden;
   }
 
-  .navigation-wrapper ul li.navigation-cell{
+  .navigation-wrapper ul li.navigation-cell {
     width: 140px;
     height: 100%;
     float: left;
@@ -226,7 +235,7 @@
     text-align: center;
   }
 
-  .navigation-wrapper ul li.navigation-cell a{
+  .navigation-wrapper ul li.navigation-cell a {
     color: #fff;
     text-decoration: none;
     width: 100%;
@@ -238,14 +247,14 @@
     transition: background-color .3s ease;
   }
 
-  .navigation-wrapper ul li.navigation-cell a:hover{
+  .navigation-wrapper ul li.navigation-cell a:hover {
     /*font-weight: 700;*/
     background-color: #BB9875;
     /*border-left: 1px solid #333;*/
     /*border-right: 1px solid #333;*/
   }
 
-  .navigation-wrapper ul li.navigation-cell a.active{
+  .navigation-wrapper ul li.navigation-cell a.active {
     font-weight: 700;
     background-color: #BB9875;
   }
@@ -293,39 +302,40 @@
     width: auto
   }
 
-  .navbar-left >ul >li:last-child:hover .city-popup{
+  .navbar-left > ul > li:last-child:hover .city-popup {
     display: block;
   }
 
-  .city-popup{
+  .city-popup {
     width: 300px;
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
     background-color: #fff;
-    border:1px solid #ddd;
+    border: 1px solid #ddd;
     z-index: 3;
     border-radius: 5px;
     padding: 10px 20px;
     display: none;
   }
 
-  .city-popup h3{
+  .city-popup h3 {
     font-size: 16px;
   }
-  .city-popup .city-popup-line{
+
+  .city-popup .city-popup-line {
     width: 100%;
     height: 1px;
     background-color: #eee;
     margin: 20px 0;
   }
 
-  .city-popup-wrapper{
+  .city-popup-wrapper {
     overflow: hidden;
   }
 
-  .city-popup-wrapper li{
+  .city-popup-wrapper li {
     float: left;
     width: 25%;
     text-align: center;
@@ -333,30 +343,28 @@
     margin: 0;
   }
 
-  .city-popup-wrapper li a{
+  .city-popup-wrapper li a {
     color: #666;
     font-size: 14px;
   }
 
-
-  .more-city{
+  .more-city {
     text-align: right;
-    margin:  10px 0;
+    margin: 10px 0;
   }
 
-  .more-city a{
+  .more-city a {
     color: #666;
     font-size: 14px;
     cursor: pointer;
   }
 
-  .city-popup-wrapper li a.active, .city-popup-wrapper li a:hover, .more-city span:hover{
+  .city-popup-wrapper li a.active, .city-popup-wrapper li a:hover, .more-city span:hover {
     color: #C8936B;
   }
 
-
-  @media (max-width:768px){
-    .navbar-container, .navigation-container{
+  @media (max-width: 768px) {
+    .navbar-container, .navigation-container {
       display: none;
     }
   }
