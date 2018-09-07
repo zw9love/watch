@@ -142,20 +142,30 @@
     align-items: center;
   }
 
-  .store-cell320-info:first-of-type{
+  div.store-cell320-info{
     align-items: flex-start;
   }
 
   .store-cell320-info img{
     width: 10px;
-    margin-right: 5px;
-    margin-top: 2px;
+    /*margin-right: 5px;*/
+    /*margin-top: 2px;*/
+  }
+
+  div.store-cell320-info img{
+    margin-top: 4px;
   }
 
   .store-cell320-info >span:last-child{
     color: #666;
     font-size: 12px;
     flex: 1;
+    line-height: 1.6em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-left: 5px;
   }
 
   .store-cell320-line{
@@ -164,7 +174,7 @@
     background-color: #ddd;
   }
 
-  #store-map{
+  #store-map, #store-list-map{
     /*height: calc(100vh - 136px);*/
     height: 100vh;
   }

@@ -59,21 +59,27 @@
 
         <div class="image-artical">
           <div class="image-artical-container">
-            <div class="image-artical-left" @click="articalClick">
-              <img src="../assets/img/case_images7@2x.png" alt="">
+            <div class="image-artical-left">
+              <nuxt-link to="/show">
+                <img src="../assets/img/case_images7@2x.png" alt="">
+              </nuxt-link>
               <div class="title-bottom">
                 <p>追光机：百达翡丽手工精饰机芯部件</p>
               </div>
             </div>
             <div class="image-artical-right">
-              <div class="image-artical-right-cell" @click="articalClick">
-                <img src="../assets/img/case_images8@2x.png" alt="">
+              <div class="image-artical-right-cell">
+                <nuxt-link to="/show">
+                  <img src="../assets/img/case_images8@2x.png" alt="">
+                </nuxt-link>
                 <div class="title-bottom">
                   <p>追光机：百达翡丽手工精饰机芯部件</p>
                 </div>
               </div>
-              <div class="image-artical-right-cell" @click="articalClick">
-                <img src="../assets/img/case_images9@2x.png" alt="">
+              <div class="image-artical-right-cell">
+                <nuxt-link to="/show">
+                 <img src="../assets/img/case_images9@2x.png" alt="">
+               </nuxt-link>
                 <div class="title-bottom">
                   <p>追光机：百达翡丽手工精饰机芯部件</p>
                 </div>
@@ -82,8 +88,10 @@
           </div>
         </div>
 
-        <div class="single-artical" @click="articalClick">
-          <img src="../assets/img/case_images9@2x.png" alt="">
+        <div class="single-artical">
+          <nuxt-link to="/show">
+            <img src="../assets/img/case_images9@2x.png" alt="">
+          </nuxt-link>
           <div class="title-bottom">
             <p>追光机：百达翡丽手工精饰机芯部件</p>
           </div>
@@ -144,75 +152,40 @@
       <HeaderMobile title="维修案例"/>
       <div class="main320">
         <div class="main320-video">
-          <!--<div class="video-player-wrapper320" style="width: 0; height: 0">-->
-            <!--<div class="video-player-box320"-->
-                 <!--@play="onPlayerPlay($event)"-->
-                 <!--@pause="onPlayerPause($event)"-->
-                 <!--@ended="onPlayerEnded($event)"-->
-                 <!--@loadeddata="onPlayerLoadeddata($event)"-->
-                 <!--@waiting="onPlayerWaiting($event)"-->
-                 <!--@playing="onPlayerPlaying($event)"-->
-                 <!--@timeupdate="onPlayerTimeupdate($event)"-->
-                 <!--@canplay="onPlayerCanplay($event)"-->
-                 <!--@canplaythrough="onPlayerCanplaythrough($event)"-->
-                 <!--@ready="playerReadied"-->
-                 <!--@statechanged="playerStateChanged($event)"-->
-                 <!--v-video-player:myVideoPlayer="playerOptions">-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--v-for="(item, key) in list" v-if="key === 0 && mobileActive" :key="'mobile' + key"-->
-          <!--<video class="video-player-box320" v-for="(item, key) in list" :key="key" controls src="http://vjs.zencdn.net/v/oceans.mp4"></video>-->
-          <div class="video-player-container320" v-if="mobileActive" v-for="(item, key) in list" :key="key">
-            <div class="video-player-wrapper320">
-              <div class="video-player-box320"
-                   v-if="key === videoMobileIndex"
-                   @play="onPlayerPlay($event)"
-                   @pause="onPlayerPause($event)"
-                   @ended="onPlayerEnded($event)"
-                   @loadeddata="onPlayerLoadeddata($event)"
-                   @waiting="onPlayerWaiting($event)"
-                   @playing="onPlayerPlaying($event)"
-                   @timeupdate="onPlayerTimeupdate($event)"
-                   @canplay="onPlayerCanplay($event)"
-                   @canplaythrough="onPlayerCanplaythrough($event)"
-                   @ready="playerReadied"
-                   @statechanged="playerStateChanged($event)"
-                   v-video-player:myVideoPlayer="item.playerOptions">
-              </div>
-              <div class="video-js video-player-poster" @click="videoPlay(item, key)" v-else>
-                <button class="vjs-big-play-button" type="button" title="Play Video" aria-disabled="false"><span aria-hidden="true" class="vjs-icon-placeholder"></span><span class="vjs-control-text" aria-live="polite">Play Video</span></button>
-                <img :src="item.playerOptions.poster" alt="">
-              </div>
-              <div class="main320-article-shadow" v-if="!item.playActive">
-                <span class="main320-article-info">追光者百达斐丽翻新</span>
-              </div>
-            </div>
-          </div>
+          <VideoMobile @stopOther="stopOther" v-for="(item, key) in list" :key="key" :item="item" :index="key" :ref="'player' + key"/>
         </div>
         <div class="main320-article">
           <div class="main320-article-left" @click="articalClick">
-            <img src="../assets/img/case_images7@2x.png" alt="">
+            <nuxt-link to="/show">
+              <img src="../assets/img/case_images7@2x.png" alt="">
+            </nuxt-link>
             <div class="main320-article-shadow">
               <span class="main320-article-info">追光者百达斐丽翻新</span>
             </div>
           </div>
           <div class="main320-article-right">
-            <div class="main320-article-right-cell" @click="articalClick">
-              <img src="../assets/img/case_images7@2x.png" alt="">
+            <div class="main320-article-right-cell">
+              <nuxt-link to="/show">
+                <img src="../assets/img/case_images7@2x.png" alt="">
+              </nuxt-link>
               <div class="main320-article-shadow">
                 <span class="main320-article-info">追光者百达斐丽翻新</span>
               </div>
             </div>
-            <div class="main320-article-right-cell" @click="articalClick">
-              <img src="../assets/img/case_images7@2x.png" alt="">
+            <div class="main320-article-right-cell">
+              <nuxt-link to="/show">
+                <img src="../assets/img/case_images7@2x.png" alt="">
+              </nuxt-link>
               <div class="main320-article-shadow">
                 <span class="main320-article-info">追光者百达斐丽翻新</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="main320-banner-article" @click="articalClick">
-          <img src="../assets/img/case_images7@2x.png" alt="">
+        <div class="main320-banner-article">
+          <nuxt-link to="/show">
+            <img src="../assets/img/case_images7@2x.png" alt="">
+          </nuxt-link>
           <div class="main320-article-shadow">
             <span class="main320-article-info">追光者百达斐丽翻新</span>
           </div>
@@ -267,13 +240,15 @@
   import Header from '../components/Header'
   import Footer from '../components/Footer'
   import HeaderMobile from '../components/HeaderMobile'
+  import VideoMobile from '../components/VideoMobile'
 
   export default {
     name: "case",
     components: {
       Header,
       Footer,
-      HeaderMobile
+      HeaderMobile,
+      VideoMobile
     },
     data() {
       return {
@@ -283,7 +258,7 @@
         player: null,
         playItem: null,
         videoIndex: 0,
-        videoMobileIndex: 10000,
+        videoMobileIndex: 0,
         commentList: [
           {phone: '159*****399', time: '2018-07-18', content: '这家店面服务真的很棒，我去了很多家都说修不了，这家特意帮我请了瑞士国际钟表协会的技师，虽然期间时间有些长，但是全程都很耐心帮我服务，推荐！', imgList: [require('../assets/img/customer1_1.jpg'), require('../assets/img/customer1_2.jpg'), require('../assets/img/customer1_3.jpg')]},
           {phone: '150*****888', time: '2018-07-15', content: '换了一个鳄鱼皮皮带，整体服务还不错！', imgList: [require('../assets/img/customer2_1.jpg'), require('../assets/img/customer2_2.jpg'), require('../assets/img/customer2_3.jpg')]},
@@ -299,24 +274,6 @@
           {phone: '182*****774', time: '2018-05-10', content: '挺好的，配件都是原装进口帮我提前配好的，到了门店全程服务很贴心，也很快！',imgList: [require('../assets/img/customer9_1.png')]},
           {phone: '183*****550', time: '2018-04-30', content: '老古董拿来修复下，技师很专业，服务也很好',imgList: [require('../assets/img/customer10_1.jpg')]},
         ],
-        playerOptions: {
-          // height: '100%',
-          // width: '100%',
-          // aspectRatio: '16:9',
-          autoplay: false,
-          muted: true,
-          language: 'ch',
-          playbackRates: [0.7, 1.0, 1.5, 2.0],
-          // https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg
-          // poster: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535116654791&di=4291caaeb7eda1d8bf3336f39ff8b30b&imgtype=0&src=http%3A%2F%2Fa1.hoopchina.com.cn%2Fattachment%2FDay_090602%2F49_709415_948e4af50e5ed27.jpg',
-          poster: require('../assets/img/case_images9@2x.png'),
-          sources: [
-            {
-              type: "video/mp4",
-              src: "http://vjs.zencdn.net/v/oceans.mp4"
-            }
-          ]
-        },
         list: [
           {
             playerOptions: {
@@ -353,7 +310,7 @@
               sources: [
                 {
                   type: "video/mp4",
-                  src: "http://vjs.zencdn.net/v/oceans.mp4"
+                  src: "http://7xkwa7.media1.z0.glb.clouddn.com/sample_video_L"
                 }
               ]
             },
@@ -382,22 +339,19 @@
         ]
       }
     },
-    mounted(){
-      this.mobileActive = window.innerWidth <= 768
+    async asyncData({app}) {
+
     },
-    // computed: {
-    //   player() {
-    //     return this.$refs.videoPlayer.player
-    //   }
-    // },
+    created(){
+
+    },
     methods: {
       // listen event
       onPlayerPlay(player) {
-        // this.openActive = true
-        // player.play()
         // console.log('player play!', player)
       },
       onPlayerPause(player) {
+        console.log('暂停onPlayerPause')
         // console.log('player pause!', player)
       },
       onPlayerEnded(player) {
@@ -410,7 +364,7 @@
         // console.log('player Waiting!', player)
       },
       onPlayerPlaying(player) {
-        console.log(player)
+        console.log('开始播放onPlayerPlaying')
         // if(!this.playItem){ this.list[0].playActive = true}
         // this.playItem.playActive = true
         // this.player = player
@@ -430,32 +384,15 @@
       },
       // player is ready
       playerReadied(player) {
-        // console.log('example 01: the player is readied', player)
-        // setTimeout(o => {player.muted(false)}, 3000)
-        // console.log(player.languages())
-        // player.pause()
-        this.player = player
+        console.log('开始播放playerReadied')
       },
       videoCellClick(item, key) {
-        // this.playerOptions.sources[0].src = 'http://v.hoopchina.com.cn/w/20180902/3970d2df9575cbb0d72c6c557b10b7c37a4379e8b2f5a2868914debc7a9cfed7.mp4?auth_key=1535915569-0-0-6155fd2f42451e6e420975e589527370'
-        // console.log(this.playerOptions.sources[0].src)
-        // this.playerOptions.poster = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'
         this.videoIndex = key
       },
       bannerClick(){
         this.$router.push({path: '/order'})
       },
-      videoPlay(item, key){
-        this.videoMobileIndex = key
-        // this.playItem = item
-        this.$nextTick(() => {
-          this.list.forEach(o => {o.playActive = false})
-          item.playActive = true
-          setTimeout(o => {
-            this.player.play()
-          }, 1000)
-        })
-      },
+
       articalClick(){
         this.$router.push({path: '/show'})
       },
@@ -463,6 +400,18 @@
         if(this.commentList.length > 5) return
         this.moreCommentActive = true
         this.commentList = this.commentList.concat(this.moreCommentList)
+      },
+      stopOther(key){
+        // this.list.forEach((o, i) => {
+        //   this.$refs['player' + i][0].player.pause()
+        // })
+        //
+        // this.$nextTick(() => {
+        //   setTimeout(o => {
+        //     // console.log(this.player)
+        //     this.$refs['player' + key][0].player.play()
+        //   }, 1000)
+        // })
       }
     }
   }
@@ -474,83 +423,6 @@
     height: 534px;
     width: 928px;
   }
-
-  .video-player-container320{
-    position: relative;
-    /*height: 300px;*/
-    margin-top: 10px;
-    padding-top: 57.5431%;
-  }
-
-  .video-player-wrapper320{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height:100%;
-  }
-
-  .video-player-container320 .video-player-poster{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .video-player-container320 .video-player-poster >img{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-
-  .vjs-big-play-button{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
-    background-color: rgba(200, 147, 107, .7);
-    z-index: 100;
-    border: 0.06666em solid #fff;
-  }
-
-  .vjs-control-text {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-
-  .video-player-container320 >.video-player-button320{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
-    background-color: rgba(200,147,107,.7);
-    z-index: 1;
-    border: 0.06666em solid #fff;
-  }
-
-
-  .video-player-box320{
-    width: 100%;
-    height: 100%;
-    /*margin-top: 10px;*/
-    background-color: #000;
-  }
-
 
   .container320 {
     display: none;
@@ -730,6 +602,15 @@
     width: 630px;
     height: 100%;
     cursor: pointer;
+    position: relative;
+  }
+
+  .image-artical-left a{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .image-artical img {
@@ -758,16 +639,28 @@
   .image-artical-right-cell:last-child {
     margin-top: 20px;
   }
+  .image-artical-right-cell a{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
 
   .image-artical-right-cell img {
     width: 100%;
     height: 100%;
+    vertical-align: middle;
   }
 
   .single-artical {
     position: relative;
     margin-top: 60px;
     /*padding-top: 47.96875%;*/
+  }
+  .single-artical a{
+    display: block;
   }
 
   .single-artical img {
@@ -1048,6 +941,13 @@
       position: relative;
     }
 
+    .main320-article-left a{
+      display: inline-block;
+      width: 100%;
+      height: 100%
+    }
+
+
     .main320-article-left img{
       width: 100%;
       height: 100%;
@@ -1070,26 +970,18 @@
       margin-bottom: 10px;
     }
 
+    .main320-article-right-cell a{
+      display: inline-block;
+      width: 100%;
+      height: 100%
+    }
+
     .main320-article-right-cell img{
       width: 100%;
       height: 100%;
       vertical-align: middle;
     }
 
-    .main320-article-shadow{
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 30px;
-      width: 100%;
-      background-color: rgba(0, 0, 0, .7);
-      padding: 0 10px;
-      line-height: 30px;
-    }
-    .main320-article-shadow .main320-article-info{
-      color: #c8936b;
-      font-size: 13px;
-    }
 
     .main320-banner-article{
       position: relative;
@@ -1097,12 +989,37 @@
       margin-top: 10px;
     }
 
-    .main320-banner-article img{
+    .main320-banner-article a{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0
+    }
+
+     .main320-banner-article img{
       position: absolute;
       left: 0;
       top: 0;
       width:100%;
       height:100%;
+    }
+
+    .main320-article-shadow {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 30px;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 1);
+      padding: 0 10px;
+      line-height: 30px;
+      border-top:1px solid rgba(200, 147, 107, .1);
+    }
+
+    .main320-article-shadow .main320-article-info {
+      color: #c8936b;
+      font-size: 13px;
     }
   }
 </style>

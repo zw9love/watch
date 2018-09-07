@@ -15,11 +15,18 @@ module.exports = {
     title: '北京名表维修中心',
     meta: [
       { charset: 'utf-8' },
-      // <meta name=”renderer” content=”webkit”>
+      /*
+        <!-- 下面3个meta中任选一个，即可正确识别 -->
+        <meta http-equiv="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+      */
       { name :'renderer', content: 'webkit'},
+      { 'http-equiv' :'renderer', content: 'webkit'},
+      { 'http-equiv' :'X-UA-Compatible', content: 'IE=edge'},
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0' },
-      { hid: 'description', name: 'description', content: '手表手表劳力士修理' },
-      { name: 'keywords', content: '手表手表劳力士修理'}
+      // { name: 'description', content: '手表手表劳力士修理' },
+      // { name: 'keywords', content: '手表手表劳力士修理'}
       // <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     ],
     link: [
@@ -48,7 +55,8 @@ module.exports = {
   },
   proxy: {
     '/api/': {
-      target: 'http://0.0.0.0',
+      // target: 'http://0.0.0.0',
+      target: 'http://192.168.1.135:6789',
       pathRewrite: {
         '^/api/': ''
       },
@@ -106,22 +114,22 @@ module.exports = {
         component: resolve(__dirname, 'pages/notfound.vue')
       })
     },
-    routes: [
-      {
-        name: 'index',
-        path: '/',
-        // component: index
-        component: '~pages/index.vue'
-      },
-      {
-        name: 'order',
-        path: '/order1',
-        // component: order
-        component: '~pages/order.vue'
-      },
-      // { path: '*', component: NotFound }
-      { path: '*', component: '~pages/notfound.vue' }
-    ]
+    // routes: [
+    //   {
+    //     name: 'index',
+    //     path: '/',
+    //     // component: index
+    //     component: '~pages/index.vue'
+    //   },
+    //   {
+    //     name: 'order',
+    //     path: '/order1',
+    //     // component: order
+    //     component: '~pages/order.vue'
+    //   },
+    //   // { path: '*', component: NotFound }
+    //   { path: '*', component: '~pages/notfound.vue' }
+    // ]
   }
 }
 

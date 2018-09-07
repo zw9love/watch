@@ -18,9 +18,9 @@
     <!--</template>-->
     <!--</popup-picker>-->
     <strong>直接搜索：</strong>
-    <span class="search-container320">
-      <input type="search" class="search-txt320" v-model="txtVal" @keydown.enter="searchCity" placeholder="请输入城市中文或拼音 ">
-    </span>
+    <form class="search-container320" action="" @submit.prevent>
+      <input type="search" class="search-txt320" v-model="txtVal" @keydown.enter.prevent="searchCity" placeholder="请输入城市中文或拼音 ">
+    </form>
   </div>
 </template>
 
@@ -39,7 +39,13 @@
       }
     },
     created(){
-      this.cityName = this.$route.query.city ? this.$route.query.city : '请选择'
+      if(this.$route.query.city === '市辖区'){
+        this.cityName = this.$route.query.province
+      }else if(this.$route.query.city){
+        this.cityName = this.$route.query.city
+      }else {
+        this.cityName = '请选择城市'
+      }
       this.txtVal = this.$route.query.address ? this.$route.query.address : ''
     },
     watch: {
@@ -49,7 +55,13 @@
         this.$router.push({path: '/servicelist/city', query: {province: provinceName, city: cityName, area: ''}})
       },
       '$route': function(newVal){
-        this.cityName = newVal.query.city ? newVal.query.city : '请选择'
+        if(newVal.query.city=== '市辖区'){
+          this.cityName = newVal.query.province
+        }else if(this.$route.query.city){
+          this.cityName = newVal.query.city
+        }else {
+          this.cityName = '请选择城市'
+        }
         this.txtVal = this.$route.query.address ? this.$route.query.address : ''
       }
     },
@@ -58,8 +70,9 @@
         // console.log(this.value)
         // this.cityName = name[0].indexOf('市') !== - 1 ? name[0].slice(0, name[0].length - 1) : name[1].slice(0, name[1].length - 1)
       },
-      searchCity(){
+      searchCity(e){
         let val = this.txtVal.trim()
+        console.log(val)
         if(val){
           this.$router.push({path: '/servicelist/city', query: {address: val}})
         }

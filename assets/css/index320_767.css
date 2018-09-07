@@ -7,11 +7,12 @@
    */
   .container{
     padding-bottom: 14.285714%;
-    margin-top: 46px;
+    padding-top: 46px;
   }
   .reservation-shadow, .banner-container img.banner_pc, .banner-shadow, .brand-main-wrapper, .service-quality-main-info, .reservation-main, .certification, .service-project-main, .service-quality-container, .adver-wrapper, .environmental-container{
     display: none;
   }
+
 
   .tabbar-container{
     display: block;
@@ -164,7 +165,7 @@
 
   .banner-shadow320 .city{
     color: #fff;
-    font-size: 15px;
+    font-size: 12px;
     font-family: "PingFangSC-Regular";
   }
 
@@ -227,12 +228,19 @@
     align-items: center;
   }
 
-  .navigation-container320 ul li img{
+  .navigation-container320 ul li >a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navigation-container320 ul li >a img{
     width: 50px;
     height: 50px;
   }
 
-  .navigation-container320 ul li a{
+  .navigation-container320 ul li >a span{
     font-size: 14px;
     font-family: "PingFangSC-Medium";
     color: #333;

@@ -57,12 +57,21 @@
   color: #BF9571!important;
 }
 
+.weui-cell_access .weui-cell__ft{
+  padding: 0!important;
+}
+
 .weui-cell_access .weui-cell__ft:after{
   display: none!important;
 }
 
 .weui-input{
   font-size: 12px!important;
+}
+
+
+.vux-cell-box .weui-cell{
+  padding: 0!important;
 }
 
 .vux-cell-placeholder, .weui-cell_access{

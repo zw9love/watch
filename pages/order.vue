@@ -146,6 +146,15 @@
   import HeaderMobile from '../components/HeaderMobile'
   // import 'element-ui/lib/theme-chalk/index.css';
   export default {
+    head () {
+      return {
+        title: '西亨名表维修中心-手表维修预约服务',
+        meta: [
+          { name: 'keywords', content: '手表维修服务,手表维修服务点' },
+          { name: 'description', content: '西亨名表维修中心,坚持以信致远,以精致臻的宗旨,诚心服务每一位客人,专业提供百达翡丽、江诗丹顿、积家、欧米茄、劳力士、芝柏、宝珀等世界名表在线预约维修服务\n' },
+        ]
+      }
+    },
     name: "order",
     components: {
       Header,

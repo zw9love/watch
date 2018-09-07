@@ -56,7 +56,7 @@
          <span class="main320-btn-cell">已完成</span>
        </div>
        <div class="main320-order">
-         <OrderCellMobile v-for="x in 1" :key="x"/>
+         <OrderCellMobile v-for="x in 10" :key="x"/>
        </div>
      </main>
    </div>

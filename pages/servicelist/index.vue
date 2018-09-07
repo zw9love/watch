@@ -83,13 +83,13 @@
         <div style="margin-top: 46px">
           <div class="address-header vux-header">
             <div class="vux-header-left">
-              <div class="left-arrow" @click="backList"></div>
+              <div class="left-arrow" @click.stop="backList"></div>
             </div>
             <span class="address-header-info">维修地址</span>
           </div>
           <!--<x-header title="维修地址" :left-options="{backText: ''}"></x-header>-->
           <div>
-            <div id="store-map"></div>
+            <div id="store-list-map"></div>
             <div class="address-info">
               <div class="address-info-left">
                 <strong>北京店</strong>
@@ -131,6 +131,15 @@
         addressActive: false,
       }
     },
+    mounted(){
+      // alert('servicelist-index')
+      if (window.BMap) {
+        alert('BMap加载完成。store-list-map111。')
+        let map = new BMap.Map("store-list-map");
+        let point = new BMap.Point(116.331398, 39.897445);
+        map.centerAndZoom(point, 12);
+      }
+    },
     methods: {
       getMore() {
 
@@ -140,9 +149,10 @@
         this.$nextTick(function () {
           //   // DOM 现在更新了
           if (window.BMap) {
-            let map = new BMap.Map("store-map");
-            let point = new BMap.Point(116.331398, 39.897445);
-            map.centerAndZoom(point, 12);
+            // alert('BMap加载完成。store-list-map111。')
+            let map = new BMap.Map("store-list-map");
+            // let point = new BMap.Point(116.331398, 39.897445);
+            // map.centerAndZoom(point, 12);
             // 创建地址解析器实例
             let myGeo = new BMap.Geocoder();
             // 将地址解析结果显示在地图上,并调整地图视野

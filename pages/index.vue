@@ -35,23 +35,6 @@
           </div>
         </popup>
       </div>
-      <!--<tabbar>-->
-        <!--<tabbar-item selected icon-class="tabbar-icon-class">-->
-          <!--<img slot="icon" src="../assets/img/home_behind_icon1_no@2x.png">-->
-          <!--<img slot="icon-active" src="../assets/img/home_behind_icon1_yes@2x.png">-->
-          <!--<span slot="label">在线客服</span>-->
-        <!--</tabbar-item>-->
-        <!--<tabbar-item icon-class="tabbar-icon-class">-->
-          <!--<img slot="icon" src="../assets/img/home_behind_icon2_no@2x.png">-->
-          <!--<img slot="icon-active" src="../assets/img/home_behind_icon1_yes@2x.png">-->
-          <!--<span slot="label">预约到店</span>-->
-        <!--</tabbar-item>-->
-        <!--<tabbar-item icon-class="tabbar-icon-class">-->
-          <!--<img slot="icon" src="../assets/img/home_behind_icon3_no@2x.png">-->
-          <!--<img slot="icon-active" src="../assets/img/home_behind_icon3_yes@2x.png">-->
-          <!--<span slot="label">电话咨询</span>-->
-        <!--</tabbar-item>-->
-      <!--</tabbar>-->
     </div>
 
     <Header/>
@@ -64,7 +47,7 @@
         <p>维修中心地址：北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）</p>
       </div>
       <div class="banner-shadow320">
-        <x-address title="title" v-model="addressValue" :list="addressData" :hide-district="true">
+        <x-address title="title" v-model="addressValue" :list="addressData" :hide-district="true" class="mytest">
           <template slot="title" slot-scope="props">
             <span class="city">{{cityName}}</span>
             <img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow">
@@ -86,9 +69,11 @@
     <!--navigation320-->
     <div class="navigation-container320">
       <ul>
-        <li v-for="(item, key) in mobileNavList" :key="key" @click="goto(item.href)">
-          <img src="../assets/img/home_nav_icon1@2x.png" alt="">
-          <nuxt-link :to="item.href">{{item.name}}</nuxt-link>
+        <li v-for="(item, key) in mobileNavList" :key="key">
+          <nuxt-link :to="item.href" @click.stop>
+            <img src="../assets/img/home_nav_icon1@2x.png" alt="">
+            <span>{{item.name}}</span>
+          </nuxt-link>
         </li>
       </ul>
     </div>
@@ -149,7 +134,8 @@
             </div>
           </div>
           <div class="brand-main-wrapper320">
-            <div style="position: relative">
+            <!--<h3>{{msg}}</h3>-->
+            <div style="position: relative;: relative">
               <swiper v-model="brandIndex" @on-index-change="brandIndexChange"
                       :show-dots="false" :show-desc-mask="false" :height="brandMainHeight + 'px'">
                 <swiper-item v-for="(item, key) in brandList" :key="key">
@@ -861,7 +847,7 @@
   </div>
 </template>
 
-<script>
+<script >
   import ServiceTitle from '../components/ServiceTitle.vue'
   import Indicators from '../components/Indicators.vue'
   import Header from '../components/Header'
@@ -870,7 +856,7 @@
   import HeaderMobile from '../components/HeaderMobile'
   import { ChinaAddressV4Data} from 'vux'
   import address from '../assets/json/address'
-  import {MP} from '../util/map.js'
+  // import {MP} from '../util/map.js'
   // import {Swipe, SwipeItem, Picker} from 'mint-ui'
   // import 'mint-ui/lib/style.css'
   // import 'element-ui/lib/theme-chalk/index.css';
@@ -885,6 +871,15 @@
     //     // { rel: 'stylesheet', href: 'https://c.mipcdn.com/static/v1/mip.css'}
     //   ]
     // },
+    head () {
+      return {
+        title: '西亨名表维修中心-世界名表维修连锁品牌在线预约维修手表',
+        meta: [
+          { name: 'keywords', content: '名表维修,手表维修,手表维修中心,维修手表' },
+          { name: 'description', content: '西亨名表维修中心官方授权维修点：百达翡丽、江诗丹顿、积家、欧米茄、劳力士、芝柏、宝珀等世界名表在线预约到店维修服务，预约电话:4009608888，现场维修，保证安全和品质。' },
+        ]
+      }
+    },
     components: {
       ServiceTitle,
       Indicators,
@@ -895,6 +890,16 @@
     },
     // validate({ params, query }) {
     //   return false // 参数无效，Nuxt.js 停止渲染当前页面并显示错误页面
+    // },
+    // async asyncData({app}) {
+    //   let url = `/api`
+    //   let option = {
+    //     method: 'get',
+    //     url: url,
+    //     // headers: {'content-type': 'application/json', token: 'debug' }
+    //   }
+    //   let {data} = await app.$axios(option)
+    //   return {msg: JSON.stringify(data)}
     // },
     data() {
       return {
@@ -979,7 +984,7 @@
       }
     },
     mounted() {
-      console.log('mounted钩子')
+      // alert('mounted钩子')
       if(window.BMap){
         console.log('BMap加载完成。')
         let map = new BMap.Map("store-map");
