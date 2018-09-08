@@ -22,10 +22,14 @@
           <p>opyright 2016-2018 西亨（www.xiheng.com) All Rights Reserved. 闽公网安备 35020302001030号</p>
         </div>
         <div class="bottom-link-bottom">
-          <img src="../assets/img/home_footer_images1@2x.png" alt="">
-          <img src="../assets/img/home_footer_images2@2x.png" alt="">
-          <img src="../assets/img/home_footer_images3@2x.png" alt="">
-          <img src="../assets/img/home_footer_images4@2x.png" alt="">
+          <!--<img v-lazy="require('../assets/img/home_footer_images1@2x.png')" alt="" />-->
+          <!--<img v-lazy="require('../assets/img/home_footer_images2@2x.png')" alt="" />-->
+          <!--<img v-lazy="require('../assets/img/home_footer_images3@2x.png')" alt="" />-->
+          <!--<img v-lazy="require('../assets/img/home_footer_images4@2x.png')" alt="" />-->
+          <x-img :src="require('../assets/img/home_footer_images1@2x.png')" />
+          <x-img :src="require('../assets/img/home_footer_images2@2x.png')" />
+          <x-img :src="require('../assets/img/home_footer_images3@2x.png')" />
+          <x-img :src="require('../assets/img/home_footer_images4@2x.png')" />
         </div>
       </div>
     </div>
@@ -35,15 +39,16 @@
           <input type="text" placeholder="请输入您的电话号码，提交后服务中心将会回电">
         </li>
         <li class="bottom-talk-btn">
-          <img src="../assets/img/home_footer_button@2x.png" alt="">
+          <!--<img src="../assets/img/home_footer_button@2x.png" alt="" />-->
           <span>提交</span>
         </li>
         <li class="bottom-talk-btn">
-          <img src="../assets/img/home_footer_button@2x.png" alt="">
-          <span @click.stop="$router.push({path: '/customerservice'})">在线咨询</span>
+          <!--<img src="../assets/img/home_footer_button@2x.png" alt="" />-->
+          <nuxt-link to="/customerservice">在线咨询</nuxt-link>
         </li>
         <li>
-          <img src="../assets/img/home_footer_icon_contacts@2x.png" alt="">
+          <!--<img v-lazy="require('../assets/img/home_footer_icon_contacts@2x.png')" alt="" />-->
+          <x-img :src="require('../assets/img/home_footer_icon_contacts@2x.png')" />
         </li>
         <li class="bottom-talk-call">
           <p>服务热线：400-960-8888</p>
@@ -199,16 +204,18 @@
     cursor: pointer;
   }
 
-  .bottom-talk-btn span {
-    position: absolute;
-    width: 100%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  .bottom-talk-btn span, .bottom-talk-btn a {
+    /*position: absolute;*/
+    display: inline-block;
+    width: 160px;
+    height: 50px;
+    line-height: 50px;
     color: #fff;
     font-size: 20px;
     font-family: "PingFangSC-Regular";
     font-weight: 600;
+    border-radius: 10px;
+    background-color: #C8936B;
   }
 
   .bottom-talk-call p {

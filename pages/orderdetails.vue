@@ -11,52 +11,12 @@
         <div class="orderdetails-reservation">
           <Reservation />
           <div class="reservation-details">
-            <div class="reservation-details-cell reservation-details-active">
+            <div class="reservation-details-cell reservation-details-active" v-for="x in 8" :key="x">
               <span class="date">2018-08-04</span>
               <span class="time">16:56</span>
-              <span class="image"><img src="../assets/img/demand_list_plan_icon_no@2x.png" alt=""></span>
-              <span class="info">客户已取表</span>
-            </div>
-            <div class="reservation-details-cell">
-              <span class="date">2018-08-04</span>
-              <span class="time">16:56</span>
-              <span class="image"><img src="../assets/img/demand_list_plan_icon_no@2x.png" alt=""></span>
-              <span class="info">客户已取表</span>
-            </div>
-            <div class="reservation-details-cell reservation-details-active">
-              <span class="date">2018-08-04</span>
-              <span class="time">16:56</span>
-              <span class="image"><img src="../assets/img/demand_list_plan_icon_no@2x.png" alt=""></span>
-              <span class="info">客户已取表</span>
-            </div>
-            <div class="reservation-details-cell">
-              <span class="date">2018-08-04</span>
-              <span class="time">16:56</span>
-              <span class="image"><img src="../assets/img/demand_list_plan_icon_no@2x.png" alt=""></span>
-              <span class="info">客户已取表</span>
-            </div>
-            <div class="reservation-details-cell reservation-details-active">
-              <span class="date">2018-08-04</span>
-              <span class="time">16:56</span>
-              <span class="image"><img src="../assets/img/demand_list_plan_icon_no@2x.png" alt=""></span>
-              <span class="info">客户已取表</span>
-            </div>
-            <div class="reservation-details-cell">
-              <span class="date">2018-08-04</span>
-              <span class="time">16:56</span>
-              <span class="image"><img src="../assets/img/demand_list_plan_icon_no@2x.png" alt=""></span>
-              <span class="info">客户已取表</span>
-            </div>
-            <div class="reservation-details-cell reservation-details-active">
-              <span class="date">2018-08-04</span>
-              <span class="time">16:56</span>
-              <span class="image"><img src="../assets/img/demand_list_plan_icon_no@2x.png" alt=""></span>
-              <span class="info">客户已取表</span>
-            </div>
-            <div class="reservation-details-cell">
-              <span class="date">2018-08-04</span>
-              <span class="time">16:56</span>
-              <span class="image"><img src="../assets/img/demand_list_plan_icon_no@2x.png" alt=""></span>
+              <span class="image">
+                <x-img :src="require('../assets/img/demand_list_plan_icon_no@2x.png')" alt="" />
+              </span>
               <span class="info">客户已取表</span>
             </div>
           </div>
@@ -68,7 +28,7 @@
     </div>
     <div class="container320">
       <HeaderMobile title="查询结果"/>
-      <div class="banner320"><img src="../assets/img/process.jpg" alt=""></div>
+      <div class="banner320"><x-img :src="require('../assets/img/process.jpg')" alt="" /></div>
       <main class="main320">
         <OrderCellMobile />
         <div class="orderdetails-reservation320">
@@ -76,7 +36,7 @@
             <span class="date">2018-08-04</span>
             <span class="time">16:56</span>
             <span class="image">
-              <img src="../assets/img/demand_list_plan_icon_yes@2x.png" alt="">
+              <x-img :src="require('../assets/img/demand_list_plan_icon_yes@2x.png')" alt="" />
             </span>
             <span class="content">备件等待中，备件大概需要2天</span>
           </div>

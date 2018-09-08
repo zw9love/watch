@@ -6,7 +6,7 @@
 
       <!--banner-->
       <div class="banner" @click="bannerClick">
-        <img src="../assets/img/case_banner@2x.png" alt="">
+        <x-img :src="require('../assets/img/case_banner@2x.png')" alt="" />
       </div>
 
       <!--main-->
@@ -41,7 +41,7 @@
             </div>
             <div class="video-list-cell" v-for="(item, key) in list" :key="key" :style="{margin: key === 0 ? '0': ''}"
                  @click="videoCellClick(item, key)">
-              <img src="../assets/img/case_images2@2x.png" alt="">
+              <x-img :src="require('../assets/img/case_images2@2x.png')" alt="" />
               <div class="content">
                 <p>修表即修行，西亨给您的腕表一份尊贵礼遇</p>
                 <div class="fixed">
@@ -108,17 +108,15 @@
         <div class="comment-cell"  v-for="(item, key) in commentList" :key="key">
           <div class="comment-cell-top">
             <div class="comment-img">
-              <img src="../assets/img/case_images_head1@2x.png" alt="">
+              <x-img :src="require('../assets/img/case_images_head1@2x.png')" alt="" />
             </div>
             <div class="comment-user">
               <p class="phone">{{item.phone}}</p>
               <p class="count">
                 <span class="count-info">评分</span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
+                <span v-for="item in 5" :key="item">
+                  <x-img :src="require('../assets/img/case_images11@2x.png')" alt="" />
+                </span>
               </p>
             </div>
             <div class="comment-date">
@@ -131,7 +129,7 @@
             </p>
             <ul class="content-img">
               <li v-for="(src, index) in item.imgList" :key="index">
-                <img :src="src" alt=""  preview-nav-enable="false" v-preview="src">
+                <x-img :src="src" alt=""  preview-nav-enable="false" v-preview="src" />
               </li>
             </ul>
           </div>
@@ -197,17 +195,15 @@
         <div class="comment320-cell" v-for="(item, key) in commentList" :key="key">
           <div class="comment320-cell-top">
             <div class="comment320-img">
-              <img src="../assets/img/case_images_head1@2x.png" alt="">
+              <x-img :src="require('../assets/img/case_images_head1@2x.png')" alt="" />
             </div>
             <div class="comment320-user">
               <p class="phone320">{{item.phone}}</p>
               <p class="count320">
                 <span class="count-info320">评分</span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
-                <span><img src="../assets/img/case_images11@2x.png" alt=""></span>
+                <span v-for="item in 5" :key="item">
+                  <x-img :src="require('../assets/img/case_images11@2x.png')" alt="" />
+                </span>
               </p>
             </div>
             <div class="comment320-date">
@@ -220,7 +216,7 @@
             </p>
             <ul class="content320-img" v-if="item.imgList">
               <li v-for="(src, index) in item.imgList" :key="index">
-                <img :src="src" alt=""  preview-nav-enable="false" v-preview="src">
+                <x-img :src="src" alt=""  preview-nav-enable="false" v-preview="src" />
               </li>
             </ul>
             <div class="seller">

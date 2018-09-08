@@ -300,6 +300,14 @@
     top: 0;
   }
 
+  .ximg-demo {
+    width: 100%;
+    height: auto;
+  }
+  .ximg-error {
+    background-color: yellow;
+  }
+
   /*
     到店指引
   */
@@ -503,11 +511,17 @@
 
   .adver-wrapper320{
     display: block;
-    padding: 0 10px;
+    padding: 31% 10px 0 10px;
+    position: relative;
   }
 
   .adver-container img{
     vertical-align: middle;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
   }
 
 
@@ -748,5 +762,14 @@
   .reservation-shadow320-button >span{
     width: 80px;
     height:30px;
+  }
+
+  .service-quality-container320-main img{
+    width: 25px;
+    height: 25px;
+  }
+
+  .service-quality-container320-maininfo{
+    margin-left: 8px;
   }
 }

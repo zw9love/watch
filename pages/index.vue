@@ -2,21 +2,21 @@
   <div class="container">
     <!--tabbar-->
     <div class="tabbar-container">
-      <img src="../assets/img/bottom_fix.png" alt="">
+      <img :src="require('../assets/img/bottom_fix.png')" alt="" />
       <div class="tabbar-wrapper">
         <div class="tabbar-cell">
           <nuxt-link to="/customerservice">
-            <img src="../assets/img/online_service.png" alt="">
+            <x-img :src="require('../assets/img/online_service.png')" alt="" />
             <span>在线客服</span>
           </nuxt-link>
-          <!--<img src="../assets/img/service_info.png" alt="">-->
+          <!--<img src="../assets/img/service_info.png" alt="" />-->
         </div>
         <div class="tabbar-cell">
           <nuxt-link to="/order">
-            <img src="../assets/img/order_store.png" alt="">
+            <x-img :src="require('../assets/img/order_store.png')" alt="" />
             <span>预约到店</span>
           </nuxt-link>
-          <!--<img src="../assets/img/service_info.png" alt="">-->
+          <!--<img src="../assets/img/service_info.png" alt="" />-->
         </div>
       </div>
       <span class="tabbar-vip" @click="phoneCall"></span>
@@ -41,8 +41,9 @@
     <HeaderMobile title="北京名表维修中心" :showBack="false"/>
     <!--banner-->
     <div class="banner-container">
-      <img src="../assets/img/home_banner_bg@2x.png" alt="" class="banner_pc">
-      <img src="../assets/img/home_banner320_bg@2x.png" alt="" class="banner_phone">
+      <!--<img :src="require('../assets/img/home_banner_bg@2x.png')" alt="" class="banner_pc">-->
+      <x-img :src="require('../assets/img/home_banner_bg@2x.png')"  class="banner_pc" :offset="-100"></x-img>
+      <img :src="require('../assets/img/home_banner320_bg@2x.png')" alt="" class="banner_phone">
       <div class="banner-shadow">
         <p>维修中心地址：北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）</p>
       </div>
@@ -50,20 +51,20 @@
         <x-address title="title" v-model="addressValue" :list="addressData" :hide-district="true" class="mytest">
           <template slot="title" slot-scope="props">
             <span class="city">{{cityName}}</span>
-            <img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow">
+            <x-img :src="require('../assets/img/home_icon_position@2x.png')" alt="" class="arrow" />>
           </template>
         </x-address>
         <!--<popup-picker :data="list1" v-model="value1" :columns="3" ref="picker">-->
           <!--<template slot="title" slot-scope="props">-->
             <!--<span class="city">{{ ($refs.picker && $refs.picker.getNameValues().split(' ')[1]) || '广州'}}</span>-->
-            <!--<img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow">-->
+            <!--<img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow" />>-->
           <!--</template>-->
         <!--</popup-picker>-->
         <!--<span class="city">北京</span>-->
-        <!--<img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow">-->
+        <!--<img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow" />>-->
         <div class="line"></div>
         <input class="txt" type="text" placeholder="搜索">
-        <img src="../assets/img/home_top_search@2x.png" alt="" class="search-btn">
+        <x-img :src="require('../assets/img/home_top_search@2x.png')" alt="" class="search-btn" />
       </div>
     </div>
     <!--navigation320-->
@@ -71,7 +72,7 @@
       <ul>
         <li v-for="(item, key) in mobileNavList" :key="key">
           <nuxt-link :to="item.href" @click.stop>
-            <img src="../assets/img/home_nav_icon1@2x.png" alt="">
+            <x-img :src="require('../assets/img/home_nav_icon1@2x.png')" alt="" />
             <span>{{item.name}}</span>
           </nuxt-link>
         </li>
@@ -94,41 +95,8 @@
             <!--<nuxt-child/>-->
             <div class="brand-main-right">
               <ul>
-                <li>
-                  <img src="../assets/img/home_banner_bg@2x.png" alt="">
-                </li>
-                <li>
-                  <img src="../assets/img/home_banner_bg@2x.png" alt="">
-                </li>
-                <li>
-                  <img src="../assets/img/home_banner_bg@2x.png" alt="">
-                </li>
-                <li>
-                  <img src="../assets/img/home_banner_bg@2x.png" alt="">
-                </li>
-                <li>
-                  <img src="../assets/img/home_banner_bg@2x.png" alt="">
-                </li>
-                <li>
-                  <img src="../assets/img/home_banner_bg@2x.png" alt="">
-                </li>
-                <li>
-                  <img src="../assets/img/home_banner_bg@2x.png" alt="">
-                </li>
-                <li>
-                  <img src="../assets/img/home_banner_bg@2x.png" alt="">
-                </li>
-                <li>
-                  <img src="../assets/img/home_banner_bg@2x.png" alt="">
-                </li>
-                <li>
-                  <img src="../assets/img/home_banner_bg@2x.png" alt="">
-                </li>
-                <li>
-                  <img src="../assets/img/home_banner_bg@2x.png" alt="">
-                </li>
-                <li>
-                  <img src="../assets/img/home_banner_bg@2x.png" alt="">
+                <li v-for="(item, key) in brandPCList" :key="key">
+                  <x-img :src="item.src" alt="" />
                 </li>
               </ul>
             </div>
@@ -140,18 +108,11 @@
                       :show-dots="false" :show-desc-mask="false" :height="brandMainHeight + 'px'">
                 <swiper-item v-for="(item, key) in brandList" :key="key">
                   <ul class="brand-main-img-wrapper" ref="brandMainImgWrapper">
-                    <li><img src="../assets/img/home_banner_bg@2x.png" alt=""></li>
-                    <li><img src="../assets/img/home_banner_bg@2x.png" alt=""></li>
-                    <li><img src="../assets/img/home_banner_bg@2x.png" alt=""></li>
-                    <li><img src="../assets/img/home_banner_bg@2x.png" alt=""></li>
-                    <li><img src="../assets/img/home_banner_bg@2x.png" alt=""></li>
-                    <li><img src="../assets/img/home_banner_bg@2x.png" alt=""></li>
-                    <li><img src="../assets/img/home_banner_bg@2x.png" alt=""></li>
-                    <li><img src="../assets/img/home_banner_bg@2x.png" alt=""></li>
-                    <li><img src="../assets/img/home_banner_bg@2x.png" alt=""></li>
-                    <li><img src="../assets/img/home_banner_bg@2x.png" alt=""></li>
-                    <li><img src="../assets/img/home_banner_bg@2x.png" alt=""></li>
-                    <li><img src="../assets/img/home_banner_bg@2x.png" alt=""></li>
+                    <!--<li><img src="../assets/img/home_banner_bg@2x.png" alt="" /></li>-->
+                    <li v-for="(entry, index) in item" :key="index">
+                      <x-img :src="entry.src" alt="" />
+                      <!--<x-img :src="entry.src" class="ximg-demo" error-class="ximg-error" :offset="0"></x-img>-->
+                    </li>
                   </ul>
                 </swiper-item>
               </swiper>
@@ -164,10 +125,10 @@
     <!--广告-->
     <div class="adver-container">
       <div class="adver-wrapper" @click="$router.push({path: '/order'})">
-        <img src="../assets/img/brand_images9@2x.png" alt="">
+        <x-img :src="require('../assets/img/brand_images9@2x.png')" alt="" />
       </div>
       <div class="adver-wrapper320">
-        <img src="../assets/img/home_booking_banner@2x.png" alt="">
+        <x-img :src="require('../assets/img/home_booking_banner@2x.png')" alt="" />
       </div>
     </div>
     <!--服务项目-->
@@ -177,7 +138,7 @@
         <ul>
           <li>
             <div class="service-project-main-cell">
-              <img src="../assets/img/home_serviceitems_icon1@2x.png" alt="">
+              <x-img :src="require('../assets/img/home_serviceitems_icon1@2x.png')" alt="" />
               <h3 class="info">计时故障</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -194,7 +155,7 @@
           </li>
           <li>
             <div class="service-project-main-cell">
-              <img src="../assets/img/home_serviceitems_icon2@2x.png" alt="">
+              <x-img :src="require('../assets/img/home_serviceitems_icon2@2x.png')" alt="" />
               <h3 class="info">零件损坏</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -211,7 +172,7 @@
           </li>
           <li>
             <div class="service-project-main-cell">
-              <img src="../assets/img/home_serviceitems_icon3@2x.png" alt="">
+              <x-img :src="require('../assets/img/home_serviceitems_icon3@2x.png')" alt="" />
               <h3 class="info">清洗保养</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -228,7 +189,7 @@
           </li>
           <li>
             <div class="service-project-main-cell">
-              <img src="../assets/img/home_serviceitems_icon4@2x.png" alt="">
+              <x-img :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt="" />
               <h3 class="info">全套保养</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -248,29 +209,29 @@
       <div class="service-project-main320">
         <ul class="service-project-main320-cell">
           <li>
-            <img src="../assets/img/home_serviceitems_icon1@2x.png" alt="">
+            <x-img :src="require('../assets/img/home_serviceitems_icon1@2x.png')" alt="" />
             <p>走时故障</p>
           </li>
           <li>
-            <img src="../assets/img/home_serviceitems_icon2@2x.png" alt="">
+            <x-img :src="require('../assets/img/home_serviceitems_icon2@2x.png')" alt="" />
             <p>零件损坏</p>
           </li>
           <li>
-            <img src="../assets/img/home_serviceitems_icon3@2x.png" alt="">
+            <x-img :src="require('../assets/img/home_serviceitems_icon3@2x.png')" alt="" />
             <p>零件翻新</p>
           </li>
         </ul>
         <ul class="service-project-main320-cell">
           <li>
-            <img src="../assets/img/home_serviceitems_icon4@2x.png" alt="">
+            <x-img :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt="" />
             <p>全套保养</p>
           </li>
           <li>
-            <img src="../assets/img/home_serviceitems_icon4@2x.png" alt="">
+            <x-img :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt="" />
             <p>机芯保养</p>
           </li>
           <li>
-            <img src="../assets/img/home_serviceitems_icon4@2x.png" alt="">
+            <x-img :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt="" />
             <p>外观清洗</p>
           </li>
         </ul>
@@ -279,17 +240,17 @@
     <!--服务品质承诺-->
     <div class="service-quality">
       <div class="service-quality-container">
-        <img src="../assets/img/home_qualitycommitment__bg@2x.png" alt="">
+        <x-img :src="require('../assets/img/home_qualitycommitment__bg@2x.png')" alt="" />
         <div class="service-quality-main">
           <ServiceTitle info="Quality commitment" name="服务品质承诺" content="修表即修行，西亨致力于建立领先行业的可信任的规范"
                         :bgActive="true"></ServiceTitle>
           <ul class="service-quality-main-info">
             <li>
               <div class="imgInfo">
-                <img src="../assets/img/home_qualitycommitment__bg1@2x.png" alt="">
+                <x-img :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
                 <div class="imgInfo-container">
                   <span>
-                    <img src="../assets/img/home_qualitycommitment__icon1@2x.png" alt="">
+                    <x-img :src="require('../assets/img/home_qualitycommitment__icon1@2x.png')" alt="" />
                   </span>
                   <span class="showy">
                     实体门店
@@ -302,10 +263,10 @@
             </li>
             <li>
               <div class="imgInfo">
-                <img src="../assets/img/home_qualitycommitment__bg1@2x.png" alt="">
+                <x-img :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
                 <div class="imgInfo-container">
                   <span>
-                    <img src="../assets/img/home_qualitycommitment__icon2@2x.png" alt="">
+                    <x-img :src="require('../assets/img/home_qualitycommitment__icon2@2x.png')" alt="" />
                   </span>
                   <span class="showy">
                     原厂品质
@@ -318,10 +279,10 @@
             </li>
             <li>
               <div class="imgInfo">
-                <img src="../assets/img/home_qualitycommitment__bg1@2x.png" alt="">
+                <x-img :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
                 <div class="imgInfo-container">
                   <span>
-                    <img src="../assets/img/home_qualitycommitment__icon3@2x.png" alt="">
+                    <x-img :src="require('../assets/img/home_qualitycommitment__icon3@2x.png')" alt="" />
                   </span>
                   <span class="showy">
                     价格公道
@@ -334,10 +295,10 @@
             </li>
             <li>
               <div class="imgInfo">
-                <img src="../assets/img/home_qualitycommitment__bg1@2x.png" alt="">
+                <x-img :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
                 <div class="imgInfo-container">
                   <span>
-                    <img src="../assets/img/home_qualitycommitment__icon4@2x.png" alt="">
+                    <x-img :src="require('../assets/img/home_qualitycommitment__icon4@2x.png')" alt="" />
                   </span>
                   <span class="showy">
                     质保一年
@@ -355,9 +316,9 @@
         <ServiceTitle info="Quality commitment" name="服务品质承诺" content="修表即修行，西亨致力于建立领先行业的可信任的规范"></ServiceTitle>
         <ul>
           <li>
-            <img src="../assets/img/home_servicequality_bg1@2x.png" alt="">
+            <x-img :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
             <div class="service-quality-container320-main">
-              <img src="../assets/img/home_qualitycommitment__icon1@2x.png" alt="">
+              <x-img :src="require('../assets/img/home_qualitycommitment__icon1@2x.png')" alt="" />
               <div class="service-quality-container320-maininfo">
                 <p>实体门店</p>
                 <p>百年坚实口碑</p>
@@ -365,9 +326,9 @@
             </div>
           </li>
           <li>
-            <img src="../assets/img/home_servicequality_bg1@2x.png" alt="">
+            <x-img :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
             <div class="service-quality-container320-main">
-              <img src="../assets/img/home_qualitycommitment__icon2@2x.png" alt="">
+              <x-img :src="require('../assets/img/home_qualitycommitment__icon2@2x.png')" alt="" />
               <div class="service-quality-container320-maininfo">
                 <p>原厂品质</p>
                 <p>修后同原厂规格</p>
@@ -375,9 +336,9 @@
             </div>
           </li>
           <li>
-            <img src="../assets/img/home_servicequality_bg1@2x.png" alt="">
+            <x-img :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
             <div class="service-quality-container320-main">
-              <img src="../assets/img/home_qualitycommitment__icon3@2x.png" alt="">
+              <x-img :src="require('../assets/img/home_qualitycommitment__icon3@2x.png')" alt="" />
               <div class="service-quality-container320-maininfo">
                 <p>价格公道</p>
                 <p>实惠透明合理</p>
@@ -385,9 +346,9 @@
             </div>
           </li>
           <li>
-            <img src="../assets/img/home_servicequality_bg1@2x.png" alt="">
+            <x-img :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
             <div class="service-quality-container320-main">
-              <img src="../assets/img/home_qualitycommitment__icon4@2x.png" alt="">
+              <x-img :src="require('../assets/img/home_qualitycommitment__icon4@2x.png')" alt="" />
               <div class="service-quality-container320-maininfo">
                 <p>质保一年</p>
                 <p>原故障点免费重修</p>
@@ -403,19 +364,19 @@
                     content="只录用瑞士SMH认证、国家职业技能认证、中国钟表协会认证技师"></ServiceTitle>
       <div class="certification">
         <span @mouseenter="leftIconEnter" @mouseleave="leftIconLeave" @click="leftIconClick">
-          <img src="../assets/img/home_qualitycommitment__lefter_icon_no@2x.png" alt="" class="left-icon"
-               v-if="!leftActive">
-          <img src="../assets/img/home_qualitycommitment__lefter_icon_yes@2x.png" alt="" class="left-icon" v-else>
+          <x-img :src="require('../assets/img/home_qualitycommitment__lefter_icon_no@2x.png')" alt="" class="left-icon"
+               v-if="!leftActive" />
+          <x-img :src="require('../assets/img/home_qualitycommitment__lefter_icon_yes@2x.png')" alt="" class="left-icon" v-else />
         </span>
         <span @mouseenter="rightIconEnter" @mouseleave="rightIconLeave" @click="rightIconClick">
-          <img src="../assets/img/home_qualitycommitment__right_icon_no@2x.png" alt="" class="right-icon"
-               v-if="!rightActive">
-          <img src="../assets/img/home_qualitycommitment__right_icon_yes@2x.png" alt="" class="right-icon" v-else>
+          <x-img :src="require('../assets/img/home_qualitycommitment__right_icon_no@2x.png')" alt="" class="right-icon"
+               v-if="!rightActive" />
+          <x-img :src="require('../assets/img/home_qualitycommitment__right_icon_yes@2x.png')" alt="" class="right-icon" v-else />
         </span>
         <el-carousel indicator-position="none" :autoplay="false" arrow="never" height="300px" ref="technicianCarousel">
           <el-carousel-item v-for="(item, key) in technicianCarouselList" :key="key">
             <div class="certification-imgContainer">
-              <img src="../assets/img/home_certificationtechnician__image@2x.png" alt="">
+              <x-img :src="require('../assets/img/home_certificationtechnician__image@2x.png')" alt="" />
             </div>
             <div class="certification-infoContainer">
               <h1 class="certification-title">Charlie Peter</h1>
@@ -429,7 +390,7 @@
           </el-carousel-item>
         </el-carousel>
         <!--<div class="certification-imgContainer">-->
-        <!--<img src="../assets/img/home_certificationtechnician__image@2x.png" alt="">-->
+        <!--<img src="../assets/img/home_certificationtechnician__image@2x.png" alt="" />-->
         <!--</div>-->
         <!--<div class="certification-infoContainer">-->
         <!--<h1 class="certification-title">Charlie Peter</h1>-->
@@ -446,10 +407,10 @@
           <el-carousel type="card" :height="320 + 'px'" :autoplay="false" arrow="never"
                        indicator-position="none" @change="cerCarouselChange"
                        >
-            <el-carousel-item v-for="x in 3" :key="x" :name="x+''">
+            <el-carousel-item v-for="(item, key) in technicianCarouselList" :key="key" :name="key+''">
               <div class="certification320">
-                <img src="../assets/img/customer_service_logo.png" alt="">
-                <strong>Charlie Peter{{x}}</strong>
+                <x-img :src="require('../assets/img/customer_service_logo.png')" alt="" />
+                <strong>Charlie Peter{{key}}</strong>
                 <span class="level-info">国家高级技师</span>
                 <p class="certification320-info">
                   现任瑞士国际钟表协会委员、西亨名表维修技术
@@ -466,7 +427,7 @@
           <!--<swiper-item v-for="(item, key) in certificationList" :key="key" >-->
             <!--&lt;!&ndash;<div class="certification320" ref="certification320">&ndash;&gt;-->
               <!--&lt;!&ndash;<div class="certification320-imgContainer">&ndash;&gt;-->
-                <!--&lt;!&ndash;<img src="../assets/img/home_certificationtechnician__image@2x.png" alt="">&ndash;&gt;-->
+                <!--&lt;!&ndash;<img src="../assets/img/home_certificationtechnician__image@2x.png" alt="" />&ndash;&gt;-->
               <!--&lt;!&ndash;</div>&ndash;&gt;-->
               <!--&lt;!&ndash;<div class="certification320-infoContainer">&ndash;&gt;-->
                 <!--&lt;!&ndash;<h1 class="certification-title320">Charlie Peter {{key}}</h1>&ndash;&gt;-->
@@ -479,7 +440,7 @@
               <!--&lt;!&ndash;</div>&ndash;&gt;-->
             <!--&lt;!&ndash;</div>&ndash;&gt;-->
             <!--<div class="certification320" ref="certification320">-->
-              <!--<img src="../assets/img/customer_service_logo.png" alt="">-->
+              <!--<img src="../assets/img/customer_service_logo.png" alt="" />-->
               <!--<strong>Charlie Peter{{key}}</strong>-->
               <!--<span class="level-info">国家高级技师</span>-->
               <!--<p class="certification320-info">-->
@@ -498,63 +459,15 @@
       <ServiceTitle info="Maintenance equipment" name="进口维修设备及零件"
                     content="只选用瑞士进口维修设备及零配件，原厂品质，维修零损耗"></ServiceTitle>
       <div class="equipment-container">
-        <div class="equipment-cell">
+        <div class="equipment-cell" v-for="(item, key) in envList" :key="key">
           <div class="equipment-cell-container">
-            <img v-lazy="require('../assets/img/home_maintenanceequipment__images@2x.png')" alt="">
-            <!--<x-img src="../assets/img/home_maintenanceequipment__images@2x.png" :webp-src="`../assets/img/home_maintenanceequipment__images@2x.png?type=webp`" :offset="-100" container="#vux_view_box_body"></x-img>-->
+            <!--<x-img :src="item.src" alt="" />-->
+            <x-img :src="item.src" alt="" />
             <div class="equipment-shadow">
-              <span>多功能校表仪</span>
+              <span>{{item.name}}</span>
             </div>
           </div>
         </div>
-        <div class="equipment-cell">
-          <div class="equipment-cell-container">
-            <img v-lazy="require('../assets/img/home_maintenanceequipment__images@2x.png')" alt="">
-            <!--<x-img src="../assets/img/home_maintenanceequipment__images@2x.png" :webp-src="`../assets/img/home_maintenanceequipment__images@2x.png?type=webp`" :offset="-100" container="#vux_view_box_body"></x-img>-->
-            <div class="equipment-shadow">
-              <span>真空试水机</span>
-            </div>
-          </div>
-        </div>
-        <div class="equipment-cell">
-          <div class="equipment-cell-container">
-            <img v-lazy="require('../assets/img/home_maintenanceequipment__images@2x.png')" alt="">
-            <!--<x-img src="../assets/img/home_maintenanceequipment__images@2x.png" :webp-src="`../assets/img/home_maintenanceequipment__images@2x.png?type=webp`" :offset="-100" container="#vux_view_box_body"></x-img>-->
-            <div class="equipment-shadow">
-              <span>隔尘抛光机</span>
-            </div>
-          </div>
-        </div>
-        <div class="equipment-cell">
-          <div class="equipment-cell-container">
-            <img v-lazy="require('../assets/img/home_maintenanceequipment__images@2x.png')" alt="">
-            <!--<x-img src="../assets/img/home_maintenanceequipment__images@2x.png" :webp-src="`../assets/img/home_maintenanceequipment__images@2x.png?type=webp`" :offset="-100" container="#vux_view_box_body"></x-img>-->
-            <div class="equipment-shadow">
-              <span>多功能校表仪</span>
-            </div>
-          </div>
-        </div>
-        <div class="equipment-cell">
-          <div class="equipment-cell-container">
-            <img v-lazy="require('../assets/img/home_maintenanceequipment__images@2x.png')" alt="">
-            <!--<x-img src="../assets/img/home_maintenanceequipment__images@2x.png" :webp-src="`../assets/img/home_maintenanceequipment__images@2x.png?type=webp`" :offset="-100" container="#vux_view_box_body"></x-img>-->
-            <div class="equipment-shadow">
-              <span>真空试水机</span>
-            </div>
-          </div>
-        </div>
-        <div class="equipment-cell">
-          <div class="equipment-cell-container">
-            <img v-lazy="require('../assets/img/home_maintenanceequipment__images@2x.png')" alt="">
-            <!--<x-img src="../assets/img/home_maintenanceequipment__images@2x.png" :webp-src="`../assets/img/home_maintenanceequipment__images@2x.png?type=webp`" :offset="-100" container="#vux_view_box_body"></x-img>-->
-            <div class="equipment-shadow">
-              <span>隔尘抛光机</span>
-            </div>
-          </div>
-        </div>
-        <!--<div class="equipment-cell" style="background-color: red;">-->
-        <!--<div class="equipment-cell-container" style="background-color: pink;">4</div>-->
-        <!--</div>-->
       </div>
       <div class="equipment-container320">
 
@@ -672,7 +585,7 @@
               </div>
 
               <div class="reservation-btn-container">
-                <img src="../assets/img/home_reservationprocess_button@2x.png" alt="">
+                <x-img :src="require('../assets/img/home_reservationprocess_button@2x.png')" alt="" />
                 <span>提交预约</span>
               </div>
 
@@ -684,7 +597,7 @@
 
     <!--服务环境-->
     <div class="environmental">
-      <img src="../assets/img/home_serviceenvironment_bg@2x.png" alt="">
+      <x-img :src="require('../assets/img/home_serviceenvironment_bg@2x.png')" alt="" />
       <div class="environmental-container">
         <div class="environmental-main">
           <ServiceTitle info="SERVICE ITEMS" name="服务环境" content="提供舒适清爽的一对一服务空间" :bgActive="true"></ServiceTitle>
@@ -695,19 +608,19 @@
               <!--<h3>{{ item }}</h3>-->
               <!--</el-carousel-item>-->
               <el-carousel-item name="0">
-                <img src="../assets/img/home_serviceenvironment_images@2x.png" alt="">
+                <x-img :src="require('../assets/img/home_serviceenvironment_images@2x.png')" alt="" />
               </el-carousel-item>
               <el-carousel-item name="1">
-                <img src="../assets/img/home_serviceenvironment_images1@2x.png" alt="">
+                <x-img :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" alt="" />
               </el-carousel-item>
               <el-carousel-item name="2">
-                <img src="../assets/img/home_serviceenvironment_images2@2x.png" alt="">
+                <x-img :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" alt="" />
               </el-carousel-item>
             </el-carousel>
             <div class="indicator">
               <span v-for="(item, key) in 3" :key="key" @click="indicatorClick(key)">
                 <span class="indicator-active" v-if="key === indicatorKey"></span>
-                <img v-else src="../assets/img/home_serviceenvironment_button_no@2x.png" alt="">
+                <img v-else src="../assets/img/home_serviceenvironment_button_no@2x.png" alt="" />
               </span>
             </div>
           </div>
@@ -721,13 +634,13 @@
                        indicator-position="none"
                        @change="carouselChange">
             <el-carousel-item name="0">
-              <img src="../assets/img/home_serviceenvironment_images@2x.png" alt="">
+              <x-img :src="require('../assets/img/home_serviceenvironment_images@2x.png')" alt="" />
             </el-carousel-item>
             <el-carousel-item name="1">
-              <img src="../assets/img/home_serviceenvironment_images1@2x.png" alt="">
+              <x-img :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" alt="" />
             </el-carousel-item>
             <el-carousel-item name="2">
-              <img src="../assets/img/home_serviceenvironment_images2@2x.png" alt="">
+              <x-img :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" alt="" />
             </el-carousel-item>
           </el-carousel>
           <Indicators v-model="indicatorKey" :indicatorsStyle="{bottom: '-30px'}" :list="[1,1,1]"></Indicators>
@@ -739,7 +652,7 @@
     <div class="store">
       <ServiceTitle info="store guide" name="到店指引" content="400-960-8888">
         <span slot="content" class="store-content">
-          <img src="../assets/img/home_storeguide_icon@2x.png" alt="">
+          <x-img :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />
           <span>400-960-8888</span>
         </span>
       </ServiceTitle>
@@ -756,70 +669,52 @@
 
     <!--预约遮罩-->
     <div class="reservation-shadow" v-show="reservationActive">
-      <img src="../assets/img/home_popup_bg@2x.png" alt="">
+      <x-img :src="require('../assets/img/home_popup_bg@2x.png')" alt="" />
       <div class="reservation-shadow-container">
-        <div class="reservation-online-btn" @click="goto('/customerservice')">
-          <img src="../assets/img/home_popup_button@2x.png" alt="">
+        <nuxt-link class="reservation-online-btn" to="/customerservice">
+          <x-img :src="require('../assets/img/home_popup_button@2x.png')" alt="" />
           <div class="reservation-online-msg">
-            <img src="../assets/img/home_popup_button_icon@2x.png" alt="">
-            <nuxt-link to="/customerservice" >在线咨询</nuxt-link>
+            <x-img :src="require('../assets/img/home_popup_button_icon@2x.png')" alt="" />
+            <span>在线咨询</span>
           </div>
-        </div>
-        <div class="reservation-online-btn" @click="goto('/order')">
-          <img src="../assets/img/home_popup_button1@2x.png" alt="">
+        </nuxt-link>
+        <nuxt-link class="reservation-online-btn" to="/order">
+          <x-img :src="require('../assets/img/home_popup_button1@2x.png')" alt="" />
           <div class="reservation-online-msg">
-            <img src="../assets/img/home_popup_button_icon1@2x.png" alt="">
-            <nuxt-link to="/order" >在线预约</nuxt-link>
+            <x-img :src="require('../assets/img/home_popup_button_icon1@2x.png')" alt="" />
+            <span>在线预约</span>
           </div>
-        </div>
+        </nuxt-link>
       </div>
       <div class="reservation-shadow-close" @click="reservationClose">
-        <img src="../assets/img/close.png" alt="">
+        <x-img :src="require('../assets/img/close.png')" alt="" />
       </div>
     </div>
 
     <div class="reservation-shadow320" v-show="reservationActive">
-      <img src="../assets/img/home_popup_bg_mobile.png" alt="">
-      <img src="../assets/img/close.png" alt="" class="close320" @click="closeMobile">
+      <x-img :src="require('../assets/img/home_popup_bg_mobile.png')" alt="" />
+      <x-img :src="require('../assets/img/close.png')" alt="" class="close320" @click="closeMobile" />
       <div class="reservation-shadow320-button">
         <nuxt-link to="/customerservice" >在线咨询</nuxt-link>
         <nuxt-link to="/order" >在线预约</nuxt-link>
       </div>
-      <!--<div class="reservation-shadow-container">-->
-        <!--<div class="reservation-online-btn">-->
-          <!--<img src="../assets/img/home_popup_button@2x.png" alt="">-->
-          <!--<div class="reservation-online-msg">-->
-            <!--<img src="../assets/img/home_popup_button_icon@2x.png" alt="">-->
-            <!--<span>在线咨询</span>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="reservation-online-btn">-->
-          <!--<img src="../assets/img/home_popup_button1@2x.png" alt="">-->
-          <!--<div class="reservation-online-msg">-->
-            <!--<img src="../assets/img/home_popup_button_icon1@2x.png" alt="">-->
-            <!--<span>在线咨询</span>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="reservation-shadow-close" @click="reservationClose">-->
-        <!--<img src="../assets/img/close.png" alt="">-->
-      <!--</div>-->
     </div>
     <div class="sidebar">
-      <div class="sidebar-online" @click="goto('/customerservice')">
-        <img src="../assets/img/home_suspend_bg@2x.png" alt="">
+      <nuxt-link class="sidebar-online" to="customerservice">
+        <!--<x-img :src="require('../assets/img/home_suspend_bg@2x.png')" alt="" />-->
+        <img :src="require('../assets/img/home_suspend_bg@2x.png')"/>
         <span>在线客服</span>
-      </div>
-      <div class="sidebar-cell sidebar-cell-advice" @click="goto('/customerservice')">
-        <!--<img src="../assets/img/home_suspend_button_no4@2x.png" alt="">-->
+      </nuxt-link>
+      <nuxt-link class="sidebar-cell sidebar-cell-advice" to="customerservice">
+        <!--<img src="../assets/img/home_suspend_button_no4@2x.png" alt="" />-->
         <span>立即咨询</span>
-      </div>
-      <div class="sidebar-cell sidebar-cell-order" @click="goto('/order')">
-        <!--<img src="../assets/img/home_suspend_button_no2@2x.png" alt="">-->
+      </nuxt-link>
+      <nuxt-link class="sidebar-cell sidebar-cell-order" to="/order">
+        <!--<img src="../assets/img/home_suspend_button_no2@2x.png" alt="" />-->
         <span>预约到店</span>
-      </div>
+      </nuxt-link>
       <div class="sidebar-cell sidebar-cell-phone">
-        <!--<img src="../assets/img/home_suspend_button_no3@2x.png" alt="">-->
+        <!--<img src="../assets/img/home_suspend_button_no3@2x.png" alt="" />-->
         <span style="color: #BB9875">电话咨询</span>
         <div class="sidebar-cell-popup call-back">
           <input type="tel" class="call-back-txt" placeholder="请输入您的手机号码">
@@ -827,16 +722,16 @@
         </div>
       </div>
       <div class="sidebar-cell sidebar-cell-wechat">
-        <!--<img src="../assets/img/home_suspend_button_no1@2x.png" alt="">-->
+        <!--<img src="../assets/img/home_suspend_button_no1@2x.png" alt="" />-->
         <span>微信联系</span>
         <div class="sidebar-cell-popup sidebar-cell-popup-qr">
-          <img src="../assets/img/qr_code.jpg" alt="">
+          <img :src="require('../assets/img/qr_code.jpg')" alt="" />
         </div>
       </div>
       <div class="sidebar-back-top" @click="backTop">
         <div class="sidebar-back-top-wrapper">
           <div>
-            <img src="../assets/img/home_suspend_icon_top@2x.png" alt="">
+            <x-img :src="require('../assets/img/home_suspend_icon_top@2x.png')" alt="" />
           </div>
           <div>
             <span>回到顶部</span>
@@ -856,10 +751,6 @@
   import HeaderMobile from '../components/HeaderMobile'
   import { ChinaAddressV4Data} from 'vux'
   import address from '../assets/json/address'
-  // import {MP} from '../util/map.js'
-  // import {Swipe, SwipeItem, Picker} from 'mint-ui'
-  // import 'mint-ui/lib/style.css'
-  // import 'element-ui/lib/theme-chalk/index.css';
 
   export default {
     // head: {
@@ -937,7 +828,93 @@
           {name: '南宁', value: 'nn', parent: 'gx'},
           {name: '桂林', value: 'gl', parent: 'gx'}
         ],
-        brandList: [1, 1, 1, 1, 1],
+        brandList: [
+          [
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+          ],
+          [
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+          ],
+          [
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+          ],
+          [
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+          ],
+          [
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
+          ],
+          [
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
+          ]
+        ],
+        brandPCList: [],
         certificationList: [1, 1, 1, 1, 1],
         value4: [new Date(), new Date()],
         brandBtnList: [
@@ -981,7 +958,19 @@
         ],
         addressData: ChinaAddressV4Data,
         cityName: '北京',
+        envList: [
+          {name: '多功能校表仪', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
+          {name: '隔尘抛光机', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
+          {name: '多功能校表仪', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
+          {name: '真空试水机', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
+          {name: '多功能校表仪', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
+          {name: '隔尘抛光机', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
+        ],
+
       }
+    },
+    created(){
+      this.brandPCList = this.brandList[this.brandIndex]
     },
     mounted() {
       // alert('mounted钩子')
@@ -1061,6 +1050,13 @@
       },
       brandClick(url, key) {
         this.brandIndex = key
+        this.brandPCList = []
+        this.$nextTick(function () {
+          this.brandPCList = this.brandList[this.brandIndex]
+        })
+        // this.$set(this.brandPCList, 0)
+        // console.log(this.brandIndex)
+        // console.log(this.brandList[this.brandIndex])
         // this.$router.push({path: url})
       },
       goto(path){

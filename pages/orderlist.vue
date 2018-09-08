@@ -6,7 +6,7 @@
 
      <!--banner-->
      <div class="banner">
-       <img src="../assets/img/demand_banner@2x.png" alt="">
+       <x-img :src="require('../assets/img/demand_banner@2x.png')" alt="" />
      </div>
 
      <!--main-->
@@ -47,7 +47,7 @@
    <div class="container320">
      <HeaderMobile title="查询结果"/>
      <div class="banner320">
-       <img src="../assets/img/process.jpg" alt="">
+       <x-img :src="require('../assets/img/process.jpg')" alt="" />
      </div>
      <main class="main320">
        <div class="main320-btn">

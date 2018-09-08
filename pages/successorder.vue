@@ -6,12 +6,12 @@
 
       <!--banner-->
       <div class="banner">
-        <img src="../assets/img/booking_banner@2x.png" alt="">
+        <x-img :src="require('../assets/img/booking_banner@2x.png')" alt="" />
       </div>
 
       <!--成功预约信息-->
       <div class="success-info-container">
-        <img src="../assets/img/booking_make_icon@2x.png" alt="">
+        <x-img :src="require('../assets/img/booking_make_icon@2x.png')" alt="" />
         <p class="success-info">尊敬的用户，恭喜您已预约成功！</p>
         <p class="success-more">请按预约时间准时到达，到店请出示你的预约短信。</p>
       </div>
@@ -19,7 +19,7 @@
       <!--预约具体信息-->
       <main class="reservation-main">
         <!--<img src="../assets/img/booking_make_icon1@2x.png" alt="">-->
-        <img src="../assets/img/booking_make_icon1@2x.png" alt="">
+        <x-img :src="require('../assets/img/booking_make_icon1@2x.png')" alt="" />
         <div class="reservation-main-container">
           <p class="phone">
             您的联系手机：18059236533

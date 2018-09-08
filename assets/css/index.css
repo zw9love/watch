@@ -137,11 +137,12 @@
 .brand-main-right ul li {
   width: calc((100% - 60px) / 4);
   /*padding-top: 15%;*/
-  padding-top: 174px;;
+  padding-top: 172px;;
   float: left;
   position: relative;
   margin-right: 20px;
   margin-top: 20px;
+  border: 1px solid #C8936B;
 }
 
 .brand-main-right ul li:nth-child(4n) {
@@ -224,9 +225,14 @@
   max-width: 1920px;
   margin: 0 auto;
   cursor: pointer;
+  padding-top: 13.5%;
+  position: relative;
 }
 
 .adver-container img {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
 }
 
@@ -327,11 +333,15 @@
   max-width: 1280px;
   margin: 0 auto;
   position: relative;
+  height: 725px;
 }
 
-.service-quality-container img {
+.service-quality-container >img {
   width: 100%;
   vertical-align: middle;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .service-quality-main {
@@ -344,7 +354,7 @@
 }
 
 ul.service-quality-main-info {
-  margin-top: 60px;
+  margin-top: 80px;
   margin-right: -20px;
   overflow: hidden;
 }
@@ -854,13 +864,13 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   white-space: nowrap;
 }
 
-.reservation-online-msg img, .reservation-online-msg a {
+.reservation-online-msg img, .reservation-online-msg span {
   display: inline-block;
   vertical-align: middle;
   margin-right: 10px;
 }
 
-.reservation-online-msg a {
+.reservation-online-msg span {
   font-family: "PingFangSC-Regular";
   font-size: 26px;
   color: #fff;
@@ -898,6 +908,7 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   background-color: #C8936B;
   cursor: pointer;
   position: relative;
+  display: block;
 }
 
 .sidebar-online img{
@@ -923,6 +934,7 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   border-bottom: 1px solid #C8936B;
   cursor: pointer;
   position: relative;
+  display: block;
   background-repeat: no-repeat;
   background-position: 20% 60%;
   transition: all .3s ease;

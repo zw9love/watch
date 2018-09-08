@@ -1,13 +1,13 @@
 <template>
   <div class="main-right">
     <div class="main-right-cell">
-      <img src="../assets/img/case_detail_images2@2x.png" alt="">
+      <x-img :src="require('../assets/img/case_detail_images2@2x.png')" alt="" />
     </div>
     <div class="main-right-cell">
-      <img src="../assets/img/case_detail_images3@2x.png" alt="">
+      <x-img :src="require('../assets/img/case_detail_images3@2x.png')" alt="" />
     </div>
     <div class="main-right-cell">
-      <img src="../assets/img/case_detail_images4@2x.jpg" alt="">
+      <x-img :src="require('../assets/img/case_detail_images4@2x.png')" alt="" />
       <div class="adver-order">
         <div class="adver-order-cell">
           <span class="name">姓名</span>
@@ -20,19 +20,19 @@
           <span class="phone">{{item.phone}}</span>
         </div>
         <div class="adver-order-btn">
-          <div class="adver-order-btn-cell" @click="$router.push({path: '/order'})">
-            <img src="../assets/img/store_button1@2x.png" alt="">
+          <nuxt-link class="adver-order-btn-cell" to="/order">
+            <x-img :src="require('../assets/img/store_button1@2x.png')" alt="" />
             <span>预约到店</span>
-          </div>
-          <div class="adver-order-btn-cell" @click="$router.push({path: '/customerservice'})">
-            <img src="../assets/img/store_button1@2x.png" alt="">
+          </nuxt-link>
+          <nuxt-link class="adver-order-btn-cell" to="/customerservice">
+            <x-img :src="require('../assets/img/store_button1@2x.png')" alt="" />
             <span>我要咨询</span>
-          </div>
+          </nuxt-link>
         </div>
       </div>
     </div>
     <div class="main-right-cell">
-      <img src="../assets/img/case_detail_images5@2x.png" alt="">
+      <x-img :src="require('../assets/img/case_detail_images5@2x.png')" alt="" />
     </div>
   </div>
 </template>

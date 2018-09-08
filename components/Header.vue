@@ -5,8 +5,8 @@
       <div class="navbar-left">
         <ul>
           <li>
-            <nuxt-link to="/" @click.native.stop>
-              <img src="../assets/img/home_top_logo@2x.png" alt="">
+            <nuxt-link to="/" @click.native.stop class="logo-container">
+              <x-img :src="require('../assets/img/home_top_logo@2x.png')" alt="" />
             </nuxt-link>
           </li>
           <li>
@@ -21,7 +21,7 @@
           </li>
           <li>
             <span class="city-name">{{cityName}}</span>
-            <img src="../assets/img/home_top_icon@2x.png" alt="" style="margin-left: 10px">
+            <x-img :src="require('../assets/img/home_top_icon@2x.png')" alt="" style="margin-left: 10px" />
             <div class="city-popup">
               <h3>服务城市</h3>
               <div class="city-popup-line"></div>
@@ -44,7 +44,7 @@
       </div>
       <div class="navbar-right">
         <div>
-          <img src="../assets/img/home_top_icon_contacts@2x.png" alt="">
+          <x-img :src="require('../assets/img/home_top_icon_contacts@2x.png')" alt="" />
         </div>
         <div>
           <p class="navbar-right-top">服务热线：</p>
@@ -63,7 +63,7 @@
         <div class="navigation-search-wrapper">
           <input type="text" class="search-txt" placeholder="搜索">
           <div class="search-btn">
-            <img src="../assets/img/home_top_search@2x.png" alt="">
+            <x-img :src="require('../assets/img/home_top_search@2x.png')" alt="" />
           </div>
         </div>
       </div>
@@ -148,6 +148,22 @@
     margin-right: 18px;
     position: relative;
     padding-bottom: 20px;
+  }
+
+  .navbar-left > ul > li a.logo-container{
+    width: 105px;
+    height: 50px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .navbar-left > ul > li a.logo-container img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
 
   .navbar-left > ul > li img {

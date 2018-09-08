@@ -6,7 +6,7 @@
 
       <!--banner-->
       <div class="banner">
-        <img src="../assets/img/demand_banner@2x.png" alt="">
+        <x-img :src="require('../assets/img/demand_banner@2x.png')" alt="" />
       </div>
 
       <!--process-->
@@ -34,7 +34,7 @@
     <div class="container320">
       <HeaderMobile title="维修进度"/>
       <div class="banner320">
-        <img src="../assets/img/process.jpg" alt="">
+        <x-img :src="require('../assets/img/process.jpg')" alt="" />
       </div>
       <div class="main320">
         <div class="main-cell320">

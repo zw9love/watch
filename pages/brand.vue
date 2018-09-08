@@ -7,19 +7,19 @@
 
     <!--banner-->
     <div class="banner" @click="$router.push({path: '/order'})">
-      <img src="../assets/img/brand_banner@2x.png" alt="">
+      <x-img :src="require('../assets/img/brand_banner@2x.png')" alt="" />
     </div>
 
     <div class="banner320">
       <swiper :aspect-ratio="200/375" v-model="bannerIndex" dots-position="center">
         <swiper-item class="banner320-swiper-img">
-          <img style="width: 100%" src="../assets/img/home_serviceenvironment_images@2x.png">
+          <x-img style="width: 100%" :src="require('../assets/img/home_serviceenvironment_images@2x.png')" />
         </swiper-item>
         <swiper-item class="banner320-swiper-img">
-          <img style="width: 100%" src="../assets/img/home_serviceenvironment_images1@2x.png">
+          <x-img style="width: 100%" :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" />
         </swiper-item>
         <swiper-item class="banner320-swiper-img">
-          <img style="width: 100%" src="../assets/img/home_serviceenvironment_images2@2x.png">
+          <x-img style="width: 100%" :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" />
         </swiper-item>
       </swiper>
     </div>
@@ -29,9 +29,9 @@
       <div class="brand-container">
         <strong class="brand-page-title">品牌介绍</strong>
         <div class="brand-main-container">
-          <img src="../assets/img/brand_bg@2x.png" alt="" class="bg">
+          <x-img :src="require('../assets/img/brand_bg@2x.png')" alt="" class="bg" />
           <div class="brand-info-container">
-            <img src="../assets/img/brand_logo@2x.png" alt="">
+            <x-img :src="require('../assets/img/brand_logo@2x.png')" alt="" />
             <p class="brand-info-txt">
               西亨-修合无人见，存心有天知。 诚信、公道、匠心一直是西亨人至今依然恪守的秉性。 西亨名表维修中心设立于50年代，发际于80年
               西亨-修合无人见，存心有天知。 诚信、公道、匠心一直是西亨人至今依然恪守的秉性。 西亨名表维修中心设立于50年代，发际于80年
@@ -43,7 +43,7 @@
       <div class="brand-container320">
         <strong class="brand-page-title320">品牌介绍</strong>
         <div class="brand-main-container320">
-          <img src="../assets/img/brand_bg320@2x.jpg" alt="">
+          <x-img :src="require('../assets/img/brand_bg320@2x.jpg')" alt="" />
           <div class="brand-info-container320">
             <p class="brand-info-txt320">
               西亨-修合无人见，存心有天知。<br>
@@ -60,44 +60,45 @@
       <div class="qualification-container">
         <strong class="brand-page-title">荣誉资质</strong>
         <div class="qualification-img-container">
-          <img src="../assets/img/brand_images1@2x.png" alt="" class="bg">
-          <img src="../assets/img/brand_images2@2x.png" alt="" class="bg">
-          <img src="../assets/img/brand_images3@2x.png" alt="" class="bg">
+          <x-img :src="require('../assets/img/brand_images1@2x.png')" alt="" class="bg" />
+          <x-img :src="require('../assets/img/brand_images2@2x.png')" alt="" class="bg" />
+          <x-img :src="require('../assets/img/brand_images3@2x.png')" alt="" class="bg" />
         </div>
       </div>
       <div class="qualification-container320">
         <strong class="brand-page-title320">荣誉资质</strong>
         <div class="qualification-img-container320">
-          <img src="../assets/img/brand_images1@2x.png" alt="" class="bg">
-          <img src="../assets/img/brand_images2@2x.png" alt="" class="bg">
-          <img src="../assets/img/brand_images3@2x.png" alt="" class="bg">
+          <x-img :src="require('../assets/img/brand_images1@2x.png')" alt="" class="bg" />
+          <x-img :src="require('../assets/img/brand_images2@2x.png')" alt="" class="bg" />
+          <x-img :src="require('../assets/img/brand_images3@2x.png')" alt="" class="bg" />
         </div>
       </div>
     </div>
 
     <!--服务环境-->
     <div class="environmental">
-      <img src="../assets/img/home_serviceenvironment_bg@2x.png" alt="">
+      <x-img :src="require('../assets/img/home_serviceenvironment_bg@2x.png')" alt="" />
       <div class="environmental-container">
         <div class="environmental-main">
-          <h1 class="environmental-main-title">服务环境</h1>
+          <!--<h1 class="environmental-main-title">服务环境</h1>-->
+          <h1 class="environmental-main-title">维修案例</h1>
           <div class="carousel">
             <el-carousel type="card" height="410px" :autoplay="false" arrow="never" indicator-position="none"
                          @change="carouselChange" ref="carousel">
               <el-carousel-item name="0">
-                <img src="../assets/img/home_serviceenvironment_images@2x.png" alt="">
+                <x-img :src="require('../assets/img/home_serviceenvironment_images@2x.png')" alt="" />
               </el-carousel-item>
               <el-carousel-item name="1">
-                <img src="../assets/img/home_serviceenvironment_images1@2x.png" alt="">
+                <x-img :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" alt="" />
               </el-carousel-item>
               <el-carousel-item name="2">
-                <img src="../assets/img/home_serviceenvironment_images2@2x.png" alt="">
+                <x-img :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" alt="" />
               </el-carousel-item>
             </el-carousel>
             <div class="indicator">
               <span v-for="(item, key) in 3" :key="key" @click="indicatorClick(key)">
                 <span class="indicator-active" v-if="key === indicatorKey"></span>
-                <img v-else src="../assets/img/home_serviceenvironment_button_no@2x.png" alt="">
+                <x-img v-else :src="require('../assets/img/home_serviceenvironment_button_no@2x.png')" alt="" />
               </span>
             </div>
           </div>
@@ -114,13 +115,13 @@
             <!--<h3>{{ item }}</h3>-->
             <!--</el-carousel-item>-->
             <el-carousel-item name="0">
-              <img src="../assets/img/brand_images8@2x.png" alt="">
+              <x-img :src="require('../assets/img/brand_images8@2x.png')" alt="" />
             </el-carousel-item>
             <el-carousel-item name="1">
-              <img src="../assets/img/brand_images8@2x.png" alt="">
+              <x-img :src="require('../assets/img/brand_images8@2x.png')" alt="" />
             </el-carousel-item>
             <el-carousel-item name="2">
-              <img src="../assets/img/brand_images8@2x.png" alt="">
+              <x-img :src="require('../assets/img/brand_images8@2x.png')" alt="" />
             </el-carousel-item>
           </el-carousel>
           <Indicators v-model="indicatorKey" :indicatorsStyle="{bottom: '-30px'}" :list="[1,1,1]" ></Indicators>
@@ -135,19 +136,19 @@
         <strong class="brand-page-title">维修案例</strong>
         <div class="case-main-container">
           <span @mouseenter="leftIconEnter" @mouseleave="leftIconLeave" @click="leftIconClick">
-            <img src="../assets/img/home_qualitycommitment__lefter_icon_no@2x.png" alt="" class="left-icon"
-                 v-if="!leftActive">
-            <img src="../assets/img/home_qualitycommitment__lefter_icon_yes@2x.png" alt="" class="left-icon" v-else>
+            <x-img :src="require('../assets/img/home_qualitycommitment__lefter_icon_no@2x.png')" alt="" class="left-icon"
+                 v-if="!leftActive" />
+            <x-img :src="require('../assets/img/home_qualitycommitment__lefter_icon_yes@2x.png')" alt="" class="left-icon" v-else />
           </span>
             <span @mouseenter="rightIconEnter" @mouseleave="rightIconLeave" @click="rightIconClick">
-            <img src="../assets/img/home_qualitycommitment__right_icon_no@2x.png" alt="" class="right-icon"
-                 v-if="!rightActive">
-            <img src="../assets/img/home_qualitycommitment__right_icon_yes@2x.png" alt="" class="right-icon" v-else>
+            <x-img :src="require('../assets/img/home_qualitycommitment__right_icon_no@2x.png')" alt="" class="right-icon"
+                 v-if="!rightActive" />
+            <x-img :src="require('../assets/img/home_qualitycommitment__right_icon_yes@2x.png')" alt="" class="right-icon" v-else />
           </span>
           <el-carousel indicator-position="none" :autoplay="false" arrow="never" height="638px" ref="caseCarousel">
             <el-carousel-item v-for="(item, key) in caseCarouselList" :key="key">
               <div class="case-main-cell">
-                <img src="../assets/img/brand_images8@2x.png" alt="" class="bg">
+                <x-img :src="require('../assets/img/brand_images8@2x.png')" alt="" class="bg" />
                 <div class="case-info-container">
                   <h3>追光机：百达翡丽手工精饰机芯部件 (Caliber CHR 29-535 PS)</h3>
                 </div>
@@ -162,7 +163,7 @@
     <div class="store">
       <ServiceTitle info="store guide" name="到店指引" content="400-960-8888">
         <span slot="content" class="store-content">
-          <img src="../assets/img/home_storeguide_icon@2x.png" alt="">
+          <x-img :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />
           <span>400-960-8888</span>
         </span>
       </ServiceTitle>
@@ -176,8 +177,8 @@
     </div>
 
     <!--广告-->
-    <div class="adver">
-      <img src="../assets/img/brand_images9@2x.png" alt="" @click="$router.push({path: '/order'})">
+    <div class="adver" @click="$router.push({path: '/order'})">
+      <x-img :src="require('../assets/img/brand_images9@2x.png')" alt=""  />
     </div>
 
     <!--Footer-->
@@ -191,7 +192,6 @@
   import Indicators from '../components/Indicators'
   import ServiceTitle from '../components/ServiceTitle'
   import HeaderMobile from '../components/HeaderMobile'
-  import 'element-ui/lib/theme-chalk/index.css';
   export default {
     head () {
       return {
