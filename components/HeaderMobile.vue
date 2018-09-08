@@ -27,8 +27,8 @@
     data(){
       return {
         menus: {
-          menu1: 'Take Photo',
-          menu2: 'Choose from photos'
+          menu1: '',
+          menu2: ''
         },
         showMenus: false
       }

@@ -1,0 +1,110 @@
+.container320, .banner320, .main320-btn{
+  display: none;
+}
+
+.banner{
+  position: relative;
+  padding-top: 26.04%;
+}
+
+.banner img{
+  width: 100%;
+  cursor: pointer;
+  vertical-align: middle;
+  position: absolute;
+  left: 0;
+  top: 0
+}
+.main{
+  max-width: 1282px;
+  margin: 100px auto 0 auto;
+}
+
+.main-btn-cell{
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.main-btn-num{
+  color: #BF9571;
+}
+
+.main-btn-active{
+  color: #fff;
+  background-color: #C29770
+}
+
+.main-btn-active .main-btn-num{
+  color: #fff;
+}
+
+.pagination{
+  overflow: hidden;
+  max-width: 1280px;
+  margin: 40px auto
+}
+
+.pagination-container{
+  float: right;
+}
+
+@media (max-width:768px){
+
+  .banner, .pagination, .main-btn{
+    display: none;
+  }
+
+  .container{
+    margin-top: 45px;
+  }
+
+  .banner320{
+    display: block;
+    position: relative;
+    padding-top: 37.7333%;
+  }
+
+  .banner320 img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .main{
+    padding: 10px;
+    /*background-color: #ebebeb;*/
+    min-height: 100vh;
+    background-color: #eee;
+    margin-top: 0
+  }
+
+  .main320-btn{
+    display: block;
+    margin: 15px 0 0 0;
+  }
+
+  .main320-btn-cell{
+    /*width: 75px;*/
+    padding: 0 10px;
+    height:30px;
+    font-size:14px;
+    color: #fff;
+    background-color: #a0a0a0;
+    line-height: 30px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+    margin-right: 15px;
+  }
+
+  .main320-btn-active{
+    background-color: #c29770;
+  }
+
+
+}

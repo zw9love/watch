@@ -24,7 +24,7 @@
           <span class="verification-btn">获取验证码</span>
         </span>
         </div>
-        <nuxt-link to="/orderlist" class="search-process-btn">查询进度</nuxt-link>
+        <nuxt-link to="/orderlist/all/1" class="search-process-btn">查询进度</nuxt-link>
       </main>
 
       <!--Footer-->
@@ -51,7 +51,7 @@
           <span class="phone-verification">获取验证码</span>
         </div>
         <div class="main-cell320" >
-          <nuxt-link to="/orderlist" class="commit-order-btn">查询进度</nuxt-link>
+          <nuxt-link to="/orderlist/all/1" class="commit-order-btn">查询进度</nuxt-link>
         </div>
       </div>
     </div>

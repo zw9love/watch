@@ -1,19 +1,16 @@
 <template>
-  <div>
-    <h1>404</h1>
-  </div>
+  <div></div>
 </template>
 
 <script>
   export default {
-    name: "notfound",
+    name: "index",
     asyncData (context) {
       context.redirect(302, '/')
-      // return { project: 'nuxt' }
     }
   }
 </script>
 
-<style scoped>
+<style scoped lang="stylus">
 
 </style>

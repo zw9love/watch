@@ -54,9 +54,13 @@
 </script>
 
 <style scoped>
+  .main320-order-cell{
+    display: none;
+  }
   @media (max-width:768px) {
     .main320-order-cell{
-      padding-top: 20px
+      padding-top: 20px;
+      display: block;
     }
 
     .main320-order-title{

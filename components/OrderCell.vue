@@ -141,4 +141,10 @@
   .main-cell-content .status{
     cursor: pointer;
   }
+
+  @media (max-width:768px) {
+    .main-cell{
+      display: none;
+    }
+  }
 </style>
