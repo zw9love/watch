@@ -48,7 +48,7 @@
         </div>
         <div>
           <p class="navbar-right-top">服务热线：</p>
-          <p class="navbar-right-bottom">400-960-8888</p>
+          <a href="tel:400-960-8888" class="navbar-right-bottom">400-960-8888</a>
         </div>
       </div>
     </div>

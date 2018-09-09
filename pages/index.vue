@@ -1,4 +1,5 @@
 <template>
+  <!--<h1>test</h1>-->
   <div class="container">
     <!--tabbar-->
     <div class="tabbar-container">
@@ -51,7 +52,7 @@
         <x-address title="title" v-model="addressValue" :list="addressData" :hide-district="true" class="mytest">
           <template slot="title" slot-scope="props">
             <span class="city">{{cityName}}</span>
-            <x-img :src="require('../assets/img/home_icon_position@2x.png')" alt="" class="arrow" />>
+            <x-img :src="require('../assets/img/home_icon_position@2x.png')" alt="" class="arrow" />
           </template>
         </x-address>
         <!--<popup-picker :data="list1" v-model="value1" :columns="3" ref="picker">-->
@@ -650,12 +651,31 @@
 
     <!--到店指引-->
     <div class="store">
-      <ServiceTitle info="store guide" name="到店指引" content="400-960-8888">
+      <!--<ServiceTitle info="SERVICE ITEMS" name="到店指引" content="400-960-8888"-->
+                    <!--:containerStyle="{marginTop: '60px'}" ></ServiceTitle>-->
+      <!--<ServiceTitle info="store guide" name="到店指引" :content="'提供舒适清爽的一对一服务空间'"-->
+                    <!--:containerStyle="{marginTop: '60px'}"></ServiceTitle>-->
+      <ServiceTitle info="store guide" name="到店指引" content="提供舒适清爽的一对一服务空间">
         <span slot="content" class="store-content">
           <x-img :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />
-          <span>400-960-8888</span>
+          <!--<span>400-960-8888</span>-->
+          <a href="tel:400-960-8888">400-960-8888</a>
         </span>
       </ServiceTitle>
+      <!--<ServiceTitle info="store guide" name="到店指引" content="400-960-8888" />-->
+      <!--<div class="title-container">-->
+        <!--<p class="title-info">{{('store guide').toUpperCase()}}</p>-->
+        <!--<strong class="title-name">到店指引</strong>-->
+        <!--<div class="line-container">-->
+          <!--<span class="line-wrapper"></span>-->
+        <!--</div>-->
+        <!--<p>-->
+          <!--<span class="store-content">-->
+            <!--<x-img :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />-->
+            <!--<span>400-960-8888</span>-->
+          <!--</span>-->
+        <!--</p>-->
+      <!--</div>-->
       <div class="store-info">
         <h1>北京名表维修中心</h1>
         <p>营业时间：09:00-19:00（节假日不休）</p>
@@ -992,7 +1012,7 @@
         })
       }
       this.stackHeight = parseInt(window.innerWidth * 0.3203125)
-      // this.certificationHeight = this.$refs.certification320[0].clientHeight
+      // // this.certificationHeight = this.$refs.certification320[0].clientHeight
       this.brandMainHeight = this.$refs.brandMainImgWrapper[0].clientHeight
     },
     watch: {

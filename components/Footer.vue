@@ -51,7 +51,7 @@
           <x-img :src="require('../assets/img/home_footer_icon_contacts@2x.png')" />
         </li>
         <li class="bottom-talk-call">
-          <p>服务热线：400-960-8888</p>
+          <a href="tel:400-960-8888">服务热线：400-960-8888</a>
         </li>
       </ul>
     </div>
@@ -218,7 +218,7 @@
     background-color: #C8936B;
   }
 
-  .bottom-talk-call p {
+  .bottom-talk-call p, .bottom-talk-call a {
     color: #BF9571;
     font-size: 24px;
     font-family: "PingFangSC-Medium";

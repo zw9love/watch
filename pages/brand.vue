@@ -232,7 +232,7 @@
     },
     mounted() {
       this.stackHeight = parseInt(window.innerWidth * 0.421875)
-      console.log('mounted钩子')
+      // alert('mounted钩子')
       if (window.BMap) {
         console.log('BMap加载完成。')
         let map = new BMap.Map("store-map");

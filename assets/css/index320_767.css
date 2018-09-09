@@ -340,9 +340,12 @@
     height: 15px;
   }
 
-  .store .store-content span{
+  .store .store-content a{
     font-size: 18px;
     margin-left: 7px;
+    color: #333;
+    display: inline-block;
+    vertical-align: middle;
   }
 
   /*

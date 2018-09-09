@@ -54,14 +54,14 @@
       <main class="main320">
         <CityPickerMobile />
         <div class="store-list320">
-          <nuxt-link class="store-cell320" v-for="(item, key) in list" :key="key" :to="'/order/' + item.ids">
+          <div class="store-cell320" v-for="(item, key) in list" :key="key" @click="storeClick(item)">
             <div class="store-cell320-container">
               <div class="store-cell320-left">
                 <img src="../../assets/img/store_images1@2x.png" alt="">
               </div>
               <div class="store-cell320-right">
                 <p><strong>北京（西城店）</strong></p>
-                <div class="store-cell320-info" @click="goAddress">
+                <div class="store-cell320-info" @click.stop="goAddress">
                   <img src="../../assets/img/store_icon1@2x.png" alt="">
                   <span>北京市西城区西单北大街甲133号西亨钟表维修中心</span>
                 </div>
@@ -72,7 +72,7 @@
               </div>
             </div>
             <div class="store-cell320-line"></div>
-          </nuxt-link>
+          </div>
         </div>
       </main>
     </div>
@@ -143,7 +143,7 @@
       }
     },
     mounted(){
-      // alert('servicelist-index')
+      // alert('servicelist-index的mounted钩子。')
       if (window.BMap) {
         // alert('BMap加载完成。store-list-map111。')
         let map = new BMap.Map("store-list-map");
@@ -180,6 +180,9 @@
       },
       backList(){
         this.addressActive = false
+      },
+      storeClick(item){
+        this.$router.push({path: '/order/' + item.ids})
       }
     }
   }
