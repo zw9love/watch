@@ -60,7 +60,7 @@
         <div class="image-artical">
           <div class="image-artical-container">
             <div class="image-artical-left">
-              <nuxt-link to="/show">
+              <nuxt-link to="/show/1">
                 <img src="../assets/img/case_images7@2x.png" alt="">
               </nuxt-link>
               <div class="title-bottom">
@@ -69,7 +69,7 @@
             </div>
             <div class="image-artical-right">
               <div class="image-artical-right-cell">
-                <nuxt-link to="/show">
+                <nuxt-link to="/show/2">
                   <img src="../assets/img/case_images8@2x.png" alt="">
                 </nuxt-link>
                 <div class="title-bottom">
@@ -77,7 +77,7 @@
                 </div>
               </div>
               <div class="image-artical-right-cell">
-                <nuxt-link to="/show">
+                <nuxt-link to="/show/3">
                  <img src="../assets/img/case_images9@2x.png" alt="">
                </nuxt-link>
                 <div class="title-bottom">
@@ -89,7 +89,7 @@
         </div>
 
         <div class="single-artical">
-          <nuxt-link to="/show">
+          <nuxt-link to="/show/4">
             <img src="../assets/img/case_images9@2x.png" alt="">
           </nuxt-link>
           <div class="title-bottom">
@@ -153,8 +153,8 @@
           <VideoMobile @stopOther="stopOther" v-for="(item, key) in list" :key="key" :item="item" :index="key" :ref="'player' + key"/>
         </div>
         <div class="main320-article">
-          <div class="main320-article-left" @click="articalClick">
-            <nuxt-link to="/show">
+          <div class="main320-article-left">
+            <nuxt-link to="/show/1">
               <img src="../assets/img/case_images7@2x.png" alt="">
             </nuxt-link>
             <div class="main320-article-shadow">
@@ -163,7 +163,7 @@
           </div>
           <div class="main320-article-right">
             <div class="main320-article-right-cell">
-              <nuxt-link to="/show">
+              <nuxt-link to="/show/2">
                 <img src="../assets/img/case_images7@2x.png" alt="">
               </nuxt-link>
               <div class="main320-article-shadow">
@@ -171,7 +171,7 @@
               </div>
             </div>
             <div class="main320-article-right-cell">
-              <nuxt-link to="/show">
+              <nuxt-link to="/show/3">
                 <img src="../assets/img/case_images7@2x.png" alt="">
               </nuxt-link>
               <div class="main320-article-shadow">
@@ -181,7 +181,7 @@
           </div>
         </div>
         <div class="main320-banner-article">
-          <nuxt-link to="/show">
+          <nuxt-link to="/show/4">
             <img src="../assets/img/case_images7@2x.png" alt="">
           </nuxt-link>
           <div class="main320-article-shadow">
@@ -386,7 +386,7 @@
         this.videoIndex = key
       },
       bannerClick(){
-        this.$router.push({path: '/order'})
+        this.$router.push({path: '/servicelist'})
       },
 
       articalClick(){

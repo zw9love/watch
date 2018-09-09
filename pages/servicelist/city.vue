@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <!--Header-->
-      <Header :pageIndex="4"/>
+      <Header :pageIndex="3"/>
 
       <main class="main">
         <div class="main-left">

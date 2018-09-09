@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <!--Header-->
-      <Header :pageIndex="4"/>
+      <Header :pageIndex="3"/>
 
       <main class="main">
         <div class="main-left">
@@ -10,7 +10,7 @@
             <CityPicker />
           </div>
           <div class="store-list">
-            <div class="store-cell-wrapper" v-for="item in 5" :key="item">
+            <div class="store-cell-wrapper" v-for="(item, key) in list" :key="key">
               <div class="store-cell">
                 <div class="store-cell-left">
                   <img src="../../assets/img/store_images1@2x.png" alt="">
@@ -30,10 +30,10 @@
                     <span>09:00-21:00</span>
                   </div>
                 </div>
-                <div class="store-btn">
+                <nuxt-link class="store-btn" :to="'/order/' + item.ids">
                   <img src="../../assets/img/store_button1@2x.png" alt="">
-                  <span class="store-btn-info">立即预约</span>
-                </div>
+                  <span class="store-btn-info" >立即预约</span>
+                </nuxt-link>
               </div>
               <div class="store-line"></div>
             </div>
@@ -54,7 +54,7 @@
       <main class="main320">
         <CityPickerMobile />
         <div class="store-list320">
-          <div class="store-cell320" v-for="item in 5" :key="item">
+          <nuxt-link class="store-cell320" v-for="(item, key) in list" :key="key" :to="'/order/' + item.ids">
             <div class="store-cell320-container">
               <div class="store-cell320-left">
                 <img src="../../assets/img/store_images1@2x.png" alt="">
@@ -72,7 +72,7 @@
               </div>
             </div>
             <div class="store-cell320-line"></div>
-          </div>
+          </nuxt-link>
         </div>
       </main>
     </div>
@@ -113,6 +113,7 @@
   import HeaderMobile from '../../components/HeaderMobile'
   import CityPicker from '../../components/CityPicker'
   import CityPickerMobile from '../../components/CityPickerMobile'
+  import Mock from 'mockjs'
 
   export default {
     components: {
@@ -125,6 +126,16 @@
     },
     asyncData(context) {
       // console.log(context)
+      // console.log(params.pageNumber)
+      let list = Mock.mock({
+        // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
+        'list|8': [{
+          // 属性 id 是一个自增数，起始值为 1，每次增 1
+          'ids': '@id',
+          'date': '@date("yyyy-MM-dd")'
+        }]
+      }).list
+      return {list: list}
     },
     data(){
       return {
@@ -134,7 +145,7 @@
     mounted(){
       // alert('servicelist-index')
       if (window.BMap) {
-        alert('BMap加载完成。store-list-map111。')
+        // alert('BMap加载完成。store-list-map111。')
         let map = new BMap.Map("store-list-map");
         let point = new BMap.Point(116.331398, 39.897445);
         map.centerAndZoom(point, 12);

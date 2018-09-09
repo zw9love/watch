@@ -281,7 +281,7 @@
         })
       },
       orderStore(){
-        this.$router.push({path: '/order'})
+        this.$router.push({path: '/servicelist'})
       },
       photoMobile(){
         this.$refs.photoMobile.click()

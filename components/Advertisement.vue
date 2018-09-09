@@ -20,7 +20,7 @@
           <span class="phone">{{item.phone}}</span>
         </div>
         <div class="adver-order-btn">
-          <nuxt-link class="adver-order-btn-cell" to="/order">
+          <nuxt-link class="adver-order-btn-cell" to="/servicelist">
             <x-img :src="require('../assets/img/store_button1@2x.png')" alt="" />
             <span>预约到店</span>
           </nuxt-link>

@@ -12,7 +12,7 @@
           <!--<img src="../assets/img/service_info.png" alt="" />-->
         </div>
         <div class="tabbar-cell">
-          <nuxt-link to="/order">
+          <nuxt-link to="/servicelist">
             <x-img :src="require('../assets/img/order_store.png')" alt="" />
             <span>预约到店</span>
           </nuxt-link>
@@ -124,7 +124,7 @@
     </div>
     <!--广告-->
     <div class="adver-container">
-      <div class="adver-wrapper" @click="$router.push({path: '/order'})">
+      <div class="adver-wrapper" @click="$router.push({path: '/servicelist'})">
         <x-img :src="require('../assets/img/brand_images9@2x.png')" alt="" />
       </div>
       <div class="adver-wrapper320">
@@ -678,7 +678,7 @@
             <span>在线咨询</span>
           </div>
         </nuxt-link>
-        <nuxt-link class="reservation-online-btn" to="/order">
+        <nuxt-link class="reservation-online-btn" to="/servicelist">
           <x-img :src="require('../assets/img/home_popup_button1@2x.png')" alt="" />
           <div class="reservation-online-msg">
             <x-img :src="require('../assets/img/home_popup_button_icon1@2x.png')" alt="" />
@@ -696,7 +696,7 @@
       <x-img :src="require('../assets/img/close.png')" alt="" class="close320" @click="closeMobile" />
       <div class="reservation-shadow320-button">
         <nuxt-link to="/customerservice" >在线咨询</nuxt-link>
-        <nuxt-link to="/order" >在线预约</nuxt-link>
+        <nuxt-link to="/servicelist" >在线预约</nuxt-link>
       </div>
     </div>
     <div class="sidebar">
@@ -709,7 +709,7 @@
         <!--<img src="../assets/img/home_suspend_button_no4@2x.png" alt="" />-->
         <span>立即咨询</span>
       </nuxt-link>
-      <nuxt-link class="sidebar-cell sidebar-cell-order" to="/order">
+      <nuxt-link class="sidebar-cell sidebar-cell-order" to="/servicelist">
         <!--<img src="../assets/img/home_suspend_button_no2@2x.png" alt="" />-->
         <span>预约到店</span>
       </nuxt-link>

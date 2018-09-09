@@ -107,6 +107,9 @@ module.exports = {
   router: {
     base: '/',
     middleware: ['auth'],
+    scrollBehavior: function (to, from, savedPosition) {
+      // return { x: 0, y: 0 }
+    },
     extendRoutes (routes) {
       routes.push({
         name: 'custom',

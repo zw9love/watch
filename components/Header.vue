@@ -28,7 +28,7 @@
               <ul class="city-popup-wrapper">
                 <li v-for="(item, key) in cityList" :key="key">
                   <nuxt-link :to="item.path" @click.native.stop="cityClick(item.name, key)"
-                             :class="{active: item.address === cityName}">{{item.name}}
+                             :class="{active: item.name === cityName}">{{item.name}}
                   </nuxt-link>
                 </li>
               </ul>
@@ -86,7 +86,7 @@
           {name: '网站首页', href: '/'},
           {name: '品牌门店', href: '/brand'},
           {name: '维修案例', href: '/case'},
-          {name: '预约到店', href: '/order'},
+          {name: '预约到店', href: '/servicelist'},
           {name: '维修进度', href: '/process'},
         ],
         cityList: [
@@ -107,7 +107,8 @@
     },
     computed: {
       cityName: function () {
-        return (this.$route.query.province + this.$route.query.city + this.$route.query.area) || this.$store.state.cityName
+        // return (this.$route.query.city) || this.$store.state.cityName
+        return this.$store.state.cityName
       },
       cityIndex: function () {
         return this.$store.state.cityIndex
