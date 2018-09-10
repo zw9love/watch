@@ -106,7 +106,8 @@
 }
 
 .vux-header{
-  background: linear-gradient(to bottom, #000, #4a4a4a 100%);
+  /*background: linear-gradient(to bottom, #000, #4a4a4a 100%);*/
+  background: url("../img/header320.jpg");
 }
 
 img[lazy=loading] {

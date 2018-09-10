@@ -111,7 +111,7 @@
                   <ul class="brand-main-img-wrapper" ref="brandMainImgWrapper">
                     <!--<li><img src="../assets/img/home_banner_bg@2x.png" alt="" /></li>-->
                     <li v-for="(entry, index) in item" :key="index">
-                      <x-img :src="entry.src" alt="" />
+                      <img :src="entry.src" alt="" />
                       <!--<x-img :src="entry.src" class="ximg-demo" error-class="ximg-error" :offset="0"></x-img>-->
                     </li>
                   </ul>

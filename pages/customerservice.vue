@@ -64,11 +64,17 @@
         <div class="main-container320" ref="mainContainerMobile">
           <!--<p class="store-info">您正在咨询深圳数码-南山店</p>-->
 
-          <div class="welcome">
-            <span>欢迎咨询在线客服，本次由小雅为您服务</span>
+          <div class="banner320">
+            <img src="../assets/img/customer_service_banner320.jpg" alt="">
           </div>
 
-          <ChatCellMobile v-for="(entry, key) in list" :key="key" :entry="entry"/>
+          <div style="padding: 0 10px">
+            <div class="welcome">
+              <span>欢迎咨询在线客服，本次由小雅为您服务</span>
+            </div>
+
+            <ChatCellMobile v-for="(entry, key) in list" :key="key" :entry="entry"/>
+          </div>
         </div>
       </main>
 
@@ -122,8 +128,6 @@
           </div>
         </div>
       </div>
-
-
 
     </div>
   </div>
@@ -593,7 +597,8 @@
 
     .banner320 {
       position: relative;
-      padding-top: 46.6667%;
+      padding-top: 40%;
+      margin-top: 46px;
     }
 
     .banner320 .banner320-swiper-img{
@@ -602,7 +607,7 @@
 
     .banner320 img {
       width: 100%;
-      vertical-align: middle;
+      height: 100%;
       position: absolute;
       left: 0;
       top: 0
@@ -614,7 +619,7 @@
 
     .welcome{
       text-align: center;
-      margin-top: 70px;
+      margin-top: 24px;
     }
 
     .welcome span{
@@ -698,7 +703,7 @@
     .test-textarea {
       flex: 1;
       min-height: 30px;
-      line-height: 2em;
+      line-height: 30px;
       _height: 30px;
       max-height: 100px;
       margin: 0 10px;
@@ -790,7 +795,7 @@
     }
 
     .main320 {
-      padding: 0 10px;
+      padding: 0;
     }
 
     .chat-end-info {

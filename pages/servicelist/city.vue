@@ -10,7 +10,7 @@
             <CityPicker/>
           </div>
           <div class="store-list">
-            <div class="store-cell-wrapper" v-for="(item, key) in list" :key="key" @click="storeClick(item)">
+            <div class="store-cell-wrapper" v-for="(item, key) in list" :key="key">
               <div class="store-cell">
                 <div class="store-cell-left">
                   <img src="../../assets/img/store_images1@2x.png" alt="">
@@ -62,13 +62,13 @@
               </div>
               <div class="store-cell320-right">
                 <p><strong>{{name}}</strong></p>
-                <div class="store-cell320-info" @click="goAddress">
+                <div class="store-cell320-info" @click.stop="goAddress">
                   <img src="../../assets/img/store_icon1@2x.png" alt="">
                   <span>地址：{{name}}宝安大道与金海路交汇处金港华庭首层商铺8182号,深圳市宝安区宝安大道与金海路交汇处金港华庭首层商铺8182号</span>
                 </div>
-                <a href="tel:4006368800" class="store-cell320-info">
+                <a href="tel:4006368800" class="store-cell320-info" @click.stop>
                   <img src="../../assets/img/store_icon2@2x.png" alt="">
-                  <span>400-636-8800</span>
+                  <a href="tel:4006368800">400-636-8800</a>
                 </a>
               </div>
             </div>
@@ -84,7 +84,7 @@
         <div style="margin-top: 46px">
           <div class="address-header vux-header">
             <div class="vux-header-left">
-              <div class="left-arrow" @click="backList"></div>
+              <div class="left-arrow" @click.stop="backList"></div>
             </div>
             <span class="address-header-info">维修地址</span>
           </div>
