@@ -73,7 +73,7 @@
       <ul>
         <li v-for="(item, key) in mobileNavList" :key="key">
           <nuxt-link :to="item.href" @click.stop>
-            <x-img :src="require('../assets/img/home_nav_icon1@2x.png')" alt="" />
+            <x-img :src="item.src" alt="" />
             <span>{{item.name}}</span>
           </nuxt-link>
         </li>
@@ -948,10 +948,10 @@
         technicianIndex: 0,
         technicianCarouselList: [1,1,1,1,1],
         mobileNavList: [
-          {name: '品牌门店', href: '/brand'},
-          {name: '维修案例', href: '/case'},
-          {name: '维修进度', href: '/process'},
-          {name: '维修地址', href: '/servicelist'},
+          {name: '品牌门店', href: '/brand', src: require('../assets/img/home_nav_icon1@2x.png')},
+          {name: '维修案例', href: '/case', src: require('../assets/img/home_nav_icon2@2x.png')},
+          {name: '维修进度', href: '/process', src: require('../assets/img/home_nav_icon3@2x.png')},
+          {name: '维修地址', href: '/servicelist', src: require('../assets/img/home_nav_icon4@2x.png')},
         ],
         form: {
           brand: '',
