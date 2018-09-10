@@ -14,14 +14,18 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.1",
+    "body-parser": "^1.18.3",
     "element-ui": "^2.4.6",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
     "mint-ui": "^2.2.13",
     "mockjs": "^1.0.1-beta3",
     "nuxt": "^1.0.0",
     "v-distpicker": "^1.0.17",
     "vue-picture-preview": "^1.2.0",
     "vue-video-player": "^5.0.2",
-    "vux": "^2.9.2"
+    "vux": "^2.9.2",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

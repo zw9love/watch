@@ -1,12 +1,12 @@
 <template>
   <div class="main-right">
-    <div class="main-right-cell">
+    <div class="main-right-cell main-right-cell-first">
       <x-img :src="require('../assets/img/case_detail_images2@2x.png')" alt="" />
     </div>
-    <div class="main-right-cell">
+    <div class="main-right-cell main-right-cell-second">
       <x-img :src="require('../assets/img/case_detail_images3@2x.png')" alt="" />
     </div>
-    <div class="main-right-cell">
+    <div class="main-right-cell main-right-cell-third">
       <x-img :src="require('../assets/img/case_detail_images4@2x.png')" alt="" />
       <div class="adver-order">
         <div class="adver-order-cell">
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <div class="main-right-cell">
+    <div class="main-right-cell main-right-cell-four">
       <x-img :src="require('../assets/img/case_detail_images5@2x.png')" alt="" />
     </div>
   </div>
@@ -72,6 +72,22 @@
   .main-right-cell{
     margin-top: 20px;
     position: relative;
+  }
+
+  .main-right-cell-first{
+    height: 200px
+  }
+
+  .main-right-cell-second{
+    height: 616px
+  }
+
+  .main-right-cell-third{
+    height: 500px
+  }
+
+  .main-right-cell-four{
+    height: 338px
   }
 
   .adver-order{

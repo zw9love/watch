@@ -10,7 +10,7 @@
             <span class="nav-end-icon">
                 <img src="../assets/img/customer_service_end.png"/>
             </span>
-            <span class="nav-end-info">结束对话</span>
+            <span class="nav-end-info" @click="$router.back()">结束对话</span>
           </div>
       </div>
       <!--banner-->
