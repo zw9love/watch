@@ -3,14 +3,14 @@
  @time 2018/6/9
  **/
 
- // 使用vuex
+// 使用vuex
 import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
 // window.fetch() 的 Polyfill
-require('whatwg-fetch')
+// require('whatwg-fetch')
 
 const store = () => new Vuex.Store({
   state: {
@@ -35,44 +35,44 @@ const store = () => new Vuex.Store({
       context.commit('setCityIndex', data)
     }
   },
-  nuxtServerInit ({ commit }, { req }) {
+  nuxtServerInit({commit}, {req}) {
     if (req.session && req.session.authUser) {
       commit('SET_USER', req.session.authUser)
     }
   },
-  login ({ commit }, { username, password }) {
-    return fetch('/api/login', {
-      // 发送客户端 cookies 到服务端
-      credentials: 'same-origin',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username,
-        password
-      })
-    })
-      .then((res) => {
-        if (res.status === 401) {
-          throw new Error('Bad credentials')
-        } else {
-          return res.json()
-        }
-      })
-      .then((authUser) => {
-        commit('SET_USER', authUser)
-      })
+  login({commit}, {username, password}) {
+    // return fetch('/api/login', {
+    //   // 发送客户端 cookies 到服务端
+    //   credentials: 'same-origin',
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     username,
+    //     password
+    //   })
+    // })
+    //   .then((res) => {
+    //     if (res.status === 401) {
+    //       throw new Error('Bad credentials')
+    //     } else {
+    //       return res.json()
+    //     }
+    //   })
+    //   .then((authUser) => {
+    //     commit('SET_USER', authUser)
+    //   })
   },
-  logout ({ commit }) {
-    return fetch('/api/logout', {
-      // 发送客户端 cookies 到服务端
-      credentials: 'same-origin',
-      method: 'POST'
-    })
-      .then(() => {
-        commit('SET_USER', null)
-      })
+  logout({commit}) {
+    // return fetch('/api/logout', {
+    //   // 发送客户端 cookies 到服务端
+    //   credentials: 'same-origin',
+    //   method: 'POST'
+    // })
+    //   .then(() => {
+    //     commit('SET_USER', null)
+    //   })
   }
 })
 
