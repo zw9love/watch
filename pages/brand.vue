@@ -12,14 +12,8 @@
 
     <div class="banner320">
       <swiper :aspect-ratio="200/375" v-model="bannerIndex" dots-position="center">
-        <swiper-item class="banner320-swiper-img">
-          <x-img style="width: 100%" :src="require('../assets/img/home_serviceenvironment_images@2x.png')" />
-        </swiper-item>
-        <swiper-item class="banner320-swiper-img">
-          <x-img style="width: 100%" :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" />
-        </swiper-item>
-        <swiper-item class="banner320-swiper-img">
-          <x-img style="width: 100%" :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" />
+        <swiper-item class="banner320-swiper-img" v-for="(item, key) in envCarouselList" :key="key">
+          <img style="width: 100%" :src="item.src" />
         </swiper-item>
       </swiper>
     </div>
@@ -81,18 +75,12 @@
       <div class="environmental-container">
         <div class="environmental-main">
           <!--<h1 class="environmental-main-title">服务环境</h1>-->
-          <h1 class="environmental-main-title">维修案例</h1>
+          <h1 class="environmental-main-title">服务环境</h1>
           <div class="carousel">
             <el-carousel type="card" height="410px" :autoplay="false" arrow="never" indicator-position="none"
                          @change="carouselChange" ref="carousel">
-              <el-carousel-item name="0">
-                <x-img :src="require('../assets/img/home_serviceenvironment_images@2x.png')" alt="" />
-              </el-carousel-item>
-              <el-carousel-item name="1">
-                <x-img :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" alt="" />
-              </el-carousel-item>
-              <el-carousel-item name="2">
-                <x-img :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" alt="" />
+              <el-carousel-item :name="key + ''" v-for="(item, key) in envCarouselList" :key="key">
+                <x-img :src="item.src" alt="" />
               </el-carousel-item>
             </el-carousel>
             <div class="indicator">
@@ -104,30 +92,25 @@
           </div>
         </div>
       </div>
+
       <div class="environmental-container320">
-        <strong class="brand-page-title320">维修案例</strong>
-        <strong class="brand-page-title320" style="margin-top: 0;font-weight: 500"><span>超过</span> <span style="color: #C8936B"> 32567800 </span><span>个成功维修案例</span></strong>
-        <div class="carousel">
-          <el-carousel type="card" :height="stackHeight + 'px'" :autoplay="false" arrow="never"
-                       indicator-position="none"
-                       @change="carouselChange">
-            <!--<el-carousel-item v-for="item in 3" :key="item">-->
-            <!--<h3>{{ item }}</h3>-->
-            <!--</el-carousel-item>-->
-            <el-carousel-item name="0">
-              <x-img :src="require('../assets/img/brand_images8@2x.png')" alt="" />
-            </el-carousel-item>
-            <el-carousel-item name="1">
-              <x-img :src="require('../assets/img/brand_images8@2x.png')" alt="" />
-            </el-carousel-item>
-            <el-carousel-item name="2">
-              <x-img :src="require('../assets/img/brand_images8@2x.png')" alt="" />
-            </el-carousel-item>
-          </el-carousel>
-          <Indicators v-model="indicatorKey" :indicatorsStyle="{bottom: '-30px'}" :list="[1,1,1]" ></Indicators>
+          <strong class="brand-page-title320">维修案例</strong>
+          <strong class="brand-page-title320" style="margin-top: 0;font-weight: 500"><span>超过</span> <span style="color: #C8936B"> 32567800 </span><span>个成功维修案例</span></strong>
+          <div class="carousel">
+            <el-carousel type="card" :height="stackHeight + 'px'" :autoplay="false" arrow="never"
+                         indicator-position="none"
+                         @change="carouselChange">
+              <!--<el-carousel-item v-for="item in 3" :key="item">-->
+              <!--<h3>{{ item }}</h3>-->
+              <!--</el-carousel-item>-->
+              <el-carousel-item :name="key + ''" v-for="(item, key) in caseCarouselList" :key="key">
+                <img :src="item.src" alt="" />
+              </el-carousel-item>
+            </el-carousel>
+            <Indicators v-model="indicatorKey" :indicatorsStyle="{bottom: '-30px'}" :list="caseCarouselList" ></Indicators>
+          </div>
         </div>
       </div>
-    </div>
 
 
     <!--维修案例-->
@@ -148,7 +131,7 @@
           <el-carousel indicator-position="none" :autoplay="false" arrow="never" height="638px" ref="caseCarousel">
             <el-carousel-item v-for="(item, key) in caseCarouselList" :key="key">
               <div class="case-main-cell">
-                <x-img :src="require('../assets/img/brand_images8@2x.png')" alt="" class="bg" />
+                <img :src="item.src" alt="" class="bg" />
                 <div class="case-info-container">
                   <h3>追光机：百达翡丽手工精饰机芯部件 (Caliber CHR 29-535 PS)</h3>
                 </div>
@@ -226,8 +209,19 @@
         leftActive: false,
         rightActive: false,
         caseIndex: 0,
-        caseCarouselList: [1,1,1,1,1],
-        bannerIndex: 0
+        caseCarouselList: [
+          {src: require("../assets/img/brand_images8@2x.png")},
+          {src: require("../assets/img/brand_images8@2x.png")},
+          {src: require("../assets/img/brand_images8@2x.png")},
+          {src: require("../assets/img/brand_images8@2x.png")},
+          {src: require("../assets/img/brand_images8@2x.png")},
+        ],
+        bannerIndex: 0,
+        envCarouselList: [
+          {src: require('../assets/img/home_serviceenvironment_images@2x.png')},
+          {src: require('../assets/img/home_serviceenvironment_images1@2x.png')},
+          {src: require('../assets/img/home_serviceenvironment_images2@2x.png')},
+        ]
       }
     },
     mounted() {

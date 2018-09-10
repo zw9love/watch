@@ -165,7 +165,7 @@
     margin-top: 4px;
   }
 
-  .store-cell320-info >span:last-child{
+  .store-cell320-info >span:last-child, .store-cell320-info >a:last-child{
     color: #666;
     font-size: 12px;
     flex: 1;

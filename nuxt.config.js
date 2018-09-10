@@ -12,7 +12,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: '北京名表维修中心',
+    title: '西亨名表维修中心-世界名表维修连锁品牌在线预约维修手表',
     meta: [
       { charset: 'utf-8' },
       /*
@@ -25,8 +25,8 @@ module.exports = {
       { 'http-equiv' :'renderer', content: 'webkit'},
       { 'http-equiv' :'X-UA-Compatible', content: 'IE=edge'},
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0' },
-      // { name: 'description', content: '手表手表劳力士修理' },
-      // { name: 'keywords', content: '手表手表劳力士修理'}
+      { name: 'keywords', content: '名表维修,手表维修,手表维修中心,维修手表' },
+      { name: 'description', content: '西亨名表维修中心官方授权维修点：百达翡丽、江诗丹顿、积家、欧米茄、劳力士、芝柏、宝珀等世界名表在线预约到店维修服务，预约电话:4009608888，现场维修，保证安全和品质。' },
       // <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     ],
     link: [

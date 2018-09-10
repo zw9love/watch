@@ -65,9 +65,9 @@
                   <img src="../../assets/img/store_icon1@2x.png" alt="">
                   <span>北京市西城区西单北大街甲133号西亨钟表维修中心</span>
                 </div>
-                <a href="tel:4006368800" class="store-cell320-info">
+                <a href="tel:4006368800" class="store-cell320-info" @click.stop>
                   <img src="../../assets/img/store_icon2@2x.png" alt="">
-                  <span>400-636-8800</span>
+                  <a href="tel:4006368800">400-636-8800</a>
                 </a>
               </div>
             </div>

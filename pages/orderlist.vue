@@ -32,6 +32,7 @@
           background
           layout="total, prev, pager, next, jumper"
           :page-size="5"
+          :current-page="currentPage"
           @current-change="currentChange"
           :total="100">
         </el-pagination>
@@ -53,6 +54,9 @@
       Header,
       Footer,
       HeaderMobile,
+    },
+    async asyncData ({ params, route }) {
+      return {currentPage: parseInt(params.pageNumber) || 1}
     },
     data() {
       return {

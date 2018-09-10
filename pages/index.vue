@@ -421,7 +421,7 @@
               </div>
             </el-carousel-item>
           </el-carousel>
-          <Indicators v-model="cerIndicatorKey" :indicatorsStyle="{bottom: '-10px'}" :list="[1,1,1]"></Indicators>
+          <Indicators v-model="cerIndicatorKey" :indicatorsStyle="{bottom: '-10px'}" :list="technicianCarouselList"></Indicators>
         </div>
         <!--<swiper v-model="certificationIndex" @on-index-change="certificationIndexChange" :show-dots="false"-->
                 <!--:show-desc-mask="false" height="260px">-->
