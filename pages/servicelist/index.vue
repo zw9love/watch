@@ -23,7 +23,7 @@
                   </div>
                   <div class="store-phone">
                     <span><img src="../../assets/img/store_icon2@2x.png" alt=""></span>
-                    <span>400-636-8800</span>
+                    <a href="tel:4006368800">400-636-8800</a>
                   </div>
                   <div class="store-time">
                     <span><img src="../../assets/img/store_icon3@2x.png" alt=""></span>
@@ -130,7 +130,7 @@
       // console.log(params.pageNumber)
       let list = Mock.mock({
         // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
-        'list|8': [{
+        'list|10': [{
           // 属性 id 是一个自增数，起始值为 1，每次增 1
           'ids': '@id',
           'date': '@date("yyyy-MM-dd")'
@@ -143,15 +143,6 @@
         addressActive: false,
       }
     },
-    mounted(){
-      // alert('servicelist-index的mounted钩子。')
-      if (window.BMap) {
-        // alert('BMap加载完成。store-list-map111。')
-        let map = new BMap.Map("store-list-map");
-        let point = new BMap.Point(116.331398, 39.897445);
-        map.centerAndZoom(point, 12);
-      }
-    },
     methods: {
       getMore() {
 
@@ -161,10 +152,12 @@
         this.$nextTick(function () {
           //   // DOM 现在更新了
           if (window.BMap) {
-            // alert('BMap加载完成。store-list-map111。')
+            // alert('BMap加载完成。store-list-map。')
             let map = new BMap.Map("store-list-map");
             // let point = new BMap.Point(116.331398, 39.897445);
             // map.centerAndZoom(point, 12);
+            let mapType = new BMap.MapTypeControl({anchor: BMAP_ANCHOR_TOP_RIGHT});
+            map.addControl(mapType);
             // 创建地址解析器实例
             let myGeo = new BMap.Geocoder();
             // 将地址解析结果显示在地图上,并调整地图视野
