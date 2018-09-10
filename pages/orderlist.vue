@@ -5,10 +5,10 @@
     <HeaderMobile title="查询结果"/>
     <!--banner-->
     <div class="banner">
-      <x-img :src="require('../assets/img/demand_banner@2x.png')" alt=""/>
+      <img :src="require('../assets/img/demand_banner@2x.png')" alt=""/>
     </div>
     <div class="banner320">
-      <x-img :src="require('../assets/img/process.jpg')" alt=""/>
+      <img :src="require('../assets/img/process.jpg')" alt=""/>
     </div>
 
     <!--main-->

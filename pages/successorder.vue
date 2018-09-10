@@ -6,7 +6,7 @@
 
       <!--banner-->
       <div class="banner">
-        <x-img :src="require('../assets/img/booking_banner@2x.png')" alt="" />
+        <img :src="require('../assets/img/booking_banner@2x.png')" alt="" />
       </div>
 
       <!--成功预约信息-->

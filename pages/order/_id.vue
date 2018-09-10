@@ -6,7 +6,7 @@
 
       <!--banner-->
       <div class="banner">
-        <img v-lazy="require('../../assets/img/booking_banner@2x.png')" alt="">
+        <img :src="require('../../assets/img/booking_banner@2x.png')" alt="" />
       </div>
 
       <!--main-->
@@ -86,7 +86,7 @@
       <HeaderMobile title="预约到店"></HeaderMobile>
 
       <div class="banner320">
-        <img v-lazy="require('../../assets/img/order_banner320.jpg')" alt="">
+        <img :src="require('../../assets/img/order_banner320.jpg')" alt="" />
       </div>
 
       <!--main-->

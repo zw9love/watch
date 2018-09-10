@@ -814,11 +814,12 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   font-weight: 200;
 }
 
-.store .store-content img, .store .store-content span {
+.store .store-content img, .store .store-content span, .store .store-content a {
   display: inline-block;
   vertical-align: middle;
   font-size: 36px;
   color: #BF9571;
+  margin-left: 10px;
 }
 
 .store .store-content span {

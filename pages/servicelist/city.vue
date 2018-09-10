@@ -10,7 +10,7 @@
             <CityPicker/>
           </div>
           <div class="store-list">
-            <div class="store-cell-wrapper" v-for="item in 5" :key="item">
+            <div class="store-cell-wrapper" v-for="(item, key) in list" :key="key" @click="storeClick(item)">
               <div class="store-cell">
                 <div class="store-cell-left">
                   <img src="../../assets/img/store_images1@2x.png" alt="">
@@ -31,10 +31,10 @@
                     <span>09:00-21:00</span>
                   </div>
                 </div>
-                <div class="store-btn">
+                <nuxt-link class="store-btn" :to="'/order/' + item.ids">
                   <img src="../../assets/img/store_button1@2x.png" alt="">
-                  <span class="store-btn-info">立即预约</span>
-                </div>
+                  <span class="store-btn-info" >立即预约</span>
+                </nuxt-link>
               </div>
               <div class="store-line"></div>
             </div>
@@ -55,7 +55,7 @@
       <main class="main320">
         <CityPickerMobile/>
         <div class="store-list320">
-          <div class="store-cell320" v-for="item in 5" :key="item">
+          <div class="store-cell320" v-for="(item, key) in list" :key="key" @click="storeClick(item)">
             <div class="store-cell320-container">
               <div class="store-cell320-left">
                 <img src="../../assets/img/store_images1@2x.png" alt="">
@@ -114,6 +114,7 @@
   import HeaderMobile from '../../components/HeaderMobile'
   import CityPicker from '../../components/CityPicker'
   import CityPickerMobile from '../../components/CityPickerMobile'
+  import Mock from 'mockjs'
 
   export default {
     components: {
@@ -145,7 +146,16 @@
       } else if (query.province) {
         queryAddress = query.province + query.city + query.area
       }
-      return {name: queryAddress}
+
+      let list = Mock.mock({
+        // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
+        'list|8': [{
+          // 属性 id 是一个自增数，起始值为 1，每次增 1
+          'ids': '@id',
+          'date': '@date("yyyy-MM-dd")'
+        }]
+      }).list
+      return {name: queryAddress, list: list}
     },
     data() {
       return {
@@ -180,6 +190,9 @@
       },
       backList() {
         this.addressActive = false
+      },
+      storeClick(item){
+        this.$router.push({path: '/order/' + item.ids})
       }
     }
   }

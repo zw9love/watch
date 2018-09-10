@@ -28,7 +28,7 @@
     </div>
     <div class="container320">
       <HeaderMobile title="查询结果"/>
-      <div class="banner320"><x-img :src="require('../../assets/img/process.jpg')" alt="" /></div>
+      <div class="banner320"><img :src="require('../../assets/img/process.jpg')" alt="" /></div>
       <main class="main320">
         <OrderCellMobile :item="item" />
         <div class="orderdetails-reservation320">

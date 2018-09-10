@@ -6,7 +6,7 @@
 
       <!--banner-->
       <div class="banner" @click="bannerClick">
-        <x-img :src="require('../assets/img/case_banner@2x.png')" alt="" />
+        <img :src="require('../assets/img/case_banner@2x.png')" alt="" />
       </div>
 
       <!--main-->

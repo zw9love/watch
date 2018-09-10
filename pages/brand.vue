@@ -7,7 +7,7 @@
 
     <!--banner-->
     <div class="banner" @click="$router.push({path: '/servicelist'})">
-      <x-img :src="require('../assets/img/brand_banner@2x.png')" alt="" />
+      <img :src="require('../assets/img/brand_banner@2x.png')" alt="" />
     </div>
 
     <div class="banner320">
