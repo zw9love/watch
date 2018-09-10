@@ -55,8 +55,8 @@
       Footer,
       HeaderMobile,
     },
-    async asyncData ({ params, route }) {
-      return {currentPage: parseInt(params.pageNumber) || 1}
+    async asyncData ({ params }) {
+      // return {currentPage: parseInt(params.pageNumber) || 1}
     },
     data() {
       return {
@@ -80,6 +80,11 @@
         case 'orderlist-completed':
           this.mainBtbIndex = 2
           break;
+      }
+    },
+    computed: {
+      currentPage(){
+        return parseInt(this.$route.params.pageNumber) || 1
       }
     },
     methods: {

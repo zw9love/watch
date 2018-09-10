@@ -21,6 +21,10 @@
       <!--main-->
       <main class="main" ref="main">
         <div class="main-container" ref="mainContainer">
+          <div class="banner">
+            <img src="../assets/img/customer_service_left.jpg" />
+            <img src="../assets/img/customer_service_right.jpg" />
+          </div>
           <!--<div class="main-tip"><span>2018-8-10 09:23:23 请求了对话</span></div>-->
           <ChatCell v-for="(entry, key) in list" :key="key" :entry="entry"/>
         </div>
@@ -325,6 +329,25 @@
 </script>
 
 <style scoped>
+
+  .banner{
+    margin-top: 20px;
+    height: 380px;
+  }
+
+  .banner img{
+    vertical-align: middle;
+    height: 100%
+  }
+
+  .banner img:first-child{
+    margin-right: 20px;
+    width: calc((100% - 20px) * 0.5242);
+  }
+
+  .banner img:last-child{
+    width: calc((100% - 20px) * 0.4758);
+  }
 
   img {
     vertical-align: middle;
