@@ -24,7 +24,7 @@
           <span class="verification-btn">获取验证码</span>
         </span>
         </div>
-        <nuxt-link to="/orderlist/all/1" class="search-process-btn">查询进度</nuxt-link>
+        <span class="search-process-btn" @click="checkProcess">查询进度</span>
       </main>
 
       <!--Footer-->

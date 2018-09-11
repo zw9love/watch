@@ -57,7 +57,7 @@
     },
     fetch ({ store, redirect }) {
       if (!store.state.authUser) {
-        return redirect('/')
+        return redirect('/process')
       }
     },
     async asyncData ({ params }) {

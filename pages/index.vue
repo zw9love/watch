@@ -1143,6 +1143,8 @@
     <!--</p>-->
     <!--<group title="vux demo">-->
       <!--<cell title="cell" value="click me" is-link @click.native="alert"/>-->
+      <!--<button @click="getMyData">自己的接口</button>-->
+      <!--<button @click="getBgData" style="margin-left: 20px">后台的接口</button>-->
     <!--</group>-->
   <!--</div>-->
 <!--</template>-->
@@ -1181,6 +1183,28 @@
       <!--},-->
       <!--alert() {-->
         <!--this.$vux.alert.show('This is a Alert example.')-->
+      <!--},-->
+      <!--getMyData(){-->
+        <!--this.$axios('/login', {-->
+          <!--// 发送客户端 cookies 到服务端-->
+          <!--credentials: 'same-origin',-->
+          <!--method: 'POST',-->
+          <!--headers: {-->
+            <!--'Content-Type': 'application/json'-->
+          <!--},-->
+          <!--data: JSON.stringify({-->
+            <!--username: 'test',-->
+            <!--password: 'test'-->
+          <!--})-->
+        <!--})-->
+      <!--},-->
+      <!--getBgData(){-->
+        <!--this.$axios('/test', {-->
+          <!--method: 'POST',-->
+          <!--headers: {-->
+            <!--'Content-Type': 'application/json'-->
+          <!--}-->
+        <!--})-->
       <!--}-->
     <!--}-->
   <!--}-->

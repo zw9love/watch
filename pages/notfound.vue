@@ -8,6 +8,7 @@
   export default {
     name: "notfound",
     asyncData (context) {
+      console.log('进入404页面。')
       context.redirect(302, '/')
       // return { project: 'nuxt' }
     }

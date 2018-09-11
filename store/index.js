@@ -44,7 +44,7 @@ const store = () => new Vuex.Store({
       }
     },
     login({commit}, {username, password, axios, self}) {
-      return axios('/api/login', {
+      return axios('/login', {
         // 发送客户端 cookies 到服务端
         credentials: 'same-origin',
         method: 'POST',
@@ -67,12 +67,12 @@ const store = () => new Vuex.Store({
           commit('SET_USER', authUser)
         })
         .then(() => {
-          // self.$router.push({path: '/orderlist/all/1'})
-          self.$router.push({path: '/secret'})
+          self.$router.push({path: '/orderlist/all/1'})
+          // self.$router.push({path: '/secret'})
         })
     },
     logout({commit}, {axios, self}) {
-      return axios('/api/logout', {
+      return axios('/logout', {
         // 发送客户端 cookies 到服务端
         credentials: 'same-origin',
         method: 'POST'

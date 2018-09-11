@@ -18,7 +18,7 @@ router.use((req, res, next) => {
 
 // Add POST - /api/login
 router.post('/login', (req, res) => {
-  console.log('login接口。')
+  // console.log('login接口。')
   if (req.body.username === 'demo' && req.body.password === 'demo') {
     req.session.authUser = { username: 'demo' }
     return res.json({ username: 'demo' })
@@ -28,7 +28,7 @@ router.post('/login', (req, res) => {
 
 // Add POST - /api/logout
 router.post('/logout', (req, res) => {
-  console.log('logout接口。')
+  // console.log('logout接口。')
   delete req.session.authUser
   res.json({ ok: true })
 })

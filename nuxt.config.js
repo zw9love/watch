@@ -50,22 +50,23 @@ module.exports = {
     {src: '~/plugins/vue-picture-preview', ssr: false},
     {src: '~plugins/video-player-plugin.js', ssr: false }
   ],
-  // axios: {
-  //   prefix: '/api/',
-  //   proxy: true // Can be also an object with default options
-  // },
-  // proxy: {
-  //   '/api/': {
-  //     // target: 'http://0.0.0.0',
-  //     // target: 'http://192.168.1.135:6789',
-  //     // target: 'http://192.168.1.135:3000',
-  //     target: 'http://localhost:3000',
-  //     pathRewrite: {
-  //       '^/api/': ''
-  //     },
-  //     secure: false
-  //   }
-  // },
+  axios: {
+    // prefix: '/api/',
+    proxy: true // Can be also an object with default options
+  },
+  proxy: {
+    '/bgapi/': {
+      // target: 'http://0.0.0.0',
+      // target: 'http://192.168.1.135:6789',
+      // target: 'http://192.168.1.135:3000',
+      // target: 'http://localhost:3000',
+      target: 'http://localhost:6789',
+      pathRewrite: {
+        '^/bgapi/': ''
+      },
+      secure: false
+    }
+  },
   // 样式
   css: [
     {src: 'video.js/dist/video-js.css'},
