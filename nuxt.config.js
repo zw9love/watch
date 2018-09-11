@@ -1,5 +1,6 @@
 
-
+const bodyParser = require('body-parser')
+const session = require('express-session')
 const path = require('path')
 const resolve = path.resolve
 const vuxLoader = require('vux-loader')
@@ -49,21 +50,22 @@ module.exports = {
     {src: '~/plugins/vue-picture-preview', ssr: false},
     {src: '~plugins/video-player-plugin.js', ssr: false }
   ],
-  axios: {
-    prefix: '/api/',
-    proxy: true // Can be also an object with default options
-  },
-  proxy: {
-    '/api/': {
-      // target: 'http://0.0.0.0',
-      // target: 'http://192.168.1.135:6789',
-      target: 'http://192.168.1.135:3000',
-      pathRewrite: {
-        '^/api/': ''
-      },
-      secure: false
-    }
-  },
+  // axios: {
+  //   prefix: '/api/',
+  //   proxy: true // Can be also an object with default options
+  // },
+  // proxy: {
+  //   '/api/': {
+  //     // target: 'http://0.0.0.0',
+  //     // target: 'http://192.168.1.135:6789',
+  //     // target: 'http://192.168.1.135:3000',
+  //     target: 'http://localhost:3000',
+  //     pathRewrite: {
+  //       '^/api/': ''
+  //     },
+  //     secure: false
+  //   }
+  // },
   // 样式
   css: [
     {src: 'video.js/dist/video-js.css'},
@@ -107,7 +109,7 @@ module.exports = {
   // 路由
   router: {
     base: '/',
-    middleware: ['auth'],
+    // middleware: ['auth'],
     scrollBehavior: function (to, from, savedPosition) {
       // return { x: 0, y: 0 }
     },
@@ -134,6 +136,20 @@ module.exports = {
     //   // { path: '*', component: NotFound }
     //   { path: '*', component: '~pages/notfound.vue' }
     // ]
-  }
+  },
+  serverMiddleware: [
+    // body-parser middleware
+    bodyParser.json(),
+    // session middleware
+    session({
+      secret: 'super-secret-key',
+      resave: false,
+      saveUninitialized: false,
+      cookie: {maxAge: 60000}
+    }),
+    // Api middleware
+    // We add /api/login & /api/logout routes
+    '~/api'
+  ],
 }
 

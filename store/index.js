@@ -17,7 +17,8 @@ const store = () => new Vuex.Store({
     counter: 100,
     token: 'a1234567890',
     cityName: '北京',
-    cityIndex: 0
+    cityIndex: 0,
+    authUser: null
   },
   mutations: {
     setCityName: (state, {val}) => {
@@ -25,6 +26,9 @@ const store = () => new Vuex.Store({
     },
     setCityIndex: (state, {val}) => {
       state.cityIndex = val
+    },
+    SET_USER: function (state, user) {
+      state.authUser = user
     }
   },
   actions: {
@@ -63,7 +67,8 @@ const store = () => new Vuex.Store({
           commit('SET_USER', authUser)
         })
         .then(() => {
-          self.$router.push({path: '/orderlist/all/1'})
+          // self.$router.push({path: '/orderlist/all/1'})
+          self.$router.push({path: '/secret'})
         })
     },
     logout({commit}, {axios, self}) {
