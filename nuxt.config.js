@@ -110,7 +110,7 @@ module.exports = {
   // 路由
   router: {
     base: '/',
-    // middleware: ['auth'],
+    // middleware: ['refresh'],
     scrollBehavior: function (to, from, savedPosition) {
       // return { x: 0, y: 0 }
     },
@@ -146,7 +146,7 @@ module.exports = {
       secret: 'super-secret-key',
       resave: false,
       saveUninitialized: false,
-      cookie: {maxAge: 60 * 10 * 1000} //  10mins
+      cookie: {maxAge: 10 * 1000} //  10mins
     }),
     // Api middleware
     // We add /api/login & /api/logout routes

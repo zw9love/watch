@@ -19,6 +19,7 @@
       OrderCell,
       OrderCellMobile
     },
+    // middleware: 'refresh',
     validate ({ params }) {
       // Must be a number
       return /^\d+$/.test(params.pageNumber)

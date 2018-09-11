@@ -55,7 +55,9 @@
       Footer,
       HeaderMobile,
     },
-    fetch ({ store, redirect }) {
+    fetch (context) {
+      let { store, redirect } = context
+      // console.log(context)
       if (!store.state.authUser) {
         return redirect('/process')
       }
