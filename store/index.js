@@ -40,7 +40,11 @@ const store = () => new Vuex.Store({
     },
     nuxtServerInit({commit}, {req}) {
       if (req.session && req.session.authUser) {
+        console.log('已经查找过。')
+        req.session.views++
         commit('SET_USER', req.session.authUser)
+      }else{
+        req.session.views = 1
       }
     },
     login({commit}, {username, password, axios, self}) {
