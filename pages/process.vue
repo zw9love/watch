@@ -50,8 +50,9 @@
             </span>
           <span class="phone-verification">获取验证码</span>
         </div>
-        <div class="main-cell320" >
-          <nuxt-link to="/orderlist/all/1" class="commit-order-btn">查询进度</nuxt-link>
+        <div class="main-cell320" @click="checkProcess">
+          <!--<nuxt-link to="/orderlist/all/1" class="commit-order-btn">查询进度</nuxt-link>-->
+          <span class="commit-order-btn" >查询进度</span>
         </div>
       </div>
     </div>
@@ -85,6 +86,11 @@
           phone: '',
           verification: '',
         }
+      }
+    },
+    methods: {
+      checkProcess(){
+        this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this})
       }
     }
   }

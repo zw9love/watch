@@ -55,6 +55,11 @@
       Footer,
       HeaderMobile,
     },
+    fetch ({ store, redirect }) {
+      if (!store.state.authUser) {
+        return redirect('/')
+      }
+    },
     async asyncData ({ params }) {
       // return {currentPage: parseInt(params.pageNumber) || 1}
     },

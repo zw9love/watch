@@ -56,7 +56,8 @@ module.exports = {
   proxy: {
     '/api/': {
       // target: 'http://0.0.0.0',
-      target: 'http://192.168.1.135:6789',
+      // target: 'http://192.168.1.135:6789',
+      target: 'http://192.168.1.135:3000',
       pathRewrite: {
         '^/api/': ''
       },
@@ -90,7 +91,7 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-
+      console.log('extend')
       const configs = vuxLoader.merge(config, {
         options: {
           ssr: true

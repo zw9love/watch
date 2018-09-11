@@ -338,6 +338,8 @@
     top: 50%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
+    text-align: center;
+    width: 100%;
   }
 
   .brand-info-container >img{
@@ -355,6 +357,7 @@
     white-space: normal;
     word-break: break-all;
     line-height: 40px;
+    text-align: left;
   }
 
   .qualification-container .qualification-img-container{

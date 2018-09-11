@@ -7,7 +7,8 @@
       <x-img :src="require('../assets/img/case_detail_images3@2x.png')" alt="" />
     </div>
     <div class="main-right-cell main-right-cell-third">
-      <x-img :src="require('../assets/img/case_detail_images4@2x.png')" alt="" />
+      <!--<x-img :src="require('../assets/img/case_detail_images4@2x.png')" alt="" />-->
+      <x-img :src="require('../assets/img/case_detail_images4@2x.jpg')" alt="" />
       <div class="adver-order">
         <div class="adver-order-cell">
           <span class="name">姓名</span>
