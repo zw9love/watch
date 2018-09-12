@@ -365,19 +365,19 @@
                     content="只录用瑞士SMH认证、国家职业技能认证、中国钟表协会认证技师"></ServiceTitle>
       <div class="certification">
         <span @mouseenter="leftIconEnter" @mouseleave="leftIconLeave" @click="leftIconClick">
-          <x-img :src="require('../assets/img/home_qualitycommitment__lefter_icon_no@2x.png')" alt="" class="left-icon"
+          <img :src="require('../assets/img/home_qualitycommitment__lefter_icon_no@2x.png')" alt="" class="left-icon"
                v-if="!leftActive" />
-          <x-img :src="require('../assets/img/home_qualitycommitment__lefter_icon_yes@2x.png')" alt="" class="left-icon" v-else />
+          <img :src="require('../assets/img/home_qualitycommitment__lefter_icon_yes@2x.png')" alt="" class="left-icon" v-else />
         </span>
         <span @mouseenter="rightIconEnter" @mouseleave="rightIconLeave" @click="rightIconClick">
-          <x-img :src="require('../assets/img/home_qualitycommitment__right_icon_no@2x.png')" alt="" class="right-icon"
+          <img :src="require('../assets/img/home_qualitycommitment__right_icon_no@2x.png')" alt="" class="right-icon"
                v-if="!rightActive" />
-          <x-img :src="require('../assets/img/home_qualitycommitment__right_icon_yes@2x.png')" alt="" class="right-icon" v-else />
+          <img :src="require('../assets/img/home_qualitycommitment__right_icon_yes@2x.png')" alt="" class="right-icon" v-else />
         </span>
         <el-carousel indicator-position="none" :autoplay="false" arrow="never" height="300px" ref="technicianCarousel">
           <el-carousel-item v-for="(item, key) in technicianCarouselList" :key="key">
             <div class="certification-imgContainer">
-              <x-img :src="require('../assets/img/home_certificationtechnician__image@2x.png')" alt="" />
+              <img :src="require('../assets/img/home_certificationtechnician__image@2x.png')" alt="" />
             </div>
             <div class="certification-infoContainer">
               <h1 class="certification-title">Charlie Peter</h1>
