@@ -56,8 +56,8 @@
   .sidebar {
     position: fixed;
     right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    top: calc((100vh - 340px - 130px) / 2);
+    /*transform: translateY(-50%);*/
     width: 130px;
     background-color: #fff;
     z-index: 10000;
