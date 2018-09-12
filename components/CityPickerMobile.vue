@@ -19,7 +19,7 @@
     <!--</popup-picker>-->
     <strong>直接搜索：</strong>
     <form class="search-container320" action="" @submit.prevent>
-      <input type="search" class="search-txt320" v-model="txtVal" @keydown.enter.prevent="searchCity" placeholder="请输入城市中文或拼音 ">
+      <input type="search" class="search-txt320" v-model="txtVal" @keydown.enter.prevent="searchCity" placeholder="请输入城市中文或拼音">
     </form>
   </div>
 </template>

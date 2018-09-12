@@ -2,104 +2,104 @@
   <div class="reservation">
     <div class="reservation-container320">
       <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_reservationprocess_icon1_mobile@2x.png')" alt="" />
+        <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon1_mobile@2x.png')" alt="" />
         <span>到店送修</span>
       </div>
       <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
+        <x-img container="#container" :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
       </div>
       <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_reservationprocess_icon2_mobile@2x.png')" alt="" />
+        <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon2_mobile@2x.png')" alt="" />
         <span>预检并报价</span>
       </div>
       <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
+        <x-img container="#container" :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
       </div>
       <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_reservationprocess_icon3_mobile@2x.png')" alt="" />
+        <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon3_mobile@2x.png')" alt="" />
         <span>确认服务</span>
       </div>
       <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
+        <x-img container="#container" :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
       </div>
       <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_reservationprocess_icon4_mobile@2x.png')" alt="" />
+        <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon4_mobile@2x.png')" alt="" />
         <span>维修保养</span>
       </div>
       <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
+        <x-img container="#container" :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
       </div>
       <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_reservationprocess_icon5_mobile@2x.png')" alt="" />
+        <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon5_mobile@2x.png')" alt="" />
         <span>服务完成</span>
       </div>
       <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
+        <x-img container="#container" :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
       </div>
       <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_reservationprocess_icon6_mobile@2x.png')" alt="" />
+        <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon6_mobile@2x.png')" alt="" />
         <span>告知客户</span>
       </div>
     </div>
     <div class="reservation-container">
       <div class="reservation-cell">
         <div class="reservation-cell-container">
-          <x-img :src="require('../assets/img/home_reservationprocess_icon1_mobile@2x.png')" alt="" />
+          <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon1_mobile@2x.png')" alt="" />
           <span>到店送修</span>
         </div>
       </div>
       <div class="reservation-cell">
         <div class="reservation-cell-container">
-          <x-img :src="require('../assets/img/home_reservationprocess_icon@2x.png')" alt="" class="arrow" />
+          <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon@2x.png')" alt="" class="arrow" />
         </div>
       </div>
       <div class="reservation-cell">
         <div class="reservation-cell-container">
-          <x-img :src="require('../assets/img/home_reservationprocess_icon2_mobile@2x.png')" alt="" />
+          <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon2_mobile@2x.png')" alt="" />
           <span>预检并报价</span>
         </div>
       </div>
       <div class="reservation-cell">
         <div class="reservation-cell-container">
-          <x-img :src="require('../assets/img/home_reservationprocess_icon@2x.png')" alt="" class="arrow" />
+          <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon@2x.png')" alt="" class="arrow" />
         </div>
       </div>
       <div class="reservation-cell">
         <div class="reservation-cell-container">
-          <x-img :src="require('../assets/img/home_reservationprocess_icon3_mobile@2x.png')" alt="" />
+          <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon3_mobile@2x.png')" alt="" />
           <span>确认服务</span>
         </div>
       </div>
       <div class="reservation-cell">
         <div class="reservation-cell-container">
-          <x-img :src="require('../assets/img/home_reservationprocess_icon@2x.png')" alt="" class="arrow" />
+          <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon@2x.png')" alt="" class="arrow" />
         </div>
       </div>
       <div class="reservation-cell">
         <div class="reservation-cell-container">
-          <x-img :src="require('../assets/img/home_reservationprocess_icon4_mobile@2x.png')" alt="" />
+          <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon4_mobile@2x.png')" alt="" />
           <span>维修保养</span>
         </div>
       </div>
       <div class="reservation-cell">
         <div class="reservation-cell-container">
-          <x-img :src="require('../assets/img/home_reservationprocess_icon@2x.png')" alt="" class="arrow" />
+          <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon@2x.png')" alt="" class="arrow" />
         </div>
       </div>
       <div class="reservation-cell">
         <div class="reservation-cell-container">
-          <x-img :src="require('../assets/img/home_reservationprocess_icon5_mobile@2x.png')" alt="" />
+          <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon5_mobile@2x.png')" alt="" />
           <span>服务完成</span>
         </div>
       </div>
       <div class="reservation-cell">
         <div class="reservation-cell-container">
-          <x-img :src="require('../assets/img/home_reservationprocess_icon@2x.png')" alt="" class="arrow" />
+          <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon@2x.png')" alt="" class="arrow" />
         </div>
       </div>
       <div class="reservation-cell">
         <div class="reservation-cell-container">
-          <x-img :src="require('../assets/img/home_reservationprocess_icon6_mobile@2x.png')" alt="" />
+          <x-img container="#container" :src="require('../assets/img/home_reservationprocess_icon6_mobile@2x.png')" alt="" />
           <span>告知客户</span>
         </div>
       </div>

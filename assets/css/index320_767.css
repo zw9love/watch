@@ -8,6 +8,9 @@
   .container{
     padding-bottom: 14.285714%;
     padding-top: 46px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
   .reservation-shadow, .banner-container img.banner_pc, .banner-shadow, .brand-main-wrapper, .service-quality-main-info, .reservation-main, .certification, .service-project-main, .service-quality-container, .adver-wrapper, .environmental-container{
     display: none;
@@ -56,6 +59,7 @@
     width: 13px;
     height:  13px;
     margin-left: 10px;
+    vertical-align: middle;
   }
 
   .banner-container{
@@ -532,6 +536,7 @@
     width: 66.6667%;
     padding-top: 75.7333%;
     z-index: 10000;
+    /*-webkit-transform: translateZ(0);*/
   }
 
   .reservation-shadow320 >img:not(.close320){
