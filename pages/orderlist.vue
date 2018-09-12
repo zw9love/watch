@@ -3,6 +3,7 @@
     <!--Header-->
     <Header :pageIndex="4"/>
     <HeaderMobile title="查询结果"/>
+    <Tabbar />
     <!--banner-->
     <div class="banner">
       <img :src="require('../assets/img/demand_banner@2x.png')" alt=""/>
@@ -49,11 +50,13 @@
   import Header from '../components/Header'
   import Footer from '../components/Footer'
   import HeaderMobile from '../components/HeaderMobile'
+  import Tabbar from '../components/Tabbar'
   export default {
     components: {
       Header,
       Footer,
       HeaderMobile,
+      Tabbar
     },
     fetch ({ store, redirect }) {
       if (!store.state.authUser) {

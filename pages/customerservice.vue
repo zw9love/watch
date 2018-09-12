@@ -92,7 +92,7 @@
             <img src="../assets/img/add.png" alt="" class="add" @click.stop="addMobileClick">
           </span>
           <!--<input id="editor320" class="input-txt320" placeholder="请在此输入111..." type="search" autocomplete="off" autocomplete="off">-->
-          <div class="test-textarea" contenteditable="true" @focus="editorMobileFocus" @blur="editorMobileBlur" ref="editorMobile"></div>
+          <div class="test-textarea" contenteditable="true" placeholder="请输入描述内容..." @focus="editorMobileFocus" @blur="editorMobileBlur" ref="editorMobile"></div>
           <!--<textarea id="editor320" class="input-txt320" placeholder="请在此输入..."></textarea>-->
           <!--<button class="send320">发送</button>-->
           <!--<button id="openwebsocket">开启</button>-->
@@ -148,7 +148,7 @@
       return {
         inputVal: '',
         bottom: '-125px',
-        paddingBottom: '0',
+        paddingBottom: '40px',
         emojiActive: false,
         emojis: ['😂', '🙏', '😄', '😏', '😇', '😅', '😌', '😘', '😍', '🤓', '😜', '😎', '😊', '😳', '🙄', '😱', '😒', '😔', '😷', '👿', '🤗', '😩', '😤', '😣', '😰', '😴', '😬', '😭', '👻', '👍', '✌️', '👉', '👀', '🐶', '🐷', '😹', '⚡️', '🔥', '🌈', '🍏', '⚽️', '❤️', '🇨🇳'],
         list: [
@@ -163,7 +163,7 @@
     mounted(){
       window.addEventListener('click', () => {
         this.bottom = '-125px'
-        this.paddingBottom = '0'
+        this.paddingBottom = '40px'
         this.emojiActive = false
       })
     },
@@ -255,7 +255,7 @@
       },
       mainMobileClick(){
         this.bottom = '-125px'
-        this.paddingBottom = '0'
+        this.paddingBottom = '40px'
       },
       emojisMobileClick(item){
         let editorMobile = this.$refs.editorMobile
@@ -266,7 +266,7 @@
         setTimeout(o => {this.$refs.mainMobile.scrollTop = this.$refs.mainContainerMobile.clientHeight}, 0)
       },
       mobilePaddingBottom(){
-        this.paddingBottom = '125px'
+        this.paddingBottom = '165px'
         this.$nextTick(function () {
           // DOM 现在更新了
           // `this` 绑定到当前实例
@@ -702,8 +702,8 @@
 
     .test-textarea {
       flex: 1;
-      min-height: 30px;
-      line-height: 30px;
+      min-height: 35px;
+      line-height: 35px;
       _height: 30px;
       max-height: 100px;
       margin: 0 10px;
@@ -717,6 +717,18 @@
       overflow-y: auto;
       /*-webkit-user-modify: read-write-plaintext-only;*/
       border-radius: 4px;
+    }
+
+    .test-textarea:empty:before{
+      content:attr(placeholder);
+      font-size: 12px;
+      color: #999;
+      height: 35px;
+      line-height: 35px;
+    }
+
+    .test-textarea:focus{
+      content:none;
     }
 
     .popup {

@@ -117,6 +117,16 @@ img[lazy=loading] {
   /*margin: auto;*/
 }
 
+.container{
+  padding-bottom: 130px;
+}
+
+@media (max-width: 768px) {
+  .container{
+    padding-bottom: 0;
+  }
+}
+
 /*@media  {*/
   /*.video-js{*/
     /*height: calc(100% - 30px)*/

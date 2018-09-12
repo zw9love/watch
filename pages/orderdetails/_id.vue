@@ -223,6 +223,7 @@
     .orderdetails-reservation320-cell .image img{
       width: 30px;
       height: 30px;
+      vertical-align: middle;
     }
 
     .orderdetails-reservation320-cell .content{

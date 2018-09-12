@@ -144,6 +144,14 @@
     flex-direction: column;
     justify-content: space-between;
     margin-left: 5px;
+    word-break: break-all;
+  }
+
+  .store-cell320-right p{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .store-cell320-info{

@@ -1,43 +1,7 @@
 <template>
   <!--<h1>test</h1>-->
   <div class="container">
-    <!--tabbar-->
-    <div class="tabbar-container">
-      <img :src="require('../assets/img/bottom_fix.png')" alt="" />
-      <div class="tabbar-wrapper">
-        <div class="tabbar-cell">
-          <nuxt-link to="/customerservice">
-            <x-img :src="require('../assets/img/online_service.png')" alt="" />
-            <span>在线客服</span>
-          </nuxt-link>
-          <!--<img src="../assets/img/service_info.png" alt="" />-->
-        </div>
-        <div class="tabbar-cell">
-          <nuxt-link to="/servicelist">
-            <x-img :src="require('../assets/img/order_store.png')" alt="" />
-            <span>预约到店</span>
-          </nuxt-link>
-          <!--<img src="../assets/img/service_info.png" alt="" />-->
-        </div>
-      </div>
-      <span class="tabbar-vip" @click="phoneCall"></span>
-      <div v-transfer-dom>
-        <popup v-model="phoneShadowActive" is-transparent position="bottom" width="100%">
-          <div class="phone-shadow">
-            <div class="phone-shadow-info">
-              <p class="content">维修服务中心咨询电话</p>
-              <p class="phone">400-617-1383</p>
-              <div class="phone-shadow-button">
-                <span class="phone-shadow-button-cancel" @click="cancelShadow">取消</span>
-                <a href="tel:4006171383" class="phone-shadow-button-confirm" @click="confirmShadow">呼叫</a>
-                <!--<span class="phone-shadow-button-confirm" @click="confirmShadow">呼叫</span>-->
-              </div>
-            </div>
-          </div>
-        </popup>
-      </div>
-    </div>
-
+    <Tabbar />
     <Header/>
     <HeaderMobile title="北京名表维修中心" :showBack="false"/>
     <!--banner-->
@@ -96,7 +60,7 @@
             <!--<nuxt-child/>-->
             <div class="brand-main-right">
               <ul>
-                <li v-for="(item, key) in brandPCList" :key="key">
+                <li v-for="(item, key) in brandPCList" :key="key" @click="goto('/customerservice')">
                   <x-img :src="item.src" alt="" />
                 </li>
               </ul>
@@ -110,7 +74,7 @@
                 <swiper-item v-for="(item, key) in brandList" :key="key">
                   <ul class="brand-main-img-wrapper" ref="brandMainImgWrapper">
                     <!--<li><img src="../assets/img/home_banner_bg@2x.png" alt="" /></li>-->
-                    <li v-for="(entry, index) in item" :key="index">
+                    <li v-for="(entry, index) in item" :key="index" @click="goto('/customerservice')">
                       <img :src="entry.src" alt="" />
                       <!--<x-img :src="entry.src" class="ximg-demo" error-class="ximg-error" :offset="0"></x-img>-->
                     </li>
@@ -689,76 +653,38 @@
 
     <!--预约遮罩-->
     <div class="reservation-shadow" v-show="reservationActive">
-      <x-img :src="require('../assets/img/home_popup_bg@2x.png')" alt="" />
+      <img :src="require('../assets/img/home_popup_bg@2x.png')" alt="" />
       <div class="reservation-shadow-container">
         <nuxt-link class="reservation-online-btn" to="/customerservice">
-          <x-img :src="require('../assets/img/home_popup_button@2x.png')" alt="" />
+          <img :src="require('../assets/img/home_popup_button@2x.png')" alt="" />
           <div class="reservation-online-msg">
-            <x-img :src="require('../assets/img/home_popup_button_icon@2x.png')" alt="" />
+            <img :src="require('../assets/img/home_popup_button_icon@2x.png')" alt="" />
             <span>在线咨询</span>
           </div>
         </nuxt-link>
         <nuxt-link class="reservation-online-btn" to="/servicelist">
-          <x-img :src="require('../assets/img/home_popup_button1@2x.png')" alt="" />
+          <img :src="require('../assets/img/home_popup_button1@2x.png')" alt="" />
           <div class="reservation-online-msg">
-            <x-img :src="require('../assets/img/home_popup_button_icon1@2x.png')" alt="" />
+            <img :src="require('../assets/img/home_popup_button_icon1@2x.png')" alt="" />
             <span>在线预约</span>
           </div>
         </nuxt-link>
       </div>
       <div class="reservation-shadow-close" @click="reservationClose">
-        <x-img :src="require('../assets/img/close.png')" alt="" />
+        <img :src="require('../assets/img/close.png')" alt="" />
       </div>
     </div>
 
     <div class="reservation-shadow320" v-show="reservationActive">
-      <x-img :src="require('../assets/img/home_popup_bg_mobile.png')" alt="" />
-      <x-img :src="require('../assets/img/close.png')" alt="" class="close320" @click="closeMobile" />
+      <img :src="require('../assets/img/home_popup_bg_mobile.png')" alt="" />
+      <img :src="require('../assets/img/close.png')" alt="" class="close320" @click="closeMobile" />
       <div class="reservation-shadow320-button">
         <nuxt-link to="/customerservice" >在线咨询</nuxt-link>
         <nuxt-link to="/servicelist" >在线预约</nuxt-link>
       </div>
     </div>
-    <div class="sidebar">
-      <nuxt-link class="sidebar-online" to="customerservice">
-        <!--<x-img :src="require('../assets/img/home_suspend_bg@2x.png')" alt="" />-->
-        <img :src="require('../assets/img/home_suspend_bg@2x.png')"/>
-        <span>在线客服</span>
-      </nuxt-link>
-      <nuxt-link class="sidebar-cell sidebar-cell-advice" to="customerservice">
-        <!--<img src="../assets/img/home_suspend_button_no4@2x.png" alt="" />-->
-        <span>立即咨询</span>
-      </nuxt-link>
-      <nuxt-link class="sidebar-cell sidebar-cell-order" to="/servicelist">
-        <!--<img src="../assets/img/home_suspend_button_no2@2x.png" alt="" />-->
-        <span>预约到店</span>
-      </nuxt-link>
-      <div class="sidebar-cell sidebar-cell-phone">
-        <!--<img src="../assets/img/home_suspend_button_no3@2x.png" alt="" />-->
-        <span style="color: #BB9875">电话咨询</span>
-        <div class="sidebar-cell-popup call-back">
-          <input type="tel" class="call-back-txt" placeholder="请输入您的手机号码">
-          <span class="call-back-btn">给您回电</span>
-        </div>
-      </div>
-      <div class="sidebar-cell sidebar-cell-wechat">
-        <!--<img src="../assets/img/home_suspend_button_no1@2x.png" alt="" />-->
-        <span>微信联系</span>
-        <div class="sidebar-cell-popup sidebar-cell-popup-qr">
-          <img :src="require('../assets/img/qr_code.jpg')" alt="" />
-        </div>
-      </div>
-      <div class="sidebar-back-top" @click="backTop">
-        <div class="sidebar-back-top-wrapper">
-          <div>
-            <x-img :src="require('../assets/img/home_suspend_icon_top@2x.png')" alt="" />
-          </div>
-          <div>
-            <span>回到顶部</span>
-          </div>
-        </div>
-      </div>
-    </div>
+
+    <Sidebar />
   </div>
 </template>
 
@@ -769,6 +695,8 @@
   import Footer from '../components/Footer'
   import Reservation from '../components/Reservation'
   import HeaderMobile from '../components/HeaderMobile'
+  import Sidebar from '../components/Sidebar'
+  import Tabbar from '../components/Tabbar'
   import { ChinaAddressV4Data} from 'vux'
   import address from '../assets/json/address'
 
@@ -797,7 +725,9 @@
       Header,
       Footer,
       Reservation,
-      HeaderMobile
+      HeaderMobile,
+      Sidebar,
+      Tabbar
     },
     // validate({ params, query }) {
     //   return false // 参数无效，Nuxt.js 停止渲染当前页面并显示错误页面
@@ -829,7 +759,7 @@
         value: '',
         reservationTime: '',
         faultValue: '选项1',
-        reservationActive: false,
+        reservationActive: true,
         leftActive: false,
         rightActive: false,
         verificationActive: false,
@@ -985,12 +915,12 @@
           // {name: '真空试水机', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
           // {name: '多功能校表仪', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
           // {name: '隔尘抛光机', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
-          {name: '多功能校表仪', src: require('../assets/img/home_maintenanceequipment__images@2x.png')},
-          {name: '隔尘抛光机', src: require('../assets/img/home_maintenanceequipment__images@2x.png')},
-          {name: '多功能校表仪', src: require('../assets/img/home_maintenanceequipment__images@2x.png')},
-          {name: '真空试水机', src: require('../assets/img/home_maintenanceequipment__images@2x.png')},
-          {name: '多功能校表仪', src: require('../assets/img/home_maintenanceequipment__images@2x.png')},
-          {name: '隔尘抛光机', src: require('../assets/img/home_maintenanceequipment__images@2x.png')},
+          {name: '名表测试仪', src: require('../assets/img/home_maintenanceequipment__images@2x.png')},
+          {name: '真空试水机', src: require('../assets/img/home_maintenanceequipment__images1@2x.png')},
+          {name: '隔尘抛光机', src: require('../assets/img/home_maintenanceequipment__images2@2x.png')},
+          {name: '超声波清洗机', src: require('../assets/img/home_maintenanceequipment__images4@2x.png')},
+          {name: '双咀工作台吸尘器', src: require('../assets/img/home_maintenanceequipment__images5@2x.png')},
+          {name: '手表自转仪', src: require('../assets/img/home_maintenanceequipment__images6@2x.png')},
         ],
 
       }
@@ -1090,15 +1020,6 @@
       goto(path){
         this.$router.push({path})
       },
-      phoneCall(){
-        this.phoneShadowActive = true
-      },
-      cancelShadow(){
-        this.phoneShadowActive = false
-      },
-      confirmShadow(){
-
-      },
       closeMobile(){
         this.reservationActive = false
       },
@@ -1107,7 +1028,13 @@
       },
       backTop(){
         document.documentElement.scrollTop = document.body.scrollTop = 0;
-      }
+      },
+      phoneCall(){
+        this.phoneShadowActive = true
+      },
+      cancelShadow(){
+        this.phoneShadowActive = false
+      },
     }
   }
 </script>

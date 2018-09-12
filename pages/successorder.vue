@@ -1,6 +1,7 @@
 <template>
     <div class="container">
       <!--Header-->
+      <Tabbar />
       <Header :pageIndex="2"/>
       <HeaderMobile title="预约成功" />
 
@@ -51,13 +52,15 @@
   import Footer from '../components/Footer'
   import Reservation from '../components/Reservation'
   import HeaderMobile from '../components/HeaderMobile'
+  import Tabbar from '../components/Tabbar'
   export default {
     name: "successOrder",
     components: {
       Header,
       Footer,
       Reservation,
-      HeaderMobile
+      HeaderMobile,
+      Tabbar
     },
     methods: {
 
@@ -181,6 +184,7 @@
     .container{
       display: block!important;
       margin-top: 76px;
+      padding-bottom: 14.285714%;
     }
 
     .banner{

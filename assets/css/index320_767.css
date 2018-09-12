@@ -13,143 +13,6 @@
     display: none;
   }
 
-
-  .tabbar-container{
-    display: block;
-    position: fixed;
-    left:0;
-    bottom: 0;
-    width: 100%;
-    z-index: 101;
-    /*background-color: #333;*/
-  }
-
-  .tabbar-container img{
-    width: 100%;
-    vertical-align: middle;
-  }
-
-  .tabbar-wrapper{
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 60%;
-    padding: 0 10px;
-    display: flex;
-    z-index: 10000;
-  }
-
-  .tabbar-wrapper .tabbar-cell{
-    display: flex;
-    flex:1;
-    align-items: center;
-    /*justify-content: center;*/
-  }
-
-  .tabbar-wrapper .tabbar-cell:first-child{
-    margin-left: 40px;
-  }
-
-  .tabbar-wrapper .tabbar-cell:last-child{
-   justify-content: flex-end;
-    margin-right: 40px;
-  }
-
-  .tabbar-wrapper .tabbar-cell >a{
-    display: flex;
-    align-items: center;
-  }
-
-  .tabbar-wrapper .tabbar-cell span{
-    color: #C8936B;
-    font-size: 18px;
-  }
-
-
-  .tabbar-cell  img{
-    width: 50px;
-    height: auto;
-    margin-right: 15px;
-
-  }
-
-  .tabbar-vip{
-    position: absolute;
-    height: 100px;
-    width: 26.6666%;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    opacity: 0;
-    z-index: 10001;
-  }
-
-  .phone-shadow{
-    width: 100%;
-    height: 166px;
-    background-color: rgba(0, 0, 0, .8);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .phone-shadow-info{
-    text-align: center;
-  }
-  .phone-shadow-info .content{
-    color: #fff;
-    font-size: 14px;
-  }
-
-  .phone-shadow-info .phone{
-    margin-top: 10px;
-    color: #C8936B;
-    font-size: 24px;
-  }
-
-  .phone-shadow-info .phone-shadow-button{
-    margin-top: 20px;
-  }
-  .phone-shadow-button >span, .phone-shadow-button >a{
-    margin-left: 10px;
-    height: 30px;
-    border-radius: 8px;
-    display: inline-block;
-    line-height: 30px;
-    color: #fff;
-    font-size: 14px;
-    width: 100px;
-  }
-
-
-  .phone-shadow-button .phone-shadow-button-confirm{
-    background-color: #C8936B;
-  }
-  .phone-shadow-button .phone-shadow-button-cancel{
-    border: 1px solid #C8936B;
-  }
-
-  .tabbar-container .weui-tabbar{
-    background-color: #333;
-  }
-
-  .tabbar-container .weui-tabbar .weui-tabbar__label span{
-    color: #fff;
-    text-decoration: none;
-  }
-
-  .tabbar-container .weui-tabbar .weui-bar__item_on span{
-    color: #C8936B
-  }
-
-  .weui-tabbar__item{
-    padding: 10px 0 5px 0;
-  }
-
-
   .banner-shadow320{
     display: flex;
     position: absolute;
@@ -667,19 +530,25 @@
     top: 50%;
     transform: translate(-50%, -50%);
     width: 66.6667%;
+    padding-top: 75.7333%;
     z-index: 10000;
   }
 
-  .reservation-shadow320 >img{
+  .reservation-shadow320 >img:not(.close320){
+    position: absolute;
+    left: 0;
+    top: 0;
     width:100%;
+    height: 100%
   }
 
   .reservation-shadow320 img.close320{
     width:30px;
     height: 30px;
     position: absolute;
-    right: 10px;
-    top: 45px;
+    left: 85%;
+    /*right: 10px;*/
+    top: 15%;
   }
 
   .reservation-shadow320-button{
@@ -705,37 +574,23 @@
   .reservation-shadow320-button >a:first-child{
     background-color: #C8936B;
     color: #fff;
+    margin: 0;
   }
 
   .reservation-shadow320-button >a:last-child{
     border: 1px solid #C8936B;
     color: #C8936B;
   }
-
-  .sidebar{
-    display: none;
-  }
-
 }
 
 @media (max-width:480px){
-  .tabbar-wrapper .tabbar-cell  img{
+
+}
+
+@media (max-width:380px){
+  .reservation-shadow320 img.close320{
     width: 25px;
-    height: auto;
-    margin-right: 5px;
-  }
-
-  .tabbar-wrapper .tabbar-cell span{
-    color: #C8936B;
-    font-size: 14px;
-  }
-
-  .tabbar-wrapper .tabbar-cell:first-child{
-    margin-left: 20px;
-  }
-
-  .tabbar-wrapper .tabbar-cell:last-child{
-    margin-right: 20px;
+    height:25px;
   }
 }
 
@@ -743,23 +598,6 @@
 @media (max-width:360px){
   .certification-info320{
     -webkit-line-clamp: 2;
-  }
-
-  .tabbar-wrapper .tabbar-cell  img{
-    width: 20px;
-    margin-right: 5px;
-  }
-
-  .tabbar-wrapper .tabbar-cell span{
-    font-size: 12px;
-  }
-
-  .tabbar-wrapper .tabbar-cell:first-child{
-    margin-left: 15px;
-  }
-
-  .tabbar-wrapper .tabbar-cell:last-child{
-    margin-right: 15px;
   }
 
   .reservation-shadow320-button >span{
@@ -774,5 +612,25 @@
 
   .service-quality-container320-maininfo{
     margin-left: 8px;
+  }
+
+  .reservation-shadow320-button{
+    bottom: 15px;
+  }
+
+  .reservation-shadow320-button >a{
+    width: 80px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+
+  .reservation-shadow320 img.close320{
+    width: 23px;
+    height:23px;
   }
 }

@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="container">
+
       <!--Header-->
       <Header :pageIndex="2"/>
 
@@ -144,9 +145,12 @@
 
       <!--Footer-->
       <Footer/>
+
+      <Sidebar />
     </div>
 
     <div class="container320">
+      <Tabbar />
       <HeaderMobile title="维修案例"/>
       <div class="main320">
         <div class="main320-video">
@@ -237,6 +241,8 @@
   import Footer from '../components/Footer'
   import HeaderMobile from '../components/HeaderMobile'
   import VideoMobile from '../components/VideoMobile'
+  import Sidebar from '../components/Sidebar'
+  import Tabbar from '../components/Tabbar'
 
   export default {
     name: "case",
@@ -244,7 +250,9 @@
       Header,
       Footer,
       HeaderMobile,
-      VideoMobile
+      VideoMobile,
+      Sidebar,
+      Tabbar
     },
     data() {
       return {
@@ -799,6 +807,7 @@
 
     .container320 {
       display: block;
+      padding-bottom: 14.285714%;
     }
 
     .main320 {

@@ -54,20 +54,20 @@
     </div>
     <!--navigation-->
     <div class="navigation-container">
-      <div class="navigation-wrapper">
-        <ul>
-          <li class="navigation-cell" v-for="(item, key) in navigationList" :key="key">
-            <nuxt-link :to="item.href" :class="{active: key === pageIndex}" @click.native.stop>{{item.name}}</nuxt-link>
-          </li>
-        </ul>
-        <div class="navigation-search-wrapper">
-          <input type="text" class="search-txt" placeholder="搜索">
-          <div class="search-btn">
-            <x-img :src="require('../assets/img/home_top_search@2x.png')" alt="" />
-          </div>
+    <div class="navigation-wrapper">
+      <ul>
+        <li class="navigation-cell" v-for="(item, key) in navigationList" :key="key">
+          <nuxt-link :to="item.href" :class="{active: key === pageIndex}" @click.native.stop>{{item.name}}</nuxt-link>
+        </li>
+      </ul>
+      <div class="navigation-search-wrapper">
+        <input type="text" class="search-txt" placeholder="搜索">
+        <div class="search-btn">
+          <x-img :src="require('../assets/img/home_top_search@2x.png')" alt="" />
         </div>
       </div>
     </div>
+  </div>
   </header>
 </template>
 
@@ -228,6 +228,7 @@
     height: 60px;
     background-color: #333333;
     margin-top: 20px;
+
   }
 
   .navigation-wrapper {

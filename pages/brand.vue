@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <!--Header-->
+    <Tabbar />
     <Header :pageIndex="1"/>
 
     <HeaderMobile title="品牌门店" />
@@ -142,6 +143,11 @@
       </div>
     </div>
 
+    <!--广告-->
+    <div class="adver" @click="$router.push({path: '/servicelist'})" style="margin-top: 50px">
+      <x-img :src="require('../assets/img/brand_images9@2x.png')" alt=""  />
+    </div>
+
     <!--到店指引-->
     <div class="store">
       <ServiceTitle info="store guide" name="到店指引" content="400-960-8888">
@@ -159,13 +165,10 @@
       <div id="store-map"></div>
     </div>
 
-    <!--广告-->
-    <div class="adver" @click="$router.push({path: '/servicelist'})">
-      <x-img :src="require('../assets/img/brand_images9@2x.png')" alt=""  />
-    </div>
-
     <!--Footer-->
     <Footer />
+
+    <Sidebar />
   </div>
 </template>
 
@@ -175,6 +178,8 @@
   import Indicators from '../components/Indicators'
   import ServiceTitle from '../components/ServiceTitle'
   import HeaderMobile from '../components/HeaderMobile'
+  import Sidebar from '../components/Sidebar'
+  import Tabbar from '../components/Tabbar'
   export default {
     head () {
       return {
@@ -200,7 +205,9 @@
       Footer,
       Indicators,
       ServiceTitle,
-      HeaderMobile
+      HeaderMobile,
+      Sidebar,
+      Tabbar
     },
     data(){
       return {
@@ -494,6 +501,7 @@
 
     .container{
       margin-top: 46px;
+      padding-bottom: 14.285714%;
     }
 
     .environmental{

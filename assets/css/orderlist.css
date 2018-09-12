@@ -59,6 +59,7 @@
 
   .container{
     margin-top: 45px;
+    padding-bottom: 14.285714%;
   }
 
   .banner320{
@@ -102,8 +103,20 @@
     margin-right: 15px;
   }
 
+  .main320-btn-cell:last-child{
+    margin: 0;
+  }
+
   .main320-btn-active{
     background-color: #c29770;
+  }
+
+
+}
+
+@media (max-width:380px){
+  .main320-btn-cell{
+    margin-right: 10px;
   }
 
 

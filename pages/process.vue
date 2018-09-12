@@ -32,6 +32,7 @@
     </div>
 
     <div class="container320">
+      <Tabbar />
       <HeaderMobile title="维修进度"/>
       <div class="banner320">
         <img :src="require('../assets/img/process.jpg')" alt="" />
@@ -63,6 +64,7 @@
   import Header from '../components/Header'
   import HeaderMobile from '../components/HeaderMobile'
   import Footer from '../components/Footer'
+  import Tabbar from '../components/Tabbar'
 
   export default {
     head () {
@@ -78,7 +80,8 @@
     components: {
       Header,
       Footer,
-      HeaderMobile
+      HeaderMobile,
+      Tabbar
     },
     data() {
       return {
@@ -184,6 +187,7 @@
     .container320{
       display: block;
       margin-top: 45px;
+      padding-bottom: 14.285714%;
     }
     .banner320{
       position: relative;

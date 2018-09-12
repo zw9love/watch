@@ -9,8 +9,8 @@
           <p class="content" v-if="entry.infoType === 'image'">
             <img :src="entry.src" preview-nav-enable="false" v-preview="entry.src" class="upload-img"/>
           </p>
-          <p class="content" v-else>
-            {{entry.content}}
+          <p class="content" v-else v-html="entry.content">
+            <!--{{entry.content}}-->
           </p>
         </div>
       </div>
@@ -23,8 +23,8 @@
           <p class="content" v-if="entry.infoType === 'image'">
             <img :src="entry.src" preview-nav-enable="false" v-preview="entry.src" class="upload-img"/>
           </p>
-          <p class="content" v-else>
-            {{entry.content}}
+          <p class="content" v-else v-html="entry.content">
+            <!--{{entry.content}}-->
           </p>
         </div>
         <img src="../assets/img/customer_service_logo.png" alt="">
@@ -116,6 +116,7 @@
     color: #fff;
     margin-top: 0px;
     font-weight: 400;
+    word-break: break-all
   }
 
   .main-customer-cell320 > img {

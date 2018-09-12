@@ -166,7 +166,12 @@
 
   .bottom-talk {
     background-color: #000;
-    padding: 60px 0 100px 0;
+    padding: 40px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width:100%;
+    z-index: 10000;
   }
 
   .bottom-talk ul {
