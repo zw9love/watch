@@ -33,6 +33,17 @@ router.post('/logout', (req, res) => {
   res.json({ ok: true })
 })
 
+// Add POST - /api/refresh
+router.post('/refresh', (req, res) => {
+  if (req.session.authUser) {
+    req.session.views++
+    return res.json({ ok: true })
+  }else{
+    req.session.views = 1
+    return res.json({ ok: false })
+  }
+})
+
 // Export the server middleware
 module.exports = {
   path: '/api',

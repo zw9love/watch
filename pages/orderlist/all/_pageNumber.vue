@@ -19,13 +19,12 @@
       OrderCell,
       OrderCellMobile
     },
-    // middleware: 'refresh',
+    middleware: 'refresh',
     validate ({ params }) {
       // Must be a number
       return /^\d+$/.test(params.pageNumber)
     },
     async asyncData ({ params }) {
-      // console.log(params.pageNumber)
       let data = Mock.mock({
         // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
         'list|5': [{

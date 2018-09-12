@@ -39,8 +39,9 @@ const store = () => new Vuex.Store({
       context.commit('setCityIndex', data)
     },
     nuxtServerInit({commit}, {req}) {
+      // console.log(req.session.views)
       if (req.session && req.session.authUser) {
-        console.log('已经查找过。')
+        // console.log('已经查找过。')
         req.session.views++
         commit('SET_USER', req.session.authUser)
       }else{

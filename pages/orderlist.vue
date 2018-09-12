@@ -55,11 +55,9 @@
       Footer,
       HeaderMobile,
     },
-    fetch (context) {
-      let { store, redirect } = context
-      // console.log(context)
+    fetch ({ store, redirect }) {
       if (!store.state.authUser) {
-        return redirect('/process')
+        return redirect(302, '/process')
       }
     },
     async asyncData ({ params }) {

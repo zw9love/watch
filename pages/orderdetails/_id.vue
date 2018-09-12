@@ -65,7 +65,12 @@
       HeaderMobile,
       OrderCellMobile
     },
+    validate ({ params }) {
+      // Must be a number
+      return /^\d+$/.test(params.id)
+    },
     async asyncData ({ params }) {
+      console.log('也进来了')
       let item = Mock.mock({
         'ids': params.id,
         'price': '@integer(1000, 1000000)',

@@ -176,6 +176,7 @@
     font-family: "PingFangSC-Regular";
     font-size: 20px;
     border-radius: 5px;
+    cursor: pointer;
   }
 
   @media (max-width:768px){

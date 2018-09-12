@@ -5,7 +5,7 @@
   export default {
     fetch ({ store, redirect }) {
       if (!store.state.authUser) {
-        return redirect('/process')
+        return redirect(302, '/process')
       }
     }
   }

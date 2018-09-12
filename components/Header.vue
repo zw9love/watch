@@ -152,8 +152,8 @@
   }
 
   .navbar-left > ul > li a.logo-container{
-    width: 105px;
-    height: 50px;
+    width: 150px;
+    height: 91px;
     position: relative;
     display: inline-block;
   }
@@ -198,6 +198,7 @@
 
   .navbar-right {
     float: right;
+    margin-top: 14px;
   }
 
   .navbar-right div {

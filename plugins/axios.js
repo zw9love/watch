@@ -8,6 +8,7 @@ export default function (res) {
     switch (config.url) {
       case '/login':
       case '/logout':
+      case '/refresh':
         config.url = '/api' + config.url
         break
       default :
