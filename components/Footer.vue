@@ -40,7 +40,7 @@
         </li>
         <li class="bottom-talk-btn">
           <!--<img src="../assets/img/home_footer_button@2x.png" alt="" />-->
-          <span>提交</span>
+          <span @click.stop.prevent="commitInfo">提交</span>
         </li>
         <li class="bottom-talk-btn">
           <!--<img src="../assets/img/home_footer_button@2x.png" alt="" />-->
@@ -70,12 +70,31 @@
           {name: '维修案例', href: '/case'},
           {name: '预约到店', href: '/servicelist'},
           {name: '维修进度', href: '/process'},
-        ]
+        ],
+        n: 5
       }
     },
     methods: {
       goService(){
         window.open('/customerservice')
+      },
+      commitInfo(){
+        let src = require('../assets/img/booking_make_icon@2x.png')
+        this.$alert(`
+             <div>
+               <img src="${src}" style="width: 50px;">
+               <p style="margin-top: 30px">您已成功提交！请保持电话畅通</p>
+               <p style="margin-top: 20px">${this.n}s</p>
+             </div>
+          `, '', {
+          dangerouslyUseHTMLString: true,
+          showConfirmButton: false,
+          center: true
+        }).then(() => {
+          setInterval(o => {
+            this.n--
+          }, 1000)
+        });
       }
     }
   }
