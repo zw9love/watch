@@ -53,21 +53,24 @@
           <span class="field">预约时间</span>
           <span class="input">
             <el-col :span="11">
-              <el-date-picker type="date" placeholder="请选择预约日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
+              <el-date-picker type="date" placeholder="请选择预约日期" v-model="form.date1" style="width: 100%;" :picker-options="datePickerOption"></el-date-picker>
             </el-col>
             <span class="split">-</span>
             <el-col :span="11">
               <!--<el-time-picker type="fixed-time" placeholder="请选择预约时间" v-model="form.date2" style="width: 100%;"></el-time-picker>-->
-              <el-time-select
-                v-model="form.date2"
-                :picker-options="{
-                  start: '10:00',
-                  step: '01:00',
-                  end: '20:00'
-                }"
-                style="width: 100%;"
-                placeholder="请选择预约时间">
-              </el-time-select>
+              <!--<el-time-select-->
+                <!--v-model="form.date2"-->
+                <!--:picker-options="{-->
+                  <!--start: '10:00',-->
+                  <!--step: '01:00',-->
+                  <!--end: '20:00'-->
+                <!--}"-->
+                <!--style="width: 100%;"-->
+                <!--placeholder="请选择预约时间">-->
+              <!--</el-time-select>-->
+               <el-select v-model="form.date2" placeholder="请选择预约时间" style="width: 100%;">
+                  <el-option :label="item.label" :value="item.label" v-for="(item, key) in reservationTimeList" :key="key"></el-option>
+               </el-select>
             </el-col>
           </span>
         </div>
@@ -100,8 +103,8 @@
         <div class="main-cell320">
           <span class="field320">手表故障</span>
           <span class="input320">
-              <popup-radio title="111" :options="options1" v-model="option1" placeholder="请选择手表故障类型">
-                <p slot="popup-header" class="vux-1px-b demo3-slot">Please select</p>
+              <popup-radio title="111" :options="optionsMobile" v-model="optionMobile" placeholder="请选择手表故障类型">
+                <p slot="popup-header" class="vux-1px-b demo3-slot">请选择手表故障类型</p>
               </popup-radio>
             </span>
         </div>
@@ -182,9 +185,26 @@
           {value: '选项5', label: '订制表带'},
           {value: '选项6', label: '其他服务'},
         ],
+        optionsMobile: ['时计故障', '零件损坏', '清洗保养', '真假鉴定', '订制表带', '其他服务'],
         value: '',
-        option1: '',
-        options1: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+        optionMobile: '',
+        reservationTimeList: [
+          {label: '10:00 - 11:00', value: '10:00 - 11:00'},
+          {label: '11:00 - 12:00', value: '11:00 - 12:00'},
+          {label: '12:00 - 13:00', value: '12:00 - 13:00'},
+          {label: '13:00 - 14:00', value: '13:00 - 14:00'},
+          {label: '14:00 - 15:00', value: '14:00 - 15:00'},
+          {label: '15:00 - 16:00', value: '15:00 - 16:00'},
+          {label: '16:00 - 17:00', value: '16:00 - 17:00'},
+          {label: '17:00 - 18:00', value: '17:00 - 18:00'},
+          {label: '18:00 - 19:00', value: '18:00 - 19:00'},
+          {label: '19:00 - 20:00', value: '19:00 - 20:00'},
+        ],
+        datePickerOption: {
+          disabledDate(time) {
+            return time.getTime() < Date.now() - 8.64e7
+          },
+        }
       };
     },
     methods: {

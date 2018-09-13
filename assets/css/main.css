@@ -42,6 +42,7 @@
 
 .el-date-table td.current:not(.disabled) span{
   background-color: #BF9571!important;
+  color: #fff!important;
 }
 
 .el-pagination.is-background .el-pager li:not(.disabled).active{
@@ -54,6 +55,10 @@
 }
 
 .el-select-dropdown__item.selected{
+  color: #C29770!important;
+}
+
+.el-date-table td.available:hover{
   color: #C29770!important;
 }
 
@@ -71,6 +76,18 @@
 
 .weui-cell_access .weui-cell__ft:after{
   display: none!important;
+}
+
+.weui-cell__ft .vux-cell-value{
+  color: #333
+}
+
+.dp-header .dp-item.dp-right{
+  color: #BF9571!important;
+}
+
+.weui-cells_radio .weui-check:checked + .weui-icon-checked:before{
+  color: #BF9571!important;
 }
 
 .weui-input{

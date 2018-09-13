@@ -516,21 +516,25 @@
                 <span class="reservation-key">预约时间</span>
                 <span class="reservation-time-input">
                   <el-col :span="11">
-                  <el-date-picker type="date" placeholder="请选择预约日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
-                </el-col>
+                    <el-date-picker type="date" placeholder="请选择预约日期" v-model="form.date1" style="width: 100%;" :picker-options="datePickerOption"></el-date-picker>
+                  </el-col>
                 <span class="split">-</span>
                 <el-col :span="11">
-                  <!--<el-time-picker type="fixed-time" placeholder="请选择预约时间" v-model="form.date2" style="width: 100%;"></el-time-picker>-->
-                  <el-time-select
-                    v-model="form.date2"
-                    :picker-options="{
-                  start: '10:00',
-                  step: '00:60',
-                  end: '20:00'
-                }"
-                    style="width: 100%;"
-                    placeholder="请选择预约时间">
-                  </el-time-select>
+                  <!--<el-time-select-->
+                    <!--v-model="form.date2"-->
+                    <!--:picker-options="{-->
+                      <!--start: '10:00',-->
+                      <!--step: '00:60',-->
+                      <!--end: '20:00'-->
+                    <!--}"-->
+                    <!--style="width: 100%;"-->
+                    <!--placeholder="请选择预约时间">-->
+                  <!--</el-time-select>-->
+
+                    <el-select v-model="form.date2" placeholder="请选择预约时间" style="width: 100%;">
+                      <el-option :label="item.label" :value="item.label" v-for="(item, key) in reservationTimeList" :key="key"></el-option>
+                    </el-select>
+
                 </el-col>
                 </span>
                 <!--<el-date-picker-->
@@ -903,6 +907,18 @@
           date1:  '',
           date2:  '',
         },
+        reservationTimeList: [
+          {label: '10:00 - 11:00', value: '10:00 - 11:00'},
+          {label: '11:00 - 12:00', value: '11:00 - 12:00'},
+          {label: '12:00 - 13:00', value: '12:00 - 13:00'},
+          {label: '13:00 - 14:00', value: '13:00 - 14:00'},
+          {label: '14:00 - 15:00', value: '14:00 - 15:00'},
+          {label: '15:00 - 16:00', value: '15:00 - 16:00'},
+          {label: '16:00 - 17:00', value: '16:00 - 17:00'},
+          {label: '17:00 - 18:00', value: '17:00 - 18:00'},
+          {label: '18:00 - 19:00', value: '18:00 - 19:00'},
+          {label: '19:00 - 20:00', value: '19:00 - 20:00'},
+        ],
         phoneShadowActive: false,
         orderList: [
           {name: '钟女士', brand: '百达翡丽', phone: '153*****882'},
@@ -942,7 +958,12 @@
           {name: '双咀工作台吸尘器', src: require('../assets/img/home_maintenanceequipment__images5@2x.png')},
           {name: '手表自转仪', src: require('../assets/img/home_maintenanceequipment__images6@2x.png')},
         ],
-        timer: null
+        timer: null,
+        datePickerOption: {
+          disabledDate(time) {
+            return time.getTime() < Date.now() - 8.64e7
+          },
+        }
       }
     },
     created(){
@@ -975,7 +996,7 @@
 
       // 预约遮罩定时器
       setTimeout(o => {
-        // this.reservationActive = true
+        this.reservationActive = true
       }, 5000)
 
       // this.reservationListScroll()
@@ -1106,6 +1127,13 @@
 
   .el-input, .el-select {
     width: calc(100% - 170px)
+  }
+
+  .el-select .el-input {
+    width: 130px;
+  }
+  .input-with-select .el-input-group__prepend {
+    background-color: #fff;
   }
 </style>
 
