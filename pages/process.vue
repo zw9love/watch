@@ -14,15 +14,15 @@
         <div class="main-cell">
           <span class="field">手机号</span>
           <span class="input">
-            <el-input v-model="form.phone" placeholder="请输入您的真实手机号，便于查询维修进度" ></el-input>
+            <el-input v-model="form.phone" placeholder="请输入您的真实手机号，便于查询维修进度" clearable></el-input>
           </span>
         </div>
         <div class="main-cell">
           <span class="field">验证码</span>
-          <span class="input">
-          <el-input v-model="form.verification" placeholder="请输入验证码"></el-input>
-          <span class="verification-btn">获取验证码</span>
-        </span>
+          <span class="input" >
+            <el-input v-model="form.verification" placeholder="请输入验证码" clearable  style="width: 452px;"></el-input>
+            <span class="verification-btn">获取验证码</span>
+          </span>
         </div>
         <span class="search-process-btn" @click="checkProcess">查询进度</span>
       </main>

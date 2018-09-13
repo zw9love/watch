@@ -109,7 +109,7 @@
         <div class="comment-cell"  v-for="(item, key) in commentList" :key="key">
           <div class="comment-cell-top">
             <div class="comment-img">
-              <x-img :src="require('../assets/img/case_images_head1@2x.png')" alt="" />
+              <x-img :src="item.headImg" alt="" />
             </div>
             <div class="comment-user">
               <p class="phone">{{item.phone}}</p>
@@ -199,7 +199,7 @@
         <div class="comment320-cell" v-for="(item, key) in commentList" :key="key">
           <div class="comment320-cell-top">
             <div class="comment320-img">
-              <x-img :src="require('../assets/img/case_images_head1@2x.png')" alt="" />
+              <x-img :src="item.headImg" alt="" />
             </div>
             <div class="comment320-user">
               <p class="phone320">{{item.phone}}</p>
@@ -264,19 +264,19 @@
         videoIndex: 0,
         videoMobileIndex: 0,
         commentList: [
-          {phone: '159*****399', time: '2018-07-18', content: '这家店面服务真的很棒，我去了很多家都说修不了，这家特意帮我请了瑞士国际钟表协会的技师，虽然期间时间有些长，但是全程都很耐心帮我服务，推荐！', imgList: [require('../assets/img/customer1_1.jpg'), require('../assets/img/customer1_2.jpg'), require('../assets/img/customer1_3.jpg')]},
-          {phone: '150*****888', time: '2018-07-15', content: '换了一个鳄鱼皮皮带，整体服务还不错！', imgList: [require('../assets/img/customer2_1.jpg'), require('../assets/img/customer2_2.jpg'), require('../assets/img/customer2_3.jpg')]},
-          {phone: '158*****688', time: '2018-07-06', content: '手表镜面破了，在网上了解到这家平台，到店接待的小妹妹很热情，全程帮我指引，门店环境也不错，整体过程挺快', imgList: [require('../assets/img/customer3_1.jpg')]},
-          {phone: '139*****997', time: '2018-06-19', content: '刚开始以为手表不走了还以为是上弦的问题，自己捣鼓了很久还是不走，后来拿到西亨这边来修，技师很专业，帮我检测后，说是游丝问题，帮我配换了原装的游丝后恢复正常了', imgList: [require('../assets/img/customer4_1.jpg')]},
-          {phone: '150*****818', time: '2018-06-18', content: '和官方那边费用对比了下，这边价格挺实在，技师也不错，挺好的'},
+          {phone: '159*****399', time: '2018-07-18', content: '这家店面服务真的很棒，我去了很多家都说修不了，这家特意帮我请了瑞士国际钟表协会的技师，虽然期间时间有些长，但是全程都很耐心帮我服务，推荐！', headImg: require('../assets/img/case_images_head1@2x.jpg'),imgList: [require('../assets/img/customer1_1.jpg'), require('../assets/img/customer1_2.jpg'), require('../assets/img/customer1_3.jpg')]},
+          {phone: '150*****888', time: '2018-07-15', content: '换了一个鳄鱼皮皮带，整体服务还不错！', headImg: require('../assets/img/case_images_head2@2x.jpg'), imgList: [require('../assets/img/customer2_1.jpg'), require('../assets/img/customer2_2.jpg'), require('../assets/img/customer2_3.jpg')]},
+          {phone: '158*****688', time: '2018-07-06', content: '手表镜面破了，在网上了解到这家平台，到店接待的小妹妹很热情，全程帮我指引，门店环境也不错，整体过程挺快', headImg: require('../assets/img/case_images_head3@2x.jpg'), imgList: [require('../assets/img/customer3_1.jpg')]},
+          {phone: '139*****997', time: '2018-06-19', content: '刚开始以为手表不走了还以为是上弦的问题，自己捣鼓了很久还是不走，后来拿到西亨这边来修，技师很专业，帮我检测后，说是游丝问题，帮我配换了原装的游丝后恢复正常了', headImg: require('../assets/img/case_images_head4@2x.jpg'), imgList: [require('../assets/img/customer4_1.jpg')]},
+          {phone: '150*****818', time: '2018-06-18', content: '和官方那边费用对比了下，这边价格挺实在，技师也不错，挺好的', headImg: require('../assets/img/case_images_head5@2x.jpg')},
           // {phone: '187*****001', time: '2018-06-12', content: '表用了几年了，需要洗油保养，朋友介绍的这家，到店觉得服务各方面还不错，接待的小妹妹服务也很周到'},
         ],
         moreCommentList: [
-          {phone: '187*****001', time: '2018-06-12', content: '表用了几年了，需要洗油保养，朋友介绍的这家，到店觉得服务各方面还不错，接待的小妹妹服务也很周到',imgList: [require('../assets/img/customer6_1.jpg')]},
-          {phone: '136*****888', time: '2018-06-05', content: '手表不小心摔坏了，多方对比后最后选择了这家，设备及技师各方面都不错，配件也是原装进口的，价格还算公道，推荐',imgList: [require('../assets/img/customer7_1.jpg')]},
-          {phone: '187*****767', time: '2018-05-28', content: '技师很专业，表壳翻新后都看不出来了之前划痕了，门店环境挺高大上的，价格也挺实在',imgList: [require('../assets/img/customer8_1.jpg')]},
-          {phone: '182*****774', time: '2018-05-10', content: '挺好的，配件都是原装进口帮我提前配好的，到了门店全程服务很贴心，也很快！',imgList: [require('../assets/img/customer9_1.png')]},
-          {phone: '183*****550', time: '2018-04-30', content: '老古董拿来修复下，技师很专业，服务也很好',imgList: [require('../assets/img/customer10_1.jpg')]},
+          {phone: '187*****001', time: '2018-06-12', content: '表用了几年了，需要洗油保养，朋友介绍的这家，到店觉得服务各方面还不错，接待的小妹妹服务也很周到', headImg: require('../assets/img/case_images_head6@2x.jpg'),imgList: [require('../assets/img/customer6_1.jpg')]},
+          {phone: '136*****888', time: '2018-06-05', content: '手表不小心摔坏了，多方对比后最后选择了这家，设备及技师各方面都不错，配件也是原装进口的，价格还算公道，推荐', headImg: require('../assets/img/case_images_head7@2x.jpg'),imgList: [require('../assets/img/customer7_1.jpg')]},
+          {phone: '187*****767', time: '2018-05-28', content: '技师很专业，表壳翻新后都看不出来了之前划痕了，门店环境挺高大上的，价格也挺实在', headImg: require('../assets/img/case_images_head8@2x.jpg'),imgList: [require('../assets/img/customer8_1.jpg')]},
+          {phone: '182*****774', time: '2018-05-10', content: '挺好的，配件都是原装进口帮我提前配好的，到了门店全程服务很贴心，也很快！', headImg: require('../assets/img/case_images_head9@2x.jpg'),imgList: [require('../assets/img/customer9_1.png')]},
+          {phone: '183*****550', time: '2018-04-30', content: '老古董拿来修复下，技师很专业，服务也很好', headImg: require('../assets/img/case_images_head10@2x.jpg'),imgList: [require('../assets/img/customer10_1.jpg')]},
         ],
         list: [
           {
@@ -709,6 +709,7 @@
 
   .comment-img img {
     width: 80px;
+    border-radius: 50%;
   }
 
   .comment-user {
@@ -849,6 +850,7 @@
     .comment320-img img {
       width: 50px;
       height: 50px;
+      border-radius: 50%;
     }
 
     .count320 {

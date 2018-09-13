@@ -1,5 +1,5 @@
 <template>
-  <div style="padding-bottom: 14.285714%;">
+  <div class="orderContainer">
     <nuxt-child />
     <Tabbar />
   </div>
@@ -13,5 +13,9 @@
   }
 </script>
 <style scoped>
-
+  @media (max-width: 768px) {
+    .orderContainer{
+      padding-bottom: 14.285714%;
+    }
+  }
 </style>

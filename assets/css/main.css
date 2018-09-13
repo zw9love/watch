@@ -53,6 +53,14 @@
   color: #C29770!important;
 }
 
+.el-select-dropdown__item.selected{
+  color: #C29770!important;
+}
+
+.time-select-item.selected:not(.disabled){
+  color: #C29770!important;
+}
+
 .el-date-table td.today span{
   color: #BF9571!important;
 }

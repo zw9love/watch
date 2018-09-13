@@ -44,7 +44,8 @@
         </li>
         <li class="bottom-talk-btn">
           <!--<img src="../assets/img/home_footer_button@2x.png" alt="" />-->
-          <nuxt-link to="/customerservice">在线咨询</nuxt-link>
+          <!--<nuxt-link to="/customerservice" @click.native>在线咨询</nuxt-link>-->
+          <span @click="goService">在线咨询</span>
         </li>
         <li>
           <!--<img v-lazy="require('../assets/img/home_footer_icon_contacts@2x.png')" alt="" />-->
@@ -70,6 +71,11 @@
           {name: '预约到店', href: '/servicelist'},
           {name: '维修进度', href: '/process'},
         ]
+      }
+    },
+    methods: {
+      goService(){
+        window.open('/customerservice')
       }
     }
   }

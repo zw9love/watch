@@ -9,14 +9,14 @@
       <span class="status">交易状态</span>
     </div>
     <div class="main-cell-content">
-          <span class="date">
-            <img src="../assets/img/demand_list_images1@2x.png" alt="">
-          </span>
+      <span class="date">
+        <img src="../assets/img/demand_list_images1@2x.png" alt="">
+      </span>
       <span class="number">
-            <p class="watch-name"><span>百达斐丽</span></p>
-            <p>手表型号：<span>5327G - 白金款</span></p>
-            <p class="watch-service">手表服务：<span>拆分机芯并清洗手表服务拆分机芯并清洗手表服务拆分机芯并清洗</span></p>
-          </span>
+        <p class="watch-name"><span>百达斐丽</span></p>
+        <p>手表型号：<span>5327G - 白金款</span></p>
+        <p class="watch-service">手表服务：<span>拆分机芯并清洗手表服务拆分机芯并清洗手表服务拆分机芯并清洗</span></p>
+      </span>
       <span class="price">¥{{item.price}}</span>
       <span class="discount"><span>¥{{parseInt(item.price * 0.2)}}</span><br/><span
         class="discount-info">（在线预约8折优惠）</span></span>
@@ -75,6 +75,7 @@
   }
 
   span.number {
+    /*width: 440px;*/
     width: 440px;
     text-align: left;
   }

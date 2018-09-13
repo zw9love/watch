@@ -3,7 +3,7 @@
   <div class="container" id="container">
     <Tabbar />
     <Header/>
-    <HeaderMobile title="北京名表维修中心" :showBack="false"/>
+    <HeaderMobile title="西亨名表维修中心" :showBack="false"/>
     <!--banner-->
     <div class="banner-container">
       <!--<img :src="require('../assets/img/home_banner_bg@2x.png')" alt="" class="banner_pc">-->
@@ -62,7 +62,7 @@
             <!--<nuxt-child/>-->
             <div class="brand-main-right">
               <ul>
-                <li v-for="(item, key) in brandPCList" :key="key" @click="goto('/customerservice')">
+                <li v-for="(item, key) in brandPCList" :key="key" @click="goService">
                   <x-img container="#container" :src="item.src" alt="" />
                 </li>
               </ul>
@@ -452,17 +452,21 @@
               <h1>今日已有<span>89</span>位用户在线预约成功</h1>
             </div>
             <div class="reservation-success-list">
-              <ul v-for="(item, key) in orderList" :key="key">
-                <li class="reservation-success-name">
-                  <span>{{item.name}}</span>
-                </li>
-                <li class="reservation-success-watch">
-                  <span>{{item.brand}}</span>
-                </li>
-                <li class="reservation-success-phone">
-                  <span>{{item.phone}}</span>
-                </li>
-              </ul>
+              <div class="reservation-success-list-wrapper">
+                <div class="reservation-success-list-scroll" ref="reservationList">
+                  <ul v-for="(item, key) in orderList.concat(orderList)" :key="key">
+                    <li class="reservation-success-name">
+                      <span>{{item.name}}</span>
+                    </li>
+                    <li class="reservation-success-watch">
+                      <span>{{item.brand}}</span>
+                    </li>
+                    <li class="reservation-success-phone">
+                      <span>{{item.phone}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -501,7 +505,7 @@
 
               <div class="reservation-input-cell">
                 <span class="reservation-key">验证码</span>
-                <el-input v-model="form.verification" placeholder="获取验证码" resize="both" clearable></el-input>
+                <el-input v-model="form.verification" placeholder="获取验证码" resize="both" clearable style="width: 237px;"></el-input>
                 <div class="verification-container" :class="{'verification-active-container': verificationActive}"
                      @click="verificationClick">
                   <span>{{verificationInfo}}</span>
@@ -520,9 +524,9 @@
                   <el-time-select
                     v-model="form.date2"
                     :picker-options="{
-                  start: '08:30',
-                  step: '00:30',
-                  end: '18:30'
+                  start: '10:00',
+                  step: '00:60',
+                  end: '20:00'
                 }"
                     style="width: 100%;"
                     placeholder="请选择预约时间">
@@ -551,7 +555,7 @@
                 <!--</el-time-picker>-->
               </div>
 
-              <div class="reservation-btn-container">
+              <div class="reservation-btn-container" @click="submitOrder">
                 <x-img container="#container" :src="require('../assets/img/home_reservationprocess_button@2x.png')" alt="" />
                 <span>提交预约</span>
               </div>
@@ -657,13 +661,15 @@
     <div class="reservation-shadow" v-show="reservationActive">
       <img :src="require('../assets/img/home_popup_bg@2x.png')" alt="" />
       <div class="reservation-shadow-container">
-        <nuxt-link class="reservation-online-btn" to="/customerservice">
+        <!--<nuxt-link class="reservation-online-btn" to="/customerservice">-->
+        <span class="reservation-online-btn" @click="goService">
           <img :src="require('../assets/img/home_popup_button@2x.png')" alt="" />
           <div class="reservation-online-msg">
             <img :src="require('../assets/img/home_popup_button_icon@2x.png')" alt="" />
             <span>在线咨询</span>
           </div>
-        </nuxt-link>
+        </span>
+        <!--</nuxt-link>-->
         <nuxt-link class="reservation-online-btn" to="/servicelist">
           <img :src="require('../assets/img/home_popup_button1@2x.png')" alt="" />
           <div class="reservation-online-msg">
@@ -751,17 +757,19 @@
         phone: '',
         verification: '',
         options: [
-          {value: '选项1', label: '走快走慢1'},
-          {value: '选项2', label: '走快走慢2'},
-          {value: '选项3', label: '走快走慢3'},
-          {value: '选项4', label: '走快走慢4'}
+          {value: '选项1', label: '时计故障'},
+          {value: '选项2', label: '零件损坏'},
+          {value: '选项3', label: '清洗保养'},
+          {value: '选项4', label: '真假鉴定'},
+          {value: '选项5', label: '订制表带'},
+          {value: '选项6', label: '其他服务'},
         ],
         indicatorKey: 0,
         cerIndicatorKey: 0,
         value: '',
         reservationTime: '',
         faultValue: '选项1',
-        reservationActive: true,
+        reservationActive: false,
         leftActive: false,
         rightActive: false,
         verificationActive: false,
@@ -907,6 +915,16 @@
           {name: '林先生', brand: '积家', phone: '188*****199'},
           {name: '刘先生', brand: '真力时', phone: '139*****620'},
           {name: '郝先生', brand: '万国', phone: '138*****513'},
+          {name: '包先生', brand: '江斯丹顿', phone: '138*****522'},
+          {name: '李女士', brand: '宝玑', phone: '183*****588'},
+          {name: '陈先生', brand: '劳力士', phone: '132*****915'},
+          {name: '曾先生', brand: '欧米茄', phone: '187*****245'},
+          {name: '于先生', brand: '沛纳海', phone: '183*****599'},
+          {name: '徐先生', brand: '劳力士', phone: '183*****522'},
+          {name: '李女士', brand: '朗格', phone: '132*****586'},
+          {name: '高先生', brand: '真力时', phone: '187*****254'},
+          {name: '马先生', brand: '欧米茄', phone: '183*****587'},
+          {name: '王女士', brand: '爱彼', phone: '187*****523'},
         ],
         addressData: ChinaAddressV4Data,
         cityName: '北京',
@@ -924,7 +942,7 @@
           {name: '双咀工作台吸尘器', src: require('../assets/img/home_maintenanceequipment__images5@2x.png')},
           {name: '手表自转仪', src: require('../assets/img/home_maintenanceequipment__images6@2x.png')},
         ],
-
+        timer: null
       }
     },
     created(){
@@ -954,6 +972,16 @@
       this.stackHeight = parseInt(window.innerWidth * 0.3203125)
       // // this.certificationHeight = this.$refs.certification320[0].clientHeight
       this.brandMainHeight = this.$refs.brandMainImgWrapper[0].clientHeight
+
+      // 预约遮罩定时器
+      setTimeout(o => {
+        // this.reservationActive = true
+      }, 5000)
+
+      // this.reservationListScroll()
+    },
+    destroyed(){
+      clearInterval(this.timer)
     },
     watch: {
       addressValue: function(newVal){
@@ -961,12 +989,33 @@
         let cityName = address[newVal[0]][newVal[1]]
         this.$router.push({path: '/servicelist/city', query: {province: provinceName, city: cityName, area: ''}})
       },
+      reservationActive: function(newVal){
+        if(!newVal){
+          // console.log('预约遮罩被关闭.')
+          setTimeout(o => {
+            this.reservationActive = true
+          }, 60 * 1000)
+        }
+      }
       // '$route': function(newVal){
       //   this.cityName = newVal.query.city ? newVal.query.city : '请选择'
       //   this.txtVal = this.$route.query.address ? this.$route.query.address : ''
       // }
     },
     methods: {
+      reservationListScroll(){
+        let reservationList = this.$refs.reservationList
+        let parentHeight = reservationList.clientHeight / 2
+        let n = 0
+        this.timer = setInterval(o => {
+          if(n === -parentHeight){
+            reservationList.style.top = '0px'
+            n = 0
+          }else{
+            reservationList.style.top = --n + 'px'
+          }
+        }, 10)
+      },
       cerCarouselChange(nowIndex){
         this.cerIndicatorKey = nowIndex
       },
@@ -1038,8 +1087,13 @@
         this.phoneShadowActive = false
       },
       searchGlobal(){
-        console.log(111)
         this.$router.push({path: '/customerservice'})
+      },
+      submitOrder(){
+        this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorderfast'})
+      },
+      goService(){
+        window.open('/customerservice')
       }
     }
   }

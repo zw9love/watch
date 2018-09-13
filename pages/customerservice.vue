@@ -4,7 +4,7 @@
       <!--nav-->
       <div class="nav">
           <div class="nav-title">
-            <span><span class="spe-info">北京名表维修服务中心</span> 08号客服 正在为您服务...</span>
+            <span><span class="spe-info">名表维修服务中心</span> 08号客服 正在为您服务...</span>
           </div>
           <div class="nav-end">
             <span class="nav-end-icon">
@@ -38,7 +38,7 @@
           <img src="../assets/img/add.png" alt="" id="upload" @click.stop="uploadPc"/>
           <input type="file" hidden id="upload-txt" accept="image/*" ref="uploadPc" @change="uploadPcChange">
           <div class="call-back">
-            <input type="tel" class="call-back-txt">
+            <input type="tel" class="call-back-txt" placeholder="请输入手机号码">
             <span class="call-back-btn">给您回电</span>
           </div>
         </div>
@@ -483,11 +483,12 @@
     display: inline-block;
     width: 180px;
     color: #333;
-    font-size: 16px;
+    font-size: 14px;
     padding: 5px 10px;
     /*border: none;*/
     height: 100%;
-    border: 1px solid #C8936B
+    border: 1px solid #C8936B;
+    vertical-align: middle;
   }
 
   .call-back .call-back-btn{
@@ -499,6 +500,8 @@
     text-align: center;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
+    cursor: pointer;
+    vertical-align: middle;
   }
 
   .input-txt {

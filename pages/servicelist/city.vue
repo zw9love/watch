@@ -127,7 +127,7 @@
     },
     watch: {
       '$route': function ({params, query}) {
-        console.log(query)
+        // console.log(query)
         let queryAddress = ''
         if (query.address) {
           queryAddress = query.address

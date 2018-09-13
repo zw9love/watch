@@ -66,9 +66,16 @@
   vertical-align: middle;
 }
 
+.store-cell-right p{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .store-cell-right strong {
   color: #333;
   font-size: 20px;
+
 }
 
 .store-btn {

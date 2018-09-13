@@ -13,8 +13,8 @@
             <div class="line"></div>
           </li>
           <li>
-            <p class="ch-name">北京名表维修中心</p>
-            <p class="en-name">Beijing watch respaire center</p>
+            <p class="ch-name">名表维修中心</p>
+            <p class="en-name">watch respaire center</p>
           </li>
           <li>
             <div class="line"></div>
@@ -61,9 +61,9 @@
         </li>
       </ul>
       <div class="navigation-search-wrapper">
-        <input type="text" class="search-txt" placeholder="搜索">
-        <div class="search-btn">
-          <x-img :src="require('../assets/img/home_top_search@2x.png')" alt="" />
+        <input type="text" class="search-txt" placeholder="搜索" @keyup.enter="searchGlobal">
+        <div class="search-btn"  @click="searchGlobal">
+          <x-img :src="require('../assets/img/home_top_search@2x.png')" alt=""/>
         </div>
       </div>
     </div>
@@ -118,6 +118,10 @@
       cityClick(city, key) {
         this.$store.dispatch({type: 'setCityName', val: city})
         this.$store.dispatch({type: 'setCityIndex', val: key})
+      },
+      searchGlobal(){
+        // this.$router.push({path: '/customerservice'})
+        window.open('/customerservice')
       }
     }
   }

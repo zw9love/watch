@@ -25,10 +25,12 @@
             <x-img :src="require('../assets/img/store_button1@2x.png')" alt="" />
             <span>预约到店</span>
           </nuxt-link>
-          <nuxt-link class="adver-order-btn-cell" to="/customerservice">
+          <!--<nuxt-link class="adver-order-btn-cell" to="/customerservice">-->
+          <span class="adver-order-btn-cell" @click="goService">
             <x-img :src="require('../assets/img/store_button1@2x.png')" alt="" />
             <span>我要咨询</span>
-          </nuxt-link>
+          </span>
+          <!--</nuxt-link>-->
         </div>
       </div>
     </div>
@@ -55,6 +57,11 @@
           // {name: '刘先生', brand: '真力时', phone: '139*****620'},
           // {name: '郝先生', brand: '万国', phone: '138*****513'},
         ]
+      }
+    },
+    methods: {
+      goService(){
+        window.open('/customerservice')
       }
     }
   }

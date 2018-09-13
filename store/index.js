@@ -18,7 +18,9 @@ const store = () => new Vuex.Store({
     token: 'a1234567890',
     cityName: '北京',
     cityIndex: 0,
-    authUser: null
+    authUser: null,
+    phone: '',
+    username: ''
   },
   mutations: {
     setCityName: (state, {val}) => {
@@ -48,7 +50,7 @@ const store = () => new Vuex.Store({
         req.session.views = 1
       }
     },
-    login({commit}, {username, password, axios, self}) {
+    login({commit}, {username, password, axios, self, jumpPath}) {
       return axios('/login', {
         // 发送客户端 cookies 到服务端
         credentials: 'same-origin',
@@ -72,7 +74,9 @@ const store = () => new Vuex.Store({
           commit('SET_USER', authUser)
         })
         .then(() => {
-          self.$router.push({path: '/orderlist/all/1'})
+          let path = jumpPath ? jumpPath : '/orderlist/all/1'
+          // console.log(path)
+          self.$router.push({path})
           // self.$router.push({path: '/secret'})
         })
     },

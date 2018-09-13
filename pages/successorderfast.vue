@@ -1,52 +1,52 @@
 <template>
-    <div class="container">
-      <!--Header-->
-      <Tabbar />
-      <Header :pageIndex="2"/>
-      <HeaderMobile title="预约成功" />
+  <div class="container">
+    <!--Header-->
+    <Tabbar />
+    <Header :pageIndex="2"/>
+    <HeaderMobile title="预约成功" />
 
-      <!--banner-->
-      <div class="banner">
-        <img :src="require('../assets/img/booking_banner@2x.png')" alt="" />
-      </div>
-
-      <!--成功预约信息-->
-      <div class="success-info-container">
-        <x-img :src="require('../assets/img/booking_make_icon@2x.png')" alt="" />
-        <p class="success-info">尊敬的用户，恭喜您已预约成功！</p>
-        <p class="success-info"></p>
-        <p class="success-more">请按预约时间准时到达，到店请出示你的预约短信。</p>
-      </div>
-
-      <!--预约具体信息-->
-      <main class="reservation-main">
-        <!--<img src="../assets/img/booking_make_icon1@2x.png" alt="">-->
-        <x-img :src="require('../assets/img/booking_make_icon1@2x.png')" alt="" />
-        <div class="reservation-main-container">
-          <p class="phone">
-            您的联系手机：18059236533
-            <span class="tip">（用于查询维修进度）</span>
-          </p>
-          <p class="time">预约到店时间：2018-09-13 10:00-11:00</p>
-          <p class="address">维修中心店址：北京市西城区西单北大街甲133号君太百货北门西亨钟表维修中心（西单大悦城旁）</p>
-        </div>
-      </main>
-
-      <!--按钮块-->
-      <div class="btn-container">
-        <nuxt-link class="process" to="/orderList">订单进度</nuxt-link>
-        <nuxt-link class="back" to="/" >返回首页</nuxt-link>
-      </div>
-
-      <!--阴影块-->
-      <div class="shadow"></div>
-
-      <!--预约流程-->
-      <h3 class="reservation-title">预约流程</h3>
-      <Reservation />
-      <!--Footer-->
-      <Footer />
+    <!--banner-->
+    <div class="banner">
+      <img :src="require('../assets/img/booking_banner@2x.png')" alt="" />
     </div>
+
+    <!--成功预约信息-->
+    <div class="success-info-container">
+      <x-img :src="require('../assets/img/booking_make_icon@2x.png')" alt="" />
+      <p class="success-info">尊敬的用户，恭喜您已预约成功！</p>
+      <p class="success-info"></p>
+      <p class="success-more">请按预约时间准时到达，到店请出示你的预约短信。</p>
+    </div>
+
+    <!--预约具体信息-->
+    <main class="reservation-main">
+      <!--<img src="../assets/img/booking_make_icon1@2x.png" alt="">-->
+      <x-img :src="require('../assets/img/booking_make_icon1@2x.png')" alt="" />
+      <div class="reservation-main-container">
+        <p class="phone">
+          您的联系手机：18059236533
+          <span class="tip">（用于查询维修进度）</span>
+        </p>
+        <p class="time">预约到店时间：2018-09-13 10:00-11:00</p>
+        <!--<p class="address">维修中心店址：北京市西城区西单北大街甲133号君太百货北门西亨钟表维修中心（西单大悦城旁）</p>-->
+      </div>
+    </main>
+
+    <!--按钮块-->
+    <div class="btn-container">
+      <nuxt-link class="process" to="/orderList">订单进度</nuxt-link>
+      <nuxt-link class="back" to="/" >返回首页</nuxt-link>
+    </div>
+
+    <!--阴影块-->
+    <div class="shadow"></div>
+
+    <!--预约流程-->
+    <h3 class="reservation-title">预约流程</h3>
+    <Reservation />
+    <!--Footer-->
+    <Footer />
+  </div>
 </template>
 
 <script>
@@ -56,7 +56,6 @@
   import HeaderMobile from '../components/HeaderMobile'
   import Tabbar from '../components/Tabbar'
   export default {
-    name: "successOrder",
     fetch ({ store, redirect }) {
       if (!store.state.authUser) {
         return redirect(302, '/process')

@@ -9,15 +9,18 @@
         <OrderCell :item="item" />
         <h3 class="main-title">维修进度</h3>
         <div class="orderdetails-reservation">
-          <Reservation />
+          <Reservation :checkProcess="true"/>
           <div class="reservation-details">
-            <div class="reservation-details-cell reservation-details-active" v-for="x in 8" :key="x">
-              <span class="date">2018-08-04</span>
-              <span class="time">16:56</span>
-              <span class="image">
-                <x-img :src="require('../../assets/img/demand_list_plan_icon_no@2x.png')" alt="" />
+            <div class="reservation-details-wrapper">
+              <div class="reservation-details-cell" v-for="(item, key) in processList" :key="key" :class="{'reservation-details-active': item.completed}">
+                <span class="date">2018-08-04</span>
+                <span class="time">16:56</span>
+                <span class="image">
+                <x-img :src="item.completeSrc" alt="" v-if="item.completed"/>
+                <x-img :src="item.noCompleteSrc" alt="" v-else />
               </span>
-              <span class="info">客户已取表</span>
+                <span class="info">{{item.info}}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -32,13 +35,14 @@
       <main class="main320">
         <OrderCellMobile :item="item" />
         <div class="orderdetails-reservation320">
-          <div class="orderdetails-reservation320-cell" v-for="x in 8" :key="x">
+          <div class="orderdetails-reservation320-cell" :class="{'orderdetails-reservation320-active': item.completed}" v-for="(item, key) in processList" :key="key">
             <span class="date">2018-08-04</span>
             <span class="time">16:56</span>
             <span class="image">
-              <x-img :src="require('../../assets/img/demand_list_plan_icon_yes@2x.png')" alt="" />
+                <x-img :src="item.completeSrc" alt="" v-if="item.completed"/>
+                <x-img :src="item.noCompleteSrc" alt="" v-else />
             </span>
-            <span class="content">备件等待中，备件大概需要2天</span>
+            <span class="content">{{item.info}}</span>
           </div>
         </div>
       </main>
@@ -70,7 +74,6 @@
       return /^\d+$/.test(params.id)
     },
     async asyncData ({ params }) {
-      console.log('也进来了')
       let item = Mock.mock({
         'ids': params.id,
         'price': '@integer(1000, 1000000)',
@@ -79,6 +82,20 @@
       })
       // console.log(params.pageNumber)
       return {item: item}
+    },
+    data(){
+      return {
+        processList: [
+          {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no@2x.png'), info: '客户已取表'},
+          {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes1@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no1@2x.png'), info: '等待客户取表'},
+          {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes3@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no3@2x.png'), info: '维修完成'},
+          {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes4@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no4@2x.png'), info: '维修中'},
+          {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes5@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no5@2x.png'), info: '备件等待中，备件大概需要2天'},
+          {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes6@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no6@2x.png'), info: '检测中'},
+          {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes7@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no7@2x.png'), info: '已送修'},
+          {completed: false, completeSrc: require('../../assets/img/demand_list_plan_icon_yes8@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no8@2x.png'), info: '已提交维修订单'},
+        ]
+      }
     }
   }
 </script>
@@ -114,12 +131,18 @@
     background-color: #FFFCF9;
     /*height: 300px;*/
     padding: 30px 0;
+    text-align: center;
+  }
+
+  .reservation-details-wrapper{
+    display: inline-block;
   }
 
 
-
   .reservation-details-cell{
-    text-align: center;
+    /*text-align: center;*/
+    display: table;
+    /*width: auto*/
   }
 
   .reservation-details-cell:not(:first-child){
@@ -182,7 +205,7 @@
 
     .orderdetails-reservation320{
       background-color: #fff;
-      padding: 0 20px;
+      padding: 0 20px 20px 20px;
       margin-top: 15px;
     }
 
@@ -197,6 +220,7 @@
 
     .orderdetails-reservation320-cell span{
       font-size:12px;
+      color: #999
     }
 
     .orderdetails-reservation320-cell .time{
@@ -228,6 +252,14 @@
 
     .orderdetails-reservation320-cell .content{
       font-size: 13px;
+    }
+
+    .orderdetails-reservation320-active span{
+      font-size:12px;
+      color: #333
+    }
+
+    .orderdetails-reservation320-active .content{
       color: #c8936b;
     }
   }

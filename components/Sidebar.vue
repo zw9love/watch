@@ -1,14 +1,19 @@
 <template>
   <div class="sidebar">
-    <nuxt-link class="sidebar-online" to="customerservice">
+    <!--<nuxt-link class="sidebar-online" to="customerservice">-->
+    <span class="sidebar-online" @click="goService">
       <!--<x-img :src="require('../assets/img/home_suspend_bg@2x.png')" alt="" />-->
       <img :src="require('../assets/img/home_suspend_bg@2x.png')"/>
       <span>在线客服</span>
-    </nuxt-link>
-    <nuxt-link class="sidebar-cell sidebar-cell-advice" to="customerservice">
+    </span>
+    <!--</nuxt-link>-->
+
+    <span class="sidebar-cell sidebar-cell-advice" @click="goService">
+    <!--<nuxt-link class="sidebar-cell sidebar-cell-advice" to="customerservice">-->
       <!--<img src="../assets/img/home_suspend_button_no4@2x.png" alt="" />-->
       <span>立即咨询</span>
-    </nuxt-link>
+    <!--</nuxt-link>-->
+    </span>
     <nuxt-link class="sidebar-cell sidebar-cell-order" to="/servicelist">
       <!--<img src="../assets/img/home_suspend_button_no2@2x.png" alt="" />-->
       <span>预约到店</span>
@@ -47,6 +52,9 @@
     methods: {
       backTop(){
         document.documentElement.scrollTop = document.body.scrollTop = 0;
+      },
+      goService(){
+        window.open('/customerservice')
       }
     }
   }

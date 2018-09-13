@@ -14,13 +14,13 @@
         <div class="main-cell">
           <span class="field">手表品牌</span>
           <span class="input">
-          <el-input v-model="form.name" placeholder="请输入内容"></el-input>
+          <el-input v-model="form.brand" placeholder="请输入内容" clearable></el-input>
         </span>
         </div>
         <div class="main-cell">
           <span class="field">手表故障</span>
           <span class="input">
-          <el-select v-model="form.faultType" placeholder="请选择">
+          <el-select v-model="form.faultType" placeholder="请选择" clearable>
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -33,21 +33,21 @@
         <div class="main-cell">
           <span class="field">姓名</span>
           <span class="input">
-          <el-input v-model="form.name" placeholder="请输入您的姓名"></el-input>
+          <el-input v-model="form.name" placeholder="请输入您的姓名" clearable></el-input>
         </span>
         </div>
         <div class="main-cell">
           <span class="field">手机号</span>
           <span class="input">
-          <el-input v-model="form.phone" placeholder="请输入您的真实手机号，便于查询维修进度"></el-input>
+          <el-input v-model="form.phone" placeholder="请输入您的真实手机号，便于查询维修进度" clearable></el-input>
         </span>
         </div>
         <div class="main-cell">
           <span class="field">验证码</span>
           <span class="input">
-          <el-input v-model="form.verification" placeholder="请输入验证码"></el-input>
-          <span class="verification-btn">获取验证码</span>
-        </span>
+            <el-input v-model="form.verification" placeholder="请输入验证码" clearable style="width: 502px;"></el-input>
+            <span class="verification-btn">获取验证码</span>
+          </span>
         </div>
         <div class="main-cell">
           <span class="field">预约时间</span>
@@ -61,9 +61,9 @@
               <el-time-select
                 v-model="form.date2"
                 :picker-options="{
-                  start: '08:30',
-                  step: '00:30',
-                  end: '18:30'
+                  start: '10:00',
+                  step: '01:00',
+                  end: '20:00'
                 }"
                 style="width: 100%;"
                 placeholder="请选择预约时间">
@@ -73,7 +73,7 @@
         </div>
         <div class="main-cell">
           <span class="field"></span>
-          <nuxt-link class="commit" to="/successorder" >提交预约</nuxt-link>
+          <nuxt-link class="commit" to="/successorder" @click.native="submitOrder">提交预约</nuxt-link>
         </div>
       </main>
 
@@ -132,7 +132,7 @@
         </div>
         <div class="main-cell320" >
           <!--<span >-->
-          <nuxt-link class="commit-order-btn" to="/successorder" >提交预约</nuxt-link>
+          <nuxt-link class="commit-order-btn" to="/successorder" @click.native="submitOrder">提交预约</nuxt-link>
           <!--</span>-->
         </div>
       </main>
@@ -174,22 +174,14 @@
           date1:  '',
           date2:  '',
         },
-        options: [{
-          value: '选项1',
-          label: '黄金糕'
-        }, {
-          value: '选项2',
-          label: '双皮奶'
-        }, {
-          value: '选项3',
-          label: '蚵仔煎'
-        }, {
-          value: '选项4',
-          label: '龙须面'
-        }, {
-          value: '选项5',
-          label: '北京烤鸭'
-        }],
+        options: [
+          {value: '选项1', label: '时计故障'},
+          {value: '选项2', label: '零件损坏'},
+          {value: '选项3', label: '清洗保养'},
+          {value: '选项4', label: '真假鉴定'},
+          {value: '选项5', label: '订制表带'},
+          {value: '选项6', label: '其他服务'},
+        ],
         value: '',
         option1: '',
         options1: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
@@ -198,6 +190,9 @@
     methods: {
       datetimeChange(val){
         this.datetime = val
+      },
+      submitOrder(){
+        this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorder'})
       }
     }
   }
