@@ -41,13 +41,13 @@
         <div class="main-cell320">
           <span class="field320">手机号</span>
           <span class="input320">
-              <x-input v-model="form.phone" name="mobile" placeholder="请输入您的手机号" keyboard="number" is-type="china-mobile"></x-input>
+              <x-input v-model="form.phone" name="mobile" :max="11" placeholder="请输入您的手机号" keyboard="number" is-type="china-mobile"></x-input>
             </span>
         </div>
         <div class="main-cell320">
           <span class="field320">验证码</span>
           <span class="input320">
-              <x-input v-model="form.verification" name="mobile" placeholder="请输入验证码" keyboard="number"></x-input>
+              <x-input v-model="form.verification" name="mobile" :max="6" placeholder="请输入验证码" keyboard="number"></x-input>
             </span>
           <span class="phone-verification">获取验证码</span>
         </div>
@@ -254,7 +254,7 @@
       top: 0;
       height: 100%;
       width: 100px;
-      line-height: 40px;
+      line-height: 42px;
       background-color: #1aac19;
       font-size: 12px;
       color: #fff;

@@ -118,20 +118,20 @@
         <div class="main-cell320">
           <span class="field320">手机号</span>
           <span class="input320">
-              <x-input v-model="form.phone" name="mobile" placeholder="请输入您的手机号" keyboard="number" is-type="china-mobile"></x-input>
+              <x-input v-model="form.phone" name="mobile" :max="11" placeholder="请输入您的手机号" keyboard="number" is-type="china-mobile"></x-input>
             </span>
         </div>
         <div class="main-cell320">
           <span class="field320">验证码</span>
           <span class="input320">
-              <x-input v-model="form.verification" name="mobile" placeholder="请输入验证码" keyboard="number"></x-input>
+              <x-input v-model="form.verification" name="mobile" :max="6" placeholder="请输入验证码" keyboard="number"></x-input>
             </span>
           <span class="phone-verification">获取验证码</span>
         </div>
         <div class="main-cell320">
           <span class="field320">预约时间</span>
           <span class="input320">
-              <datetime :min-year="2018" :title="datetime" v-model="form.date" format="YYYY-MM-DD HH:mm" :hour-list="['10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']" :minute-list="['00']" @on-change="datetimeChange"></datetime>
+              <datetime :min-year="2018" :start-date="startDate" :title="datetime" v-model="form.date" format="YYYY-MM-DD HH" :hour-list="hourList"  @on-change="dateTimeChange" @on-show="dateTimeShow" @on-confirm="dateTimeConfirm"></datetime>
             </span>
         </div>
         <div class="main-cell320" >
@@ -206,12 +206,51 @@
           disabledDate(time) {
             return time.getTime() < Date.now() - 8.64e7
           },
-        }
+        },
+        startDate: '',
+        hourList: [
+          '10:00-11:00', '11:00-12:00', '12:00-13:00', '13:00-14:00', '14:00-15:00',
+          '15:00-16:00', '16:00-17:00', '17:00-18:00', '18:00-19:00', '19:00-20:00'
+        ]
       };
     },
+    created(){
+      let date = new Date()
+      this.startDate = date.getFullYear() + '-' + this.getDouble(date.getMonth() + 1) + '-' + date.getDate()
+    },
     methods: {
-      datetimeChange(val){
+      getDouble(val){
+        val = val + ''
+        if(val.length > 1){
+          return val
+        }else{
+          return '0' + val
+        }
+      },
+      dateTimeChange(val){
+        // // vux官方不提供属性和方法，强行操作dom
+        // console.log(val)
+        // let list = document.querySelectorAll('.dp-item')
+        // let dom = list[list.length - 1]
+        // let innerHTML = dom.querySelector('.scroller-item-selected').innerHTML
+        // val = val.replace('NaN', innerHTML)
+        // this.datetime = val
+      },
+      dateTimeShow(){
+        // vux官方不提供属性和方法，强行操作dom
+        let list = document.querySelectorAll('.dp-item')
+        let dom = list[list.length - 1]
+        // console.log(dom)
+        dom.style.flex = 2
+      },
+      dateTimeConfirm(val){
+        // vux官方不提供属性和方法，强行操作dom
+        let list = document.querySelectorAll('.dp-item')
+        let dom = list[list.length - 1]
+        let innerHTML = dom.querySelector('.scroller-item-selected').innerHTML
+        val = val.replace('NaN', innerHTML)
         this.datetime = val
+        this.form.date = val
       },
       submitOrder(){
         let {date1, date2, brand, name, faultType, phone, verification} = this.form
@@ -313,8 +352,6 @@
           this.$store.dispatch({type: 'setModalActive', val: true})
           return;
         }
-
-
 
         this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorder'})
       }

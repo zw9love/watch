@@ -1,5 +1,6 @@
 <template>
   <div>
+    <lg-preview />
     <div class="container">
 
       <!--Header-->
