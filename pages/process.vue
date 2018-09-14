@@ -47,7 +47,7 @@
         <div class="main-cell320">
           <span class="field320">验证码</span>
           <span class="input320">
-              <x-input v-model="form.verification" name="mobile" :max="6" placeholder="请输入验证码" keyboard="number"></x-input>
+              <x-input v-model="form.verification" name="mobile" :max="6" placeholder="请输入验证码" keyboard="number" style="width:calc(100% - 100px)"></x-input>
             </span>
           <span class="phone-verification">获取验证码</span>
         </div>

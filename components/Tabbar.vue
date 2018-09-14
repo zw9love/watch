@@ -24,10 +24,10 @@
         <div class="phone-shadow">
           <div class="phone-shadow-info">
             <p class="content">维修服务中心咨询电话</p>
-            <p class="phone">400-617-1383</p>
+            <p class="phone">400-136-8800</p>
             <div class="phone-shadow-button">
               <span class="phone-shadow-button-cancel" @click="cancelShadow">取消</span>
-              <a href="tel:4006171383" class="phone-shadow-button-confirm">呼叫</a>
+              <a href="tel:400-136-8800" class="phone-shadow-button-confirm">呼叫</a>
               <!--<span class="phone-shadow-button-confirm" @click="confirmShadow">呼叫</span>-->
             </div>
           </div>

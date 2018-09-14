@@ -625,18 +625,18 @@
 
     <!--到店指引-->
     <div class="store">
-      <!--<ServiceTitle info="SERVICE ITEMS" name="到店指引" content="400-960-8888"-->
+      <!--<ServiceTitle info="SERVICE ITEMS" name="到店指引" content="400-136-8800"-->
                     <!--:containerStyle="{marginTop: '60px'}" ></ServiceTitle>-->
       <!--<ServiceTitle info="store guide" name="到店指引" :content="'提供舒适清爽的一对一服务空间'"-->
                     <!--:containerStyle="{marginTop: '60px'}"></ServiceTitle>-->
       <ServiceTitle info="store guide" name="到店指引" content="提供舒适清爽的一对一服务空间">
         <span slot="content" class="store-content">
           <x-img container="#container" :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />
-          <!--<span>400-960-8888</span>-->
-          <a href="tel:400-960-8888">400-960-8888</a>
+          <!--<span>400-136-8800</span>-->
+          <a href="tel:400-136-8800">400-136-8800</a>
         </span>
       </ServiceTitle>
-      <!--<ServiceTitle info="store guide" name="到店指引" content="400-960-8888" />-->
+      <!--<ServiceTitle info="store guide" name="到店指引" content="400-136-8800" />-->
       <!--<div class="title-container">-->
         <!--<p class="title-info">{{('store guide').toUpperCase()}}</p>-->
         <!--<strong class="title-name">到店指引</strong>-->
@@ -646,7 +646,7 @@
         <!--<p>-->
           <!--<span class="store-content">-->
             <!--<x-img container="#container" :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />-->
-            <!--<span>400-960-8888</span>-->
+            <!--<span>400-136-8800</span>-->
           <!--</span>-->
         <!--</p>-->
       <!--</div>-->

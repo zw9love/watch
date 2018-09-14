@@ -150,10 +150,10 @@
 
     <!--到店指引-->
     <div class="store">
-      <ServiceTitle info="store guide" name="到店指引" content="400-960-8888">
+      <ServiceTitle info="store guide" name="到店指引" content="400-136-8800">
         <span slot="content" class="store-content">
           <x-img :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />
-          <span>400-960-8888</span>
+          <span>400-136-8800</span>
         </span>
       </ServiceTitle>
       <div class="store-info">

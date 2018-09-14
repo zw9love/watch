@@ -11,7 +11,7 @@
             <span class="nav-end-icon">
                 <img src="../assets/img/customer_service_end.png"/>
             </span>
-            <span class="nav-end-info" @click="$router.back()">结束对话</span>
+            <span class="nav-end-info" @click="endTalk">结束对话</span>
           </div>
       </div>
       <!--banner-->
@@ -338,6 +338,9 @@
         this.$store.dispatch({type: 'setModalInfo', val: modalInfo})
         this.$store.dispatch({type: 'setSuccessActive', val: checkFlag})
         this.$store.dispatch({type: 'setModalActive', val: true})
+      },
+      endTalk(){
+        window.close()
       }
     }
   }

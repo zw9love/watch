@@ -53,7 +53,7 @@
           <x-img :src="require('../assets/img/home_footer_icon_contacts@2x.png')"/>
         </li>
         <li class="bottom-talk-call">
-          <a href="tel:400-960-8888">服务热线：400-960-8888</a>
+          <a href="tel:400-136-8800">服务热线：400-136-8800</a>
         </li>
       </ul>
     </div>
