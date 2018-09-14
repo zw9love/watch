@@ -6,7 +6,8 @@
     普通样式
    */
   .container{
-    padding-bottom: 14.285714%;
+    /*padding-bottom: 14.2857114%;*/
+    padding-bottom: 22.222222%;
     padding-top: 46px;
     height: 100vh;
     overflow-x: hidden;

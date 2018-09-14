@@ -151,7 +151,7 @@
     </div>
 
     <div class="container320">
-      <Tabbar />
+      <!--<Tabbar />-->
       <HeaderMobile title="维修案例"/>
       <div class="main320">
         <div class="main320-video">
@@ -195,43 +195,52 @@
         </div>
       </div>
       <div class="line320"></div>
-      <div class="comment320">
+      <div class="comment320" style="position: relative;">
         <p class="comment-title">用户评价</p>
-        <div class="comment320-cell" v-for="(item, key) in commentList" :key="key">
-          <div class="comment320-cell-top">
-            <div class="comment320-img">
-              <x-img :src="item.headImg" alt="" />
-            </div>
-            <div class="comment320-user">
-              <p class="phone320">{{item.phone}}</p>
-              <p class="count320">
-                <span class="count-info320">评分</span>
-                <span v-for="item in 5" :key="item">
-                  <x-img :src="require('../assets/img/case_images11@2x.png')" alt="" />
-                </span>
-              </p>
-            </div>
-            <div class="comment320-date">
-              <span>{{item.time}}</span>
-            </div>
+        <scroller
+          :on-refresh="refresh"
+          :on-infinite="infinite"
+          style="position: relative;left: 0;top:0; padding-bottom: 92px"
+        >
+          <div v-for="(item, index) in items" class="row" :key="index" :class="{'grey-bg': index % 2 === 0}" >
+            {{ item }}
           </div>
-          <div class="comment320-cell-content">
-            <p>
-              {{item.content}}
-            </p>
-            <ul class="content320-img" v-if="item.imgList">
-              <li v-for="(src, index) in item.imgList" :key="index">
-                <x-img :src="src" alt=""  preview-nav-enable="false" v-preview="src" />
-              </li>
-            </ul>
-            <div class="seller">
-              <p>
-                <span>商家回复：</span>
-                <span>感谢您选择西亨维修服务中心，祝您生活愉快，欢迎下次光临。</span>
-              </p>
-            </div>
-          </div>
-        </div>
+          <!--<div class="comment320-cell" v-for="(item, key) in commentList" :key="key">-->
+            <!--<div class="comment320-cell-top">-->
+              <!--<div class="comment320-img">-->
+                <!--<x-img :src="item.headImg" alt="" />-->
+              <!--</div>-->
+              <!--<div class="comment320-user">-->
+                <!--<p class="phone320">{{item.phone}}</p>-->
+                <!--<p class="count320">-->
+                  <!--<span class="count-info320">评分</span>-->
+                  <!--<span v-for="item in 5" :key="item">-->
+                    <!--<x-img :src="require('../assets/img/case_images11@2x.png')" alt="" />-->
+                  <!--</span>-->
+                <!--</p>-->
+              <!--</div>-->
+              <!--<div class="comment320-date">-->
+                <!--<span>{{item.time}}</span>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="comment320-cell-content">-->
+              <!--<p>-->
+                <!--{{item.content}}-->
+              <!--</p>-->
+              <!--<ul class="content320-img" v-if="item.imgList">-->
+                <!--<li v-for="(src, index) in item.imgList" :key="index">-->
+                  <!--<x-img :src="src" alt=""  preview-nav-enable="false" v-preview="src" />-->
+                <!--</li>-->
+              <!--</ul>-->
+              <!--<div class="seller">-->
+                <!--<p>-->
+                  <!--<span>商家回复：</span>-->
+                  <!--<span>感谢您选择西亨维修服务中心，祝您生活愉快，欢迎下次光临。</span>-->
+                <!--</p>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        </scroller>
       </div>
     </div>
   </div>
@@ -341,14 +350,19 @@
             },
             playActive: false
           }
-        ]
+        ],
+        items: []
       }
     },
     async asyncData({app}) {
 
     },
     created(){
-
+      for (var i = 1; i <= 20; i++) {
+        this.items.push(i + ' - keep walking, be 2 with you.');
+      }
+      this.top = 1;
+      this.bottom = 20;
     },
     mounted(){
       // alert('mounted钩子')
@@ -420,6 +434,28 @@
         //     this.$refs['player' + key][0].player.play()
         //   }, 1000)
         // })
+      },
+      refresh: function (done) {
+        var self = this
+        setTimeout(function () {
+          var start = self.top - 1
+          for (var i = start; i > start - 10; i--) {
+            self.items.splice(0, 0, i + ' - keep walking, be 2 with you.');
+          }
+          self.top = self.top - 10;
+          done();
+        }, 1500)
+      },
+      infinite: function (done) {
+        var self = this
+        setTimeout(function () {
+          var start = self.bottom + 1;
+          for (var i = start; i < start + 10; i++) {
+            self.items.push(i + ' - keep walking, be 2 with you.');
+          }
+          self.bottom = self.bottom + 10;
+          done();
+        }, 1500)
       }
     }
   }
@@ -1032,5 +1068,47 @@
       color: #c8936b;
       font-size: 13px;
     }
+  }
+
+  html, body {
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .row {
+    width: 100%;
+    height: 50px;
+    padding: 10px 0;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    color: #444;
+    background-color: #fff;
+  }
+
+  .grey-bg {
+    background-color: #eee;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 44px;
+    width: 100%;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);
+    background-color: #fff;
+    z-index: 1000;
+    color: #666;
+  }
+
+  .header > .title {
+    font-size: 16px;
+    line-height: 44px;
+    text-align: center;
+    margin: 0 auto;
   }
 </style>
