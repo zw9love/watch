@@ -1,5 +1,6 @@
 <template>
   <div>
+    <lg-preview />
     <div class="container">
       <!--nav-->
       <div class="nav">
@@ -38,8 +39,8 @@
           <img src="../assets/img/add.png" alt="" id="upload" @click.stop="uploadPc"/>
           <input type="file" hidden id="upload-txt" accept="image/*" ref="uploadPc" @change="uploadPcChange">
           <div class="call-back">
-            <input type="tel" class="call-back-txt" placeholder="请输入手机号码">
-            <span class="call-back-btn">给您回电</span>
+            <input type="text" maxlength="11" class="call-back-txt" placeholder="请输入手机号码" @keyup.enter="callYouBack" v-model="phoneNumber">
+            <span class="call-back-btn" @click="callYouBack">给您回电</span>
           </div>
         </div>
         <div id="editor" class="input-txt" placeholder="请在此输入..." contenteditable="true" ref="editorPC" @keydown="editorPCKeydown"></div>
@@ -137,16 +138,19 @@
   import HeaderMobile from '../components/HeaderMobile'
   import ChatCell from '../components/ChatCell'
   import ChatCellMobile from '../components/ChatCellMobile'
+  import Modal from '../components/Modal'
   export default {
     name: "customerservice",
     components: {
       HeaderMobile,
       ChatCell,
-      ChatCellMobile
+      ChatCellMobile,
+      Modal
     },
     data(){
       return {
         inputVal: '',
+        phoneNumber: '',
         bottom: '-125px',
         paddingBottom: '40px',
         emojiActive: false,
@@ -327,6 +331,13 @@
             }
           }
         }
+      },
+      callYouBack(){
+        let checkFlag = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(this.phoneNumber.trim())
+        let modalInfo = checkFlag ? '您已成功提交！请保持电话畅通' : '对不起！您的手机号码格式有误'
+        this.$store.dispatch({type: 'setModalInfo', val: modalInfo})
+        this.$store.dispatch({type: 'setSuccessActive', val: checkFlag})
+        this.$store.dispatch({type: 'setModalActive', val: true})
       }
     }
   }

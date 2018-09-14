@@ -207,7 +207,7 @@
       ServiceTitle,
       HeaderMobile,
       Sidebar,
-      Tabbar
+      Tabbar,
     },
     data(){
       return {
@@ -281,7 +281,7 @@
         this.$refs.carousel.setActiveItem(key)
         // console.log("key = " + key)
         // console.debug(this.$refs.carousel)
-      },
+      }
     }
   }
 </script>

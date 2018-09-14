@@ -14,7 +14,7 @@
         <div class="main-cell">
           <span class="field">手机号</span>
           <span class="input">
-            <el-input v-model="form.phone" placeholder="请输入您的真实手机号，便于查询维修进度" clearable></el-input>
+            <el-input v-model="form.phone" maxlength="11" placeholder="请输入您的真实手机号，便于查询维修进度" clearable></el-input>
           </span>
         </div>
         <div class="main-cell">
@@ -41,13 +41,13 @@
         <div class="main-cell320">
           <span class="field320">手机号</span>
           <span class="input320">
-              <x-input title="" name="mobile" placeholder="请输入您的手机号" keyboard="number" is-type="china-mobile"></x-input>
+              <x-input v-model="form.phone" name="mobile" placeholder="请输入您的手机号" keyboard="number" is-type="china-mobile"></x-input>
             </span>
         </div>
         <div class="main-cell320">
           <span class="field320">验证码</span>
           <span class="input320">
-              <x-input title="" name="mobile" placeholder="请输入验证码" keyboard="number"></x-input>
+              <x-input v-model="form.verification" name="mobile" placeholder="请输入验证码" keyboard="number"></x-input>
             </span>
           <span class="phone-verification">获取验证码</span>
         </div>
@@ -93,7 +93,24 @@
     },
     methods: {
       checkProcess(){
+        let {phone, verification} = this.form
+        if(!(/(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(phone.trim()))){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入正确的手机号码！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!verification.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入正确的验证码！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
         this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this})
+      },
+      checkProcessMobile(){
+        console.log(this.form)
       }
     }
   }
@@ -222,6 +239,7 @@
       text-align: left;
       font-weight: 500;
       margin-right: 10px;
+      font-size: 14px;
     }
 
     .input320{
@@ -238,7 +256,7 @@
       width: 100px;
       line-height: 40px;
       background-color: #1aac19;
-      font-size: 14px;
+      font-size: 12px;
       color: #fff;
       border-bottom-right-radius: 5px;
       border-top-right-radius: 5px;
@@ -254,7 +272,7 @@
       background-color: #c8936b;
       border-radius: 5px;
       color: #fff;
-      font-size: 18px;
+      font-size: 14px;
       text-align: center;
     }
 

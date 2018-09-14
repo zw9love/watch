@@ -695,7 +695,6 @@
         <nuxt-link to="/servicelist" >在线预约</nuxt-link>
       </div>
     </div>
-
     <Sidebar />
   </div>
 </template>
@@ -709,6 +708,7 @@
   import HeaderMobile from '../components/HeaderMobile'
   import Sidebar from '../components/Sidebar'
   import Tabbar from '../components/Tabbar'
+
   import { ChinaAddressV4Data} from 'vux'
   import address from '../assets/json/address'
 
@@ -739,7 +739,7 @@
       Reservation,
       HeaderMobile,
       Sidebar,
-      Tabbar
+      Tabbar,
     },
     // validate({ params, query }) {
     //   return false // 参数无效，Nuxt.js 停止渲染当前页面并显示错误页面

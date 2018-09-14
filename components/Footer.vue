@@ -14,7 +14,7 @@
           <ul>
             <li>友情链接：</li>
             <li v-for="x in 5" :key="x">
-              <nuxt-link to="javascript:;"  @click.native.stop>北京西亨名表维修</nuxt-link>
+              <nuxt-link to="javascript:;" @click.native.stop>北京西亨名表维修</nuxt-link>
             </li>
           </ul>
         </div>
@@ -26,17 +26,18 @@
           <!--<img v-lazy="require('../assets/img/home_footer_images2@2x.png')" alt="" />-->
           <!--<img v-lazy="require('../assets/img/home_footer_images3@2x.png')" alt="" />-->
           <!--<img v-lazy="require('../assets/img/home_footer_images4@2x.png')" alt="" />-->
-          <x-img :src="require('../assets/img/home_footer_images1@2x.png')" />
-          <x-img :src="require('../assets/img/home_footer_images2@2x.png')" />
-          <x-img :src="require('../assets/img/home_footer_images3@2x.png')" />
-          <x-img :src="require('../assets/img/home_footer_images4@2x.png')" />
+          <x-img :src="require('../assets/img/home_footer_images1@2x.png')"/>
+          <x-img :src="require('../assets/img/home_footer_images2@2x.png')"/>
+          <x-img :src="require('../assets/img/home_footer_images3@2x.png')"/>
+          <x-img :src="require('../assets/img/home_footer_images4@2x.png')"/>
         </div>
       </div>
     </div>
     <div class="bottom-talk">
       <ul>
         <li class="bottom-talk-txt">
-          <input type="text" placeholder="请输入您的电话号码，提交后服务中心将会回电">
+          <input type="text" maxlength="11" @keyup.enter="commitInfo" placeholder="请输入您的电话号码，提交后服务中心将会回电"
+                 v-model="phoneNumber">
         </li>
         <li class="bottom-talk-btn">
           <!--<img src="../assets/img/home_footer_button@2x.png" alt="" />-->
@@ -49,20 +50,25 @@
         </li>
         <li>
           <!--<img v-lazy="require('../assets/img/home_footer_icon_contacts@2x.png')" alt="" />-->
-          <x-img :src="require('../assets/img/home_footer_icon_contacts@2x.png')" />
+          <x-img :src="require('../assets/img/home_footer_icon_contacts@2x.png')"/>
         </li>
         <li class="bottom-talk-call">
           <a href="tel:400-960-8888">服务热线：400-960-8888</a>
         </li>
       </ul>
     </div>
+    <!--<Modal @close="close"/>-->
   </footer>
 </template>
 
 <script>
+  // import Modal from '../components/Modal'
   export default {
     name: "Footer",
-    data(){
+    // components: {
+    //   Modal
+    // },
+    data() {
       return {
         navigationList: [
           {name: '网站首页', href: '/'},
@@ -71,38 +77,52 @@
           {name: '预约到店', href: '/servicelist'},
           {name: '维修进度', href: '/process'},
         ],
-        n: 5
+        modalActive: false,
+        successActive: false,
+        phoneNumber: ''
       }
     },
     methods: {
-      goService(){
+      goService() {
         window.open('/customerservice')
       },
-      commitInfo(){
-        let src = require('../assets/img/booking_make_icon@2x.png')
-        this.$alert(`
-             <div>
-               <img src="${src}" style="width: 50px;">
-               <p style="margin-top: 30px">您已成功提交！请保持电话畅通</p>
-               <p style="margin-top: 20px">${this.n}s</p>
-             </div>
-          `, '', {
-          dangerouslyUseHTMLString: true,
-          showConfirmButton: false,
-          center: true
-        }).then(() => {
-          setInterval(o => {
-            this.n--
-          }, 1000)
-        });
-      }
+      commitInfo() {
+        let checkFlag = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(this.phoneNumber.trim())
+        let modalInfo = checkFlag ? '您已成功提交！请保持电话畅通' : '对不起！您的手机号码格式有误'
+        this.$store.dispatch({type: 'setModalInfo', val: modalInfo})
+        this.$store.dispatch({type: 'setSuccessActive', val: checkFlag})
+        this.$store.dispatch({type: 'setModalActive', val: true})
+        // this.$store.dispatch({type: 'setModalInfo', val: modalInfo})
+        // this.$store.dispatch({type: 'setSuccessActive', val: checkFlag})
+        // this.$store.dispatch({type: 'setModalActive', val: true})
+        // let src = require('../assets/img/modal-icon-yes@2x.png')
+        // this.$alert(`
+        //      <div>
+        //        <img src="${src}" style="width: 50px;">
+        //        <p style="margin-top: 30px">您已成功提交！请保持电话畅通</p>
+        //        <p style="margin-top: 20px">5s</p>
+        //      </div>
+        //   `, '', {
+        //   dangerouslyUseHTMLString: true,
+        //   showConfirmButton: false,
+        //   center: true,
+        //   lockScroll: false
+        // }).then(() => {
+        //   setInterval(o => {
+        //     this.n--
+        //   }, 1000)
+        // });
+      },
+      // close(){
+      //   this.$store.dispatch({type: 'setModalActive', val: false})
+      // }
     }
   }
 </script>
 
 <style scoped>
   /*底部导航*/
-  .bottom-container{
+  .bottom-container {
     margin-top: 80px;
   }
 
@@ -125,7 +145,7 @@
     cursor: pointer;
   }
 
-  .bottom-navbar ul li a{
+  .bottom-navbar ul li a {
     color: #fff;
     font-family: "PingFangSC-Regular";
     font-size: 20px;
@@ -157,12 +177,12 @@
     font-family: "PingFangSC-Regular";
     font-size: 18px;
   }
-  .bottom-link-top ul li a{
+
+  .bottom-link-top ul li a {
     color: #999999;
     font-family: "PingFangSC-Regular";
     font-size: 18px;
   }
-
 
   .bottom-link-top ul li:first-child {
     margin: 0;
@@ -191,11 +211,11 @@
 
   .bottom-talk {
     background-color: #000;
-    padding: 40px 0;
+    padding: 42px 0;
     position: fixed;
     bottom: 0;
     left: 0;
-    width:100%;
+    width: 100%;
     z-index: 10000;
   }
 
@@ -254,8 +274,8 @@
     font-family: "PingFangSC-Medium";
   }
 
-  @media (max-width:768px){
-    .bottom-container{
+  @media (max-width: 768px) {
+    .bottom-container {
       display: none;
     }
   }

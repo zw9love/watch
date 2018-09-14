@@ -25,7 +25,7 @@
               v-for="item in options"
               :key="item.value"
               :label="item.label"
-              :value="item.value">
+              :value="item.label">
             </el-option>
           </el-select>
         </span>
@@ -39,7 +39,7 @@
         <div class="main-cell">
           <span class="field">手机号</span>
           <span class="input">
-          <el-input v-model="form.phone" placeholder="请输入您的真实手机号，便于查询维修进度" clearable></el-input>
+          <el-input v-model="form.phone" maxlength="11" placeholder="请输入您的真实手机号，便于查询维修进度" clearable></el-input>
         </span>
         </div>
         <div class="main-cell">
@@ -76,7 +76,8 @@
         </div>
         <div class="main-cell">
           <span class="field"></span>
-          <nuxt-link class="commit" to="/successorder" @click.native="submitOrder">提交预约</nuxt-link>
+          <!--<nuxt-link class="commit" to="/successorder" @click.native="submitOrder">提交预约</nuxt-link>-->
+          <span class="commit"  @click="submitOrder">提交预约</span>
         </div>
       </main>
 
@@ -97,13 +98,13 @@
         <div class="main-cell320">
           <span class="field320">手表品牌</span>
           <span class="input320">
-              <x-input title="" name="mobile" placeholder="请输入您的手表品牌" keyboard="text" ></x-input>
+              <x-input v-model="form.brand" name="mobile" placeholder="请输入您的手表品牌" keyboard="text" ></x-input>
             </span>
         </div>
         <div class="main-cell320">
           <span class="field320">手表故障</span>
           <span class="input320">
-              <popup-radio title="111" :options="optionsMobile" v-model="optionMobile" placeholder="请选择手表故障类型">
+              <popup-radio title="111" :options="optionsMobile" v-model="form.faultType" placeholder="请选择手表故障类型">
                 <p slot="popup-header" class="vux-1px-b demo3-slot">请选择手表故障类型</p>
               </popup-radio>
             </span>
@@ -111,32 +112,33 @@
         <div class="main-cell320">
           <span class="field320">姓名</span>
           <span class="input320">
-              <x-input title="" name="mobile" placeholder="请输入您的姓名" keyboard="text" ></x-input>
+              <x-input v-model="form.name" name="mobile" placeholder="请输入您的姓名" keyboard="text" ></x-input>
             </span>
         </div>
         <div class="main-cell320">
           <span class="field320">手机号</span>
           <span class="input320">
-              <x-input title="" name="mobile" placeholder="请输入您的手机号" keyboard="number" is-type="china-mobile"></x-input>
+              <x-input v-model="form.phone" name="mobile" placeholder="请输入您的手机号" keyboard="number" is-type="china-mobile"></x-input>
             </span>
         </div>
         <div class="main-cell320">
           <span class="field320">验证码</span>
           <span class="input320">
-              <x-input title="" name="mobile" placeholder="请输入验证码" keyboard="number"></x-input>
+              <x-input v-model="form.verification" name="mobile" placeholder="请输入验证码" keyboard="number"></x-input>
             </span>
           <span class="phone-verification">获取验证码</span>
         </div>
         <div class="main-cell320">
           <span class="field320">预约时间</span>
           <span class="input320">
-              <datetime :title="datetime" v-model="date" format="YYYY-MM-DD HH:mm" :hour-list="['09', '10', '11', '12', '13', '14', '15', '16']" :minute-list="['00', '30']" @on-change="datetimeChange"></datetime>
+              <datetime :min-year="2018" :title="datetime" v-model="form.date" format="YYYY-MM-DD HH:mm" :hour-list="['10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']" :minute-list="['00']" @on-change="datetimeChange"></datetime>
             </span>
         </div>
         <div class="main-cell320" >
-          <!--<span >-->
-          <nuxt-link class="commit-order-btn" to="/successorder" @click.native="submitOrder">提交预约</nuxt-link>
-          <!--</span>-->
+          <span class="commit-order-btn" @click="submitOrderMobile">
+            提交预约
+          <!--<nuxt-link class="commit-order-btn" to="/successorder" @click.native="submitOrder">提交预约</nuxt-link>-->
+          </span>
         </div>
       </main>
     </div>
@@ -172,10 +174,10 @@
           name: '',
           verification: '',
           phone: '',
-          time: '',
           faultType: '',
           date1:  '',
           date2:  '',
+          date: ''
         },
         options: [
           {value: '选项1', label: '时计故障'},
@@ -212,6 +214,108 @@
         this.datetime = val
       },
       submitOrder(){
+        let {date1, date2, brand, name, faultType, phone, verification} = this.form
+
+        if(!brand.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入手表品牌！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!faultType.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请选择手表故障类型！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!name.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入您的姓名！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!(/(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(phone.trim()))){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入正确的手机号码！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!verification.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入正确的验证码！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!date1){
+          this.$store.dispatch({type: 'setModalInfo', val: '请选择预约日期！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }else{
+          this.form.date1 = new Date(date1).getTime()
+        }
+
+        if(!date2){
+          this.$store.dispatch({type: 'setModalInfo', val: '请选择预约时间！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorder'})
+      },
+      submitOrderMobile(){
+        let {date, brand, name, faultType, phone, verification} = this.form
+        console.log(this.form)
+        if(!brand.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入手表品牌！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!faultType.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请选择手表故障类型！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!name.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入您的姓名！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!(/(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(phone.trim()))){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入正确的手机号码！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!verification.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入正确的验证码！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!date.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请选择预约时间！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+
+
         this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorder'})
       }
     }
@@ -300,7 +404,7 @@
     text-align: center;
   }
 
-  .commit{
+  .main-cell .commit{
     height: 60px;
     width: 650px;
     background-color: #C8936B;
@@ -311,6 +415,7 @@
     border-radius: 10px;
     font-family: "PingFangSC-Regular";
     font-size: 20px;
+    cursor: pointer;
   }
 
   @media (max-width:768px){
@@ -377,7 +482,7 @@
       width: 100px;
       line-height: 44px;
       background-color: #1aac19;
-      font-size: 14px;
+      font-size: 12px;
       color: #fff;
       border-bottom-right-radius: 5px;
       border-top-right-radius: 5px;
@@ -394,7 +499,7 @@
       border-radius: 5px;
       text-align: center;
       color: #fff;
-      font-size: 16px;
+      font-size: 14px;
     }
 
   }

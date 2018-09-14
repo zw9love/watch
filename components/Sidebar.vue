@@ -22,8 +22,8 @@
       <!--<img src="../assets/img/home_suspend_button_no3@2x.png" alt="" />-->
       <span style="color: #BB9875">电话咨询</span>
       <div class="sidebar-cell-popup call-back">
-        <input type="tel" class="call-back-txt" placeholder="请输入您的手机号码">
-        <span class="call-back-btn">给您回电</span>
+        <input type="text" maxlength="11" class="call-back-txt" placeholder="请输入您的手机号码" v-model="phoneNumber" @keyup.enter="callYouBack">
+        <span class="call-back-btn" @click="callYouBack">给您回电</span>
       </div>
     </div>
     <div class="sidebar-cell sidebar-cell-wechat">
@@ -49,12 +49,24 @@
 <script>
   export default {
     name: "Sidebar",
+    data(){
+      return {
+        phoneNumber: ''
+      }
+    },
     methods: {
       backTop(){
         document.documentElement.scrollTop = document.body.scrollTop = 0;
       },
       goService(){
         window.open('/customerservice')
+      },
+      callYouBack(){
+        let checkFlag = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(this.phoneNumber.trim())
+        let modalInfo = checkFlag ? '您已成功提交！请保持电话畅通' : '对不起！您的手机号码格式有误'
+        this.$store.dispatch({type: 'setModalInfo', val: modalInfo})
+        this.$store.dispatch({type: 'setSuccessActive', val: checkFlag})
+        this.$store.dispatch({type: 'setModalActive', val: true})
       }
     }
   }

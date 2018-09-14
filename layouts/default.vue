@@ -1,10 +1,23 @@
 <template>
   <div>
     <nuxt/>
-    <lg-preview></lg-preview>
+    <!--<lg-preview></lg-preview>-->
+    <Modal @close="close"/>
   </div>
 </template>
-
+<script>
+  import Modal from '../components/Modal'
+  export default {
+    components: {
+      Modal
+    },
+    methods: {
+      close(){
+        this.$store.dispatch({type: 'setModalActive', val: false})
+      }
+    }
+  }
+</script>
 <style>
 html {
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

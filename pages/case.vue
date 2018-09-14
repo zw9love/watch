@@ -349,6 +349,9 @@
     created(){
 
     },
+    mounted(){
+      // alert('mounted钩子')
+    },
     methods: {
       // listen event
       onPlayerPlay(player) {
