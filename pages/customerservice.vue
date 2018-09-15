@@ -7,11 +7,11 @@
           <div class="nav-title">
             <span><span class="spe-info">名表维修服务中心</span> 08号客服 正在为您服务...</span>
           </div>
-          <div class="nav-end">
+          <div class="nav-end" @click="endTalk">
             <span class="nav-end-icon">
                 <img src="../assets/img/customer_service_end.png"/>
             </span>
-            <span class="nav-end-info" @click="endTalk">结束对话</span>
+            <span class="nav-end-info" >结束对话</span>
           </div>
       </div>
       <!--banner-->

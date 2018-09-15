@@ -130,7 +130,7 @@
               {{item.content}}
             </p>
             <ul class="content-img">
-              <li v-for="(src, index) in item.imgList" :key="index">
+              <li v-for="(src, index) in item.imgList" :key="index" :style="{backgroundImage: `url(${src})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
                 <x-img :src="src" alt=""  preview-nav-enable="false" v-preview="src" />
               </li>
             </ul>
@@ -220,7 +220,7 @@
                 {{item.content}}
               </p>
               <ul class="content320-img" v-if="item.imgList">
-                <li v-for="(src, index) in item.imgList" :key="index">
+                <li v-for="(src, index) in item.imgList" :key="index" :style="{backgroundImage: `url(${src})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
                   <x-img :src="src" alt=""  preview-nav-enable="false" v-preview="src" @click="show(index)"/>
                 </li>
               </ul>
@@ -809,13 +809,19 @@
     float: left;
     margin-right: 40px;
     height: 300px;
+    position: relative;
+    cursor: pointer;
   }
 
   .content-img li img{
+    position: absolute;
+    left: 0;
+    top: 0;
     /*max-width: 100%;*/
     height: 100%;
     width: 100%;
-    cursor: pointer;
+    opacity: 0;
+    /*cursor: pointer;*/
   }
 
   .content-img li:last-child {
@@ -957,6 +963,7 @@
       top: 0;
       width: 100%;
       height: 100%;
+      opacity: 0;
     }
 
     .seller {
