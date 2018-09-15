@@ -151,11 +151,11 @@
     </div>
 
     <div class="container320">
-      <!--<Tabbar />-->
+      <Tabbar />
       <HeaderMobile title="维修案例"/>
       <div class="main320">
         <div class="main320-video">
-          <VideoMobile @stopOther="stopOther" v-for="(item, key) in list" :key="key" :item="item" :index="key" :ref="'player' + key"/>
+          <VideoMobile v-for="(item, key) in list" :key="key" :item="item" :index="key" :ref="'player' + key"/>
         </div>
         <div class="main320-article">
           <div class="main320-article-left">
@@ -197,50 +197,42 @@
       <div class="line320"></div>
       <div class="comment320" style="position: relative;">
         <p class="comment-title">用户评价</p>
-        <scroller
-          :on-refresh="refresh"
-          :on-infinite="infinite"
-          style="position: relative;left: 0;top:0; padding-bottom: 92px"
-        >
-          <div v-for="(item, index) in items" class="row" :key="index" :class="{'grey-bg': index % 2 === 0}" >
-            {{ item }}
-          </div>
-          <!--<div class="comment320-cell" v-for="(item, key) in commentList" :key="key">-->
-            <!--<div class="comment320-cell-top">-->
-              <!--<div class="comment320-img">-->
-                <!--<x-img :src="item.headImg" alt="" />-->
-              <!--</div>-->
-              <!--<div class="comment320-user">-->
-                <!--<p class="phone320">{{item.phone}}</p>-->
-                <!--<p class="count320">-->
-                  <!--<span class="count-info320">评分</span>-->
-                  <!--<span v-for="item in 5" :key="item">-->
-                    <!--<x-img :src="require('../assets/img/case_images11@2x.png')" alt="" />-->
-                  <!--</span>-->
-                <!--</p>-->
-              <!--</div>-->
-              <!--<div class="comment320-date">-->
-                <!--<span>{{item.time}}</span>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="comment320-cell-content">-->
-              <!--<p>-->
-                <!--{{item.content}}-->
-              <!--</p>-->
-              <!--<ul class="content320-img" v-if="item.imgList">-->
-                <!--<li v-for="(src, index) in item.imgList" :key="index">-->
-                  <!--<x-img :src="src" alt=""  preview-nav-enable="false" v-preview="src" />-->
-                <!--</li>-->
-              <!--</ul>-->
-              <!--<div class="seller">-->
-                <!--<p>-->
-                  <!--<span>商家回复：</span>-->
-                  <!--<span>感谢您选择西亨维修服务中心，祝您生活愉快，欢迎下次光临。</span>-->
-                <!--</p>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        </scroller>
+          <div class="comment320-cell" v-for="(item, key) in commentList" :key="key">
+            <div class="comment320-cell-top">
+              <div class="comment320-img">
+                <x-img :src="item.headImg" alt="" />
+              </div>
+              <div class="comment320-user">
+                <p class="phone320">{{item.phone}}</p>
+                <p class="count320">
+                  <span class="count-info320">评分</span>
+                  <span v-for="item in 5" :key="item">
+                    <x-img :src="require('../assets/img/case_images11@2x.png')" alt="" />
+                  </span>
+                </p>
+              </div>
+              <div class="comment320-date">
+                <span>{{item.time}}</span>
+              </div>
+            </div>
+            <div class="comment320-cell-content">
+              <p>
+                {{item.content}}
+              </p>
+              <ul class="content320-img" v-if="item.imgList">
+                <li v-for="(src, index) in item.imgList" :key="index">
+                  <x-img :src="src" alt=""  preview-nav-enable="false" v-preview="src" @click="show(index)"/>
+                </li>
+              </ul>
+              <div class="seller">
+                <p>
+                  <span>商家回复：</span>
+                  <span>感谢您选择西亨维修服务中心，祝您生活愉快，欢迎下次光临。</span>
+                </p>
+              </div>
+            </div>
+        </div>
+        <load-more :tip="tip" v-show="loadMoreActive" :showLoading="showLoading"></load-more>
       </div>
     </div>
   </div>
@@ -253,7 +245,6 @@
   import VideoMobile from '../components/VideoMobile'
   import Sidebar from '../components/Sidebar'
   import Tabbar from '../components/Tabbar'
-
   export default {
     name: "case",
     components: {
@@ -262,7 +253,7 @@
       HeaderMobile,
       VideoMobile,
       Sidebar,
-      Tabbar
+      Tabbar,
     },
     data() {
       return {
@@ -351,23 +342,57 @@
             playActive: false
           }
         ],
-        items: []
+        items: [],
+        loadMoreActive: true,
+        scrollLock: false,
+        showLoading: false,
+        tip: '上拉加载更多',
       }
     },
     async asyncData({app}) {
 
     },
     created(){
-      for (var i = 1; i <= 20; i++) {
-        this.items.push(i + ' - keep walking, be 2 with you.');
-      }
-      this.top = 1;
-      this.bottom = 20;
+      // for (var i = 1; i <= 20; i++) {
+      //   this.items.push(i + ' - keep walking, be 2 with you.');
+      // }
+      // this.top = 1;
+      // this.bottom = 20;
     },
     mounted(){
       // alert('mounted钩子')
+      this.loadMoreData()
     },
     methods: {
+      show(index){
+        // this.$refs.previewer.show(index)
+      },
+      loadMoreData(){
+        // 可视窗的高度
+        let height = document.documentElement.clientHeight
+        window.addEventListener('scroll', o => {
+          // 滚动轴距离
+          let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+          // 文档总高度 尼玛坑
+          let allHeight = document.body.scrollHeight
+          // console.log(scrollTop)
+          if((height + scrollTop > allHeight) && !this.scrollLock){
+            // console.log('进来了,就一次就够了。')
+            this.tip = '正在加载'
+            this.showLoading = true
+            // this.loadMoreActive = true
+            this.scrollLock = true
+            this.$nextTick(o => {
+              setTimeout(o => {
+                this.commentList = this.commentList.concat(this.moreCommentList)
+                // this.loadMoreActive = false
+                this.tip = '没有更多了'
+                this.showLoading = false
+              }, 1500)
+            })
+          }
+        })
+      },
       // listen event
       onPlayerPlay(player) {
         // console.log('player play!', player)
@@ -414,37 +439,10 @@
       bannerClick(){
         this.$router.push({path: '/servicelist'})
       },
-
-      articalClick(){
-        this.$router.push({path: '/show'})
-      },
       moreComment(){
         if(this.commentList.length > 5) return
         this.moreCommentActive = true
         this.commentList = this.commentList.concat(this.moreCommentList)
-      },
-      stopOther(key){
-        // this.list.forEach((o, i) => {
-        //   this.$refs['player' + i][0].player.pause()
-        // })
-        //
-        // this.$nextTick(() => {
-        //   setTimeout(o => {
-        //     // console.log(this.player)
-        //     this.$refs['player' + key][0].player.play()
-        //   }, 1000)
-        // })
-      },
-      refresh: function (done) {
-        var self = this
-        setTimeout(function () {
-          var start = self.top - 1
-          for (var i = start; i > start - 10; i--) {
-            self.items.splice(0, 0, i + ' - keep walking, be 2 with you.');
-          }
-          self.top = self.top - 10;
-          done();
-        }, 1500)
       },
       infinite: function (done) {
         var self = this
@@ -454,7 +452,7 @@
             self.items.push(i + ' - keep walking, be 2 with you.');
           }
           self.bottom = self.bottom + 10;
-          done();
+          // done();
         }, 1500)
       }
     }
@@ -848,7 +846,8 @@
 
     .container320 {
       display: block;
-      padding-bottom: 14.285714%;
+      /*padding-bottom: 14.285714%;*/
+      padding-bottom: 22.222222%;
     }
 
     .main320 {

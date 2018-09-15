@@ -93,7 +93,7 @@
       },
       // player is ready
       playerReadied(player) {
-        console.log('开始播放playerReadied')
+        // console.log('开始播放playerReadied')
         this.player = player
         // this.playActive = true
         // if(!this.player){ this.player = player}
