@@ -92,11 +92,16 @@
             <div id="store-list-map"></div>
             <div class="address-info">
               <div class="address-info-left">
-                <strong>北京店</strong>
-                <p>北京市西城区西单北大街甲133号西亨钟表维修中心</p>
+                <strong>深圳店</strong>
+                <p>深圳市南山区微软科通大厦</p>
               </div>
               <div class="address-info-right">
-                <img src="../../assets/img/service-address.png" alt="">
+                <!--<a href="http://api.map.baidu.com/marker?location=116.40387397,39.91488908&title=北京市西城区西单北大街甲133号西亨钟表维修中心&content=111&output=html">-->
+                <a :href="href">
+                <!--<a href="https://map.baidu.com/mobile/webapp/search/search/qt=bse&wd=%E5%BE%AE%E8%BD%AF%E7%A7%91%E9%80%9A%E5%A4%A7%E5%8E%A6&from=maponline&tn=m01&ie=utf-8&ptx=12680049.85&pty=2561928.17&wd2=%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%8D%97%E5%B1%B1%E5%8C%BA&name=%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE&c=340&sc=340&ec=340&isSingle=true&bsetp=1&sn=1%24%24%24%2412680049.85%2C2561928.17%24%24%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE%24%240%24%24%24%24&version=5&exptype=dep/tab=line&routeType=1#drive/list/qt=nav&sn=1%24%24%24%2412680049.800000%2C2561928.100000%24%24%E6%88%91%E7%9A%84%E4%BD%8D%E7%BD%AE%24%24&en=1%24%24c04b17b9d07e7aec1ef74d22%24%2412684648.500000%2C2559031.500000%24%24%E5%BE%AE%E8%BD%AF%E7%A7%91%E9%80%9A%E5%A4%A7%E5%8E%A6%24%24&sc=340&ec=340&c=340&pn=0&rn=5&searchFlag=walk&version=3&wm=1/vt=map&traffic=off&evtson=off">-->
+                  <img src="../../assets/img/service-address.png" alt="">
+                </a>
+                <!--<img src="../../assets/img/service-address.png" alt="">-->
               </div>
             </div>
           </div>
@@ -141,6 +146,7 @@
     data(){
       return {
         addressActive: false,
+        href: ''
       }
     },
     methods: {
@@ -161,8 +167,10 @@
             // 创建地址解析器实例
             let myGeo = new BMap.Geocoder();
             // 将地址解析结果显示在地图上,并调整地图视野
-            myGeo.getPoint("韶关", function (point) {
+            myGeo.getPoint("深圳市南山区微软科通大厦", point => {
               if (point) {
+                console.log(point)
+                this.href = `http://api.map.baidu.com/marker?location=${point.lat},${point.lng}&title=微软科通大厦&content=微软科通大厦&output=html`
                 map.centerAndZoom(point, 16);
                 map.addOverlay(new BMap.Marker(point));
               } else {

@@ -1,6 +1,6 @@
 <template>
   <!--<h1>test</h1>-->
-  <div class="container">
+  <div class="container" id="container">
     <Tabbar />
     <Header/>
     <HeaderMobile title="西亨名表维修中心" :showBack="false"/>
@@ -655,6 +655,7 @@
         <p>营业时间：09:00-19:00（节假日不休）</p>
         <p>店铺地址：北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）</p>
         <p>乘车线路： 乘坐3路、130路、132路、133路、658路、659路、858路到莲坂北</p>
+        <!--<p><button @click="changePosition">改变位置</button></p>-->
       </div>
       <div id="store-map"></div>
     </div>
@@ -963,26 +964,26 @@
           disabledDate(time) {
             return time.getTime() < Date.now() - 8.64e7
           },
-        }
+        },
+        center: {lng: 116.40387397, lat: 39.91488908}
       }
     },
     created(){
       this.brandPCList = this.brandList[this.brandIndex]
     },
     mounted() {
-      // alert('mounted钩子')
       if(window.BMap){
         console.log('BMap加载完成。')
+        // 创建地址解析器实例
         let map = new BMap.Map("store-map");
-        let point = new BMap.Point(116.331398, 39.897445);
-        map.centerAndZoom(point, 12);
         let mapType = new BMap.MapTypeControl({anchor: BMAP_ANCHOR_TOP_RIGHT});
         map.addControl(mapType);
-        // 创建地址解析器实例
         let myGeo = new BMap.Geocoder();
         // 将地址解析结果显示在地图上,并调整地图视野
-        myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）", function (point) {
+        // myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）", function (point) {
+        myGeo.getPoint("深圳凯旋城", function (point) {
           if (point) {
+            console.log(point)
             map.centerAndZoom(point, 16);
             map.addOverlay(new BMap.Marker(point));
           } else {
@@ -1036,6 +1037,26 @@
             reservationList.style.top = --n + 'px'
           }
         }, 10)
+      },
+      changePosition(){
+        let map = new BMap.Map('store-map')
+        let mapType = new BMap.MapTypeControl({anchor: BMAP_ANCHOR_TOP_RIGHT});
+        let point = new BMap.Point(this.center.lng, this.center.lat)
+        map.addControl(mapType);
+        map.centerAndZoom(point, 10)
+        map.enableScrollWheelZoom(true)
+        map.enableDoubleClickZoom(true)
+        var geolocation = new BMap.Geolocation()
+        geolocation.getCurrentPosition((r) => {
+          if (r.point) {
+            this.center.lng = r.longitude
+            this.center.lat = r.latitude
+            let markers = new BMap.Marker(r.point)
+            map.addOverlay(markers)
+            map.panTo(r.point)
+            map.centerAndZoom(r.point, 16)
+          }
+        }, { enableHighAccuracy: true })
       },
       cerCarouselChange(nowIndex){
         this.cerIndicatorKey = nowIndex
