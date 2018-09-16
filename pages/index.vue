@@ -1,6 +1,6 @@
 <template>
   <!--<h1>test</h1>-->
-  <div class="container" id="container">
+  <div class="container">
     <Tabbar />
     <Header/>
     <HeaderMobile title="西亨名表维修中心" :showBack="false"/>
@@ -39,7 +39,7 @@
       <ul>
         <li v-for="(item, key) in mobileNavList" :key="key">
           <nuxt-link :to="item.href" @click.stop>
-            <x-img container="#container" :src="item.src" alt="" />
+            <x-img  :src="item.src" alt="" />
             <span>{{item.name}}</span>
           </nuxt-link>
         </li>
@@ -63,7 +63,7 @@
             <div class="brand-main-right">
               <ul>
                 <li v-for="(item, key) in brandPCList" :key="key" @click="goService">
-                  <x-img container="#container" :src="item.src" alt="" />
+                  <x-img  :src="item.src" alt="" />
                 </li>
               </ul>
             </div>
@@ -78,7 +78,7 @@
                     <!--<li><img src="../assets/img/home_banner_bg@2x.png" alt="" /></li>-->
                     <li v-for="(entry, index) in item" :key="index" @click="goto('/customerservice')">
                       <img :src="entry.src" alt="" />
-                      <!--<x-img container="#container" :src="entry.src" class="ximg-demo" error-class="ximg-error" :offset="0"></x-img>-->
+                      <!--<x-img  :src="entry.src" class="ximg-demo" error-class="ximg-error" :offset="0"></x-img>-->
                     </li>
                   </ul>
                 </swiper-item>
@@ -92,10 +92,10 @@
     <!--广告-->
     <div class="adver-container">
       <div class="adver-wrapper" @click="$router.push({path: '/servicelist'})">
-        <x-img container="#container" :src="require('../assets/img/brand_images9@2x.png')" alt="" />
+        <x-img  :src="require('../assets/img/brand_images9@2x.png')" alt="" />
       </div>
       <div class="adver-wrapper320">
-        <x-img container="#container" :src="require('../assets/img/home_booking_banner@2x.png')" alt=""/>
+        <x-img  :src="require('../assets/img/home_booking_banner@2x.png')" alt=""/>
       </div>
     </div>
     <!--服务项目-->
@@ -105,7 +105,7 @@
         <ul>
           <li>
             <div class="service-project-main-cell">
-              <x-img container="#container" :src="require('../assets/img/home_serviceitems_icon1@2x.png')" alt="" />
+              <x-img  :src="require('../assets/img/home_serviceitems_icon1@2x.png')" alt="" />
               <h3 class="info">计时故障</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -122,7 +122,7 @@
           </li>
           <li>
             <div class="service-project-main-cell">
-              <x-img container="#container" :src="require('../assets/img/home_serviceitems_icon2@2x.png')" alt="" />
+              <x-img  :src="require('../assets/img/home_serviceitems_icon2@2x.png')" alt="" />
               <h3 class="info">零件损坏</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -139,7 +139,7 @@
           </li>
           <li>
             <div class="service-project-main-cell">
-              <x-img container="#container" :src="require('../assets/img/home_serviceitems_icon3@2x.png')" alt="" />
+              <x-img  :src="require('../assets/img/home_serviceitems_icon3@2x.png')" alt="" />
               <h3 class="info">清洗保养</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -156,7 +156,7 @@
           </li>
           <li>
             <div class="service-project-main-cell">
-              <x-img container="#container" :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt="" />
+              <x-img  :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt="" />
               <h3 class="info">全套保养</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -176,29 +176,29 @@
       <div class="service-project-main320">
         <ul class="service-project-main320-cell">
           <li>
-            <x-img container="#container" :src="require('../assets/img/home_serviceitems_icon1@2x.png')" alt="" />
+            <x-img  :src="require('../assets/img/home_serviceitems_icon1@2x.png')" alt="" />
             <p>走时故障</p>
           </li>
           <li>
-            <x-img container="#container" :src="require('../assets/img/home_serviceitems_icon2@2x.png')" alt="" />
+            <x-img  :src="require('../assets/img/home_serviceitems_icon2@2x.png')" alt="" />
             <p>零件损坏</p>
           </li>
           <li>
-            <x-img container="#container" :src="require('../assets/img/home_serviceitems_icon3@2x.png')" alt="" />
+            <x-img  :src="require('../assets/img/home_serviceitems_icon3@2x.png')" alt="" />
             <p>零件翻新</p>
           </li>
         </ul>
         <ul class="service-project-main320-cell">
           <li>
-            <x-img container="#container" :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt="" />
+            <x-img  :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt="" />
             <p>全套保养</p>
           </li>
           <li>
-            <x-img container="#container" :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt="" />
+            <x-img  :src="require('../assets/img/home_serviceitems_icon5@2x.png')" alt="" />
             <p>机芯保养</p>
           </li>
           <li>
-            <x-img container="#container" :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt="" />
+            <x-img  :src="require('../assets/img/home_serviceitems_icon6@2x.png')" alt="" />
             <p>外观清洗</p>
           </li>
         </ul>
@@ -207,17 +207,17 @@
     <!--服务品质承诺-->
     <div class="service-quality">
       <div class="service-quality-container">
-        <x-img container="#container" :src="require('../assets/img/home_qualitycommitment__bg@2x.png')" alt="" />
+        <x-img  :src="require('../assets/img/home_qualitycommitment__bg@2x.png')" alt="" />
         <div class="service-quality-main">
           <ServiceTitle info="Quality commitment" name="服务品质承诺" content="修表即修行，西亨致力于建立领先行业的可信任的规范"
                         :bgActive="true"></ServiceTitle>
           <ul class="service-quality-main-info">
             <li>
               <div class="imgInfo">
-                <x-img container="#container" :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
+                <x-img  :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
                 <div class="imgInfo-container">
                   <span>
-                    <x-img container="#container" :src="require('../assets/img/home_qualitycommitment__icon1@2x.png')" alt="" />
+                    <x-img  :src="require('../assets/img/home_qualitycommitment__icon1@2x.png')" alt="" />
                   </span>
                   <span class="showy">
                     实体门店
@@ -230,10 +230,10 @@
             </li>
             <li>
               <div class="imgInfo">
-                <x-img container="#container" :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
+                <x-img  :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
                 <div class="imgInfo-container">
                   <span>
-                    <x-img container="#container" :src="require('../assets/img/home_qualitycommitment__icon2@2x.png')" alt="" />
+                    <x-img  :src="require('../assets/img/home_qualitycommitment__icon2@2x.png')" alt="" />
                   </span>
                   <span class="showy">
                     原厂品质
@@ -246,10 +246,10 @@
             </li>
             <li>
               <div class="imgInfo">
-                <x-img container="#container" :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
+                <x-img  :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
                 <div class="imgInfo-container">
                   <span>
-                    <x-img container="#container" :src="require('../assets/img/home_qualitycommitment__icon3@2x.png')" alt="" />
+                    <x-img  :src="require('../assets/img/home_qualitycommitment__icon3@2x.png')" alt="" />
                   </span>
                   <span class="showy">
                     价格公道
@@ -262,10 +262,10 @@
             </li>
             <li>
               <div class="imgInfo">
-                <x-img container="#container" :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
+                <x-img  :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
                 <div class="imgInfo-container">
                   <span>
-                    <x-img container="#container" :src="require('../assets/img/home_qualitycommitment__icon4@2x.png')" alt="" />
+                    <x-img  :src="require('../assets/img/home_qualitycommitment__icon4@2x.png')" alt="" />
                   </span>
                   <span class="showy">
                     质保一年
@@ -283,9 +283,9 @@
         <ServiceTitle info="Quality commitment" name="服务品质承诺" content="修表即修行，西亨致力于建立领先行业的可信任的规范"></ServiceTitle>
         <ul>
           <li>
-            <x-img container="#container" :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
+            <x-img  :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
             <div class="service-quality-container320-main">
-              <x-img container="#container" :src="require('../assets/img/home_qualitycommitment__icon1@2x.png')" alt="" />
+              <x-img  :src="require('../assets/img/home_qualitycommitment__icon1@2x.png')" alt="" />
               <div class="service-quality-container320-maininfo">
                 <p>实体门店</p>
                 <p>百年坚实口碑</p>
@@ -293,9 +293,9 @@
             </div>
           </li>
           <li>
-            <x-img container="#container" :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
+            <x-img  :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
             <div class="service-quality-container320-main">
-              <x-img container="#container" :src="require('../assets/img/home_qualitycommitment__icon2@2x.png')" alt="" />
+              <x-img  :src="require('../assets/img/home_qualitycommitment__icon2@2x.png')" alt="" />
               <div class="service-quality-container320-maininfo">
                 <p>原厂品质</p>
                 <p>修后同原厂规格</p>
@@ -303,9 +303,9 @@
             </div>
           </li>
           <li>
-            <x-img container="#container" :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
+            <x-img  :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
             <div class="service-quality-container320-main">
-              <x-img container="#container" :src="require('../assets/img/home_qualitycommitment__icon3@2x.png')" alt="" />
+              <x-img  :src="require('../assets/img/home_qualitycommitment__icon3@2x.png')" alt="" />
               <div class="service-quality-container320-maininfo">
                 <p>价格公道</p>
                 <p>实惠透明合理</p>
@@ -313,9 +313,9 @@
             </div>
           </li>
           <li>
-            <x-img container="#container" :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
+            <x-img  :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
             <div class="service-quality-container320-main">
-              <x-img container="#container" :src="require('../assets/img/home_qualitycommitment__icon4@2x.png')" alt="" />
+              <x-img  :src="require('../assets/img/home_qualitycommitment__icon4@2x.png')" alt="" />
               <div class="service-quality-container320-maininfo">
                 <p>质保一年</p>
                 <p>原故障点免费重修</p>
@@ -376,7 +376,7 @@
                        >
             <el-carousel-item v-for="(item, key) in technicianCarouselList" :key="key" :name="key+''">
               <div class="certification320">
-                <x-img container="#container" :src="require('../assets/img/customer_service_logo.png')" alt="" />
+                <x-img  :src="require('../assets/img/customer_service_logo.png')" alt="" />
                 <strong>Charlie Peter{{key}}</strong>
                 <span class="level-info">国家高级技师</span>
                 <p class="certification320-info">
@@ -428,8 +428,8 @@
       <div class="equipment-container">
         <div class="equipment-cell" v-for="(item, key) in envList" :key="key">
           <div class="equipment-cell-container">
-            <!--<x-img container="#container" :src="item.src" alt="" />-->
-            <x-img container="#container" :src="item.src" alt="" />
+            <!--<x-img  :src="item.src" alt="" />-->
+            <x-img  :src="item.src" alt="" />
             <div class="equipment-shadow">
               <span>{{item.name}}</span>
             </div>
@@ -560,7 +560,7 @@
               </div>
 
               <div class="reservation-btn-container" @click="submitOrder">
-                <x-img container="#container" :src="require('../assets/img/home_reservationprocess_button@2x.png')" alt="" />
+                <x-img  :src="require('../assets/img/home_reservationprocess_button@2x.png')" alt="" />
                 <span>提交预约</span>
               </div>
 
@@ -572,7 +572,7 @@
 
     <!--服务环境-->
     <div class="environmental">
-      <x-img container="#container" :src="require('../assets/img/home_serviceenvironment_bg@2x.png')" alt="" />
+      <x-img  :src="require('../assets/img/home_serviceenvironment_bg@2x.png')" alt="" />
       <div class="environmental-container">
         <div class="environmental-main">
           <ServiceTitle info="SERVICE ITEMS" name="服务环境" content="提供舒适清爽的一对一服务空间" :bgActive="true"></ServiceTitle>
@@ -583,13 +583,13 @@
               <!--<h3>{{ item }}</h3>-->
               <!--</el-carousel-item>-->
               <el-carousel-item name="0">
-                <x-img container="#container" :src="require('../assets/img/home_serviceenvironment_images@2x.png')" alt="" />
+                <x-img  :src="require('../assets/img/home_serviceenvironment_images@2x.png')" alt="" />
               </el-carousel-item>
               <el-carousel-item name="1">
-                <x-img container="#container" :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" alt="" />
+                <x-img  :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" alt="" />
               </el-carousel-item>
               <el-carousel-item name="2">
-                <x-img container="#container" :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" alt="" />
+                <x-img  :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" alt="" />
               </el-carousel-item>
             </el-carousel>
             <div class="indicator">
@@ -609,13 +609,13 @@
                        indicator-position="none"
                        @change="carouselChange">
             <el-carousel-item name="0">
-              <x-img container="#container" :src="require('../assets/img/home_serviceenvironment_images@2x.png')" alt="" />
+              <x-img  :src="require('../assets/img/home_serviceenvironment_images@2x.png')" alt="" />
             </el-carousel-item>
             <el-carousel-item name="1">
-              <x-img container="#container" :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" alt="" />
+              <x-img  :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" alt="" />
             </el-carousel-item>
             <el-carousel-item name="2">
-              <x-img container="#container" :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" alt="" />
+              <x-img  :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" alt="" />
             </el-carousel-item>
           </el-carousel>
           <Indicators v-model="indicatorKey" :indicatorsStyle="{bottom: '-30px'}" :list="[1,1,1]"></Indicators>
@@ -631,7 +631,7 @@
                     <!--:containerStyle="{marginTop: '60px'}"></ServiceTitle>-->
       <ServiceTitle info="store guide" name="到店指引" content="提供舒适清爽的一对一服务空间">
         <span slot="content" class="store-content">
-          <x-img container="#container" :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />
+          <x-img  :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />
           <!--<span>400-136-8800</span>-->
           <a href="tel:400-136-8800">400-136-8800</a>
         </span>
@@ -645,7 +645,7 @@
         <!--</div>-->
         <!--<p>-->
           <!--<span class="store-content">-->
-            <!--<x-img container="#container" :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />-->
+            <!--<x-img  :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />-->
             <!--<span>400-136-8800</span>-->
           <!--</span>-->
         <!--</p>-->

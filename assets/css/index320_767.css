@@ -9,9 +9,9 @@
     /*padding-bottom: 14.2857114%;*/
     padding-bottom: 22.222222%;
     padding-top: 46px;
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    /*height: 100vh;*/
+    /*overflow-x: hidden;*/
+    /*overflow-y: scroll;*/
   }
   .reservation-shadow, .banner-container img.banner_pc, .banner-shadow, .brand-main-wrapper, .service-quality-main-info, .reservation-main, .certification, .service-project-main, .service-quality-container, .adver-wrapper, .environmental-container{
     display: none;

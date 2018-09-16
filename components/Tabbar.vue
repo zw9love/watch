@@ -154,7 +154,7 @@
 
     .phone-shadow-info .phone{
       margin-top: 10px;
-      color: #C8936B;
+      color: #C8936B!important;
       font-size: 24px;
     }
 
