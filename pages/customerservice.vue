@@ -165,35 +165,37 @@
       }
     },
     mounted(){
+      alert(111)
       window.addEventListener('click', () => {
         this.bottom = '-125px'
         this.paddingBottom = '40px'
         this.emojiActive = false
       })
 
-      // let ws = null
-      // // ws = new WebSocket("ws://192.168.1.216:1000");
-      //
-      // ws.onopen = function () {
-      //   // Web Socket 已连接上，使用 send() 方法发送数据
-      //   var json = {
-      //     name: '大熊',
-      //     age: 30
-      //   }
-      //   ws.send(JSON.stringify(json));
-      //   console.log("数据发送中...");
-      // };
-      //
-      // ws.onmessage = function (evt) {
-      //   var received_msg = evt.data;
-      //   console.log(`后台传的数据: ${received_msg}`)
-      //   //   alert("数据已接收...");
-      // };
-      //
-      // ws.onclose = function () {
-      //   // 关闭 websocket
-      //   console.log("连接已关闭...");
-      // };
+      let ws = null
+      ws = new WebSocket("ws://localhost:9090");
+      // ws = new WebSocket("ws://192.168.1.216:1000");
+
+      ws.onopen = function () {
+        // Web Socket 已连接上，使用 send() 方法发送数据
+        var json = {
+          name: '大熊',
+          age: 30
+        }
+        ws.send(JSON.stringify(json));
+        console.log("数据发送中...");
+      };
+
+      ws.onmessage = function (evt) {
+        var received_msg = evt.data;
+        console.log(`后台传的数据: ${received_msg}`)
+        //   alert("数据已接收...");
+      };
+
+      ws.onclose = function () {
+        // 关闭 websocket
+        console.log("连接已关闭...");
+      };
     },
     methods:{
       getDouble(val) {
