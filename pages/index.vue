@@ -483,7 +483,7 @@
 
               <div class="reservation-input-cell">
                 <span class="reservation-key">手表故障</span>
-                <el-select v-model="form.faultValue" placeholder="请选择故障类型" clearable>
+                <el-select v-model="form.faultType" placeholder="请选择故障类型" clearable>
                   <el-option
                     v-for="item in options"
                     :key="item.value"
@@ -505,11 +505,12 @@
 
               <div class="reservation-input-cell">
                 <span class="reservation-key">验证码</span>
-                <el-input v-model="form.verification" placeholder="获取验证码" resize="both" clearable style="width: 237px;"></el-input>
-                <div class="verification-container" :class="{'verification-active-container': verificationActive}"
-                     @click="verificationClick">
-                  <span>{{verificationInfo}}</span>
-                </div>
+                <el-input v-model="form.verification" placeholder="获取验证码" resize="both" maxlength="6" clearable style="width: 237px;"></el-input>
+                <!--<div class="verification-container" :class="{'verification-active-container': verificationActive}"-->
+                     <!--@click="verificationClick">-->
+                  <!--<span>{{verificationInfo}}</span>-->
+                <!--</div>-->
+                <Verification />
               </div>
 
               <div class="reservation-input-cell">
@@ -709,6 +710,7 @@
   import HeaderMobile from '../components/HeaderMobile'
   import Sidebar from '../components/Sidebar'
   import Tabbar from '../components/Tabbar'
+  import Verification from '../components/Verification'
 
   import { ChinaAddressV4Data} from 'vux'
   import address from '../assets/json/address'
@@ -741,6 +743,7 @@
       HeaderMobile,
       Sidebar,
       Tabbar,
+      Verification
     },
     // validate({ params, query }) {
     //   return false // 参数无效，Nuxt.js 停止渲染当前页面并显示错误页面
@@ -965,7 +968,8 @@
             return time.getTime() < Date.now() - 8.64e7
           },
         },
-        center: {lng: 116.40387397, lat: 39.91488908}
+        center: {lng: 116.40387397, lat: 39.91488908},
+        countDownTimer: null
       }
     },
     created(){
@@ -1090,8 +1094,20 @@
         if(this.technicianIndex < this.technicianCarouselList.length - 1) this.$refs.technicianCarousel.setActiveItem(++this.technicianIndex)
       },
       verificationClick() {
-        this.verificationActive = true
-        this.verificationInfo = '30S'
+        if(!this.verificationActive){
+          this.verificationActive = true
+          let count = 30
+          this.verificationInfo = count-- + 'S'
+          this.countDownTimer = setInterval(o => {
+            this.verificationInfo = count-- + 'S'
+            if(count < 0){
+              // this.count = 30
+              this.verificationActive = false
+              this.verificationInfo = '获取验证码'
+              clearInterval(this.countDownTimer)
+            }
+          }, 1000)
+        }
       },
       certificationIndexChange(index) {
         this.certificationIndex = index
@@ -1132,6 +1148,58 @@
         this.$router.push({path: '/customerservice'})
       },
       submitOrder(){
+        let {date1, date2, brand, name, faultType, phone, verification} = this.form
+
+        if(!brand.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入手表品牌！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!faultType.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请选择手表故障类型！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!name.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入您的姓名！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!(/(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(phone.trim()))){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入正确的手机号码！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!verification.trim()){
+          this.$store.dispatch({type: 'setModalInfo', val: '请输入正确的验证码！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
+
+        if(!date1){
+          this.$store.dispatch({type: 'setModalInfo', val: '请选择预约日期！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }else{
+          this.form.date1 = new Date(date1).getTime()
+        }
+
+        if(!date2){
+          this.$store.dispatch({type: 'setModalInfo', val: '请选择预约时间！'})
+          this.$store.dispatch({type: 'setSuccessActive', val: false})
+          this.$store.dispatch({type: 'setModalActive', val: true})
+          return;
+        }
         this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorderfast'})
       },
       goService(){

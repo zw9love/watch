@@ -628,7 +628,7 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   position: relative;
 }
 
-.reservation-success-list-wrapper:hover .reservation-success-list-scroll{
+.reservation-success-list:hover .reservation-success-list-scroll{
   animation-play-state:paused;
 }
 
@@ -637,7 +637,7 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   top: 0;
   left: 0;
   width: 100%;
-  animation:reservationListScroll 12s cubic-bezier(1, 1, 0, 0) infinite;
+  animation:reservationListScroll 12s cubic-bezier(0, 0, 0, 0) infinite;
 }
 
 .reservation-success-list ul {

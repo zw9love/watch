@@ -20,8 +20,9 @@
         <div class="main-cell">
           <span class="field">验证码</span>
           <span class="input" >
-            <el-input v-model="form.verification" placeholder="请输入验证码" clearable  style="width: 452px;"></el-input>
-            <span class="verification-btn">获取验证码</span>
+            <el-input v-model="form.verification" placeholder="请输入验证码" maxlength="6"  clearable  style="width: 452px;"></el-input>
+            <!--<span class="verification-btn">获取验证码</span>-->
+            <Verification :verification-style="{width: '150px'}" />
           </span>
         </div>
         <span class="search-process-btn" @click="checkProcess">查询进度</span>
@@ -65,6 +66,7 @@
   import HeaderMobile from '../components/HeaderMobile'
   import Footer from '../components/Footer'
   import Tabbar from '../components/Tabbar'
+  import Verification from '../components/Verification'
 
   export default {
     head () {
@@ -81,7 +83,8 @@
       Header,
       Footer,
       HeaderMobile,
-      Tabbar
+      Tabbar,
+      Verification
     },
     data() {
       return {

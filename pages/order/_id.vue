@@ -45,8 +45,9 @@
         <div class="main-cell">
           <span class="field">验证码</span>
           <span class="input">
-            <el-input v-model="form.verification" placeholder="请输入验证码" clearable style="width: 502px;"></el-input>
-            <span class="verification-btn">获取验证码</span>
+            <el-input v-model="form.verification" placeholder="请输入验证码" maxlength="6" clearable style="width: 502px;"></el-input>
+            <!--<span class="verification-btn">获取验证码</span>-->
+            <Verification :verification-style="{width: '150px'}" />
           </span>
         </div>
         <div class="main-cell">
@@ -149,6 +150,7 @@
   import Header from '../../components/Header'
   import Footer from '../../components/Footer'
   import HeaderMobile from '../../components/HeaderMobile'
+  import Verification from '../../components/Verification'
   export default {
     head () {
       return {
@@ -163,7 +165,8 @@
     components: {
       Header,
       Footer,
-      HeaderMobile
+      HeaderMobile,
+      Verification
     },
     data() {
       return {
