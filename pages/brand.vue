@@ -209,6 +209,14 @@
       Sidebar,
       Tabbar,
     },
+    async asyncData({app}) {
+      let caseOption = {
+        url: '/api/MaintenanceCase',
+        methods: 'GET'
+      }
+      let {data} = await app.$axios(caseOption)
+      return { caseCarouselList: data }
+    },
     data(){
       return {
         indicatorKey: 0,

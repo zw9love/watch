@@ -1,29 +1,29 @@
 <template>
   <!--<h1>test</h1>-->
   <div class="container" id="container">
-    <Tabbar />
+    <Tabbar/>
     <Header/>
     <HeaderMobile title="西亨名表维修中心" :showBack="false"/>
     <!--banner-->
     <div class="banner-container">
       <!--<img :src="require('../assets/img/home_banner_bg@2x.png')" alt="" class="banner_pc">-->
-      <img :src="require('../assets/img/home_banner_bg@2x.png')"  class="banner_pc" :offset="-100" />
+      <img :src="require('../assets/img/home_banner_bg@2x.png')" class="banner_pc" :offset="-100"/>
       <img :src="require('../assets/img/home_banner320_bg@2x.png')" alt="" class="banner_phone">
-      <div class="banner-shadow">
-        <p>维修中心地址：北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）</p>
-      </div>
+      <!--<div class="banner-shadow">-->
+      <!--<p>维修中心地址：北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）</p>-->
+      <!--</div>-->
       <div class="banner-shadow320">
         <x-address title="title" v-model="addressValue" :list="addressData" :hide-district="true" class="mytest">
           <template slot="title" slot-scope="props">
             <span class="city">{{cityName}}</span>
-            <img :src="require('../assets/img/home_icon_position@2x.png')" alt="" class="arrow" />
+            <img :src="require('../assets/img/home_icon_position@2x.png')" alt="" class="arrow"/>
           </template>
         </x-address>
         <!--<popup-picker :data="list1" v-model="value1" :columns="3" ref="picker">-->
-          <!--<template slot="title" slot-scope="props">-->
-            <!--<span class="city">{{ ($refs.picker && $refs.picker.getNameValues().split(' ')[1]) || '广州'}}</span>-->
-            <!--<img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow" />>-->
-          <!--</template>-->
+        <!--<template slot="title" slot-scope="props">-->
+        <!--<span class="city">{{ ($refs.picker && $refs.picker.getNameValues().split(' ')[1]) || '广州'}}</span>-->
+        <!--<img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow" />>-->
+        <!--</template>-->
         <!--</popup-picker>-->
         <!--<span class="city">北京</span>-->
         <!--<img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow" />>-->
@@ -31,7 +31,7 @@
         <form action="" @submit.prevent style="flex: 1;display: flex">
           <input class="txt" type="search" placeholder="搜索" @keydown.enter.prevent="searchGlobal">
         </form>
-        <img @click="searchGlobal" :src="require('../assets/img/home_top_search@2x.png')" alt="" class="search-btn" />
+        <img @click="searchGlobal" :src="require('../assets/img/home_top_search@2x.png')" alt="" class="search-btn"/>
       </div>
     </div>
     <!--navigation320-->
@@ -39,7 +39,7 @@
       <ul>
         <li v-for="(item, key) in mobileNavList" :key="key">
           <nuxt-link :to="item.href" @click.stop>
-            <x-img  :src="item.src" alt="" />
+            <x-img :src="item.src" alt=""/>
             <span>{{item.name}}</span>
           </nuxt-link>
         </li>
@@ -63,7 +63,7 @@
             <div class="brand-main-right">
               <ul>
                 <li v-for="(item, key) in brandPCList" :key="key" @click="goService">
-                  <x-img  :src="item.src" alt="" />
+                  <x-img :src="item.src" alt=""/>
                 </li>
               </ul>
             </div>
@@ -77,7 +77,7 @@
                   <ul class="brand-main-img-wrapper" ref="brandMainImgWrapper">
                     <!--<li><img src="../assets/img/home_banner_bg@2x.png" alt="" /></li>-->
                     <li v-for="(entry, index) in item" :key="index" @click="goto('/customerservice')">
-                      <img :src="entry.src" alt="" />
+                      <img :src="entry.src" alt=""/>
                       <!--<x-img  :src="entry.src" class="ximg-demo" error-class="ximg-error" :offset="0"></x-img>-->
                     </li>
                   </ul>
@@ -92,10 +92,10 @@
     <!--广告-->
     <div class="adver-container">
       <div class="adver-wrapper" @click="$router.push({path: '/servicelist'})">
-        <x-img  :src="require('../assets/img/brand_images9@2x.png')" alt="" />
+        <x-img :src="require('../assets/img/brand_images9@2x.png')" alt=""/>
       </div>
       <div class="adver-wrapper320">
-        <x-img  :src="require('../assets/img/home_booking_banner@2x.png')" alt=""/>
+        <x-img :src="require('../assets/img/home_booking_banner@2x.png')" alt=""/>
       </div>
     </div>
     <!--服务项目-->
@@ -105,7 +105,7 @@
         <ul>
           <li>
             <div class="service-project-main-cell">
-              <x-img  :src="require('../assets/img/home_serviceitems_icon1@2x.png')" alt="" />
+              <x-img :src="require('../assets/img/home_serviceitems_icon1@2x.png')" alt=""/>
               <h3 class="info">计时故障</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -122,7 +122,7 @@
           </li>
           <li>
             <div class="service-project-main-cell">
-              <x-img  :src="require('../assets/img/home_serviceitems_icon2@2x.png')" alt="" />
+              <x-img :src="require('../assets/img/home_serviceitems_icon2@2x.png')" alt=""/>
               <h3 class="info">零件损坏</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -139,7 +139,7 @@
           </li>
           <li>
             <div class="service-project-main-cell">
-              <x-img  :src="require('../assets/img/home_serviceitems_icon3@2x.png')" alt="" />
+              <x-img :src="require('../assets/img/home_serviceitems_icon3@2x.png')" alt=""/>
               <h3 class="info">清洗保养</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -156,7 +156,7 @@
           </li>
           <li>
             <div class="service-project-main-cell">
-              <x-img  :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt="" />
+              <x-img :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt=""/>
               <h3 class="info">全套保养</h3>
               <div class="line"></div>
               <div class="info-container">
@@ -176,29 +176,29 @@
       <div class="service-project-main320">
         <ul class="service-project-main320-cell">
           <li>
-            <x-img  :src="require('../assets/img/home_serviceitems_icon1@2x.png')" alt="" />
+            <x-img :src="require('../assets/img/home_serviceitems_icon1@2x.png')" alt=""/>
             <p>走时故障</p>
           </li>
           <li>
-            <x-img  :src="require('../assets/img/home_serviceitems_icon2@2x.png')" alt="" />
+            <x-img :src="require('../assets/img/home_serviceitems_icon2@2x.png')" alt=""/>
             <p>零件损坏</p>
           </li>
           <li>
-            <x-img  :src="require('../assets/img/home_serviceitems_icon3@2x.png')" alt="" />
+            <x-img :src="require('../assets/img/home_serviceitems_icon3@2x.png')" alt=""/>
             <p>零件翻新</p>
           </li>
         </ul>
         <ul class="service-project-main320-cell">
           <li>
-            <x-img  :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt="" />
+            <x-img :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt=""/>
             <p>全套保养</p>
           </li>
           <li>
-            <x-img  :src="require('../assets/img/home_serviceitems_icon5@2x.png')" alt="" />
+            <x-img :src="require('../assets/img/home_serviceitems_icon5@2x.png')" alt=""/>
             <p>机芯保养</p>
           </li>
           <li>
-            <x-img  :src="require('../assets/img/home_serviceitems_icon6@2x.png')" alt="" />
+            <x-img :src="require('../assets/img/home_serviceitems_icon6@2x.png')" alt=""/>
             <p>外观清洗</p>
           </li>
         </ul>
@@ -207,17 +207,17 @@
     <!--服务品质承诺-->
     <div class="service-quality">
       <div class="service-quality-container">
-        <x-img  :src="require('../assets/img/home_qualitycommitment__bg@2x.png')" alt="" />
+        <x-img :src="require('../assets/img/home_qualitycommitment__bg@2x.png')" alt=""/>
         <div class="service-quality-main">
           <ServiceTitle info="Quality commitment" name="服务品质承诺" content="修表即修行，西亨致力于建立领先行业的可信任的规范"
                         :bgActive="true"></ServiceTitle>
           <ul class="service-quality-main-info">
             <li>
               <div class="imgInfo">
-                <x-img  :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
+                <x-img :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt=""/>
                 <div class="imgInfo-container">
                   <span>
-                    <x-img  :src="require('../assets/img/home_qualitycommitment__icon1@2x.png')" alt="" />
+                    <x-img :src="require('../assets/img/home_qualitycommitment__icon1@2x.png')" alt=""/>
                   </span>
                   <span class="showy">
                     实体门店
@@ -230,10 +230,10 @@
             </li>
             <li>
               <div class="imgInfo">
-                <x-img  :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
+                <x-img :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt=""/>
                 <div class="imgInfo-container">
                   <span>
-                    <x-img  :src="require('../assets/img/home_qualitycommitment__icon2@2x.png')" alt="" />
+                    <x-img :src="require('../assets/img/home_qualitycommitment__icon2@2x.png')" alt=""/>
                   </span>
                   <span class="showy">
                     原厂品质
@@ -246,10 +246,10 @@
             </li>
             <li>
               <div class="imgInfo">
-                <x-img  :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
+                <x-img :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt=""/>
                 <div class="imgInfo-container">
                   <span>
-                    <x-img  :src="require('../assets/img/home_qualitycommitment__icon3@2x.png')" alt="" />
+                    <x-img :src="require('../assets/img/home_qualitycommitment__icon3@2x.png')" alt=""/>
                   </span>
                   <span class="showy">
                     价格公道
@@ -262,10 +262,10 @@
             </li>
             <li>
               <div class="imgInfo">
-                <x-img  :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt="" />
+                <x-img :src="require('../assets/img/home_qualitycommitment__bg1@2x.png')" alt=""/>
                 <div class="imgInfo-container">
                   <span>
-                    <x-img  :src="require('../assets/img/home_qualitycommitment__icon4@2x.png')" alt="" />
+                    <x-img :src="require('../assets/img/home_qualitycommitment__icon4@2x.png')" alt=""/>
                   </span>
                   <span class="showy">
                     质保一年
@@ -283,9 +283,9 @@
         <ServiceTitle info="Quality commitment" name="服务品质承诺" content="修表即修行，西亨致力于建立领先行业的可信任的规范"></ServiceTitle>
         <ul>
           <li>
-            <x-img  :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
+            <x-img :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt=""/>
             <div class="service-quality-container320-main">
-              <x-img  :src="require('../assets/img/home_qualitycommitment__icon1@2x.png')" alt="" />
+              <x-img :src="require('../assets/img/home_qualitycommitment__icon1@2x.png')" alt=""/>
               <div class="service-quality-container320-maininfo">
                 <p>实体门店</p>
                 <p>百年坚实口碑</p>
@@ -293,9 +293,9 @@
             </div>
           </li>
           <li>
-            <x-img  :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
+            <x-img :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt=""/>
             <div class="service-quality-container320-main">
-              <x-img  :src="require('../assets/img/home_qualitycommitment__icon2@2x.png')" alt="" />
+              <x-img :src="require('../assets/img/home_qualitycommitment__icon2@2x.png')" alt=""/>
               <div class="service-quality-container320-maininfo">
                 <p>原厂品质</p>
                 <p>修后同原厂规格</p>
@@ -303,9 +303,9 @@
             </div>
           </li>
           <li>
-            <x-img  :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
+            <x-img :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt=""/>
             <div class="service-quality-container320-main">
-              <x-img  :src="require('../assets/img/home_qualitycommitment__icon3@2x.png')" alt="" />
+              <x-img :src="require('../assets/img/home_qualitycommitment__icon3@2x.png')" alt=""/>
               <div class="service-quality-container320-maininfo">
                 <p>价格公道</p>
                 <p>实惠透明合理</p>
@@ -313,9 +313,9 @@
             </div>
           </li>
           <li>
-            <x-img  :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt="" />
+            <x-img :src="require('../assets/img/home_servicequality_bg1@2x.png')" alt=""/>
             <div class="service-quality-container320-main">
-              <x-img  :src="require('../assets/img/home_qualitycommitment__icon4@2x.png')" alt="" />
+              <x-img :src="require('../assets/img/home_qualitycommitment__icon4@2x.png')" alt=""/>
               <div class="service-quality-container320-maininfo">
                 <p>质保一年</p>
                 <p>原故障点免费重修</p>
@@ -332,26 +332,29 @@
       <div class="certification">
         <span @mouseenter="leftIconEnter" @mouseleave="leftIconLeave" @click="leftIconClick">
           <img :src="require('../assets/img/home_qualitycommitment__lefter_icon_no@2x.png')" alt="" class="left-icon"
-               v-if="!leftActive" />
-          <img :src="require('../assets/img/home_qualitycommitment__lefter_icon_yes@2x.png')" alt="" class="left-icon" v-else />
+               v-if="!leftActive"/>
+          <img :src="require('../assets/img/home_qualitycommitment__lefter_icon_yes@2x.png')" alt="" class="left-icon"
+               v-else/>
         </span>
         <span @mouseenter="rightIconEnter" @mouseleave="rightIconLeave" @click="rightIconClick">
           <img :src="require('../assets/img/home_qualitycommitment__right_icon_no@2x.png')" alt="" class="right-icon"
-               v-if="!rightActive" />
-          <img :src="require('../assets/img/home_qualitycommitment__right_icon_yes@2x.png')" alt="" class="right-icon" v-else />
+               v-if="!rightActive"/>
+          <img :src="require('../assets/img/home_qualitycommitment__right_icon_yes@2x.png')" alt="" class="right-icon"
+               v-else/>
         </span>
         <el-carousel indicator-position="none" :autoplay="false" arrow="never" height="300px" ref="technicianCarousel">
           <el-carousel-item v-for="(item, key) in technicianCarouselList" :key="key">
             <div class="certification-imgContainer">
-              <img :src="require('../assets/img/home_certificationtechnician__image@2x.png')" alt="" />
+              <img :src="require('../assets/img/home_certificationtechnician__image@2x.png')" alt=""/>
             </div>
             <div class="certification-infoContainer">
-              <h1 class="certification-title">Charlie Peter</h1>
+              <h1 class="certification-title">{{item.Name}}</h1>
               <p class="certification-info">
-                出生于瑞士日内瓦利瓦兹小镇，从小受钟表文化熏陶，多年来专注钟表工艺与钟表维修技术。<br/>
-                至今名表品鉴经验颇丰，维修技术更是精益求精。<br/>
-                现任瑞士国际钟表协会委员、西亨名表维修技术总监、前百达翡丽英才中心技术讲师、<br/>
-                前瑞士SMH培训讲师。
+                {{item.Intro}}
+                <!--出生于瑞士日内瓦利瓦兹小镇，从小受钟表文化熏陶，多年来专注钟表工艺与钟表维修技术。<br/>-->
+                <!--至今名表品鉴经验颇丰，维修技术更是精益求精。<br/>-->
+                <!--现任瑞士国际钟表协会委员、西亨名表维修技术总监、前百达翡丽英才中心技术讲师、<br/>-->
+                <!--前瑞士SMH培训讲师。-->
               </p>
             </div>
           </el-carousel-item>
@@ -373,10 +376,10 @@
         <div class="carousel">
           <el-carousel type="card" :height="320 + 'px'" :autoplay="false" arrow="never"
                        indicator-position="none" @change="cerCarouselChange"
-                       >
+          >
             <el-carousel-item v-for="(item, key) in technicianCarouselList" :key="key" :name="key+''">
               <div class="certification320">
-                <x-img  :src="require('../assets/img/customer_service_logo.png')" alt="" />
+                <x-img :src="require('../assets/img/customer_service_logo.png')" alt=""/>
                 <strong>Charlie Peter{{key}}</strong>
                 <span class="level-info">国家高级技师</span>
                 <p class="certification320-info">
@@ -387,36 +390,37 @@
               </div>
             </el-carousel-item>
           </el-carousel>
-          <Indicators v-model="cerIndicatorKey" :indicatorsStyle="{bottom: '-10px'}" :list="technicianCarouselList"></Indicators>
+          <Indicators v-model="cerIndicatorKey" :indicatorsStyle="{bottom: '-10px'}"
+                      :list="technicianCarouselList"></Indicators>
         </div>
         <!--<swiper v-model="certificationIndex" @on-index-change="certificationIndexChange" :show-dots="false"-->
-                <!--:show-desc-mask="false" height="260px">-->
-          <!--<swiper-item v-for="(item, key) in certificationList" :key="key" >-->
-            <!--&lt;!&ndash;<div class="certification320" ref="certification320">&ndash;&gt;-->
-              <!--&lt;!&ndash;<div class="certification320-imgContainer">&ndash;&gt;-->
-                <!--&lt;!&ndash;<img src="../assets/img/home_certificationtechnician__image@2x.png" alt="" />&ndash;&gt;-->
-              <!--&lt;!&ndash;</div>&ndash;&gt;-->
-              <!--&lt;!&ndash;<div class="certification320-infoContainer">&ndash;&gt;-->
-                <!--&lt;!&ndash;<h1 class="certification-title320">Charlie Peter {{key}}</h1>&ndash;&gt;-->
-                <!--&lt;!&ndash;<p class="certification-position320">高级技师顾问</p>&ndash;&gt;-->
-                <!--&lt;!&ndash;<p class="certification-info320">&ndash;&gt;-->
-                  <!--&lt;!&ndash;现任瑞士国际钟表协会委员、西亨名表维修技术&ndash;&gt;-->
-                  <!--&lt;!&ndash;总监、前百达翡丽英才中心技术讲师、前瑞士&ndash;&gt;-->
-                  <!--&lt;!&ndash;SMH培训讲师。&ndash;&gt;-->
-                <!--&lt;!&ndash;</p>&ndash;&gt;-->
-              <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--<div class="certification320" ref="certification320">-->
-              <!--<img src="../assets/img/customer_service_logo.png" alt="" />-->
-              <!--<strong>Charlie Peter{{key}}</strong>-->
-              <!--<span class="level-info">国家高级技师</span>-->
-              <!--<p class="certification320-info">-->
-                <!--现任瑞士国际钟表协会委员、西亨名表维修技术-->
-                <!--总监、前百达翡丽英才中心技术讲师、前瑞士-->
-                <!--SMH培训讲师。-->
-              <!--</p>-->
-            <!--</div>-->
-          <!--</swiper-item>-->
+        <!--:show-desc-mask="false" height="260px">-->
+        <!--<swiper-item v-for="(item, key) in certificationList" :key="key" >-->
+        <!--&lt;!&ndash;<div class="certification320" ref="certification320">&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="certification320-imgContainer">&ndash;&gt;-->
+        <!--&lt;!&ndash;<img src="../assets/img/home_certificationtechnician__image@2x.png" alt="" />&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="certification320-infoContainer">&ndash;&gt;-->
+        <!--&lt;!&ndash;<h1 class="certification-title320">Charlie Peter {{key}}</h1>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p class="certification-position320">高级技师顾问</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p class="certification-info320">&ndash;&gt;-->
+        <!--&lt;!&ndash;现任瑞士国际钟表协会委员、西亨名表维修技术&ndash;&gt;-->
+        <!--&lt;!&ndash;总监、前百达翡丽英才中心技术讲师、前瑞士&ndash;&gt;-->
+        <!--&lt;!&ndash;SMH培训讲师。&ndash;&gt;-->
+        <!--&lt;!&ndash;</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--<div class="certification320" ref="certification320">-->
+        <!--<img src="../assets/img/customer_service_logo.png" alt="" />-->
+        <!--<strong>Charlie Peter{{key}}</strong>-->
+        <!--<span class="level-info">国家高级技师</span>-->
+        <!--<p class="certification320-info">-->
+        <!--现任瑞士国际钟表协会委员、西亨名表维修技术-->
+        <!--总监、前百达翡丽英才中心技术讲师、前瑞士-->
+        <!--SMH培训讲师。-->
+        <!--</p>-->
+        <!--</div>-->
+        <!--</swiper-item>-->
         <!--</swiper>-->
         <!--<Indicators v-model="certificationIndex"  :list="certificationList"></Indicators>-->
       </div>
@@ -429,7 +433,7 @@
         <div class="equipment-cell" v-for="(item, key) in envList" :key="key">
           <div class="equipment-cell-container">
             <!--<x-img  :src="item.src" alt="" />-->
-            <x-img  :src="item.src" alt="" />
+            <x-img :src="item.src" alt=""/>
             <div class="equipment-shadow">
               <span>{{item.name}}</span>
             </div>
@@ -444,7 +448,7 @@
     <div class="reservation">
       <ServiceTitle info="Reservation process" name="预约流程"
                     content="透明维修，诚信可靠，四重质检"></ServiceTitle>
-      <Reservation />
+      <Reservation/>
       <div class="reservation-main">
         <div class="reservation-main-left">
           <div class="reservation-main-left-wrapper">
@@ -505,63 +509,66 @@
 
               <div class="reservation-input-cell">
                 <span class="reservation-key">验证码</span>
-                <el-input v-model="form.verification" placeholder="获取验证码" resize="both" maxlength="6" clearable style="width: 237px;"></el-input>
+                <el-input v-model="form.verification" placeholder="获取验证码" resize="both" maxlength="6" clearable
+                          style="width: 237px;"></el-input>
                 <!--<div class="verification-container" :class="{'verification-active-container': verificationActive}"-->
-                     <!--@click="verificationClick">-->
-                  <!--<span>{{verificationInfo}}</span>-->
+                <!--@click="verificationClick">-->
+                <!--<span>{{verificationInfo}}</span>-->
                 <!--</div>-->
-                <Verification />
+                <Verification/>
               </div>
 
               <div class="reservation-input-cell">
                 <span class="reservation-key">预约时间</span>
                 <span class="reservation-time-input">
                   <el-col :span="11">
-                    <el-date-picker type="date" placeholder="请选择预约日期" v-model="form.date1" style="width: 100%;" :picker-options="datePickerOption"></el-date-picker>
+                    <el-date-picker type="date" placeholder="请选择预约日期" v-model="form.date1" style="width: 100%;"
+                                    :picker-options="datePickerOption"></el-date-picker>
                   </el-col>
                 <span class="split">-</span>
                 <el-col :span="11">
                   <!--<el-time-select-->
-                    <!--v-model="form.date2"-->
-                    <!--:picker-options="{-->
-                      <!--start: '10:00',-->
-                      <!--step: '00:60',-->
-                      <!--end: '20:00'-->
-                    <!--}"-->
-                    <!--style="width: 100%;"-->
-                    <!--placeholder="请选择预约时间">-->
+                  <!--v-model="form.date2"-->
+                  <!--:picker-options="{-->
+                  <!--start: '10:00',-->
+                  <!--step: '00:60',-->
+                  <!--end: '20:00'-->
+                  <!--}"-->
+                  <!--style="width: 100%;"-->
+                  <!--placeholder="请选择预约时间">-->
                   <!--</el-time-select>-->
 
                     <el-select v-model="form.date2" placeholder="请选择预约时间" style="width: 100%;">
-                      <el-option :label="item.label" :value="item.label" v-for="(item, key) in reservationTimeList" :key="key"></el-option>
+                      <el-option :label="item.label" :value="item.label" v-for="(item, key) in reservationTimeList"
+                                 :key="key"></el-option>
                     </el-select>
 
                 </el-col>
                 </span>
                 <!--<el-date-picker-->
-                  <!--v-model="reservationTime"-->
-                  <!--type="date"-->
-                  <!--placeholder="选择日期"-->
-                  <!--style="width: 180px"-->
+                <!--v-model="reservationTime"-->
+                <!--type="date"-->
+                <!--placeholder="选择日期"-->
+                <!--style="width: 180px"-->
                 <!--&gt;-->
                 <!--</el-date-picker>-->
                 <!--<el-time-picker-->
-                  <!--is-range-->
-                  <!--v-model="value4"-->
-                  <!--:picker-options="{-->
-                    <!--selectableRange: '18:30:00 - 20:30:00',-->
-                    <!--format: 'HH:mm'-->
-                  <!--}"-->
-                  <!--style="width: 190px; margin-left: 5px; height: 50px; line-height: 50px;"-->
-                  <!--range-separator=""-->
-                  <!--start-placeholder="开始时间"-->
-                  <!--end-placeholder="结束时间"-->
-                  <!--placeholder="选择时间范围">-->
+                <!--is-range-->
+                <!--v-model="value4"-->
+                <!--:picker-options="{-->
+                <!--selectableRange: '18:30:00 - 20:30:00',-->
+                <!--format: 'HH:mm'-->
+                <!--}"-->
+                <!--style="width: 190px; margin-left: 5px; height: 50px; line-height: 50px;"-->
+                <!--range-separator=""-->
+                <!--start-placeholder="开始时间"-->
+                <!--end-placeholder="结束时间"-->
+                <!--placeholder="选择时间范围">-->
                 <!--</el-time-picker>-->
               </div>
 
               <div class="reservation-btn-container" @click="submitOrder">
-                <x-img  :src="require('../assets/img/home_reservationprocess_button@2x.png')" alt="" />
+                <x-img :src="require('../assets/img/home_reservationprocess_button@2x.png')" alt=""/>
                 <span>提交预约</span>
               </div>
 
@@ -573,7 +580,7 @@
 
     <!--服务环境-->
     <div class="environmental">
-      <x-img  :src="require('../assets/img/home_serviceenvironment_bg@2x.png')" alt="" />
+      <x-img :src="require('../assets/img/home_serviceenvironment_bg@2x.png')" alt=""/>
       <div class="environmental-container">
         <div class="environmental-main">
           <ServiceTitle info="SERVICE ITEMS" name="服务环境" content="提供舒适清爽的一对一服务空间" :bgActive="true"></ServiceTitle>
@@ -584,19 +591,19 @@
               <!--<h3>{{ item }}</h3>-->
               <!--</el-carousel-item>-->
               <el-carousel-item name="0">
-                <x-img  :src="require('../assets/img/home_serviceenvironment_images@2x.png')" alt="" />
+                <x-img :src="require('../assets/img/home_serviceenvironment_images@2x.png')" alt=""/>
               </el-carousel-item>
               <el-carousel-item name="1">
-                <x-img  :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" alt="" />
+                <x-img :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" alt=""/>
               </el-carousel-item>
               <el-carousel-item name="2">
-                <x-img  :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" alt="" />
+                <x-img :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" alt=""/>
               </el-carousel-item>
             </el-carousel>
             <div class="indicator">
               <span v-for="(item, key) in 3" :key="key" @click="indicatorClick(key)">
                 <span class="indicator-active" v-if="key === indicatorKey"></span>
-                <img v-else src="../assets/img/home_serviceenvironment_button_no@2x.png" alt="" />
+                <img v-else src="../assets/img/home_serviceenvironment_button_no@2x.png" alt=""/>
               </span>
             </div>
           </div>
@@ -610,13 +617,13 @@
                        indicator-position="none"
                        @change="carouselChange">
             <el-carousel-item name="0">
-              <x-img  :src="require('../assets/img/home_serviceenvironment_images@2x.png')" alt="" />
+              <x-img :src="require('../assets/img/home_serviceenvironment_images@2x.png')" alt=""/>
             </el-carousel-item>
             <el-carousel-item name="1">
-              <x-img  :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" alt="" />
+              <x-img :src="require('../assets/img/home_serviceenvironment_images1@2x.png')" alt=""/>
             </el-carousel-item>
             <el-carousel-item name="2">
-              <x-img  :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" alt="" />
+              <x-img :src="require('../assets/img/home_serviceenvironment_images2@2x.png')" alt=""/>
             </el-carousel-item>
           </el-carousel>
           <Indicators v-model="indicatorKey" :indicatorsStyle="{bottom: '-30px'}" :list="[1,1,1]"></Indicators>
@@ -627,29 +634,29 @@
     <!--到店指引-->
     <div class="store">
       <!--<ServiceTitle info="SERVICE ITEMS" name="到店指引" content="400-136-8800"-->
-                    <!--:containerStyle="{marginTop: '60px'}" ></ServiceTitle>-->
+      <!--:containerStyle="{marginTop: '60px'}" ></ServiceTitle>-->
       <!--<ServiceTitle info="store guide" name="到店指引" :content="'提供舒适清爽的一对一服务空间'"-->
-                    <!--:containerStyle="{marginTop: '60px'}"></ServiceTitle>-->
+      <!--:containerStyle="{marginTop: '60px'}"></ServiceTitle>-->
       <ServiceTitle info="store guide" name="到店指引" content="提供舒适清爽的一对一服务空间">
         <span slot="content" class="store-content">
-          <x-img  :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />
+          <x-img :src="require('../assets/img/home_storeguide_icon@2x.png')" alt=""/>
           <!--<span>400-136-8800</span>-->
           <a href="tel:400-136-8800">400-136-8800</a>
         </span>
       </ServiceTitle>
       <!--<ServiceTitle info="store guide" name="到店指引" content="400-136-8800" />-->
       <!--<div class="title-container">-->
-        <!--<p class="title-info">{{('store guide').toUpperCase()}}</p>-->
-        <!--<strong class="title-name">到店指引</strong>-->
-        <!--<div class="line-container">-->
-          <!--<span class="line-wrapper"></span>-->
-        <!--</div>-->
-        <!--<p>-->
-          <!--<span class="store-content">-->
-            <!--<x-img  :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />-->
-            <!--<span>400-136-8800</span>-->
-          <!--</span>-->
-        <!--</p>-->
+      <!--<p class="title-info">{{('store guide').toUpperCase()}}</p>-->
+      <!--<strong class="title-name">到店指引</strong>-->
+      <!--<div class="line-container">-->
+      <!--<span class="line-wrapper"></span>-->
+      <!--</div>-->
+      <!--<p>-->
+      <!--<span class="store-content">-->
+      <!--<x-img  :src="require('../assets/img/home_storeguide_icon@2x.png')" alt="" />-->
+      <!--<span>400-136-8800</span>-->
+      <!--</span>-->
+      <!--</p>-->
       <!--</div>-->
       <div class="store-info">
         <h1>北京名表维修中心</h1>
@@ -661,47 +668,48 @@
       <div id="store-map"></div>
     </div>
 
+    <!--<Footer :friendList="friendList"/>-->
     <Footer/>
 
     <!--预约遮罩-->
     <div class="reservation-shadow" v-show="reservationActive">
-      <img :src="require('../assets/img/home_popup_bg@2x.png')" alt="" />
+      <img :src="require('../assets/img/home_popup_bg@2x.png')" alt=""/>
       <div class="reservation-shadow-container">
         <!--<nuxt-link class="reservation-online-btn" to="/customerservice">-->
         <span class="reservation-online-btn" @click="goService">
-          <img :src="require('../assets/img/home_popup_button@2x.png')" alt="" />
+          <img :src="require('../assets/img/home_popup_button@2x.png')" alt=""/>
           <div class="reservation-online-msg">
-            <img :src="require('../assets/img/home_popup_button_icon@2x.png')" alt="" />
+            <img :src="require('../assets/img/home_popup_button_icon@2x.png')" alt=""/>
             <span>在线咨询</span>
           </div>
         </span>
         <!--</nuxt-link>-->
         <nuxt-link class="reservation-online-btn" to="/servicelist">
-          <img :src="require('../assets/img/home_popup_button1@2x.png')" alt="" />
+          <img :src="require('../assets/img/home_popup_button1@2x.png')" alt=""/>
           <div class="reservation-online-msg">
-            <img :src="require('../assets/img/home_popup_button_icon1@2x.png')" alt="" />
+            <img :src="require('../assets/img/home_popup_button_icon1@2x.png')" alt=""/>
             <span>在线预约</span>
           </div>
         </nuxt-link>
       </div>
       <div class="reservation-shadow-close" @click="reservationClose">
-        <img :src="require('../assets/img/close.png')" alt="" />
+        <img :src="require('../assets/img/close.png')" alt=""/>
       </div>
     </div>
 
     <div class="reservation-shadow320" v-show="reservationActive">
-      <img :src="require('../assets/img/home_popup_bg_mobile.png')" alt="" />
-      <img :src="require('../assets/img/close.png')" alt="" class="close320" @click="closeMobile" />
+      <img :src="require('../assets/img/home_popup_bg_mobile.png')" alt=""/>
+      <img :src="require('../assets/img/close.png')" alt="" class="close320" @click="closeMobile"/>
       <div class="reservation-shadow320-button">
-        <nuxt-link to="/customerservice" >在线咨询</nuxt-link>
-        <nuxt-link to="/servicelist" >在线预约</nuxt-link>
+        <nuxt-link to="/customerservice">在线咨询</nuxt-link>
+        <nuxt-link to="/servicelist">在线预约</nuxt-link>
       </div>
     </div>
-    <Sidebar />
+    <Sidebar/>
   </div>
 </template>
 
-<script >
+<script>
   import ServiceTitle from '../components/ServiceTitle.vue'
   import Indicators from '../components/Indicators.vue'
   import Header from '../components/Header'
@@ -712,7 +720,7 @@
   import Tabbar from '../components/Tabbar'
   import Verification from '../components/Verification'
 
-  import { ChinaAddressV4Data} from 'vux'
+  import {ChinaAddressV4Data} from 'vux'
   import address from '../assets/json/address'
 
   export default {
@@ -725,12 +733,15 @@
     //     // { rel: 'stylesheet', href: 'https://c.mipcdn.com/static/v1/mip.css'}
     //   ]
     // },
-    head () {
+    head() {
       return {
         title: '西亨名表维修中心-世界名表维修连锁品牌在线预约维修手表',
         meta: [
-          { name: 'keywords', content: '名表维修,手表维修,手表维修中心,维修手表' },
-          { name: 'description', content: '西亨名表维修中心官方授权维修点：百达翡丽、江诗丹顿、积家、欧米茄、劳力士、芝柏、宝珀等世界名表在线预约到店维修服务，预约电话:4009608888，现场维修，保证安全和品质。' },
+          {name: 'keywords', content: '名表维修,手表维修,手表维修中心,维修手表'},
+          {
+            name: 'description',
+            content: '西亨名表维修中心官方授权维修点：百达翡丽、江诗丹顿、积家、欧米茄、劳力士、芝柏、宝珀等世界名表在线预约到店维修服务，预约电话:4009608888，现场维修，保证安全和品质。'
+          },
         ]
       }
     },
@@ -758,6 +769,31 @@
     //   let {data} = await app.$axios(option)
     //   return {msg: JSON.stringify(data)}
     // },
+    async asyncData({app}) {
+
+      // 友情链接
+      // let friendOption = {
+      //   url: '/api/FriendshipLink',
+      //   method: 'GET',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   }
+      // }
+      // let {data} = await app.$axios(friendOption)
+      // // console.log(data)
+      // return { friendList: data }
+
+      // 认证技师
+      let cerTechoption = {
+        url: '/api/CerTechnician',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      let {data} = await app.$axios(cerTechoption)
+      return { technicianCarouselList: data }
+    },
     data() {
       return {
         brand: '',
@@ -894,7 +930,7 @@
           {name: '时尚品牌', url: 'fashion'},
         ],
         technicianIndex: 0,
-        technicianCarouselList: [1,1,1,1,1],
+        technicianCarouselList: [1, 1, 1, 1, 1],
         mobileNavList: [
           {name: '品牌门店', href: '/brand', src: require('../assets/img/home_nav_icon1@2x.png')},
           {name: '维修案例', href: '/case', src: require('../assets/img/home_nav_icon2@2x.png')},
@@ -908,8 +944,8 @@
           phone: '',
           time: '',
           faultType: '',
-          date1:  '',
-          date2:  '',
+          date1: '',
+          date2: '',
         },
         reservationTimeList: [
           {label: '10:00 - 11:00', value: '10:00 - 11:00'},
@@ -972,11 +1008,11 @@
         countDownTimer: null
       }
     },
-    created(){
+    created() {
       this.brandPCList = this.brandList[this.brandIndex]
     },
     mounted() {
-      if(window.BMap){
+      if (window.BMap) {
         console.log('BMap加载完成。')
         // 创建地址解析器实例
         let map = new BMap.Map("store-map");
@@ -1006,17 +1042,17 @@
 
       // this.reservationListScroll()
     },
-    destroyed(){
+    destroyed() {
       clearInterval(this.timer)
     },
     watch: {
-      addressValue: function(newVal){
+      addressValue: function (newVal) {
         let provinceName = address['86'][newVal[0]]
         let cityName = address[newVal[0]][newVal[1]]
         this.$router.push({path: '/servicelist/city', query: {province: provinceName, city: cityName, area: ''}})
       },
-      reservationActive: function(newVal){
-        if(!newVal){
+      reservationActive: function (newVal) {
+        if (!newVal) {
           // console.log('预约遮罩被关闭.')
           setTimeout(o => {
             this.reservationActive = true
@@ -1029,20 +1065,20 @@
       // }
     },
     methods: {
-      reservationListScroll(){
+      reservationListScroll() {
         let reservationList = this.$refs.reservationList
         let parentHeight = reservationList.clientHeight / 2
         let n = 0
         this.timer = setInterval(o => {
-          if(n === -parentHeight){
+          if (n === -parentHeight) {
             reservationList.style.top = '0px'
             n = 0
-          }else{
+          } else {
             reservationList.style.top = --n + 'px'
           }
         }, 10)
       },
-      changePosition(){
+      changePosition() {
         let map = new BMap.Map('store-map')
         let mapType = new BMap.MapTypeControl({anchor: BMAP_ANCHOR_TOP_RIGHT});
         let point = new BMap.Point(this.center.lng, this.center.lat)
@@ -1060,9 +1096,9 @@
             map.panTo(r.point)
             map.centerAndZoom(r.point, 16)
           }
-        }, { enableHighAccuracy: true })
+        }, {enableHighAccuracy: true})
       },
-      cerCarouselChange(nowIndex){
+      cerCarouselChange(nowIndex) {
         this.cerIndicatorKey = nowIndex
       },
       carouselChange(nowIndex, useIndex) {
@@ -1087,20 +1123,20 @@
       rightIconLeave() {
         this.rightActive = false
       },
-      leftIconClick(){
-        if(this.technicianIndex > 0) this.$refs.technicianCarousel.setActiveItem(--this.technicianIndex)
+      leftIconClick() {
+        if (this.technicianIndex > 0) this.$refs.technicianCarousel.setActiveItem(--this.technicianIndex)
       },
-      rightIconClick(){
-        if(this.technicianIndex < this.technicianCarouselList.length - 1) this.$refs.technicianCarousel.setActiveItem(++this.technicianIndex)
+      rightIconClick() {
+        if (this.technicianIndex < this.technicianCarouselList.length - 1) this.$refs.technicianCarousel.setActiveItem(++this.technicianIndex)
       },
       verificationClick() {
-        if(!this.verificationActive){
+        if (!this.verificationActive) {
           this.verificationActive = true
           let count = 30
           this.verificationInfo = count-- + 'S'
           this.countDownTimer = setInterval(o => {
             this.verificationInfo = count-- + 'S'
-            if(count < 0){
+            if (count < 0) {
               // this.count = 30
               this.verificationActive = false
               this.verificationInfo = '获取验证码'
@@ -1126,83 +1162,89 @@
         // console.log(this.brandList[this.brandIndex])
         // this.$router.push({path: url})
       },
-      goto(path){
+      goto(path) {
         this.$router.push({path})
       },
-      closeMobile(){
+      closeMobile() {
         this.reservationActive = false
       },
-      addressChange(ids, name){
-        this.cityName = name[0].indexOf('市') !== - 1 ? name[0].slice(0, name[0].length - 1) : name[1].slice(0, name[1].length - 1)
+      addressChange(ids, name) {
+        this.cityName = name[0].indexOf('市') !== -1 ? name[0].slice(0, name[0].length - 1) : name[1].slice(0, name[1].length - 1)
       },
-      backTop(){
+      backTop() {
         document.documentElement.scrollTop = document.body.scrollTop = 0;
       },
-      phoneCall(){
+      phoneCall() {
         this.phoneShadowActive = true
       },
-      cancelShadow(){
+      cancelShadow() {
         this.phoneShadowActive = false
       },
-      searchGlobal(){
+      searchGlobal() {
         this.$router.push({path: '/customerservice'})
       },
-      submitOrder(){
+      submitOrder() {
         let {date1, date2, brand, name, faultType, phone, verification} = this.form
 
-        if(!brand.trim()){
+        if (!brand.trim()) {
           this.$store.dispatch({type: 'setModalInfo', val: '请输入手表品牌！'})
           this.$store.dispatch({type: 'setSuccessActive', val: false})
           this.$store.dispatch({type: 'setModalActive', val: true})
           return;
         }
 
-        if(!faultType.trim()){
+        if (!faultType.trim()) {
           this.$store.dispatch({type: 'setModalInfo', val: '请选择手表故障类型！'})
           this.$store.dispatch({type: 'setSuccessActive', val: false})
           this.$store.dispatch({type: 'setModalActive', val: true})
           return;
         }
 
-        if(!name.trim()){
+        if (!name.trim()) {
           this.$store.dispatch({type: 'setModalInfo', val: '请输入您的姓名！'})
           this.$store.dispatch({type: 'setSuccessActive', val: false})
           this.$store.dispatch({type: 'setModalActive', val: true})
           return;
         }
 
-        if(!(/(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(phone.trim()))){
+        if (!(/(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(phone.trim()))) {
           this.$store.dispatch({type: 'setModalInfo', val: '请输入正确的手机号码！'})
           this.$store.dispatch({type: 'setSuccessActive', val: false})
           this.$store.dispatch({type: 'setModalActive', val: true})
           return;
         }
 
-        if(!verification.trim()){
+        if (!verification.trim()) {
           this.$store.dispatch({type: 'setModalInfo', val: '请输入正确的验证码！'})
           this.$store.dispatch({type: 'setSuccessActive', val: false})
           this.$store.dispatch({type: 'setModalActive', val: true})
           return;
         }
 
-        if(!date1){
+        if (!date1) {
           this.$store.dispatch({type: 'setModalInfo', val: '请选择预约日期！'})
           this.$store.dispatch({type: 'setSuccessActive', val: false})
           this.$store.dispatch({type: 'setModalActive', val: true})
           return;
-        }else{
+        } else {
           this.form.date1 = new Date(date1).getTime()
         }
 
-        if(!date2){
+        if (!date2) {
           this.$store.dispatch({type: 'setModalInfo', val: '请选择预约时间！'})
           this.$store.dispatch({type: 'setSuccessActive', val: false})
           this.$store.dispatch({type: 'setModalActive', val: true})
           return;
         }
-        this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorderfast'})
+        this.$store.dispatch('login', {
+          username: 'demo',
+          password: 'demo',
+          axios: this.$axios,
+          self: this,
+          jumpPath: '/successorderfast'
+        })
       },
-      goService(){
+      goService() {
         window.open('/customerservice')
       }
     }
@@ -1221,105 +1263,106 @@
   .el-select .el-input {
     width: 130px;
   }
+
   .input-with-select .el-input-group__prepend {
     background-color: #fff;
   }
 </style>
 
 <!--<template>-->
-  <!--<div class="container">-->
-    <!--<h1>Please login to see the secret content</h1>-->
-    <!--<form v-if="!$store.state.authUser" @submit.prevent="login">-->
-      <!--<p v-if="formError" class="error">{{ formError }}</p>-->
-      <!--<p><i>To login, use <b>demo</b> as username and <b>demo</b> as password.</i></p>-->
-      <!--<p>Username: <input v-model="formUsername" type="text" name="username"></p>-->
-      <!--<p>Password: <input v-model="formPassword" type="password" name="password"></p>-->
-      <!--<button type="submit">Login</button>-->
-    <!--</form>-->
-    <!--<div v-else>-->
-      <!--Hello {{ $store.state.authUser.username }}!-->
-      <!--<pre>I am the secret content, I am shown only when the use is connected.</pre>-->
-      <!--<p><i>You can also refresh this page, you'll still be connected!</i></p>-->
-      <!--<button @click="logout">Logout</button>-->
-    <!--</div>-->
-    <!--<p>-->
-      <!--<nuxt-link to="/secret">Super secret page</nuxt-link>-->
-    <!--</p>-->
-    <!--<group title="vux demo">-->
-      <!--<cell title="cell" value="click me" is-link @click.native="alert"/>-->
-      <!--<button @click="getMyData">自己的接口</button>-->
-      <!--<button @click="getBgData" style="margin-left: 20px">后台的接口</button>-->
-    <!--</group>-->
-  <!--</div>-->
+<!--<div class="container">-->
+<!--<h1>Please login to see the secret content</h1>-->
+<!--<form v-if="!$store.state.authUser" @submit.prevent="login">-->
+<!--<p v-if="formError" class="error">{{ formError }}</p>-->
+<!--<p><i>To login, use <b>demo</b> as username and <b>demo</b> as password.</i></p>-->
+<!--<p>Username: <input v-model="formUsername" type="text" name="username"></p>-->
+<!--<p>Password: <input v-model="formPassword" type="password" name="password"></p>-->
+<!--<button type="submit">Login</button>-->
+<!--</form>-->
+<!--<div v-else>-->
+<!--Hello {{ $store.state.authUser.username }}!-->
+<!--<pre>I am the secret content, I am shown only when the use is connected.</pre>-->
+<!--<p><i>You can also refresh this page, you'll still be connected!</i></p>-->
+<!--<button @click="logout">Logout</button>-->
+<!--</div>-->
+<!--<p>-->
+<!--<nuxt-link to="/secret">Super secret page</nuxt-link>-->
+<!--</p>-->
+<!--<group title="vux demo">-->
+<!--<cell title="cell" value="click me" is-link @click.native="alert"/>-->
+<!--<button @click="getMyData">自己的接口</button>-->
+<!--<button @click="getBgData" style="margin-left: 20px">后台的接口</button>-->
+<!--</group>-->
+<!--</div>-->
 <!--</template>-->
 
 <!--<script>-->
-  <!--export default {-->
-    <!--data() {-->
-      <!--return {-->
-        <!--formError: null,-->
-        <!--formUsername: '',-->
-        <!--formPassword: ''-->
-      <!--}-->
-    <!--},-->
-    <!--methods: {-->
-      <!--async login() {-->
-        <!--try {-->
-          <!--await this.$store.dispatch('login', {-->
-            <!--username: this.formUsername,-->
-            <!--password: this.formPassword,-->
-            <!--axios: this.$axios,-->
-            <!--self: this-->
-          <!--})-->
-          <!--this.formUsername = ''-->
-          <!--this.formPassword = ''-->
-          <!--this.formError = null-->
-        <!--} catch (e) {-->
-          <!--this.formError = e.message-->
-        <!--}-->
-      <!--},-->
-      <!--async logout() {-->
-        <!--try {-->
-          <!--await this.$store.dispatch('logout', { axios: this.$axios, self: this})-->
-        <!--} catch (e) {-->
-          <!--this.formError = e.message-->
-        <!--}-->
-      <!--},-->
-      <!--alert() {-->
-        <!--this.$vux.alert.show('This is a Alert example.')-->
-      <!--},-->
-      <!--getMyData(){-->
-        <!--this.$axios('/login', {-->
-          <!--// 发送客户端 cookies 到服务端-->
-          <!--credentials: 'same-origin',-->
-          <!--method: 'POST',-->
-          <!--headers: {-->
-            <!--'Content-Type': 'application/json'-->
-          <!--},-->
-          <!--data: JSON.stringify({-->
-            <!--username: 'test',-->
-            <!--password: 'test'-->
-          <!--})-->
-        <!--})-->
-      <!--},-->
-      <!--getBgData(){-->
-        <!--this.$axios('/test', {-->
-          <!--method: 'POST',-->
-          <!--headers: {-->
-            <!--'Content-Type': 'application/json'-->
-          <!--}-->
-        <!--})-->
-      <!--}-->
-    <!--}-->
-  <!--}-->
+<!--export default {-->
+<!--data() {-->
+<!--return {-->
+<!--formError: null,-->
+<!--formUsername: '',-->
+<!--formPassword: ''-->
+<!--}-->
+<!--},-->
+<!--methods: {-->
+<!--async login() {-->
+<!--try {-->
+<!--await this.$store.dispatch('login', {-->
+<!--username: this.formUsername,-->
+<!--password: this.formPassword,-->
+<!--axios: this.$axios,-->
+<!--self: this-->
+<!--})-->
+<!--this.formUsername = ''-->
+<!--this.formPassword = ''-->
+<!--this.formError = null-->
+<!--} catch (e) {-->
+<!--this.formError = e.message-->
+<!--}-->
+<!--},-->
+<!--async logout() {-->
+<!--try {-->
+<!--await this.$store.dispatch('logout', { axios: this.$axios, self: this})-->
+<!--} catch (e) {-->
+<!--this.formError = e.message-->
+<!--}-->
+<!--},-->
+<!--alert() {-->
+<!--this.$vux.alert.show('This is a Alert example.')-->
+<!--},-->
+<!--getMyData(){-->
+<!--this.$axios('/login', {-->
+<!--// 发送客户端 cookies 到服务端-->
+<!--credentials: 'same-origin',-->
+<!--method: 'POST',-->
+<!--headers: {-->
+<!--'Content-Type': 'application/json'-->
+<!--},-->
+<!--data: JSON.stringify({-->
+<!--username: 'test',-->
+<!--password: 'test'-->
+<!--})-->
+<!--})-->
+<!--},-->
+<!--getBgData(){-->
+<!--this.$axios('/test', {-->
+<!--method: 'POST',-->
+<!--headers: {-->
+<!--'Content-Type': 'application/json'-->
+<!--}-->
+<!--})-->
+<!--}-->
+<!--}-->
+<!--}-->
 <!--</script>-->
 
 <!--<style>-->
-  <!--.container {-->
-    <!--padding: 100px;-->
-  <!--}-->
+<!--.container {-->
+<!--padding: 100px;-->
+<!--}-->
 
-  <!--.error {-->
-    <!--color: red;-->
-  <!--}-->
+<!--.error {-->
+<!--color: red;-->
+<!--}-->
 <!--</style>-->

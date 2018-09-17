@@ -24,7 +24,7 @@
         <div class="phone-shadow">
           <div class="phone-shadow-info">
             <p class="content">维修服务中心咨询电话</p>
-            <p class="phone">400-136-8800</p>
+            <p class="phone-call">400-136-8800</p>
             <div class="phone-shadow-button">
               <span class="phone-shadow-button-cancel" @click="cancelShadow">取消</span>
               <a href="tel:400-136-8800" class="phone-shadow-button-confirm">呼叫</a>
@@ -152,7 +152,7 @@
       font-size: 14px;
     }
 
-    .phone-shadow-info .phone{
+    .phone-shadow-info .phone-call{
       margin-top: 10px;
       color: #C8936B!important;
       font-size: 24px;

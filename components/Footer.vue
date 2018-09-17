@@ -13,8 +13,8 @@
         <div class="bottom-link-top">
           <ul>
             <li>友情链接：</li>
-            <li v-for="x in 5" :key="x">
-              <nuxt-link to="javascript:;" @click.native.stop>北京西亨名表维修</nuxt-link>
+            <li v-for="(item, key) in friendList" :key="key">
+              <a :href="item.Url" @click.native.stop target="_blank">{{item.Name}}</a>
             </li>
           </ul>
         </div>
@@ -57,16 +57,33 @@
         </li>
       </ul>
     </div>
-    <!--<Modal @close="close"/>-->
   </footer>
 </template>
 
 <script>
-  // import Modal from '../components/Modal'
   export default {
     name: "Footer",
-    // components: {
-    //   Modal
+    created(){
+      this.$axios('/api/FriendshipLink', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+      }).then(res => {
+        //console.log(res.data)
+        this.friendList = res.data
+      })
+    },
+    mounted(){
+      // alert(123)
+    },
+    // props: {
+    //   friendList: {
+    //     type: Array,
+    //     default(){
+    //       return []
+    //     }
+    //   }
     // },
     data() {
       return {
@@ -79,7 +96,8 @@
         ],
         modalActive: false,
         successActive: false,
-        phoneNumber: ''
+        phoneNumber: '',
+        friendList: []
       }
     },
     methods: {

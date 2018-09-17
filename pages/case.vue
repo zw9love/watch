@@ -350,7 +350,6 @@
       }
     },
     async asyncData({app}) {
-
     },
     created(){
       // for (var i = 1; i <= 20; i++) {
@@ -368,15 +367,17 @@
         // this.$refs.previewer.show(index)
       },
       loadMoreData(){
-        // 可视窗的高度
+        // 可视窗的宽高
+        let width = document.documentElement.clientWidth
+        if(width > 768) return
         let height = document.documentElement.clientHeight
         window.addEventListener('scroll', o => {
           // 滚动轴距离
           let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
           // 文档总高度 尼玛坑
-          let allHeight = document.body.scrollHeight
+          let allHeight = document.documentElement.scrollHeight || document.body.scrollHeight
           // console.log(scrollTop)
-          if((height + scrollTop > allHeight) && !this.scrollLock){
+          if((height + scrollTop + 80 >= allHeight) && !this.scrollLock){
             // console.log('进来了,就一次就够了。')
             this.tip = '正在加载'
             this.showLoading = true

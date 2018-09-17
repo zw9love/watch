@@ -61,7 +61,8 @@ module.exports = {
       // target: 'http://192.168.1.135:6789',
       // target: 'http://192.168.1.135:3000',
       // target: 'http://localhost:3000',
-      target: 'http://localhost:6789',
+      // target: 'http://localhost:6789',
+      target: 'http://192.168.1.216:1000',
       pathRewrite: {
         '^/bgapi/': ''
       },
