@@ -23,6 +23,7 @@ module.exports = {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta http-equiv="X-UA-Compatible" content="chrome=1" />
       */
+      { name :'format-detection', content: 'telephone=no'},
       { name :'renderer', content: 'webkit'},
       { 'http-equiv' :'renderer', content: 'webkit'},
       // { 'http-equiv' :'X-UA-Compatible', content: 'IE=edge'},
@@ -164,5 +165,6 @@ module.exports = {
     // We add /api/login & /api/logout routes
     '~/api'
   ],
+  cache: true
 }
 
