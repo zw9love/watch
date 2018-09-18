@@ -30,7 +30,7 @@
       <!--<img src="../assets/img/home_suspend_button_no1@2x.png" alt="" />-->
       <span>微信联系</span>
       <div class="sidebar-cell-popup sidebar-cell-popup-qr">
-        <img :src="require('../assets/img/qr_code.jpg')" alt=""/>
+        <img :src="require('../assets/img/qr_code.png')" alt=""/>
       </div>
     </div>
     <div class="sidebar-back-top" @click="backTop">

@@ -4,6 +4,7 @@ const session = require('express-session')
 const path = require('path')
 const resolve = path.resolve
 const vuxLoader = require('vux-loader')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // import index from './pages/index.vue'
 // import order from './pages/order.vue'
 // import NotFound from './pages/notfound.vue'
@@ -58,9 +59,6 @@ module.exports = {
   proxy: {
     '/bgapi/': {
       // target: 'http://0.0.0.0',
-      // target: 'http://192.168.1.135:6789',
-      // target: 'http://192.168.1.135:3000',
-      // target: 'http://localhost:3000',
       // target: 'http://localhost:6789',
       target: 'http://192.168.1.216:1000',
       pathRewrite: {
@@ -107,7 +105,18 @@ module.exports = {
         }]
       })
       return configs
-    }
+    },
+    plugins: [
+      // new UglifyJsPlugin({
+      //   uglifyOptions: {
+      //     compress: {
+      //       warnings: false,
+      //       drop_debugger: true,
+      //       drop_console: true
+      //     }
+      //   }
+      // }),
+    ]
   },
   // 路由
   router: {

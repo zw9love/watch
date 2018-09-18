@@ -1,6 +1,6 @@
 <template>
   <div>
-    <lg-preview />
+    <lg-preview v-if="previewActive"/>
     <div class="container">
 
       <!--Header-->
@@ -347,6 +347,7 @@
         scrollLock: false,
         showLoading: false,
         tip: '上拉加载更多',
+        previewActive: false
       }
     },
     async asyncData({app}) {
@@ -360,6 +361,7 @@
     },
     mounted(){
       // alert('mounted钩子')
+      this.previewActive = true
       this.loadMoreData()
     },
     methods: {
