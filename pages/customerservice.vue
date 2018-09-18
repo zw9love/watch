@@ -1,6 +1,6 @@
 <template>
   <div>
-    <lg-preview />
+    <!--<lg-preview />-->
     <div class="container">
       <!--nav-->
       <div class="nav">
@@ -166,6 +166,7 @@
     },
     mounted(){
       alert(111)
+      let mobileActive = window.clientWidth <= 768
       window.addEventListener('click', () => {
         this.bottom = '-125px'
         this.paddingBottom = '40px'
@@ -176,26 +177,35 @@
       ws = new WebSocket("ws://localhost:9090");
       // ws = new WebSocket("ws://192.168.1.216:1000");
 
-      ws.onopen = function () {
+      ws.onopen = () => {
         // Web Socket 已连接上，使用 send() 方法发送数据
-        var json = {
-          name: '大熊',
-          age: 30
+        // let json = {
+        //   name: '大熊',
+        //   age: 30
+        // }
+        // ws.send(JSON.stringify(json));
+        console.log("连接打开成功，数据发送中...");
+      }
+
+      ws.onmessage = (evt) => {
+        let received_msg = JSON.parse(evt.data);
+        received_msg.infoType = 'test'
+        this.list.push(received_msg)
+        if(mobileActive){
+          this.mobileToBottom()
+        }else{
+          this.pcToBottom()
         }
-        ws.send(JSON.stringify(json));
-        console.log("数据发送中...");
-      };
+      }
 
-      ws.onmessage = function (evt) {
-        var received_msg = evt.data;
-        console.log(`后台传的数据: ${received_msg}`)
-        //   alert("数据已接收...");
-      };
-
-      ws.onclose = function () {
+      ws.onclose = () => {
         // 关闭 websocket
         console.log("连接已关闭...");
-      };
+      }
+
+      window.addEventListener('beforeunload', () => {
+        ws.close()
+      })
     },
     methods:{
       getDouble(val) {
@@ -358,11 +368,37 @@
           }
         }
       },
-      callYouBack(){
-        let checkFlag = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(this.phoneNumber.trim())
-        let modalInfo = checkFlag ? '您已成功提交！请保持电话畅通' : '对不起！您的手机号码格式有误'
+      async callYouBack(){
+        let number = this.phoneNumber.trim()
+        let modalInfo = ''
+        let successFlag = false
+        let checkFlag = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(number)
+        if(checkFlag){
+          await this.$axios('/api/CallBack?Mobile=' + number, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+            .then((res) => {
+              console.log(res)
+              modalInfo = '您已成功提交！请保持电话畅通'
+              successFlag = true
+              // if (res.status === 401) {
+              //   throw new Error('Bad credentials')
+              // } else {
+              //   return res.data.username
+              // }
+            })
+            .catch((error)=>{
+              modalInfo = '对不起！您的手机号码格式有误'
+              console.log(error)
+            })
+        }else{
+          modalInfo = '对不起！您的手机号码格式有误'
+        }
         this.$store.dispatch({type: 'setModalInfo', val: modalInfo})
-        this.$store.dispatch({type: 'setSuccessActive', val: checkFlag})
+        this.$store.dispatch({type: 'setSuccessActive', val: successFlag})
         this.$store.dispatch({type: 'setModalActive', val: true})
       },
       endTalk(){

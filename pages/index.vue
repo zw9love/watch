@@ -345,7 +345,7 @@
         <el-carousel indicator-position="none" :autoplay="false" arrow="never" height="300px" ref="technicianCarousel">
           <el-carousel-item v-for="(item, key) in technicianCarouselList" :key="key">
             <div class="certification-imgContainer">
-              <img :src="require('../assets/img/home_certificationtechnician__image@2x.png')" alt=""/>
+              <img :src="require('../assets/img/home_certificationtechnician__image@2x.jpg')" alt=""/>
             </div>
             <div class="certification-infoContainer">
               <h1 class="certification-title">{{item.Name}}</h1>
@@ -379,13 +379,13 @@
           >
             <el-carousel-item v-for="(item, key) in technicianCarouselList" :key="key" :name="key+''">
               <div class="certification320">
-                <x-img :src="require('../assets/img/customer_service_logo.png')" alt=""/>
-                <strong>Charlie Peter{{key}}</strong>
+                <div class="certification320-img">
+                  <x-img :src="require('../assets/img/home_certificationtechnician__image@2x.jpg')" alt=""/>
+                </div>
+                <strong>{{item.Name}}</strong>
                 <span class="level-info">国家高级技师</span>
                 <p class="certification320-info">
-                  现任瑞士国际钟表协会委员、西亨名表维修技术
-                  总监、前百达翡丽英才中心技术讲师、前瑞士
-                  SMH培训讲师。
+                  {{item.Intro}}
                 </p>
               </div>
             </el-carousel-item>

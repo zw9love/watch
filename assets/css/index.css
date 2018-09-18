@@ -429,11 +429,15 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
 }
 
 .certification-imgContainer {
-  float: left
+  float: left;
+  width: 310px;
+  height: 100%;
+  border: 4px solid #BF9571;
 }
 
 .certification-imgContainer img {
-  /*width: 100%;*/
+  width: 100%;
+  height: 100%;
   vertical-align: middle;
 }
 

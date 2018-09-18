@@ -104,36 +104,39 @@
       goService() {
         window.open('/customerservice')
       },
-      commitInfo() {
-        let checkFlag = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(this.phoneNumber.trim())
-        let modalInfo = checkFlag ? '您已成功提交！请保持电话畅通' : '对不起！您的手机号码格式有误'
+      async commitInfo() {
+        let number = this.phoneNumber.trim()
+        let modalInfo = ''
+        let successFlag = false
+        let checkFlag = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(number)
+        if(checkFlag){
+          await this.$axios('/api/CallBack?Mobile=' + number, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+            .then((res) => {
+              console.log(res)
+              modalInfo = '您已成功提交！请保持电话畅通'
+              successFlag = true
+              // if (res.status === 401) {
+              //   throw new Error('Bad credentials')
+              // } else {
+              //   return res.data.username
+              // }
+            })
+            .catch((error)=>{
+              modalInfo = '对不起！您的手机号码格式有误'
+              console.log(error)
+            })
+        }else{
+          modalInfo = '对不起！您的手机号码格式有误'
+        }
         this.$store.dispatch({type: 'setModalInfo', val: modalInfo})
-        this.$store.dispatch({type: 'setSuccessActive', val: checkFlag})
+        this.$store.dispatch({type: 'setSuccessActive', val: successFlag})
         this.$store.dispatch({type: 'setModalActive', val: true})
-        // this.$store.dispatch({type: 'setModalInfo', val: modalInfo})
-        // this.$store.dispatch({type: 'setSuccessActive', val: checkFlag})
-        // this.$store.dispatch({type: 'setModalActive', val: true})
-        // let src = require('../assets/img/modal-icon-yes@2x.png')
-        // this.$alert(`
-        //      <div>
-        //        <img src="${src}" style="width: 50px;">
-        //        <p style="margin-top: 30px">您已成功提交！请保持电话畅通</p>
-        //        <p style="margin-top: 20px">5s</p>
-        //      </div>
-        //   `, '', {
-        //   dangerouslyUseHTMLString: true,
-        //   showConfirmButton: false,
-        //   center: true,
-        //   lockScroll: false
-        // }).then(() => {
-        //   setInterval(o => {
-        //     this.n--
-        //   }, 1000)
-        // });
-      },
-      // close(){
-      //   this.$store.dispatch({type: 'setModalActive', val: false})
-      // }
+      }
     }
   }
 </script>

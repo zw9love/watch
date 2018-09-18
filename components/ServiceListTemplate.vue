@@ -54,7 +54,7 @@
       <main class="main320">
         <CityPickerMobile/>
         <div class="store-list320">
-          <div class="store-cell320" v-for="(item, key) in tempList" :key="key" @click="storeClick(item)">
+          <div class="store-cell320" v-for="(item, key) in list" :key="key" @click="storeClick(item)">
             <div class="store-cell320-container">
               <div class="store-cell320-left">
                 <img src="../assets/img/store_images1@2x.png" alt="">
