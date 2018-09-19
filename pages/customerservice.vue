@@ -833,22 +833,22 @@
       height: 35px;
     }
 
-    .operation > #editor320 {
-      /*min-height: 30px;*/
-      height: 30px;
-      max-height: 120px;
-      flex: 1;
-      margin: 0 10px;
-      background-color: #fff;
-      border-radius: 7px;
-      outline: none;
-      border: none;
-      padding: 0 15px;
-      line-height: 30px;
-      font-size: 12px;
-      /*overflow: hidden;*/
+    /*.operation > #editor320 {*/
+      /*!*min-height: 30px;*!*/
+      /*height: 30px;*/
+      /*max-height: 120px;*/
+      /*flex: 1;*/
+      /*margin: 0 10px;*/
+      /*background-color: #fff;*/
+      /*border-radius: 7px;*/
+      /*outline: none;*/
+      /*border: none;*/
+      /*padding: 0 15px;*/
+      /*line-height: 30px;*/
+      /*font-size: 12px;*/
+      /*!*overflow: hidden;*!*/
 
-    }
+    /*}*/
 
     .test-textarea {
       flex: 1;
