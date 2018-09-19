@@ -17,8 +17,9 @@
       return { list: data.slice(0, 10), fullList: data}
     },
     methods: {
-      getMore(){
+      getMore(serviceListTemplate){
         this.list = this.fullList
+        serviceListTemplate.moreClickActive = true
       }
     }
   }

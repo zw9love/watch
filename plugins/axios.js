@@ -4,7 +4,7 @@ export default function (res) {
   let devToken = "debug"
   // console.log(res.store.state.token) // 利用状态管理器设置token
   $axios.onRequest(config => {
-    console.log('Making request to ' + config.url)
+    // console.log('Making request to ' + config.url)
     switch (config.url) {
       case '/login':
       case '/logout':

@@ -129,12 +129,13 @@
                  v-if="!rightActive" />
             <x-img :src="require('../assets/img/home_qualitycommitment__right_icon_yes@2x.png')" alt="" class="right-icon" v-else />
           </span>
-          <el-carousel indicator-position="none" :autoplay="false" arrow="never" height="638px" ref="caseCarousel">
+          <el-carousel indicator-position="none" :autoplay="false" arrow="never" height="538px" ref="caseCarousel">
             <el-carousel-item v-for="(item, key) in caseCarouselList" :key="key">
-              <div class="case-main-cell">
-                <img :src="item.src" alt="" class="bg" />
+              <div class="case-main-cell" :style="{backgroundImage: `url(${item.Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
+                <!--<img :src="item.Img" alt="" class="bg" />-->
                 <div class="case-info-container">
-                  <h3>追光机：百达翡丽手工精饰机芯部件 (Caliber CHR 29-535 PS)</h3>
+                  <!--<h3>追光机：百达翡丽手工精饰机芯部件 (Caliber CHR 29-535 PS)</h3>-->
+                  <h3>{{item.Title}}</h3>
                 </div>
               </div>
             </el-carousel-item>
@@ -408,6 +409,11 @@
     position: relative;
   }
 
+  .case-main-cell{
+    height: 538px;
+    position: relative;
+  }
+
   .case-main-cell img{
     vertical-align: middle;
     width: 100%;
@@ -418,6 +424,9 @@
     line-height: 100px;
     background: #1F1F1F;
     padding: 0 20px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
   }
 
   .case-info-container h3{

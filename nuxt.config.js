@@ -23,10 +23,11 @@ module.exports = {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta http-equiv="X-UA-Compatible" content="chrome=1" />
       */
-      { name :'format-detection', content: 'telephone=no'},
       { name :'renderer', content: 'webkit'},
-      { 'http-equiv' :'renderer', content: 'webkit'},
-      // { 'http-equiv' :'X-UA-Compatible', content: 'IE=edge'},
+      { name :'force-rendering', content: 'webkit'},
+      { 'http-equiv' :'X-UA-Compatible', content: 'IE=Edge,chrome=1'},
+      // { 'http-equiv' :'renderer', content: 'webkit'},
+      { name :'format-detection', content: 'telephone=no'},
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0' },
       { name: 'keywords', content: '名表维修,手表维修,手表维修中心,维修手表' },
       { name: 'description', content: '西亨名表维修中心官方授权维修点：百达翡丽、江诗丹顿、积家、欧米茄、劳力士、芝柏、宝珀等世界名表在线预约到店维修服务，预约电话:4009608888，现场维修，保证安全和品质。' },

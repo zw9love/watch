@@ -1,61 +1,61 @@
 <template>
   <div class="reservation">
     <div class="reservation-container320">
-      <!--<div v-for="(item, key) in reservationList" :key="key" style="display: flex">-->
+      <div v-for="(item, key) in reservationList" :key="key" style="display: flex">
         <!--<div class="reservation-cell320" >-->
-          <!--<x-img :src="item.completedSrc" alt="" v-if="item.completed"/>-->
+          <!--<x-img :src="item.completedSrc" alt=""  v-if="completeList[key]"/>-->
           <!--<x-img :src="item.noCompletedSrc" alt="" v-else/>-->
           <!--<span>{{item.info}}</span>-->
         <!--</div>-->
-        <!--<div class="reservation-cell320" v-if="key !== (reservationList.length - 1)">-->
-          <!--<x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />-->
-        <!--</div>-->
+        <div class="reservation-cell320" v-if="key !== (reservationList.length - 1)">
+          <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
+        </div>
+      </div>
+      <!--<div class="reservation-cell320">-->
+        <!--<x-img :src="require('../assets/img/home_reservationprocess_icon1_mobile@2x.png')" alt="" />-->
+        <!--<span>到店送修</span>-->
       <!--</div>-->
-      <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_reservationprocess_icon1_mobile@2x.png')" alt="" />
-        <span>到店送修</span>
-      </div>
-      <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
-      </div>
-      <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_reservationprocess_icon2_mobile@2x.png')" alt="" />
-        <span>预检并报价</span>
-      </div>
-      <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
-      </div>
-      <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_reservationprocess_icon3_mobile@2x.png')" alt="" />
-        <span>确认服务</span>
-      </div>
-      <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
-      </div>
-      <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_reservationprocess_icon4_mobile@2x.png')" alt="" />
-        <span>维修保养</span>
-      </div>
-      <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
-      </div>
-      <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_reservationprocess_icon5_mobile@2x.png')" alt="" />
-        <span>服务完成</span>
-      </div>
-      <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
-      </div>
-      <div class="reservation-cell320">
-        <x-img :src="require('../assets/img/home_reservationprocess_icon6_mobile@2x.png')" alt="" />
-        <span>告知客户</span>
-      </div>
+      <!--<div class="reservation-cell320">-->
+        <!--<x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />-->
+      <!--</div>-->
+      <!--<div class="reservation-cell320">-->
+        <!--<x-img :src="require('../assets/img/home_reservationprocess_icon2_mobile@2x.png')" alt="" />-->
+        <!--<span>预检并报价</span>-->
+      <!--</div>-->
+      <!--<div class="reservation-cell320">-->
+        <!--<x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />-->
+      <!--</div>-->
+      <!--<div class="reservation-cell320">-->
+        <!--<x-img :src="require('../assets/img/home_reservationprocess_icon3_mobile@2x.png')" alt="" />-->
+        <!--<span>确认服务</span>-->
+      <!--</div>-->
+      <!--<div class="reservation-cell320">-->
+        <!--<x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />-->
+      <!--</div>-->
+      <!--<div class="reservation-cell320">-->
+        <!--<x-img :src="require('../assets/img/home_reservationprocess_icon4_mobile@2x.png')" alt="" />-->
+        <!--<span>维修保养</span>-->
+      <!--</div>-->
+      <!--<div class="reservation-cell320">-->
+        <!--<x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />-->
+      <!--</div>-->
+      <!--<div class="reservation-cell320">-->
+        <!--<x-img :src="require('../assets/img/home_reservationprocess_icon5_mobile@2x.png')" alt="" />-->
+        <!--<span>服务完成</span>-->
+      <!--</div>-->
+      <!--<div class="reservation-cell320">-->
+        <!--<x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />-->
+      <!--</div>-->
+      <!--<div class="reservation-cell320">-->
+        <!--<x-img :src="require('../assets/img/home_reservationprocess_icon6_mobile@2x.png')" alt="" />-->
+        <!--<span>告知客户</span>-->
+      <!--</div>-->
     </div>
     <div class="reservation-container">
      <div v-for="(item, key) in reservationList" :key="key">
        <div class="reservation-cell">
          <div class="reservation-cell-container">
-           <x-img :src="item.completedSrc" alt="" v-if="item.completed && checkProcess"/>
+           <x-img :src="item.completedSrc" alt="" v-if="completeList[key]"/>
            <x-img :src="item.noCompletedSrc" alt="" v-else/>
            <span>{{item.info}}</span>
          </div>
@@ -138,18 +138,25 @@
       checkProcess: {
         type: Boolean,
         default: false
+      },
+      completeList: {
+        type: Array,
+        default(){
+          return [false, false, false, false, false, false]
+        }
       }
     },
     data(){
       return {
         reservationList: [
-          {completed: false, info: '到店送修', completedSrc: require('../assets/img/home_reservationprocess_icon1_mobile@2x.png'), noCompletedSrc: require('../assets/img/home_reservationprocess_icon1@2x.png')},
-          {completed: false, info: '预检并报价', completedSrc: require('../assets/img/home_reservationprocess_icon2_mobile@2x.png'), noCompletedSrc: require('../assets/img/home_reservationprocess_icon2@2x.png')},
-          {completed: false, info: '确认服务', completedSrc: require('../assets/img/home_reservationprocess_icon3_mobile@2x.png'), noCompletedSrc: require('../assets/img/home_reservationprocess_icon3@2x.png')},
-          {completed: false, info: '维修保养', completedSrc: require('../assets/img/home_reservationprocess_icon4_mobile@2x.png'), noCompletedSrc: require('../assets/img/home_reservationprocess_icon4@2x.png')},
-          {completed: true, info: '服务完成', completedSrc: require('../assets/img/home_reservationprocess_icon5_mobile@2x.png'), noCompletedSrc: require('../assets/img/home_reservationprocess_icon5@2x.png')},
-          {completed: false, info: '告知客户', completedSrc: require('../assets/img/home_reservationprocess_icon6_mobile@2x.png'), noCompletedSrc: require('../assets/img/home_reservationprocess_icon6@2x.png')},
-        ]
+          {info: '到店送修', completedSrc: require('../assets/img/home_reservationprocess_icon1_mobile@2x.png'), noCompletedSrc: require('../assets/img/home_reservationprocess_icon1@2x.png')},
+          {info: '预检并报价', completedSrc: require('../assets/img/home_reservationprocess_icon2_mobile@2x.png'), noCompletedSrc: require('../assets/img/home_reservationprocess_icon2@2x.png')},
+          {info: '确认服务', completedSrc: require('../assets/img/home_reservationprocess_icon3_mobile@2x.png'), noCompletedSrc: require('../assets/img/home_reservationprocess_icon3@2x.png')},
+          {info: '维修保养', completedSrc: require('../assets/img/home_reservationprocess_icon4_mobile@2x.png'), noCompletedSrc: require('../assets/img/home_reservationprocess_icon4@2x.png')},
+          {info: '服务完成', completedSrc: require('../assets/img/home_reservationprocess_icon5_mobile@2x.png'), noCompletedSrc: require('../assets/img/home_reservationprocess_icon5@2x.png')},
+          {info: '告知客户', completedSrc: require('../assets/img/home_reservationprocess_icon6_mobile@2x.png'), noCompletedSrc: require('../assets/img/home_reservationprocess_icon6@2x.png')},
+        ],
+
       }
     }
   }

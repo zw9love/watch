@@ -12,8 +12,9 @@
           <div class="store-list">
             <div class="store-cell-wrapper" v-for="(item, key) in list" :key="key">
               <div class="store-cell">
-                <div class="store-cell-left">
-                  <img src="../assets/img/store_images1@2x.png" alt="">
+                <div class="store-cell-left" :style="{backgroundImage: `url(${item.Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
+                  <!--<img src="../assets/img/store_images1@2x.png" alt="">-->
+                  <!--<img :src="item.Img" alt="">-->
                 </div>
                 <div class="store-cell-right">
                   <p><strong>{{item.Name}}</strong></p>
@@ -37,7 +38,7 @@
               </div>
               <div class="store-line"></div>
             </div>
-            <div class="get-more" v-if="fullList.length > 10">
+            <div class="get-more" v-if="fullList.length > 10 && !moreClickActive">
               <span @click="getMore">查看更多 >></span>
             </div>
           </div>
@@ -56,8 +57,8 @@
         <div class="store-list320">
           <div class="store-cell320" v-for="(item, key) in list" :key="key" @click="storeClick(item)">
             <div class="store-cell320-container">
-              <div class="store-cell320-left">
-                <img src="../assets/img/store_images1@2x.png" alt="">
+              <div class="store-cell320-left" :style="{backgroundImage: `url(${item.Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
+                <!--<img src="../assets/img/store_images1@2x.png" alt="">-->
               </div>
               <div class="store-cell320-right">
                 <p><strong>{{item.Name}}</strong></p>
@@ -147,6 +148,7 @@
     data(){
       return {
         addressActive: false,
+        moreClickActive: false,
         href: ''
       }
     },
@@ -155,7 +157,7 @@
     },
     methods: {
       getMore() {
-        this.$emit('getMore')
+        this.$emit('getMore', this)
       },
       goAddress(){
         this.addressActive = true

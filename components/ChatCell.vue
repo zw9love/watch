@@ -49,7 +49,7 @@
   }
 </script>
 
-<style scoped lang="stylus">
+<style scoped>
   .main-cell {
     /*max-width: 800px;*/
     overflow: hidden;
@@ -130,6 +130,7 @@
     position: relative;
     margin-left: 30px;
     margin-right: 30px;
+    /*box-shadow: 0px 8px 7px 1px rgba(51, 51, 51, .1)*/
   }
 
   .main-cell-info > p.content {

@@ -43,7 +43,7 @@
 
     <!--预约流程-->
     <h3 class="reservation-title">预约流程</h3>
-    <Reservation />
+    <Reservation :completeList="completeList"/>
     <!--Footer-->
     <Footer />
   </div>
@@ -67,6 +67,11 @@
       Reservation,
       HeaderMobile,
       Tabbar
+    },
+    data(){
+      return {
+        completeList: [true, true, true, true, true, true]
+      }
     },
     methods: {
 

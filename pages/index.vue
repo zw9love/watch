@@ -345,16 +345,12 @@
         <el-carousel indicator-position="none" :autoplay="false" arrow="never" height="300px" ref="technicianCarousel">
           <el-carousel-item v-for="(item, key) in technicianCarouselList" :key="key">
             <div class="certification-imgContainer">
-              <img :src="require('../assets/img/home_certificationtechnician__image@2x.jpg')" alt=""/>
+              <img :src="item.Icon" alt=""/>
             </div>
             <div class="certification-infoContainer">
               <h1 class="certification-title">{{item.Name}}</h1>
               <p class="certification-info">
                 {{item.Intro}}
-                <!--出生于瑞士日内瓦利瓦兹小镇，从小受钟表文化熏陶，多年来专注钟表工艺与钟表维修技术。<br/>-->
-                <!--至今名表品鉴经验颇丰，维修技术更是精益求精。<br/>-->
-                <!--现任瑞士国际钟表协会委员、西亨名表维修技术总监、前百达翡丽英才中心技术讲师、<br/>-->
-                <!--前瑞士SMH培训讲师。-->
               </p>
             </div>
           </el-carousel-item>
@@ -380,7 +376,8 @@
             <el-carousel-item v-for="(item, key) in technicianCarouselList" :key="key" :name="key+''">
               <div class="certification320">
                 <div class="certification320-img">
-                  <x-img :src="require('../assets/img/home_certificationtechnician__image@2x.jpg')" alt=""/>
+                  <!--<x-img :src="require('../assets/img/home_certificationtechnician__image@2x.jpg')" alt=""/>-->
+                  <x-img :src="item.Icon" alt=""/>
                 </div>
                 <strong>{{item.Name}}</strong>
                 <span class="level-info">国家高级技师</span>
@@ -448,7 +445,7 @@
     <div class="reservation">
       <ServiceTitle info="Reservation process" name="预约流程"
                     content="透明维修，诚信可靠，四重质检"></ServiceTitle>
-      <Reservation/>
+      <Reservation :completeList="completeList" />
       <div class="reservation-main">
         <div class="reservation-main-left">
           <div class="reservation-main-left-wrapper">
@@ -800,6 +797,7 @@
         name: '',
         phone: '',
         verification: '',
+        completeList: [true, false, false, false, false, false],
         options: [
           {value: '选项1', label: '时计故障'},
           {value: '选项2', label: '零件损坏'},
@@ -1023,7 +1021,7 @@
         // myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）", function (point) {
         myGeo.getPoint("深圳凯旋城", function (point) {
           if (point) {
-            console.log(point)
+            // console.log(point)
             map.centerAndZoom(point, 16);
             map.addOverlay(new BMap.Marker(point));
           } else {

@@ -58,5 +58,12 @@
         this.fullList = data
       }
     },
+    methods: {
+      getMore(serviceListTemplate){
+        this.list = this.fullList
+        serviceListTemplate.moreClickActive = true
+      }
+    }
+
   }
 </script>

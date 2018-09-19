@@ -9,7 +9,7 @@
         <OrderCell :item="item" />
         <h3 class="main-title">维修进度</h3>
         <div class="orderdetails-reservation">
-          <Reservation :checkProcess="true"/>
+          <Reservation :completeList="completeList"/>
           <div class="reservation-details">
             <div class="reservation-details-wrapper">
               <div class="reservation-details-cell" v-for="(item, key) in processList" :key="key" :class="{'reservation-details-active': item.completed}">
@@ -94,7 +94,8 @@
           {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes6@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no6@2x.png'), info: '检测中'},
           {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes7@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no7@2x.png'), info: '已送修'},
           {completed: false, completeSrc: require('../../assets/img/demand_list_plan_icon_yes8@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no8@2x.png'), info: '已提交维修订单'},
-        ]
+        ],
+        completeList: [false, false, false, false, true, false],
       }
     }
   }

@@ -467,6 +467,9 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   text-overflow: ellipsis;
   /*white-space: nowrap;*/
   height: 160px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 .left-icon {

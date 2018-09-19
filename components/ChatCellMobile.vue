@@ -47,7 +47,7 @@
   }
 </script>
 
-<style scoped lang="stylus">
+<style scoped>
   .main320 .store-info {
     font-family: "PingFangSC-Regular";
     font-size: 12px;
@@ -75,6 +75,8 @@
     border: 1px solid #ccc;
     margin: 0;
     padding: 10px;
+    box-shadow: 0px 5px 12px 0px rgba(0, 0, 0, .1);
+    border-radius: 6px;
   }
 
   .main-cell-info > p.name {
@@ -122,6 +124,14 @@
   .main-customer-cell320 > img {
     margin: 0;
     margin-left: 10px;
+  }
+
+  .main-service-cell320 .main-cell-info{
+    background-color: #fff
+  }
+
+  .main-service-cell320 .main-cell-info > p.content{
+    display: inline-block
   }
 
   .main-service-cell320:before {
