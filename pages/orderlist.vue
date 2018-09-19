@@ -63,7 +63,21 @@
         return redirect(302, '/process')
       }
     },
-    async asyncData ({ params }) {
+    async asyncData ({ params, route }) {
+      let mainBtbIndex = 0
+      switch (route.name){
+        case 'orderlist-index':
+        case 'orderlist-all-pageNumber':
+          mainBtbIndex = 0
+          break;
+        case 'orderlist-repair-pageNumber':
+          mainBtbIndex = 1
+          break;
+        case 'orderlist-completed-pageNumber':
+          mainBtbIndex = 2
+          break;
+      }
+      return {mainBtbIndex}
       // return {currentPage: parseInt(params.pageNumber) || 1}
     },
     data() {
@@ -76,20 +90,21 @@
         ]
       }
     },
-    created(){
-      switch (this.$route.name){
-        case 'orderlist-index':
-        case 'orderlist-all':
-          this.mainBtbIndex = 0
-          break;
-        case 'orderlist-repair':
-          this.mainBtbIndex = 1
-          break;
-        case 'orderlist-completed':
-          this.mainBtbIndex = 2
-          break;
-      }
-    },
+    // created(){
+    //   // console.log(this.$route.name)
+    //   switch (this.$route.name){
+    //     case 'orderlist-index':
+    //     case 'orderlist-all-pageNumber':
+    //       this.mainBtbIndex = 0
+    //       break;
+    //     case 'orderlist-repair-pageNumber':
+    //       this.mainBtbIndex = 1
+    //       break;
+    //     case 'orderlist-completed-pageNumber':
+    //       this.mainBtbIndex = 2
+    //       break;
+    //   }
+    // },
     computed: {
       currentPage(){
         return parseInt(this.$route.params.pageNumber) || 1
