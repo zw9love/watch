@@ -1,5 +1,5 @@
 <template>
-  <ServiceListTemplate :list="list" :fullList="fullList" @getMore="getMore"/>
+  <ServiceListTemplate :list="list" :fullList="fullList" @getMore="getMore" @loadMoreData="loadMoreData"/>
 </template>
 
 <script>
@@ -18,6 +18,10 @@
     },
     methods: {
       getMore(serviceListTemplate){
+        this.list = this.fullList
+        serviceListTemplate.moreClickActive = true
+      },
+      loadMoreData(serviceListTemplate){
         this.list = this.fullList
         serviceListTemplate.moreClickActive = true
       }

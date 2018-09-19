@@ -1159,6 +1159,7 @@
       },
       brandIndexChange(index) {
         this.brandIndex = index
+        console.log(index)
       },
       brandClick(item, key) {
         this.brandIndex = key

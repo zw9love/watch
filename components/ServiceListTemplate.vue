@@ -38,7 +38,7 @@
               </div>
               <div class="store-line"></div>
             </div>
-            <div class="get-more" v-if="fullList.length > 10 && !moreClickActive">
+            <div class="get-more" v-if="moreActive">
               <span @click="getMore">查看更多 >></span>
             </div>
           </div>
@@ -76,6 +76,7 @@
           </div>
         </div>
       </main>
+      <load-more :tip="tip" v-show="moreActive" :showLoading="showLoading"></load-more>
     </div>
 
     <div v-transfer-dom>
@@ -149,15 +150,54 @@
       return {
         addressActive: false,
         moreClickActive: false,
-        href: ''
+        href: '',
+        loadMoreActive: true,
+        scrollLock: false,
+        showLoading: false,
+        tip: '上拉加载更多',
       }
     },
     mounted(){
       // alert(123)
+      this.loadMoreData()
+    },
+    computed: {
+      moreActive(){
+        return this.fullList.length > 10 && !this.moreClickActive
+      }
     },
     methods: {
       getMore() {
         this.$emit('getMore', this)
+      },
+      loadMoreData(){
+        // 可视窗的宽高
+        let width = document.documentElement.clientWidth
+        if(width > 768) return
+        let height = document.documentElement.clientHeight
+        window.addEventListener('scroll', o => {
+          // 滚动轴距离
+          let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+          // 文档总高度 尼玛坑
+          let allHeight = document.documentElement.scrollHeight || document.body.scrollHeight
+          // console.log(scrollTop)
+          if((height + scrollTop + 80 >= allHeight) && !this.scrollLock){
+            // console.log('进来了,就一次就够了。')
+            this.tip = '正在加载'
+            this.showLoading = true
+            // this.loadMoreActive = true
+            this.scrollLock = true
+            this.$nextTick(o => {
+              setTimeout(o => {
+                this.$emit('loadMoreData', this)
+                // this.commentList = this.commentList.concat(this.moreCommentList)
+                // // this.loadMoreActive = false
+                // this.tip = '没有更多了'
+                // this.showLoading = false
+              }, 1500)
+            })
+          }
+        })
       },
       goAddress(){
         this.addressActive = true
