@@ -1,55 +1,61 @@
 <template>
   <div class="reservation">
     <div class="reservation-container320">
-      <div v-for="(item, key) in reservationList" :key="key" style="display: flex">
+      <!--<div v-for="(item, key) in reservationList" :key="key" style="display: flex;flex: 1">-->
         <!--<div class="reservation-cell320" >-->
           <!--<x-img :src="item.completedSrc" alt=""  v-if="completeList[key]"/>-->
           <!--<x-img :src="item.noCompletedSrc" alt="" v-else/>-->
           <!--<span>{{item.info}}</span>-->
         <!--</div>-->
-        <div class="reservation-cell320" v-if="key !== (reservationList.length - 1)">
-          <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
-        </div>
+        <!--<div class="reservation-cell320" v-if="key !== (reservationList.length - 1)">-->
+          <!--<x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />-->
+        <!--</div>-->
+      <!--</div>-->
+      <div class="reservation-cell320">
+        <x-img :src="require('../assets/img/home_reservationprocess_icon1_mobile@2x.png')" alt="" v-if="completeList[0]"/>
+        <x-img :src="require('../assets/img/home_reservationprocess_icon1@2x.png')" alt="" v-else/>
+        <span>到店送修</span>
       </div>
-      <!--<div class="reservation-cell320">-->
-        <!--<x-img :src="require('../assets/img/home_reservationprocess_icon1_mobile@2x.png')" alt="" />-->
-        <!--<span>到店送修</span>-->
-      <!--</div>-->
-      <!--<div class="reservation-cell320">-->
-        <!--<x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />-->
-      <!--</div>-->
-      <!--<div class="reservation-cell320">-->
-        <!--<x-img :src="require('../assets/img/home_reservationprocess_icon2_mobile@2x.png')" alt="" />-->
-        <!--<span>预检并报价</span>-->
-      <!--</div>-->
-      <!--<div class="reservation-cell320">-->
-        <!--<x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />-->
-      <!--</div>-->
-      <!--<div class="reservation-cell320">-->
-        <!--<x-img :src="require('../assets/img/home_reservationprocess_icon3_mobile@2x.png')" alt="" />-->
-        <!--<span>确认服务</span>-->
-      <!--</div>-->
-      <!--<div class="reservation-cell320">-->
-        <!--<x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />-->
-      <!--</div>-->
-      <!--<div class="reservation-cell320">-->
-        <!--<x-img :src="require('../assets/img/home_reservationprocess_icon4_mobile@2x.png')" alt="" />-->
-        <!--<span>维修保养</span>-->
-      <!--</div>-->
-      <!--<div class="reservation-cell320">-->
-        <!--<x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />-->
-      <!--</div>-->
-      <!--<div class="reservation-cell320">-->
-        <!--<x-img :src="require('../assets/img/home_reservationprocess_icon5_mobile@2x.png')" alt="" />-->
-        <!--<span>服务完成</span>-->
-      <!--</div>-->
-      <!--<div class="reservation-cell320">-->
-        <!--<x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />-->
-      <!--</div>-->
-      <!--<div class="reservation-cell320">-->
-        <!--<x-img :src="require('../assets/img/home_reservationprocess_icon6_mobile@2x.png')" alt="" />-->
-        <!--<span>告知客户</span>-->
-      <!--</div>-->
+      <div class="reservation-cell320">
+        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
+      </div>
+      <div class="reservation-cell320">
+        <x-img :src="require('../assets/img/home_reservationprocess_icon2_mobile@2x.png')" alt="" v-if="completeList[1]"/>
+        <x-img :src="require('../assets/img/home_reservationprocess_icon2@2x.png')" alt="" v-else/>
+        <span>预检并报价</span>
+      </div>
+      <div class="reservation-cell320">
+        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
+      </div>
+      <div class="reservation-cell320">
+        <x-img :src="require('../assets/img/home_reservationprocess_icon3_mobile@2x.png')" alt="" v-if="completeList[2]"/>
+        <x-img :src="require('../assets/img/home_reservationprocess_icon3@2x.png')" alt="" v-else/>
+        <span>确认服务</span>
+      </div>
+      <div class="reservation-cell320">
+        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
+      </div>
+      <div class="reservation-cell320">
+        <x-img :src="require('../assets/img/home_reservationprocess_icon4_mobile@2x.png')" alt="" v-if="completeList[3]"/>
+        <x-img :src="require('../assets/img/home_reservationprocess_icon4@2x.png')" alt="" v-else/>
+        <span>维修保养</span>
+      </div>
+      <div class="reservation-cell320">
+        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
+      </div>
+      <div class="reservation-cell320">
+        <x-img :src="require('../assets/img/home_reservationprocess_icon5_mobile@2x.png')" alt="" v-if="completeList[4]"/>
+        <x-img :src="require('../assets/img/home_reservationprocess_icon5@2x.png')" alt="" v-else/>
+        <span>服务完成</span>
+      </div>
+      <div class="reservation-cell320">
+        <x-img :src="require('../assets/img/home_flow_icon0@2x.png')" alt="" class="arrow" />
+      </div>
+      <div class="reservation-cell320">
+        <x-img :src="require('../assets/img/home_reservationprocess_icon6_mobile@2x.png')" alt="" v-if="completeList[5]"/>
+        <x-img :src="require('../assets/img/home_reservationprocess_icon6@2x.png')" alt="" v-else/>
+        <span>告知客户</span>
+      </div>
     </div>
     <div class="reservation-container">
      <div v-for="(item, key) in reservationList" :key="key">
@@ -239,6 +245,9 @@
     .reservation-cell320 {
       position: relative;
       flex: 1;
+      /*display: flex;*/
+      /*justify-content: center;*/
+      align-self: center;
     }
 
     .reservation-cell320:nth-child(odd) {
@@ -254,9 +263,9 @@
 
     .reservation-cell320 img.arrow {
       width: 100%;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+      /*position: absolute;*/
+      /*top: 50%;*/
+      /*transform: translateY(-50%);*/
       /*width: 12px;*/
       /*height: 12px;*/
     }
