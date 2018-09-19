@@ -349,7 +349,7 @@
             </div>
             <div class="certification-infoContainer">
               <h1 class="certification-title">{{item.Name}}</h1>
-              <p class="certification-info">
+              <p class="certification-info" :title="item.Intro">
                 {{item.Intro}}
               </p>
             </div>
@@ -1162,6 +1162,7 @@
         console.log(index)
       },
       brandClick(item, key) {
+        if(this.brandIndex === key) return
         this.brandIndex = key
         this.brandPCList = []
         this.$nextTick(function () {
