@@ -52,8 +52,8 @@ module.exports = {
     // {src: '~/plugins/v-distpicker', ssr: false},
     {src: '~/plugins/vue-picture-preview', ssr: false},
     {src: '~plugins/video-player-plugin.js', ssr: false },
-    {src: '~plugins/vue-scroller.js', ssr: false }
-  ],
+    {src: '~plugins/vue-scroller.js', ssr: false },
+ ],
   axios: {
     // prefix: '/api/',
     proxy: true // Can be also an object with default options

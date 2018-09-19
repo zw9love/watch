@@ -55,7 +55,7 @@
             <div class="brand-main-left">
               <ul>
                 <li v-for="(item, key) in brandBtnList" :key="key">
-                  <span class="brand-main-btn" :class="{active: key === brandIndex}" @click="brandClick(item.url, key)">{{item.name}}</span>
+                  <span class="brand-main-btn" :class="{active: key === brandIndex}" @click="brandClick(item, key)">{{item.ClassName}}</span>
                 </li>
               </ul>
             </div>
@@ -780,16 +780,27 @@
       // // console.log(data)
       // return { friendList: data }
 
+      // 品牌封面
+      let brandOption = {
+        url: '/api/BrandCover/GetCategory',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      let brandRes = await app.$axios(brandOption)
+
       // 认证技师
-      let cerTechoption = {
+      let cerTechOption = {
         url: '/api/CerTechnician',
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         }
       }
-      let {data} = await app.$axios(cerTechoption)
-      return { technicianCarouselList: data }
+      let cerTechRes = await app.$axios(cerTechOption)
+
+      return { technicianCarouselList: cerTechRes.data, brandBtnList: brandRes.data }
     },
     data() {
       return {
@@ -843,7 +854,7 @@
             {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
             {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
             {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
+            {src: 'https://timgsa.baidu.com/timgsamg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
           ],
           [
             {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
@@ -917,7 +928,7 @@
           ]
         ],
         brandPCList: [],
-        certificationList: [1, 1, 1, 1, 1],
+        certificationList: [],
         value4: [new Date(), new Date()],
         brandBtnList: [
           {name: '常见品牌', url: '/'},
@@ -1149,7 +1160,7 @@
       brandIndexChange(index) {
         this.brandIndex = index
       },
-      brandClick(url, key) {
+      brandClick(item, key) {
         this.brandIndex = key
         this.brandPCList = []
         this.$nextTick(function () {
