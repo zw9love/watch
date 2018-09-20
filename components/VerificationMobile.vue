@@ -1,13 +1,10 @@
 <template>
-  <div class="verification-container" :class="{'verification-active-container': verificationActive}"
-       :style="verificationStyle" @click="verificationClick">
-    <span>{{verificationInfo}}</span>
-  </div>
+  <span class="phone-verification" :class="{'phone-verification-active': verificationActive}"  @click="verificationClick">{{verificationInfo}}</span>
 </template>
 
 <script>
   export default {
-    name: "Verification",
+    name: "VerificationMobile",
     props: {
       verificationStyle: {
         type:Object,
@@ -53,43 +50,32 @@
           }
         }, 1000)
 
-        // if(!this.verificationActive){
-        //
-        // }
       },
     }
   }
 </script>
 
 <style scoped>
-  .verification-container {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 140px;
-    height: 50px;
-    background-color: #333;
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
-    line-height: 50px;
-    text-align: center;
-    cursor: pointer;
-  }
+  @media (max-width:768px){
+    .phone-verification{
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 100px;
+      line-height: 42px;
+      background-color: #333;
+      font-size: 12px;
+      color: #fff;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+      text-align: center;
 
-  .verification-active-container {
-    background-color: #00A629;
-    color: #fff
-  }
+    }
 
-  .verification-container span {
-    color: #fff;
-    font-size: 18px;
-    font-family: "PingFangSC-Regular";
-  }
-
-  @media (max-width: 768px) {
-    .verification-container {
-      display: none;
+    .phone-verification-active{
+      background-color: #1aac19;
     }
   }
+
 </style>

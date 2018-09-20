@@ -47,7 +47,7 @@
           <span class="input">
             <el-input v-model="form.verification" placeholder="请输入验证码" maxlength="6" clearable style="width: 502px;"></el-input>
             <!--<span class="verification-btn">获取验证码</span>-->
-            <Verification :verification-style="{width: '150px'}" />
+            <Verification :verification-style="{width: '150px'}" :form="form"/>
           </span>
         </div>
         <div class="main-cell">
@@ -127,7 +127,8 @@
           <span class="input320">
               <x-input v-model="form.verification" name="mobile" :max="6" style="width:calc(100% - 100px)" placeholder="请输入验证码" keyboard="number"></x-input>
             </span>
-          <span class="phone-verification">获取验证码</span>
+          <!--<span class="phone-verification">获取验证码</span>-->
+          <VerificationMobile :form="form"/>
         </div>
         <div class="main-cell320">
           <span class="field320">预约时间</span>
@@ -151,6 +152,7 @@
   import Footer from '../../components/Footer'
   import HeaderMobile from '../../components/HeaderMobile'
   import Verification from '../../components/Verification'
+  import VerificationMobile from '../../components/VerificationMobile'
   export default {
     head () {
       return {
@@ -166,7 +168,8 @@
       Header,
       Footer,
       HeaderMobile,
-      Verification
+      Verification,
+      VerificationMobile
     },
     data() {
       return {
@@ -512,22 +515,6 @@
       text-align: center;
       padding: 8px 0;
       color: #888;
-    }
-
-    .phone-verification{
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: 100%;
-      width: 100px;
-      line-height: 44px;
-      background-color: #1aac19;
-      font-size: 12px;
-      color: #fff;
-      border-bottom-right-radius: 5px;
-      border-top-right-radius: 5px;
-      text-align: center;
-
     }
 
     .commit-order-btn{

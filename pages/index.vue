@@ -7,7 +7,7 @@
     <!--banner-->
     <div class="banner-container">
       <!--<img :src="require('../assets/img/home_banner_bg@2x.png')" alt="" class="banner_pc">-->
-      <img :src="require('../assets/img/home_banner_bg@2x.png')" class="banner_pc" :offset="-100"/>
+      <img :src="require('../assets/img/home_banner_bg@2x.jpg')" class="banner_pc"/>
       <img :src="require('../assets/img/home_banner320_bg@2x.png')" alt="" class="banner_phone">
       <!--<div class="banner-shadow">-->
       <!--<p>维修中心地址：北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）</p>-->
@@ -63,7 +63,7 @@
             <div class="brand-main-right">
               <ul>
                 <li v-for="(item, key) in brandPCList" :key="key" @click="goService">
-                  <x-img :src="item.src" alt=""/>
+                  <x-img :src="item.Img" alt=""/>
                 </li>
               </ul>
             </div>
@@ -77,7 +77,7 @@
                   <ul class="brand-main-img-wrapper" ref="brandMainImgWrapper">
                     <!--<li><img src="../assets/img/home_banner_bg@2x.png" alt="" /></li>-->
                     <li v-for="(entry, index) in item" :key="index" @click="goto('/customerservice')">
-                      <img :src="entry.src" alt=""/>
+                      <img :src="entry.Img" alt=""/>
                       <!--<x-img  :src="entry.src" class="ximg-demo" error-class="ximg-error" :offset="0"></x-img>-->
                     </li>
                   </ul>
@@ -501,7 +501,7 @@
 
               <div class="reservation-input-cell">
                 <span class="reservation-key">手机号</span>
-                <el-input v-model="form.phone" placeholder="请输入您的真实手机号，便于查询维修进度" resize="both" clearable></el-input>
+                <el-input v-model="form.phone" placeholder="请输入您的真实手机号，便于查询维修进度" resize="both" clearable maxlength="11"></el-input>
               </div>
 
               <div class="reservation-input-cell">
@@ -512,7 +512,7 @@
                 <!--@click="verificationClick">-->
                 <!--<span>{{verificationInfo}}</span>-->
                 <!--</div>-->
-                <Verification/>
+                <Verification :form="form"/>
               </div>
 
               <div class="reservation-input-cell">
@@ -781,14 +781,25 @@
       // return { friendList: data }
 
       // 品牌封面
-      let brandOption = {
+      let brandCategoryOption = {
         url: '/api/BrandCover/GetCategory',
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         }
       }
+      let brandCategoryRes = await app.$axios(brandCategoryOption)
+
+      // 品牌封面
+      let brandOption = {
+        url: '/api/BrandCover',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
       let brandRes = await app.$axios(brandOption)
+      // console.log(brandRes.data)
 
       // 认证技师
       let cerTechOption = {
@@ -800,7 +811,7 @@
       }
       let cerTechRes = await app.$axios(cerTechOption)
 
-      return { technicianCarouselList: cerTechRes.data, brandBtnList: brandRes.data }
+      return { technicianCarouselList: cerTechRes.data, brandBtnList: brandCategoryRes.data, brandList: [brandRes.data]}
     },
     data() {
       return {

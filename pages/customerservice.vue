@@ -183,53 +183,53 @@
       })
 
       // ws = new WebSocket("ws://localhost:9090");
-      // ws = new WebSocket("ws://192.168.1.216:1000/api/Chat/Connect?type=0&pwd=123456&user=%E6%B8%B8%E5%AE%A2201891968148");
+      ws = new WebSocket("ws://192.168.1.216:1000/api/Chat/Connect?type=0&pwd=123456&user=%E6%B8%B8%E5%AE%A2201891968148");
       // // ws = new WebSocket("ws://192.168.1.216:1000/api/Chat/Connect?type=0&pwd=123456&user=cyf");
       //
-      // ws.onopen = () => {
-      //   // Web Socket 已连接上，使用 send() 方法发送数据
-      //   // let json = {
-      //   //   name: '大熊',
-      //   //   age: 30
-      //   // }
-      //   // ws.send(JSON.stringify(json));
-      //   console.log("连接打开成功，数据发送中...");
-      // }
-      //
-      // ws.onmessage = (evt) => {
-      //   let received_msg = JSON.parse(evt.data);
-      //   // received_msg.infoType = 'text'
-      //   let obj = {}
-      //   obj.type = 'service'
-      //   obj.infoType = 'text'
-      //   obj.content = received_msg
-      //   obj.time = this.getTime()
-      //   /**
-      //      // 客服发送消息json
-      //      {
-      //          "contentType": "内容的类型", // text 或 image
-      //          "content": "内容",
-      //          "name": "客服名"，
-      //          "number": "客服编号"，
-      //          "time": "时间戳"
-      //      }
-      //    */
-      //   this.list.push(obj)
-      //   if(mobileActive){
-      //     this.mobileToBottom()
-      //   }else{
-      //     this.pcToBottom()
-      //   }
-      // }
-      //
-      // ws.onclose = () => {
-      //   // 关闭 websocket
-      //   console.log("连接已关闭...");
-      // }
-      //
-      // window.addEventListener('beforeunload', () => {
-      //   ws.close()
-      // })
+      ws.onopen = () => {
+        // Web Socket 已连接上，使用 send() 方法发送数据
+        // let json = {
+        //   name: '大熊',
+        //   age: 30
+        // }
+        // ws.send(JSON.stringify(json));
+        console.log("连接打开成功，数据发送中...");
+      }
+
+      ws.onmessage = (evt) => {
+        let received_msg = JSON.parse(evt.data);
+        // received_msg.infoType = 'text'
+        let obj = {}
+        obj.type = 'service'
+        obj.infoType = 'text'
+        obj.content = received_msg
+        obj.time = this.getTime()
+        /**
+           // 客服发送消息json
+           {
+               "contentType": "内容的类型", // text 或 image
+               "content": "内容",
+               "name": "客服名"，
+               "number": "客服编号"，
+               "time": "时间戳"
+           }
+         */
+        this.list.push(obj)
+        if(mobileActive){
+          this.mobileToBottom()
+        }else{
+          this.pcToBottom()
+        }
+      }
+
+      ws.onclose = () => {
+        // 关闭 websocket
+        console.log("连接已关闭...");
+      }
+
+      window.addEventListener('beforeunload', () => {
+        ws.close()
+      })
     },
     destroyed(){
       ws.close()
@@ -296,9 +296,9 @@
                   })
                 })
                 .catch(error => {
-                  root.$store.dispatch({type: 'setModalInfo', val: '文件上传失败！'})
-                  root.$store.dispatch({type: 'setSuccessActive', val: false})
-                  root.$store.dispatch({type: 'setModalActive', val: true})
+                  // root.$store.dispatch({type: 'setModalInfo', val: '文件上传失败！'})
+                  // root.$store.dispatch({type: 'setSuccessActive', val: false})
+                  // root.$store.dispatch({type: 'setModalActive', val: true})
                 })
               // console.log(result)
               root.$refs.uploadPc.value = ''

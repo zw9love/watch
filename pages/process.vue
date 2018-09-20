@@ -22,7 +22,7 @@
           <span class="input" >
             <el-input v-model="form.verification" placeholder="请输入验证码" maxlength="6"  clearable  style="width: 452px;"></el-input>
             <!--<span class="verification-btn">获取验证码</span>-->
-            <Verification :verification-style="{width: '150px'}" />
+            <Verification :verification-style="{width: '150px'}" :form="form"/>
           </span>
         </div>
         <span class="search-process-btn" @click="checkProcess">查询进度</span>
@@ -50,7 +50,7 @@
           <span class="input320">
               <x-input v-model="form.verification" name="mobile" :max="6" placeholder="请输入验证码" keyboard="number" style="width:calc(100% - 100px)"></x-input>
             </span>
-          <span class="phone-verification">获取验证码</span>
+          <VerificationMobile :form="form"/>
         </div>
         <div class="main-cell320" @click="checkProcess">
           <!--<nuxt-link to="/orderlist/all/1" class="commit-order-btn">查询进度</nuxt-link>-->
@@ -67,6 +67,7 @@
   import Footer from '../components/Footer'
   import Tabbar from '../components/Tabbar'
   import Verification from '../components/Verification'
+  import VerificationMobile from '../components/VerificationMobile'
 
   export default {
     head () {
@@ -84,7 +85,8 @@
       Footer,
       HeaderMobile,
       Tabbar,
-      Verification
+      Verification,
+      VerificationMobile
     },
     data() {
       return {
@@ -249,22 +251,6 @@
       flex: 1;
       border: 1px solid #dadada;
       border-radius: 5px;
-    }
-
-    .phone-verification{
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: 100%;
-      width: 100px;
-      line-height: 42px;
-      background-color: #1aac19;
-      font-size: 12px;
-      color: #fff;
-      border-bottom-right-radius: 5px;
-      border-top-right-radius: 5px;
-      text-align: center;
-
     }
 
     .commit-order-btn{

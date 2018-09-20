@@ -386,6 +386,78 @@
     color: #C8936B;
   }
 
+  @media (max-width: 1440px) {
+    .navbar-container{
+      margin-top: 10px;
+    }
+
+    .navbar-left > ul > li{
+      padding-bottom: 0px;
+    }
+
+    .navbar-left > ul > li a.logo-container{
+      width: 120px;
+      height: 72px;
+    }
+
+    .navbar-left > ul > li p.ch-name{
+      font-size: 24px;
+    }
+
+    .navbar-left > ul > li p.en-name{
+      font-size: 14px;
+    }
+
+    .navbar-right div:first-child{
+      width: 40px;
+      height: 40px;
+    }
+
+    .navbar-right .navbar-right-top{
+      font-size: 16px;
+    }
+
+    .navbar-right .navbar-right-bottom{
+      font-size: 24px;
+    }
+
+    .navigation-container{
+      margin-top: 10px;
+      height: 48px;
+    }
+
+    .navigation-wrapper ul li.navigation-cell{
+      line-height: 48px;
+    }
+
+    .navigation-wrapper ul li.navigation-cell a{
+      font-size: 14px;
+    }
+
+    .navigation-search-wrapper{
+      height: 32px;
+      margin-top: 8px;
+    }
+
+    .navigation-search-wrapper .search-txt{
+      height: 100%
+    }
+
+    .navigation-search-wrapper .search-btn{
+      height: 100%
+    }
+
+    .navigation-search-wrapper .search-btn img{
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+  }
+
   @media (max-width: 768px) {
     .navbar-container, .navigation-container {
       display: none;

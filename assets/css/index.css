@@ -16,7 +16,7 @@
 */
 .banner-container img {
   width: 100%;
-  max-width: 1280px;
+  /*max-width: 1280px;*/
   vertical-align: middle;
 }
 
@@ -29,16 +29,16 @@
   background-color: #000000;
   text-align: center;
   position: relative;
-  /*padding-top: 39.0625%;*/
   /*max-width: 1280px;*/
-  height: 500px
+  /*height: 500px;*/
+  padding-top: 26.04%;
 }
 
 .banner-container img.banner_pc{
   position: absolute;
   left: 50%;
   top: 0;
-  max-width: 1280px;
+  /*max-width: 1280px;*/
   width: 100%;
   height: 100%;
   transform: translateX(-50%);
@@ -955,4 +955,5 @@ ul.service-quality-main-info li div.imgInfo .imgInfo-container span.info {
   0%{top: 0;}
   100%{top: -200%;}
 }
+
 
