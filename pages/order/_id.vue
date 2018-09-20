@@ -23,9 +23,9 @@
           <el-select v-model="form.faultType" placeholder="请选择" clearable>
             <el-option
               v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.label">
+              :key="item.Id"
+              :label="item.BaseName"
+              :value="item.Id">
             </el-option>
           </el-select>
         </span>
@@ -184,6 +184,14 @@
           date1:  '',
           date2:  '',
           date: ''
+          // brand: '',
+          // name: 'zengwei',
+          // verification: '2050',
+          // phone: '18514075699',
+          // faultType: '',
+          // date1:  1538064000000,
+          // date2:  '13:00 - 14:00',
+          // date: ''
         },
         options: [
           {value: '选项1', label: '时计故障'},
@@ -219,6 +227,25 @@
           '15:00-16:00', '16:00-17:00', '17:00-18:00', '18:00-19:00', '19:00-20:00'
         ]
       };
+    },
+    async asyncData({app}) {
+      // 故障类型列表
+      let faultOption = {
+        url: '/api/AptList/GetFaultList',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      let {data} = await app.$axios(faultOption)
+      let arr = []
+      let obj = {}
+      data.forEach((o, i) => {
+        arr.push(o.BaseName)
+        obj[o.BaseName] = o.Id
+      })
+
+      return { options: data, optionsMobile: arr, faultObject: obj}
     },
     created(){
       let date = new Date()
@@ -260,6 +287,7 @@
       },
       submitOrder(){
         let {date1, date2, brand, name, faultType, phone, verification} = this.form
+        console.log(this.form)
 
         if(!brand.trim()){
           this.$store.dispatch({type: 'setModalInfo', val: '请输入手表品牌！'})
@@ -268,7 +296,7 @@
           return;
         }
 
-        if(!faultType.trim()){
+        if(!faultType){
           this.$store.dispatch({type: 'setModalInfo', val: '请选择手表故障类型！'})
           this.$store.dispatch({type: 'setSuccessActive', val: false})
           this.$store.dispatch({type: 'setModalActive', val: true})
@@ -301,7 +329,8 @@
           this.$store.dispatch({type: 'setSuccessActive', val: false})
           this.$store.dispatch({type: 'setModalActive', val: true})
           return;
-        }else{
+        }
+        else{
           this.form.date1 = new Date(date1).getTime()
         }
 
@@ -312,11 +341,41 @@
           return;
         }
 
-        this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorder'})
+        let storeId = this.$route.params.id
+        let url = `/api/AptList/SaveAppointment?SiteId=${this.$store.state.siteId}&StoresId=${storeId}&Remakr=${brand}&TroubleNo=${faultType}&UserName=${name}&Mobile=${phone}&Code=${verification}&AptDate=${'2018-09-09'}&AptTime=${date2}`
+        this.$axios(url, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(res => {
+            // this.$store.dispatch({type: 'setModalInfo', val: '预约成功！'})
+            // this.$store.dispatch({type: 'setSuccessActive', val: true})
+            // this.$store.dispatch({type: 'setModalActive', val: true})
+            // console.log(res.data)
+            let {code, id, msg} = res.data
+            switch (code) {
+              case 0:
+                this.$store.dispatch({type: 'setModalInfo', val: msg})
+                this.$store.dispatch({type: 'setSuccessActive', val: false})
+                this.$store.dispatch({type: 'setModalActive', val: true})
+                break;
+              case 1:
+                this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorder/' + id})
+                break
+
+            }
+          })
+          .catch(error => {
+            this.$store.dispatch({type: 'setModalInfo', val: '预约失败！'})
+            this.$store.dispatch({type: 'setSuccessActive', val: false})
+            this.$store.dispatch({type: 'setModalActive', val: true})
+          })
+
       },
       submitOrderMobile(){
         let {date, brand, name, faultType, phone, verification} = this.form
-        console.log(this.form)
         if(!brand.trim()){
           this.$store.dispatch({type: 'setModalInfo', val: '请输入手表品牌！'})
           this.$store.dispatch({type: 'setSuccessActive', val: false})
@@ -324,11 +383,15 @@
           return;
         }
 
+
+        let fault = ''
         if(!faultType.trim()){
           this.$store.dispatch({type: 'setModalInfo', val: '请选择手表故障类型！'})
           this.$store.dispatch({type: 'setSuccessActive', val: false})
           this.$store.dispatch({type: 'setModalActive', val: true})
           return;
+        }else{
+          fault = this.faultObject[faultType]
         }
 
         if(!name.trim()){
@@ -359,7 +422,40 @@
           return;
         }
 
-        this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorder'})
+        // console.log(this.form)
+
+
+        let dateArr = date.split(' ')
+        let date1 = dateArr[0]
+        let date2 = dateArr[1]
+        let storeId = this.$route.params.id
+        let url = `/api/AptList/SaveAppointment?SiteId=${this.$store.state.siteId}&StoresId=${storeId}&Remakr=${brand}&TroubleNo=${fault}&UserName=${name}&Mobile=${phone}&Code=${verification}&AptDate=${date1}&AptTime=${date2}`
+        this.$axios(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(res => {
+            let {code, id, msg} = res.data
+            switch (code) {
+              case 0:
+                this.$store.dispatch({type: 'setModalInfo', val: msg})
+                this.$store.dispatch({type: 'setSuccessActive', val: false})
+                this.$store.dispatch({type: 'setModalActive', val: true})
+                break;
+              case 1:
+                this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorder/' + id})
+                break
+
+            }
+          })
+          .catch(error => {
+            this.$store.dispatch({type: 'setModalInfo', val: '预约失败！'})
+            this.$store.dispatch({type: 'setSuccessActive', val: false})
+            this.$store.dispatch({type: 'setModalActive', val: true})
+          })
+
       }
     }
   }

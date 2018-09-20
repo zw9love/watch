@@ -18,6 +18,7 @@
 .main{
   max-width: 1282px;
   margin: 100px auto 0 auto;
+  min-height: 70vh;
 }
 
 .main-btn-cell{

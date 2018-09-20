@@ -34,7 +34,7 @@
 
     <!--按钮块-->
     <div class="btn-container">
-      <nuxt-link class="process" to="/orderList">订单进度</nuxt-link>
+      <nuxt-link class="process" to="/process">订单进度</nuxt-link>
       <nuxt-link class="back" to="/" >返回首页</nuxt-link>
     </div>
 
@@ -56,6 +56,7 @@
   import HeaderMobile from '../components/HeaderMobile'
   import Tabbar from '../components/Tabbar'
   export default {
+    scrollToTop: true,
     fetch ({ store, redirect }) {
       if (!store.state.authUser) {
         return redirect(302, '/process')

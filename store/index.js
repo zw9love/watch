@@ -24,6 +24,7 @@ const store = () => new Vuex.Store({
     modalActive: false,
     successActive: false,
     modalInfo: '',
+    siteId: 1
   },
   mutations: {
     setCityName: (state, {val}) => {

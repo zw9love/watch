@@ -64,7 +64,7 @@
   export default {
     name: "Footer",
     created(){
-      this.$axios('/api/FriendshipLink', {
+      this.$axios('/api/FriendshipLink/%7BId%7D?SiteID=' + this.$store.state.siteId, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -110,14 +110,14 @@
         let successFlag = false
         let checkFlag = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(number)
         if(checkFlag){
-          await this.$axios('/api/CallBack?Mobile=' + number, {
+          await this.$axios(`/api/CallBack?Mobile=${number}&SiteId=${this.$store.state.siteId}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             }
           })
             .then((res) => {
-              console.log(res)
+              // console.log(res)
               modalInfo = '您已成功提交！请保持电话畅通'
               successFlag = true
               // if (res.status === 401) {
@@ -128,7 +128,7 @@
             })
             .catch((error)=>{
               modalInfo = '对不起！您的手机号码格式有误'
-              console.log(error)
+              // console.log(error)
             })
         }else{
           modalInfo = '对不起！您的手机号码格式有误'

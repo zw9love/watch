@@ -8,7 +8,7 @@
     components: {
       ServiceListTemplate
     },
-    async asyncData({params, env, error, query, app}) {
+    async asyncData({params, env, error, query, app, store}) {
       let queryAddress = ''
       if (query.address) {
         queryAddress = query.address
@@ -16,7 +16,7 @@
         queryAddress = query.province + query.city + query.area
       }
       let cityOption = {
-        url: '/api/StoreManage/GetPaging?Search=' + encodeURI(queryAddress),
+        url: '/api/StoreManage/GetPaging?Search=' + encodeURI(queryAddress) + '&ProvinceId=%7BProvinceId%7D&CityId=%7BCityId%7D&SiteID=' + store.state.siteId +'&PageSize=%7BPageSize%7D&PageNum=%7BPageNum%7D',
         methods: 'GET',
         headers: {
           //'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -45,7 +45,7 @@
           queryAddress = query.province + query.city + query.area
         }
         let cityOption = {
-          url: '/api/StoreManage/GetPaging?Search=' + encodeURI(queryAddress),
+          url: '/api/StoreManage/GetPaging?Search=' + encodeURI(queryAddress) + '&ProvinceId=%7BProvinceId%7D&CityId=%7BCityId%7D&SiteID=' + this.$store.state.siteId +'&PageSize=%7BPageSize%7D&PageNum=%7BPageNum%7D',
           methods: 'GET',
           headers: {
             //'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',

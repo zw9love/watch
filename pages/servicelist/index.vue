@@ -8,9 +8,9 @@
     components: {
       ServiceListTemplate
     },
-    async asyncData({app}) {
+    async asyncData({app, store}) {
       let caseOption = {
-        url: '/api/StoreManage',
+        url: '/api/StoreManage/%7BId%7D?SiteID=' + store.state.siteId,
         methods: 'GET'
       }
       let {data} = await app.$axios(caseOption)

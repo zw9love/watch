@@ -112,7 +112,24 @@
           this.$store.dispatch({type: 'setModalActive', val: true})
           return;
         }
-        this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this})
+
+
+        let url = `api/AptList/SaveAppointment?Mobile=${phone}&Code=${verification}`
+        this.$axios(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(res => {
+            this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this})
+          })
+          .catch(error => {
+            this.$store.dispatch({type: 'setModalInfo', val: '查询进度失败！'})
+            this.$store.dispatch({type: 'setSuccessActive', val: false})
+            this.$store.dispatch({type: 'setModalActive', val: true})
+          })
+
       },
       checkProcessMobile(){
         console.log(this.form)

@@ -80,8 +80,8 @@
     },
     methods: {
       close(){
-        this.$emit('close', false)
         clearInterval(this.timer)
+        this.$emit('close', false)
       }
     }
   }

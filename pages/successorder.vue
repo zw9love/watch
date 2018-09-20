@@ -18,23 +18,24 @@
         <p class="success-more">请按预约时间准时到达，到店请出示你的预约短信。</p>
       </div>
 
-      <!--预约具体信息-->
-      <main class="reservation-main">
-        <!--<img src="../assets/img/booking_make_icon1@2x.png" alt="">-->
-        <x-img :src="require('../assets/img/booking_make_icon1@2x.png')" alt="" />
-        <div class="reservation-main-container">
-          <p class="phone">
-            您的联系手机：18059236533
-            <span class="tip">（用于查询维修进度）</span>
-          </p>
-          <p class="time">预约到店时间：2018-09-13 10:00-11:00</p>
-          <p class="address">维修中心店址：北京市西城区西单北大街甲133号君太百货北门西亨钟表维修中心（西单大悦城旁）</p>
-        </div>
-      </main>
+      <!--&lt;!&ndash;预约具体信息&ndash;&gt;-->
+      <!--<main class="reservation-main">-->
+        <!--&lt;!&ndash;<img src="../assets/img/booking_make_icon1@2x.png" alt="">&ndash;&gt;-->
+        <!--<x-img :src="require('../assets/img/booking_make_icon1@2x.png')" alt="" />-->
+        <!--<div class="reservation-main-container">-->
+          <!--<p class="phone">-->
+            <!--您的联系手机：18059236533-->
+            <!--<span class="tip">（用于查询维修进度）</span>-->
+          <!--</p>-->
+          <!--<p class="time">预约到店时间：2018-09-13 10:00-11:00</p>-->
+          <!--<p class="address">维修中心店址：北京市西城区西单北大街甲133号君太百货北门西亨钟表维修中心（西单大悦城旁）</p>-->
+        <!--</div>-->
+      <!--</main>-->
+      <nuxt-child />
 
       <!--按钮块-->
       <div class="btn-container">
-        <nuxt-link class="process" to="/orderList">订单进度</nuxt-link>
+        <nuxt-link class="process" to="/process">订单进度</nuxt-link>
         <nuxt-link class="back" to="/" >返回首页</nuxt-link>
       </div>
 
@@ -43,7 +44,7 @@
 
       <!--预约流程-->
       <h3 class="reservation-title">预约流程</h3>
-      <Reservation :completeList="completeList"/>
+      <Reservation />
       <!--Footer-->
       <Footer />
     </div>
@@ -68,14 +69,6 @@
       Reservation,
       HeaderMobile,
       Tabbar
-    },
-    data(){
-      return {
-        completeList: []
-      }
-    },
-    methods: {
-
     }
   }
 </script>
@@ -113,44 +106,6 @@
     font-family: "PingFangSC-Regular";
     font-size: 24px;
   }
-
-  .reservation-main{
-    max-width: 1280px;
-    margin: 50px auto 0 auto;
-    position: relative;
-  }
-
-  .reservation-main >img{
-    vertical-align: middle;
-  }
-
-  .reservation-main-container{
-    position: absolute;
-    left: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .reservation-main-container .phone{
-    font-family: "PingFang SC";
-    font-size: 20px;
-  }
-
-  .reservation-main-container .phone .tip{
-    color: #999
-  }
-
-  .reservation-main-container .address{
-    font-family: "PingFangSC-Regular";
-    font-size: 20px;
-    margin-top: 10px;
-  }
-  .reservation-main-container .time{
-    font-family: "PingFangSC-Regular";
-    font-size: 20px;
-    margin-top: 10px;
-  }
-
 
   .btn-container{
     max-width: 1280px;
@@ -228,29 +183,6 @@
     .success-info-container >p.success-more{
       font-size: 14px;
       margin-top: 10px;
-    }
-
-    .reservation-main{
-      padding: 0 10px;
-      margin-top: 25px;
-    }
-
-    .reservation-main-container{
-      position: relative;
-      left: 0;
-      top: 0;
-      transform: none;
-      border: 1px solid #c8936b;
-      border-radius: 5px;
-      padding: 20px 15px;
-    }
-
-    .reservation-main >img{
-      display: none;
-    }
-
-    .reservation-main-container .phone,.reservation-main-container .time, .reservation-main-container .address{
-      font-size: 14px;
     }
 
     .btn-container{

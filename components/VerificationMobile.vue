@@ -37,6 +37,19 @@
           return;
         }
 
+        let url = `/api/AptList/GetVCodeBook?mobile=${phone}`
+        this.$axios(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .catch(error => {
+            this.$store.dispatch({type: 'setModalInfo', val: '验证码发送失败！'})
+            this.$store.dispatch({type: 'setSuccessActive', val: true})
+            this.$store.dispatch({type: 'setModalActive', val: true})
+          })
+
         this.verificationActive = true
         let count = 30
         this.verificationInfo = count-- + 'S'

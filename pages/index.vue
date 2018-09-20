@@ -70,7 +70,8 @@
           </div>
           <div class="brand-main-wrapper320">
             <!--<h3>{{msg}}</h3>-->
-            <div style="position: relative;: relative">
+            <!--<div style="position: relative;: relative">-->
+            <div>
               <swiper v-model="brandIndex" @on-index-change="brandIndexChange"
                       :show-dots="false" :show-desc-mask="false" :height="brandMainHeight + 'px'">
                 <swiper-item v-for="(item, key) in brandList" :key="key">
@@ -487,9 +488,9 @@
                 <el-select v-model="form.faultType" placeholder="请选择故障类型" clearable>
                   <el-option
                     v-for="item in options"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
+                    :key="item.Id"
+                    :label="item.BaseName"
+                    :value="item.Id">
                   </el-option>
                 </el-select>
               </div>
@@ -766,7 +767,7 @@
     //   let {data} = await app.$axios(option)
     //   return {msg: JSON.stringify(data)}
     // },
-    async asyncData({app}) {
+    async asyncData({app, store}) {
 
       // 友情链接
       // let friendOption = {
@@ -780,6 +781,8 @@
       // // console.log(data)
       // return { friendList: data }
 
+      let siteId = store.state.siteId
+
       // 品牌封面
       let brandCategoryOption = {
         url: '/api/BrandCover/GetCategory',
@@ -792,7 +795,7 @@
 
       // 品牌封面
       let brandOption = {
-        url: '/api/BrandCover',
+        url: '/api/BrandCover/%7BId%7D?SiteID=' + siteId + '&Category=' + brandCategoryRes.data[0].OptionClassID,
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -803,7 +806,7 @@
 
       // 认证技师
       let cerTechOption = {
-        url: '/api/CerTechnician',
+        url: '/api/CerTechnician/%7BId%7D?SiteID=' + siteId,
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -811,7 +814,17 @@
       }
       let cerTechRes = await app.$axios(cerTechOption)
 
-      return { technicianCarouselList: cerTechRes.data, brandBtnList: brandCategoryRes.data, brandList: [brandRes.data]}
+      // 故障类型
+      let faultOption = {
+        url: '/api/AptList/GetFaultList',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      let faultRes = await app.$axios(faultOption)
+
+      return { technicianCarouselList: cerTechRes.data, brandBtnList: brandCategoryRes.data, brandList: [brandRes.data, [], [], [], [], []], options: faultRes.data}
     },
     data() {
       return {
@@ -821,12 +834,12 @@
         verification: '',
         completeList: [true, false, false, false, false, false],
         options: [
-          {value: '选项1', label: '时计故障'},
-          {value: '选项2', label: '零件损坏'},
-          {value: '选项3', label: '清洗保养'},
-          {value: '选项4', label: '真假鉴定'},
-          {value: '选项5', label: '订制表带'},
-          {value: '选项6', label: '其他服务'},
+          // {value: '选项1', label: '时计故障'},
+          // {value: '选项2', label: '零件损坏'},
+          // {value: '选项3', label: '清洗保养'},
+          // {value: '选项4', label: '真假鉴定'},
+          // {value: '选项5', label: '订制表带'},
+          // {value: '选项6', label: '其他服务'},
         ],
         indicatorKey: 0,
         cerIndicatorKey: 0,
@@ -852,92 +865,7 @@
           {name: '南宁', value: 'nn', parent: 'gx'},
           {name: '桂林', value: 'gl', parent: 'gx'}
         ],
-        brandList: [
-          [
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timgsamg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-          ],
-          [
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-          ],
-          [
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-          ],
-          [
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390359632&di=72ab85c85c85d8b66f71750a94973480&imgtype=0&src=http%3A%2F%2Fwww.logoids.com%2FUploadFiles%2F2017-01%2F14842882861629758.jpg'},
-          ],
-          [
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390514785&di=c1449a21fddc0e20a59746ee797fe42f&imgtype=0&src=http%3A%2F%2Farticleimg.xbiao.com%2F2014%2F0721%2F20140721140593689612145.jpg'},
-          ],
-          [
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-            {src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536390561898&di=bd32d8ad1ffc78a3b090b5b79f8f4db9&imgtype=0&src=http%3A%2F%2Fwww.ruifuwatch.com%2FUploadFile%2FPhoto%2F2013-9%2F2013091009374011820.jpg'},
-          ]
-        ],
+        brandList: [],
         brandPCList: [],
         certificationList: [],
         value4: [new Date(), new Date()],
@@ -1005,12 +933,6 @@
         addressData: ChinaAddressV4Data,
         cityName: '北京',
         envList: [
-          // {name: '多功能校表仪', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
-          // {name: '隔尘抛光机', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
-          // {name: '多功能校表仪', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
-          // {name: '真空试水机', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
-          // {name: '多功能校表仪', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
-          // {name: '隔尘抛光机', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg'},
           {name: '名表测试仪', src: require('../assets/img/home_maintenanceequipment__images@2x.png')},
           {name: '真空试水机', src: require('../assets/img/home_maintenanceequipment__images1@2x.png')},
           {name: '隔尘抛光机', src: require('../assets/img/home_maintenanceequipment__images2@2x.png')},
@@ -1168,16 +1090,34 @@
       certificationIndexChange(index) {
         this.certificationIndex = index
       },
-      brandIndexChange(index) {
+      async brandIndexChange(index) {
         this.brandIndex = index
-        console.log(index)
+        let {data} = await this.$axios('/api/BrandCover/%7BId%7D?SiteID=' + this.$store.state.siteId + '&Category=' + this.brandBtnList[index].OptionClassID, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        //this.brandList[index] = data
+        this.$set(this.brandList, index, data)
+        // console.log(this.brandList)
       },
       brandClick(item, key) {
         if(this.brandIndex === key) return
         this.brandIndex = key
         this.brandPCList = []
-        this.$nextTick(function () {
-          this.brandPCList = this.brandList[this.brandIndex]
+        this.$nextTick(function(){
+          this.$axios('/api/BrandCover/%7BId%7D?SiteID=' + this.$store.state.siteId + '&Category=' + item.OptionClassID, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+            .then((res) => {
+              this.brandPCList = res.data
+            })
+          // this.brandPCList = this.brandList[this.brandIndex]
+         // this.brandPCList = data
         })
         // this.$set(this.brandPCList, 0)
         // console.log(this.brandIndex)
@@ -1258,13 +1198,53 @@
           this.$store.dispatch({type: 'setModalActive', val: true})
           return;
         }
-        this.$store.dispatch('login', {
-          username: 'demo',
-          password: 'demo',
-          axios: this.$axios,
-          self: this,
-          jumpPath: '/successorderfast'
+
+        let url = `/api/AptList/SaveAppointment?SiteId=${this.$store.state.siteId}&StoresId=%7BStoresId%7D&Remakr=${brand}&TroubleNo=${faultType}&UserName=${name}&Mobile=${phone}&Code=${verification}&AptDate=${'2018-09-09'}&AptTime=${date2}`
+        this.$axios(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
         })
+          .then(res => {
+            // this.$store.dispatch({type: 'setModalInfo', val: '预约成功！'})
+            // this.$store.dispatch({type: 'setSuccessActive', val: true})
+            // this.$store.dispatch({type: 'setModalActive', val: true})
+            // console.log(res.data)
+            let {code, id, msg} = res.data
+            switch (code) {
+              case 0:
+                this.$store.dispatch({type: 'setModalInfo', val: msg})
+                this.$store.dispatch({type: 'setSuccessActive', val: false})
+                this.$store.dispatch({type: 'setModalActive', val: true})
+                break;
+              case 1:
+                this.$store.dispatch('login', {
+                  username: 'demo',
+                  password: 'demo',
+                  axios: this.$axios,
+                  self: this,
+                  jumpPath: '/successorderfast'
+                })
+                break
+
+            }
+          })
+          .catch(error => {
+            this.$store.dispatch({type: 'setModalInfo', val: '预约失败！'})
+            this.$store.dispatch({type: 'setSuccessActive', val: false})
+            this.$store.dispatch({type: 'setModalActive', val: true})
+          })
+
+
+        // this.$store.dispatch('login', {
+        //   username: 'demo',
+        //   password: 'demo',
+        //   axios: this.$axios,
+        //   self: this,
+        //   jumpPath: '/successorderfast'
+        // })
+
       },
       goService() {
         window.open('/customerservice')
