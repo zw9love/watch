@@ -105,7 +105,9 @@
               <!--<h3>{{ item }}</h3>-->
               <!--</el-carousel-item>-->
               <el-carousel-item :name="key + ''" v-for="(item, key) in caseCarouselList" :key="key">
-                <img :src="item.src" alt="" />
+                <!--<img :src="item.Img" alt="" />-->
+                <span style="display: inline-block;width: 100%;height: 100%;" :style="{backgroundImage: `url(${item.Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
+                </span>
               </el-carousel-item>
             </el-carousel>
             <Indicators v-model="indicatorKey" :indicatorsStyle="{bottom: '-30px'}" :list="caseCarouselList" ></Indicators>

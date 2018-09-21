@@ -35,7 +35,7 @@
           :page-size="5"
           :current-page="currentPage"
           @current-change="currentChange"
-          :total="100">
+          :total="total">
         </el-pagination>
       </div>
     </div>
@@ -63,31 +63,48 @@
         return redirect(302, '/process')
       }
     },
-    async asyncData ({ params, route }) {
+    async asyncData ({ app, params, route }) {
+
+      // 订单数量
+      let orderNumOption = {
+        url: '/api/AptList/GetClassifyDate',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      let {data} = await app.$axios(orderNumOption)
+      let btnList = [
+        {name: '全部订单', href: "/orderlist/all/1", num: data.TotalCount},
+        {name: '维修中', href: "/orderlist/repair/1", num: data.RepairCount},
+        {name: '已完成', href: "/orderlist/completed/1", num: data.CompletedCount},
+      ]
+
       let mainBtbIndex = 0
+      let total = 0
       switch (route.name){
         case 'orderlist-index':
         case 'orderlist-all-pageNumber':
           mainBtbIndex = 0
+          total = data.TotalCount
           break;
         case 'orderlist-repair-pageNumber':
           mainBtbIndex = 1
+          total = data.RepairCount
           break;
         case 'orderlist-completed-pageNumber':
           mainBtbIndex = 2
+          total = data.CompletedCount
           break;
       }
-      return {mainBtbIndex}
+      return {mainBtbIndex, btnList, total}
       // return {currentPage: parseInt(params.pageNumber) || 1}
     },
     data() {
       return {
         mainBtbIndex: 0,
-        btnList: [
-          {name: '全部订单', href: "/orderlist/all/1", num: 100},
-          {name: '维修中', href: "/orderlist/repair/1", num: 0},
-          {name: '已完成', href: "/orderlist/completed/1", num: 0},
-        ]
+        btnList: [],
+        total: 0
       }
     },
     // created(){

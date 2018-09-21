@@ -70,7 +70,7 @@
               </div>
             </div>
             <div class="image-artical-right">
-              <div class="image-artical-right-cell" v-if="articleList[1]">
+              <div class="image-artical-right-cell" v-if="articleList[1]" style="margin-top: 0">
                 <nuxt-link :to="'/show/' + articleList[1].Id" :style="{backgroundImage: `url(${articleList[1].Img})`}">
                   <!--<img :src="articleList[1].Img" alt="">-->
                 </nuxt-link>
@@ -90,14 +90,14 @@
           </div>
         </div>
 
-        <!--<div class="single-artical">-->
-          <!--<nuxt-link to="/show/4">-->
+        <div class="single-artical" v-for="(item, key) in articleMoreList" :key="key">
+          <nuxt-link :to="'/show/' + item.Id"  :style="{backgroundImage: `url(${item.Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
             <!--<img src="../assets/img/case_images9@2x.png" alt="">-->
-          <!--</nuxt-link>-->
-          <!--<div class="title-bottom">-->
-            <!--<p>追光机：百达翡丽手工精饰机芯部件</p>-->
-          <!--</div>-->
-        <!--</div>-->
+          </nuxt-link>
+          <div class="title-bottom">
+            <p>{{item.Title}}</p>
+          </div>
+        </div>
 
       </main>
 
@@ -167,9 +167,9 @@
             </div>
           </div>
           <div class="main320-article-right">
-            <div class="main320-article-right-cell" v-if="articleList[1]">
+            <div class="main320-article-right-cell" v-if="articleList[1]" >
               <nuxt-link :to="'/show/' + articleList[1].Id" :style="{backgroundImage: `url(${articleList[1].Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
-                <img src="../assets/img/case_images7@2x.png" alt="">
+                <!--<img src="../assets/img/case_images7@2x.png" alt="">-->
               </nuxt-link>
               <div class="main320-article-shadow">
                 <span class="main320-article-info">{{articleList[1].Title}}</span>
@@ -177,7 +177,7 @@
             </div>
             <div class="main320-article-right-cell" v-if="articleList[2]">
               <nuxt-link :to="'/show/' + articleList[2].Id" :style="{backgroundImage: `url(${articleList[2].Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
-                <img src="../assets/img/case_images7@2x.png" alt="">
+                <!--<img src="../assets/img/case_images7@2x.png" alt="">-->
               </nuxt-link>
               <div class="main320-article-shadow">
                 <span class="main320-article-info">{{articleList[2].Title}}</span>
@@ -185,14 +185,14 @@
             </div>
           </div>
         </div>
-        <!--<div class="main320-banner-article">-->
-          <!--<nuxt-link to="/show/4">-->
+        <div class="main320-banner-article" v-for="(item, key) in articleMoreList" :key="key">>
+          <nuxt-link :to="'/show/' + item.Id"  :style="{backgroundImage: `url(${item.Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
             <!--<img src="../assets/img/case_images7@2x.png" alt="">-->
-          <!--</nuxt-link>-->
-          <!--<div class="main320-article-shadow">-->
-            <!--<span class="main320-article-info">追光者百达斐丽翻新</span>-->
-          <!--</div>-->
-        <!--</div>-->
+          </nuxt-link>
+          <div class="main320-article-shadow">
+            <span class="main320-article-info">{{item.Title}}</span>
+          </div>
+        </div>
       </div>
       <div class="line320"></div>
       <div class="comment320" style="position: relative;">
@@ -296,7 +296,7 @@
               sources: [
                 {
                   type: "video/mp4",
-                  src: "http://vjs.zencdn.net/v/oceans.mp4"
+                  src: "http://pfeed79l8.bkt.clouddn.com/%E7%BB%B4%E4%BF%AE%E8%BF%87%E7%A8%8B.mp4"
                 }
               ]
             },
@@ -357,7 +357,7 @@
         methods: 'GET'
       }
       let {data} = await app.$axios(caseOption)
-      return { articleList: data }
+      return { articleList: data, articleMoreList: data.slice(3) }
     },
     created(){
       // for (var i = 1; i <= 20; i++) {
@@ -715,10 +715,14 @@
   .single-artical {
     position: relative;
     margin-top: 60px;
-    /*padding-top: 47.96875%;*/
+    padding-top: 47.96875%;
   }
   .single-artical a{
-    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
   }
 
   .single-artical img {
@@ -1089,6 +1093,11 @@
     .main320-article-shadow .main320-article-info {
       color: #c8936b;
       font-size: 13px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      display: inline-block;
     }
   }
 

@@ -964,7 +964,7 @@
         let myGeo = new BMap.Geocoder();
         // 将地址解析结果显示在地图上,并调整地图视野
         // myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）", function (point) {
-        myGeo.getPoint("深圳凯旋城", function (point) {
+        myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心", function (point) {
           if (point) {
             // console.log(point)
             map.centerAndZoom(point, 16);

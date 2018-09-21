@@ -62,7 +62,7 @@
               </div>
               <div class="store-cell320-right">
                 <p><strong>{{item.FullName}}</strong></p>
-                <div class="store-cell320-info" @click.stop="goAddress">
+                <div class="store-cell320-info" @click.stop="goAddress(item)">
                   <img src="../assets/img/store_icon1@2x.png" alt="">
                   <span>{{item.ProvRegionName}}{{item.CityRegionName}}{{item.Addr}}</span>
                 </div>
@@ -93,8 +93,8 @@
             <div id="store-list-map"></div>
             <div class="address-info">
               <div class="address-info-left">
-                <strong>深圳店</strong>
-                <p>深圳市南山区微软科通大厦</p>
+                <!--<strong>深圳店</strong>-->
+                <p>{{goAddressName}}</p>
               </div>
               <div class="address-info-right">
                 <!--<a href="http://api.map.baidu.com/marker?location=116.40387397,39.91488908&title=北京市西城区西单北大街甲133号西亨钟表维修中心&content=111&output=html">-->
@@ -155,6 +155,7 @@
         scrollLock: false,
         showLoading: false,
         tip: '上拉加载更多',
+        goAddressName: ''
       }
     },
     mounted(){
@@ -199,8 +200,9 @@
           }
         })
       },
-      goAddress(){
+      goAddress(item){
         this.addressActive = true
+        this.goAddressName = item.ProvRegionName + item.CityRegionName + item.Addr
         this.$nextTick(function () {
           //   // DOM 现在更新了
           if (window.BMap) {
@@ -213,10 +215,10 @@
             // 创建地址解析器实例
             let myGeo = new BMap.Geocoder();
             // 将地址解析结果显示在地图上,并调整地图视野
-            myGeo.getPoint("深圳市南山区微软科通大厦", point => {
+            myGeo.getPoint(this.goAddressName, point => {
               if (point) {
                 console.log(point)
-                this.href = `http://api.map.baidu.com/marker?location=${point.lat},${point.lng}&title=微软科通大厦&content=微软科通大厦&output=html`
+                this.href = `http://api.map.baidu.com/marker?location=${point.lat},${point.lng}&title=${this.goAddressName}&content=${this.goAddressName}&output=html`
                 map.centerAndZoom(point, 16);
                 map.addOverlay(new BMap.Marker(point));
               } else {
