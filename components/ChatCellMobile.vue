@@ -9,6 +9,9 @@
           <p class="content" v-if="entry.infoType === 'image'">
             <img :src="entry.src" preview-nav-enable="false" v-preview="entry.src" class="upload-img"/>
           </p>
+          <p class="content" v-else-if="entry.infoType === 'expression'">
+            <img :src="entry.content" class="emoji-img"/>
+          </p>
           <p class="content" v-else v-html="entry.content">
             <!--{{entry.content}}-->
           </p>

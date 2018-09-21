@@ -73,15 +73,27 @@
       // Must be a number
       return /^\d+$/.test(params.id)
     },
-    async asyncData ({ params }) {
-      let item = Mock.mock({
-        'ids': params.id,
-        'price': '@integer(1000, 1000000)',
-        'completeActive': '@boolean',
-        'date': '@date("yyyy-MM-dd")'
-      })
-      // console.log(params.pageNumber)
-      return {item: item}
+    async asyncData ({ app, params }) {
+      // let item = Mock.mock({
+      //   'ids': params.id,
+      //   'price': '@integer(1000, 1000000)',
+      //   'completeActive': '@boolean',
+      //   'date': '@date("yyyy-MM-dd")'
+      // })
+      // // console.log(params.pageNumber)
+      // return {item: item}
+
+      let id = params.id
+      // 单个订单option
+      let orderOption = {
+        url: '/api/AptList/' + id,
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      let {data} = await app.$axios(orderOption)
+      return { item: data[0]}
     },
     data(){
       return {

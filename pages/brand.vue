@@ -131,13 +131,13 @@
           </span>
           <el-carousel indicator-position="none" :autoplay="false" arrow="never" height="538px" ref="caseCarousel">
             <el-carousel-item v-for="(item, key) in caseCarouselList" :key="key">
-              <div class="case-main-cell" :style="{backgroundImage: `url(${item.Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
+              <nuxt-link :to="'/show/' + item.Id" class="case-main-cell" :style="{backgroundImage: `url(${item.Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
                 <!--<img :src="item.Img" alt="" class="bg" />-->
                 <div class="case-info-container">
                   <!--<h3>追光机：百达翡丽手工精饰机芯部件 (Caliber CHR 29-535 PS)</h3>-->
                   <h3>{{item.Title}}</h3>
                 </div>
-              </div>
+              </nuxt-link>
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -412,6 +412,8 @@
   .case-main-cell{
     height: 538px;
     position: relative;
+    cursor: pointer;
+    display: block;
   }
 
   .case-main-cell img{
@@ -422,7 +424,7 @@
   .case-info-container{
     height: 100px;
     line-height: 100px;
-    background: #1F1F1F;
+    background: rgba(31,31,31,.8);
     padding: 0 20px;
     position: absolute;
     bottom: 0px;

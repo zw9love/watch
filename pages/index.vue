@@ -720,6 +720,7 @@
 
   import {ChinaAddressV4Data} from 'vux'
   import address from '../assets/json/address'
+  // 14.2857114
 
   export default {
     // head: {
@@ -933,12 +934,12 @@
         addressData: ChinaAddressV4Data,
         cityName: '北京',
         envList: [
-          {name: '名表测试仪', src: require('../assets/img/home_maintenanceequipment__images@2x.png')},
-          {name: '真空试水机', src: require('../assets/img/home_maintenanceequipment__images1@2x.png')},
-          {name: '隔尘抛光机', src: require('../assets/img/home_maintenanceequipment__images2@2x.png')},
-          {name: '超声波清洗机', src: require('../assets/img/home_maintenanceequipment__images4@2x.png')},
-          {name: '双咀工作台吸尘器', src: require('../assets/img/home_maintenanceequipment__images5@2x.png')},
-          {name: '手表自转仪', src: require('../assets/img/home_maintenanceequipment__images6@2x.png')},
+          {name: '名表测试仪', src: require('../assets/img/home_maintenanceequipment__images@2x.jpg')},
+          {name: '真空试水机', src: require('../assets/img/home_maintenanceequipment__images1@2x.jpg')},
+          {name: '隔尘抛光机', src: require('../assets/img/home_maintenanceequipment__images2@2x.jpg')},
+          {name: '超声波清洗机', src: require('../assets/img/home_maintenanceequipment__images3@2x.jpg')},
+          {name: '双咀工作台吸尘器', src: require('../assets/img/home_maintenanceequipment__images4@2x.jpg')},
+          {name: '手表自转仪', src: require('../assets/img/home_maintenanceequipment__images5@2x.jpg')},
         ],
         timer: null,
         datePickerOption: {
@@ -1007,6 +1008,14 @@
       // }
     },
     methods: {
+      getDouble(val){
+        val = val + ''
+        if(val.length > 1){
+          return val
+        }else{
+          return '0' + val
+        }
+      },
       reservationListScroll() {
         let reservationList = this.$refs.reservationList
         let parentHeight = reservationList.clientHeight / 2
@@ -1155,7 +1164,7 @@
           return;
         }
 
-        if (!faultType.trim()) {
+        if (!faultType) {
           this.$store.dispatch({type: 'setModalInfo', val: '请选择手表故障类型！'})
           this.$store.dispatch({type: 'setSuccessActive', val: false})
           this.$store.dispatch({type: 'setModalActive', val: true})
@@ -1183,13 +1192,15 @@
           return;
         }
 
+        let tempDate = ''
         if (!date1) {
           this.$store.dispatch({type: 'setModalInfo', val: '请选择预约日期！'})
           this.$store.dispatch({type: 'setSuccessActive', val: false})
           this.$store.dispatch({type: 'setModalActive', val: true})
           return;
-        } else {
-          this.form.date1 = new Date(date1).getTime()
+        }  else{
+          let date = new Date(date1)
+          tempDate = date.getFullYear() + '-' + this.getDouble(date.getMonth() + 1) + '-' + this.getDouble(date.getDate())
         }
 
         if (!date2) {
@@ -1199,7 +1210,7 @@
           return;
         }
 
-        let url = `/api/AptList/SaveAppointment?SiteId=${this.$store.state.siteId}&StoresId=%7BStoresId%7D&Remakr=${brand}&TroubleNo=${faultType}&UserName=${name}&Mobile=${phone}&Code=${verification}&AptDate=${'2018-09-09'}&AptTime=${date2}`
+        let url = `/api/AptList/SaveAppointment?SiteId=${this.$store.state.siteId}&StoresId=%7BStoresId%7D&Remakr=${brand}&TroubleNo=${faultType}&UserName=${name}&Mobile=${phone}&Code=${verification}&AptDate=${tempDate}&AptTime=${date2}`
         this.$axios(url, {
           method: 'POST',
           headers: {
@@ -1224,7 +1235,7 @@
                   password: 'demo',
                   axios: this.$axios,
                   self: this,
-                  jumpPath: '/successorderfast'
+                  jumpPath: '/successorderfast/' + id
                 })
                 break
 

@@ -1,3 +1,10 @@
+@media (max-width: 1280px){
+  .reservation-shadow{
+    width: 550px;
+  }
+}
+
+
 @media (max-width:768px){
   html{overflow-x: hidden}
   body{max-width: 768px;min-width: 320px;overflow-x: hidden}
@@ -6,7 +13,7 @@
     普通样式
    */
   .container{
-    padding-bottom: 14.2857114%;
+    padding-bottom: 14.285714%;
     /*padding-bottom: 22.222222%;*/
     padding-top: 46px;
     /*height: 100vh;*/

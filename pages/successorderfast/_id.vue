@@ -9,7 +9,6 @@
         <span class="tip">（用于查询维修进度）</span>
       </p>
       <p class="time">预约到店时间：{{orderObject.AptDate}} {{orderObject.AptTime}}</p>
-      <p class="address">维修中心店址：北京市西城区西单北大街甲133号君太百货北门西亨钟表维修中心（西单大悦城旁）</p>
     </div>
   </main>
 </template>

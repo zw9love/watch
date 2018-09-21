@@ -12,23 +12,23 @@
           <div class="store-list">
             <div class="store-cell-wrapper" v-for="(item, key) in list" :key="key">
               <div class="store-cell">
-                <div class="store-cell-left" :style="{backgroundImage: `url(${item.Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
+                <div class="store-cell-left" :style="{backgroundImage: `url(${item.ImgSceneThumbnail})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
                   <!--<img src="../assets/img/store_images1@2x.png" alt="">-->
                   <!--<img :src="item.Img" alt="">-->
                 </div>
                 <div class="store-cell-right">
-                  <p><strong>{{item.Name}}</strong></p>
+                  <p><strong>{{item.FullName}}</strong></p>
                   <div class="store-address">
                     <span><img src="../assets/img/store_icon1@2x.png" alt=""></span>
-                    <span class="store-address-info">{{item.BusinessAddr}}</span>
+                    <span class="store-address-info">{{item.ProvRegionName}}{{item.CityRegionName}}{{item.Addr}}</span>
                   </div>
                   <div class="store-phone">
                     <span><img src="../assets/img/store_icon2@2x.png" alt=""></span>
-                    <a :href="'tel:' + item.HotLine">{{item.HotLine}}</a>
+                    <a :href="'tel:' + item.Tel">{{item.Tel}}</a>
                   </div>
                   <div class="store-time">
                     <span><img src="../assets/img/store_icon3@2x.png" alt=""></span>
-                    <span>{{item.BusinessHours}}</span>
+                    <span>{{item.OfficeTimeAmStart}} - {{item.OfficeTimePmEnd}}</span>
                   </div>
                 </div>
                 <nuxt-link class="store-btn" :to="'/order/' + item.Id">
@@ -57,18 +57,18 @@
         <div class="store-list320">
           <div class="store-cell320" v-for="(item, key) in list" :key="key" @click="storeClick(item)">
             <div class="store-cell320-container">
-              <div class="store-cell320-left" :style="{backgroundImage: `url(${item.Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
+              <div class="store-cell320-left" :style="{backgroundImage: `url(${item.ImgSceneThumbnail})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
                 <!--<img src="../assets/img/store_images1@2x.png" alt="">-->
               </div>
               <div class="store-cell320-right">
-                <p><strong>{{item.Name}}</strong></p>
+                <p><strong>{{item.FullName}}</strong></p>
                 <div class="store-cell320-info" @click.stop="goAddress">
                   <img src="../assets/img/store_icon1@2x.png" alt="">
-                  <span>{{item.BusinessAddr}}</span>
+                  <span>{{item.ProvRegionName}}{{item.CityRegionName}}{{item.Addr}}</span>
                 </div>
                 <div class="store-cell320-info" @click.stop>
                   <img src="../assets/img/store_icon2@2x.png" alt="">
-                  <a :href="'tel:' + item.HotLine">{{item.HotLine}}</a>
+                  <a :href="'tel:' + item.Tel">{{item.Tel}}</a>
                 </div>
               </div>
             </div>

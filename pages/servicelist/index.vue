@@ -10,10 +10,12 @@
     },
     async asyncData({app, store}) {
       let caseOption = {
-        url: '/api/StoreManage/%7BId%7D?SiteID=' + store.state.siteId,
+        // url: '/api/FrmRepair/1?SiteID=' + store.state.siteId,
+        url: '/api/FrmRepair/',
         methods: 'GET'
       }
       let {data} = await app.$axios(caseOption)
+      console.log(data)
       return { list: data.slice(0, 10), fullList: data}
     },
     methods: {

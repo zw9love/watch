@@ -19,6 +19,12 @@
   }
 </script>
 <style>
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 html {
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
@@ -30,9 +36,12 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
-  box-sizing: border-box;
-  margin: 0;
+@media (min-width: 768px) {
+  html{
+    min-width: 1300px;
+  }
 }
+
+
 </style>
 

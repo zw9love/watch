@@ -114,15 +114,33 @@
         }
 
 
-        let url = `api/AptList/SaveAppointment?Mobile=${phone}&Code=${verification}`
+        let url = `/api/AptList?Mobile=${phone}&Code=${verification}`
         this.$axios(url, {
-          method: 'POST',
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json'
           }
         })
           .then(res => {
-            this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this})
+            console.log(res)
+            let {code, msg, data} = res.data
+            switch (code) {
+              case 0:
+                this.$store.dispatch({type: 'setModalInfo', val: msg})
+                this.$store.dispatch({type: 'setSuccessActive', val: false})
+                this.$store.dispatch({type: 'setModalActive', val: true})
+                break;
+              case 1:
+                if(data.length === 0){
+                  this.$store.dispatch({type: 'setModalInfo', val: '暂无维修订单！'})
+                  this.$store.dispatch({type: 'setSuccessActive', val: false})
+                  return this.$store.dispatch({type: 'setModalActive', val: true})
+                }
+                this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/orderlist/all/1'})
+                break
+
+            }
+            // this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this})
           })
           .catch(error => {
             this.$store.dispatch({type: 'setModalInfo', val: '查询进度失败！'})

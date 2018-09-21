@@ -2,7 +2,7 @@
   <div class="main-cell">
     <div class="main-cell-title">
       <span class="date">{{item.date}}</span>
-      <span class="number">订单编号：{{item.ids}}</span>
+      <span class="number">订单编号：{{item.Id}}</span>
       <span class="price">维修价格</span>
       <span class="discount">折扣</span>
       <span class="realpay">实付款</span>
@@ -17,17 +17,17 @@
         <p>手表型号：<span>5327G - 白金款</span></p>
         <p class="watch-service">手表服务：<span>拆分机芯并清洗手表服务拆分机芯并清洗手表服务拆分机芯并清洗</span></p>
       </span>
-      <span class="price">¥{{item.price}}</span>
-      <span class="discount"><span>¥{{parseInt(item.price * 0.2)}}</span><br/><span
+      <span class="price">¥{{item.Price}}</span>
+      <span class="discount"><span>¥{{parseInt(item.Price * 0.2)}}</span><br/><span
         class="discount-info">（在线预约8折优惠）</span></span>
-      <span class="realpay">¥{{parseInt(item.price * 0.8)}}</span>
+      <span class="realpay">¥{{item.AfterPrice}}</span>
 
-      <nuxt-link class="status complete" v-if="item.completeActive" :to="'/orderdetails/' + item.ids">
+      <nuxt-link class="status complete" v-if="item.completeActive" :to="'/orderdetails/' + item.Id">
         <img src="../assets/img/demand_list_button3@2x.png" alt="">
         <span class="status-info">已完成</span>
       </nuxt-link>
 
-      <nuxt-link class="status" v-else :to="'/orderdetails/' + item.ids">
+      <nuxt-link class="status" v-else :to="'/orderdetails/' + item.Id">
         <img src="../assets/img/demand_list_button1@2x.png" alt="">
         <span class="status-info">维修中</span>
       </nuxt-link>

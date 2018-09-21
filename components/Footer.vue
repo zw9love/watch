@@ -48,7 +48,8 @@
           <!--<nuxt-link to="/customerservice" @click.native>在线咨询</nuxt-link>-->
           <span @click="goService">在线咨询</span>
         </li>
-        <li>
+        <li class="clear-float"></li>
+        <li class="phone-icon-wrapper">
           <!--<img v-lazy="require('../assets/img/home_footer_icon_contacts@2x.png')" alt="" />-->
           <x-img :src="require('../assets/img/home_footer_icon_contacts@2x.png')"/>
         </li>
@@ -253,11 +254,16 @@
     vertical-align: middle;
   }
 
+  .bottom-talk ul li img{
+    vertical-align: middle;
+  }
+
   .bottom-talk-txt {
-    width: 500px;
+    /*width: 500px;*/
     height: 50px;
     padding: 10px;
     background-color: #fff;
+    width: 39.0625%
   }
 
   .bottom-talk-txt input {
@@ -273,12 +279,14 @@
   .bottom-talk-btn {
     position: relative;
     cursor: pointer;
+    width: 12.5%;
   }
 
   .bottom-talk-btn span, .bottom-talk-btn a {
     /*position: absolute;*/
     display: inline-block;
-    width: 160px;
+    /*width: 160px;*/
+    width: 100%;
     height: 50px;
     line-height: 50px;
     color: #fff;
@@ -293,6 +301,21 @@
     color: #BF9571;
     font-size: 24px;
     font-family: "PingFangSC-Medium";
+  }
+
+  @media (max-width: 1280px) {
+    .bottom-talk{
+      padding: 20px 0;
+    }
+
+    .clear-float{
+      display: block!important;
+      clear: both;
+    }
+
+    .phone-icon-wrapper, .bottom-talk-call{
+      margin-top: 20px;
+    }
   }
 
   @media (max-width: 768px) {

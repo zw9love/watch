@@ -4,15 +4,15 @@
     <div class="container">
       <!--nav-->
       <div class="nav">
-          <div class="nav-title">
-            <span><span class="spe-info">名表维修服务中心</span> 08号客服 正在为您服务...</span>
-          </div>
-          <div class="nav-end" @click="endTalk">
+        <div class="nav-title">
+          <span><span class="spe-info">名表维修服务中心</span> 08号客服 正在为您服务...</span>
+        </div>
+        <div class="nav-end" @click="endTalk">
             <span class="nav-end-icon">
                 <img src="../assets/img/customer_service_end.png"/>
             </span>
-            <span class="nav-end-info" >结束对话</span>
-          </div>
+          <span class="nav-end-info">结束对话</span>
+        </div>
       </div>
       <!--banner-->
       <!--<div class="banner">-->
@@ -23,8 +23,8 @@
       <main class="main" ref="main">
         <div class="main-container" ref="mainContainer">
           <div class="banner">
-            <img src="../assets/img/customer_service_left.jpg" />
-            <img src="../assets/img/customer_service_right.jpg" />
+            <img src="../assets/img/customer_service_left.jpg"/>
+            <img src="../assets/img/customer_service_right.jpg"/>
           </div>
           <!--<div class="main-tip"><span>2018-8-10 09:23:23 请求了对话</span></div>-->
           <ChatCell v-for="(entry, key) in list" :key="key" :entry="entry"/>
@@ -38,14 +38,17 @@
           <!--onclick="document.getElementById('upload-txt').click()"-->
           <img src="../assets/img/add.png" alt="" id="upload" @click.stop="uploadPc"/>
           <form ref="formObject">
-            <input type="file" name="file" hidden id="upload-txt" accept="image/*" ref="uploadPc" @change="uploadPcChange">
+            <input type="file" name="file" hidden id="upload-txt" accept="image/*" ref="uploadPc"
+                   @change="uploadPcChange">
           </form>
           <div class="call-back">
-            <input type="text" maxlength="11" class="call-back-txt" placeholder="请输入手机号码" @keyup.enter="callYouBack" v-model="phoneNumber">
+            <input type="text" maxlength="11" class="call-back-txt" placeholder="请输入手机号码" @keyup.enter="callYouBack"
+                   v-model="phoneNumber">
             <span class="call-back-btn" @click="callYouBack">给您回电</span>
           </div>
         </div>
-        <div id="editor" class="input-txt" placeholder="请在此输入..." contenteditable="true" ref="editorPC" @keydown="editorPCKeydown"></div>
+        <div id="editor" class="input-txt" placeholder="请在此输入..." contenteditable="true" ref="editorPC"
+             @keydown="editorPCKeydown"></div>
         <button class="send" @click.stop="send">发送</button>
         <div class="emoji" v-show="emojiActive">
           <ul class="emoji-container">
@@ -60,7 +63,7 @@
       <HeaderMobile title="在线客服"></HeaderMobile>
 
       <!--<div class="nav320">-->
-        <!--<span class="nav320-title">在线客服</span>-->
+      <!--<span class="nav320-title">在线客服</span>-->
       <!--</div>-->
 
       <main class="main320" @click.stop="mainMobileClick" ref="mainMobile" :style="{paddingBottom}">
@@ -95,7 +98,8 @@
             <img src="../assets/img/add.png" alt="" class="add" @click.stop="addMobileClick">
           </span>
           <!--<input id="editor320" class="input-txt320" placeholder="请在此输入111..." type="search" autocomplete="off" autocomplete="off">-->
-          <div class="test-textarea" contenteditable="true" placeholder="请输入描述内容..." @focus="editorMobileFocus" @blur="editorMobileBlur" ref="editorMobile"></div>
+          <div class="test-textarea" contenteditable="true" placeholder="请输入描述内容..." @focus="editorMobileFocus"
+               @blur="editorMobileBlur" ref="editorMobile"></div>
           <!--<textarea id="editor320" class="input-txt320" placeholder="请在此输入..."></textarea>-->
           <!--<button class="send320">发送</button>-->
           <!--<button id="openwebsocket">开启</button>-->
@@ -119,14 +123,16 @@
                   <img src="../assets/img/photo.png" alt="">
               </span>
               <span class="popup-photo-info">相册</span>
-              <input type="file" name="file" accept="image/*" class="upload-txt320" hidden ref="photoMobile" @change="photoMobileChange">
+              <input type="file" name="file" accept="image/*" class="upload-txt320" hidden ref="photoMobile"
+                     @change="photoMobileChange">
             </div>
             <div class="popup-photo-cell" @click.stop="camera">
               <span class="popup-photo-img" id="camera-wrapper">
                   <img src="../assets/img/camera.png" alt="">
               </span>
               <span class="popup-photo-info">拍照</span>
-              <input type="file" name="file" accept="image/*" capture="camera" class="camera-txt" hidden ref="camera" @change="photoMobileChange">
+              <input type="file" name="file" accept="image/*" capture="camera" class="camera-txt" hidden ref="camera"
+                     @change="photoMobileChange">
             </div>
           </div>
         </div>
@@ -151,7 +157,7 @@
       ChatCellMobile,
       Modal
     },
-    data(){
+    data() {
       return {
         inputVal: '',
         phoneNumber: '',
@@ -169,10 +175,10 @@
         previewActive: false,
       }
     },
-    created(){
+    created() {
       // this.previewActive = true
     },
-    mounted(){
+    mounted() {
       // alert(111)
       this.previewActive = true
       let mobileActive = window.innerWidth <= 768
@@ -201,12 +207,12 @@
         // received_msg.infoType = 'text'
         let obj = {}
         obj.type = 'service'
-        obj.infoType = 'text'
-        obj.content = received_msg
-        obj.time = this.getTime()
+        obj.infoType = received_msg.ContentType
+        obj.content = received_msg.Content
+        obj.time = received_msg.MsgTime
         /**
-           // 客服发送消息json
-           {
+         // 客服发送消息json
+         {
                "contentType": "内容的类型", // text 或 image
                "content": "内容",
                "name": "客服名"，
@@ -215,9 +221,9 @@
            }
          */
         this.list.push(obj)
-        if(mobileActive){
+        if (mobileActive) {
           this.mobileToBottom()
-        }else{
+        } else {
           this.pcToBottom()
         }
       }
@@ -225,16 +231,17 @@
       ws.onclose = () => {
         // 关闭 websocket
         console.log("连接已关闭...");
+        ws = new WebSocket("ws://192.168.1.216:1000/api/Chat/Connect?type=0&pwd=123456&user=%E6%B8%B8%E5%AE%A2201891968148");
       }
 
       window.addEventListener('beforeunload', () => {
         ws.close()
       })
     },
-    destroyed(){
+    destroyed() {
       ws.close()
     },
-    methods:{
+    methods: {
       getDouble(val) {
         val = val + ''
         if (val.length > 1) {
@@ -247,16 +254,16 @@
         let date = new Date()
         return date.getFullYear() + '-' + this.getDouble(date.getMonth() + 1) + '-' + this.getDouble(date.getDate()) + ' ' + this.getDouble(date.getHours()) + ':' + this.getDouble(date.getMinutes()) + ':' + this.getDouble(date.getSeconds())
       },
-      emojiClick(item){
+      emojiClick(item) {
         let editorPC = this.$refs.editorPC
         editorPC.innerHTML += item
         // editorPC.focus()
         this.emojiActive = false
       },
-      smilePCClick(){
+      smilePCClick() {
         this.emojiActive = true
       },
-      async uploadPcChange(e){
+      async uploadPcChange(e) {
         let reads = new FileReader();
         let file = e.target.files[0];
         let root = this
@@ -306,26 +313,36 @@
           }
         }
       },
-      uploadPc(){
+      uploadPc() {
         this.$refs.uploadPc.click()
       },
-      pcToBottom(){
-        setTimeout(o => {this.$refs.main.scrollTop = this.$refs.mainContainer.clientHeight}, 0)
+      pcToBottom() {
+        setTimeout(o => {
+          this.$refs.main.scrollTop = this.$refs.mainContainer.clientHeight
+        }, 0)
       },
-      send(){
+      send() {
         let editorPC = this.$refs.editorPC
         let html = this.$refs.editorPC.innerHTML
-        if(!html) return
+        if (!html) return
         let time = this.getTime()
         this.list.push({time, content: html, infoType: 'text', type: 'customer'})
         editorPC.innerHTML = ''
-        ws.send(JSON.stringify({MesgType:"Sent",User:"游客",SelectUser:"客服",Content:html, time, content: html, infoType: 'text', type:'customer'}))
+        ws.send(JSON.stringify({
+          MesgType: "Sent",
+          User: "游客",
+          SelectUser: "客服",
+          Content: html,
+          ContentType: 'text',
+          time,
+          type: 'customer'
+        }))
         this.$nextTick(function () {
           // DOM 现在更新了
           this.pcToBottom()
         })
       },
-      editorPCKeydown(e){
+      editorPCKeydown(e) {
         let editorPC = this.$refs.editorPC
         if (e.keyCode === 13 && e.ctrlKey) {
           console.log(editorPC.innerHTML)
@@ -340,29 +357,31 @@
           this.send()
         }
       },
-      smileMobileClick(){
+      smileMobileClick() {
         this.bottom = '0'
         this.emojiActive = true
         this.mobilePaddingBottom()
       },
-      addMobileClick(){
+      addMobileClick() {
         this.bottom = '0'
         this.emojiActive = false
         this.mobilePaddingBottom()
       },
-      mainMobileClick(){
+      mainMobileClick() {
         this.bottom = '-125px'
         this.paddingBottom = '40px'
       },
-      emojisMobileClick(item){
+      emojisMobileClick(item) {
         let editorMobile = this.$refs.editorMobile
         editorMobile.scrollTop = 1000000
         editorMobile.innerHTML += item
       },
-      mobileToBottom(){
-        setTimeout(o => {this.$refs.mainMobile.scrollTop = this.$refs.mainContainerMobile.clientHeight}, 0)
+      mobileToBottom() {
+        setTimeout(o => {
+          this.$refs.mainMobile.scrollTop = this.$refs.mainContainerMobile.clientHeight
+        }, 0)
       },
-      mobilePaddingBottom(){
+      mobilePaddingBottom() {
         this.paddingBottom = '165px'
         this.$nextTick(function () {
           // DOM 现在更新了
@@ -370,41 +389,51 @@
           this.mobileToBottom()
         })
       },
-      sendMobile(){
+      sendMobile() {
         // console.log(this.$refs.mainMobile.scrollTop)
         // console.log(this.$refs.mainContainerMobile.clientHeight)
         let editorMobile = this.$refs.editorMobile
         let editorMobileHtml = editorMobile.innerHTML.trim()
-        if(!editorMobileHtml) return
+        if (!editorMobileHtml) return
         let time = this.getTime()
         this.list.push({time: time, content: editorMobileHtml, infoType: 'text', type: 'customer'})
         editorMobile.innerHTML = ''
-        ws.send(JSON.stringify({MesgType:"Sent",User:"游客",SelectUser:"客服",Content:editorMobileHtml, time, content: editorMobileHtml, infoType: 'text', type:'customer'}))
+        ws.send(JSON.stringify({
+          MesgType: "Sent",
+          User: "游客",
+          SelectUser: "客服",
+          Content: editorMobileHtml,
+          ContentType: 'text',
+          time,
+          content: editorMobileHtml,
+          infoType: 'text',
+          type: 'customer'
+        }))
         this.$nextTick(function () {
           // DOM 现在更新了
           // `this` 绑定到当前实例
           this.mobileToBottom()
         })
       },
-      orderStore(){
+      orderStore() {
         this.$router.push({path: '/servicelist'})
       },
-      photoMobile(){
+      photoMobile() {
         this.$refs.photoMobile.click()
       },
-      camera(){
+      camera() {
         this.$refs.camera.click()
       },
-      editorMobileFocus(){
+      editorMobileFocus() {
         this.mobileToBottom()
         setTimeout(() => {
           document.body.scrollTop = 1000000
         }, 200)
       },
-      editorMobileBlur(){
+      editorMobileBlur() {
         // console.log(this.$refs.editorMobile.innerHTML)
       },
-      photoMobileChange(e){
+      photoMobileChange(e) {
         let reads = new FileReader();
         let file = e.target.files[0];
         let root = this
@@ -439,12 +468,12 @@
           }
         }
       },
-      async callYouBack(){
+      async callYouBack() {
         let number = this.phoneNumber.trim()
         let modalInfo = ''
         let successFlag = false
         let checkFlag = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(number)
-        if(checkFlag){
+        if (checkFlag) {
           await this.$axios(`/api/CallBack?Mobile=${number}&SiteId=${this.$store.state.siteId}`, {
             method: 'POST',
             headers: {
@@ -461,18 +490,18 @@
               //   return res.data.username
               // }
             })
-            .catch((error)=>{
+            .catch((error) => {
               modalInfo = '对不起！您的手机号码格式有误'
               console.log(error)
             })
-        }else{
+        } else {
           modalInfo = '对不起！您的手机号码格式有误'
         }
         this.$store.dispatch({type: 'setModalInfo', val: modalInfo})
         this.$store.dispatch({type: 'setSuccessActive', val: successFlag})
         this.$store.dispatch({type: 'setModalActive', val: true})
       },
-      endTalk(){
+      endTalk() {
         window.close()
       }
     }
@@ -481,22 +510,22 @@
 
 <style scoped>
 
-  .banner{
+  .banner {
     margin-top: 20px;
     height: 380px;
   }
 
-  .banner img{
+  .banner img {
     vertical-align: middle;
     height: 100%
   }
 
-  .banner img:first-child{
+  .banner img:first-child {
     margin-right: 20px;
     width: calc((100% - 20px) * 0.5242);
   }
 
-  .banner img:last-child{
+  .banner img:last-child {
     width: calc((100% - 20px) * 0.4758);
   }
 
@@ -535,8 +564,8 @@
     color: #fff;
   }
 
-  span.spe-info{
-    color: #BF9571!important;
+  span.spe-info {
+    color: #BF9571 !important;
   }
 
   .nav .nav-end {
@@ -614,7 +643,7 @@
     margin-right: 20px
   }
 
-  .input-nav .call-back{
+  .input-nav .call-back {
     position: absolute;
     right: 20px;
     top: 50%;
@@ -626,7 +655,7 @@
     /*border: 1px solid #C8936B;*/
   }
 
-  .call-back .call-back-txt{
+  .call-back .call-back-txt {
     display: inline-block;
     width: 180px;
     color: #333;
@@ -638,9 +667,9 @@
     vertical-align: middle;
   }
 
-  .call-back .call-back-btn{
+  .call-back .call-back-btn {
     display: inline-block;
-    width:120px;
+    width: 120px;
     background-color: #C8936B;
     color: #fff;
     font-size: 16px;
@@ -663,7 +692,7 @@
     font-size: 20px;
   }
 
-  .input-txt span.input-txt-emoji{
+  .input-txt span.input-txt-emoji {
     font-size: 24px;
   }
 
@@ -687,7 +716,7 @@
     outline: none;
   }
 
-  .emoji{
+  .emoji {
     position: absolute;
     left: 35px;
     top: -270px;
@@ -700,13 +729,13 @@
     transition: all 300ms ease;
   }
 
-  .emoji ul.emoji-container:after{
+  .emoji ul.emoji-container:after {
     content: "";
     display: block;
     clear: both;
   }
 
-  .emoji ul.emoji-container li{
+  .emoji ul.emoji-container li {
     float: left;
     width: 54px;
     height: 54px;
@@ -729,19 +758,19 @@
       /*overflow-y: auto;*/
     }
 
-    .nav320{
+    .nav320 {
       position: fixed;
       left: 0;
       top: 0;
       width: 100%;
       height: 50px;
-      background-color: rgba(0,0,0, .9);
+      background-color: rgba(0, 0, 0, .9);
       z-index: 100;
       text-align: center;
       line-height: 50px;
     }
 
-    .nav320-title{
+    .nav320-title {
       color: #fff;
     }
 
@@ -751,7 +780,7 @@
       margin-top: 46px;
     }
 
-    .banner320 .banner320-swiper-img{
+    .banner320 .banner320-swiper-img {
       width: 100%
     }
 
@@ -763,16 +792,16 @@
       top: 0
     }
 
-    main.main320{
+    main.main320 {
       height: calc(100vh - 50px);
     }
 
-    .welcome{
+    .welcome {
       text-align: center;
       margin-top: 24px;
     }
 
-    .welcome span{
+    .welcome span {
       display: inline-block;
       padding: 5px 10px;
       border-radius: 100px;
@@ -824,32 +853,30 @@
       /*align-items: center;*/
     }
 
-    .operation >span:first-child {
+    .operation > span:first-child {
       margin-right: 10px;
     }
 
-    .operation >span img {
+    .operation > span img {
       width: 35px;
       height: 35px;
     }
 
     /*.operation > #editor320 {*/
-      /*!*min-height: 30px;*!*/
-      /*height: 30px;*/
-      /*max-height: 120px;*/
-      /*flex: 1;*/
-      /*margin: 0 10px;*/
-      /*background-color: #fff;*/
-      /*border-radius: 7px;*/
-      /*outline: none;*/
-      /*border: none;*/
-      /*padding: 0 15px;*/
-      /*line-height: 30px;*/
-      /*font-size: 12px;*/
-      /*!*overflow: hidden;*!*/
-
+    /*!*min-height: 30px;*!*/
+    /*height: 30px;*/
+    /*max-height: 120px;*/
+    /*flex: 1;*/
+    /*margin: 0 10px;*/
+    /*background-color: #fff;*/
+    /*border-radius: 7px;*/
+    /*outline: none;*/
+    /*border: none;*/
+    /*padding: 0 15px;*/
+    /*line-height: 30px;*/
+    /*font-size: 12px;*/
+    /*!*overflow: hidden;*!*/
     /*}*/
-
     .test-textarea {
       flex: 1;
       min-height: 35px;
@@ -869,16 +896,16 @@
       border-radius: 4px;
     }
 
-    .test-textarea:empty:before{
-      content:attr(placeholder);
+    .test-textarea:empty:before {
+      content: attr(placeholder);
       font-size: 12px;
       color: #999;
       height: 35px;
       line-height: 35px;
     }
 
-    .test-textarea:focus{
-      content:none;
+    .test-textarea:focus {
+      content: none;
     }
 
     .popup {
@@ -886,7 +913,7 @@
       height: 125px;
     }
 
-    .popup-emoji ul{
+    .popup-emoji ul {
       display: flex;
       /*justify-content: space-between;*/
       padding: 0 10px;
@@ -897,7 +924,7 @@
       background-color: #f3f3f3;
     }
 
-    .popup-emoji ul li{
+    .popup-emoji ul li {
       font-size: 25px;
       /*padding: 2px;*/
       display: flex;
@@ -907,19 +934,17 @@
     }
 
     /*.popup-emoji > span {*/
-      /*display: flex;*/
-      /*width: 11.11%;*/
-      /*justify-content: center;*/
-      /*margin-top: 5px;*/
+    /*display: flex;*/
+    /*width: 11.11%;*/
+    /*justify-content: center;*/
+    /*margin-top: 5px;*/
     /*}*/
-
     /*.popup-emoji > span img {*/
-      /*width: 32px;*/
-      /*height: 32px;*/
-      /*vertical-align: middle;*/
-      /*!*padding: 0 10px*!*/
+    /*width: 32px;*/
+    /*height: 32px;*/
+    /*vertical-align: middle;*/
+    /*!*padding: 0 10px*!*/
     /*}*/
-
     .popup-photo {
       display: flex;
       justify-content: space-around;

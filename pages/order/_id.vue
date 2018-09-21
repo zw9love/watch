@@ -287,7 +287,6 @@
       },
       submitOrder(){
         let {date1, date2, brand, name, faultType, phone, verification} = this.form
-        console.log(this.form)
 
         if(!brand.trim()){
           this.$store.dispatch({type: 'setModalInfo', val: '请输入手表品牌！'})
@@ -324,6 +323,8 @@
           return;
         }
 
+        let tempDate = ''
+
         if(!date1){
           this.$store.dispatch({type: 'setModalInfo', val: '请选择预约日期！'})
           this.$store.dispatch({type: 'setSuccessActive', val: false})
@@ -331,7 +332,8 @@
           return;
         }
         else{
-          this.form.date1 = new Date(date1).getTime()
+          let date = new Date(date1)
+          tempDate = date.getFullYear() + '-' + this.getDouble(date.getMonth() + 1) + '-' + this.getDouble(date.getDate())
         }
 
         if(!date2){
@@ -341,8 +343,10 @@
           return;
         }
 
+        // console.log(this.form)
+
         let storeId = this.$route.params.id
-        let url = `/api/AptList/SaveAppointment?SiteId=${this.$store.state.siteId}&StoresId=${storeId}&Remakr=${brand}&TroubleNo=${faultType}&UserName=${name}&Mobile=${phone}&Code=${verification}&AptDate=${'2018-09-09'}&AptTime=${date2}`
+        let url = `/api/AptList/SaveAppointment?SiteId=${this.$store.state.siteId}&StoresId=${storeId}&Remakr=${brand}&TroubleNo=${faultType}&UserName=${name}&Mobile=${phone}&Code=${verification}&AptDate=${tempDate}&AptTime=${date2}`
         this.$axios(url, {
             method: 'POST',
             headers: {
@@ -430,6 +434,7 @@
         let date2 = dateArr[1]
         let storeId = this.$route.params.id
         let url = `/api/AptList/SaveAppointment?SiteId=${this.$store.state.siteId}&StoresId=${storeId}&Remakr=${brand}&TroubleNo=${fault}&UserName=${name}&Mobile=${phone}&Code=${verification}&AptDate=${date1}&AptTime=${date2}`
+        // alert(url)
         this.$axios(url, {
           method: 'POST',
           headers: {

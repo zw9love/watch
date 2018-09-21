@@ -10,8 +10,11 @@
           <span class="service-name">{{entry.name || '在线客服08号-小雅'}}</span>
           <span class="time">{{entry.time}}</span>
         </p>
-        <p class="content" v-if="entry.infoType === 'image'">
-          <img :src="entry.src" preview-nav-enable="false" v-preview="entry.src" class="upload-img"/>
+        <p class="content" v-if="entry.infoType === 'expression'">
+          <img :src="entry.content" class="emoji-img"/>
+        </p>
+        <p class="content" v-else-if="entry.infoType === 'image'">
+          <img :src="entry.content" preview-nav-enable="false" v-preview="entry.content" class="upload-img"/>
         </p>
         <p class="content" v-else v-html="entry.content">
         </p>
@@ -140,6 +143,10 @@
     line-height: 36px;
     font-size: 18px;
     word-break: break-all;
+  }
+
+  .main-cell-info > p.content .emoji-img{
+    /*width: 50px;*/
   }
 
   .main-cell-info > p.content  .upload-img{

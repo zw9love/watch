@@ -62,42 +62,42 @@
         <div class="image-artical">
           <div class="image-artical-container">
             <div class="image-artical-left">
-              <nuxt-link to="/show/1">
-                <img src="../assets/img/case_images7@2x.png" alt="">
+              <nuxt-link :to="'/show/' + articleList[0].Id" :style="{backgroundImage: `url(${articleList[0].Img})`}">
+                <!--<img :src="articleList[0].Img" alt="">-->
               </nuxt-link>
               <div class="title-bottom">
-                <p>追光机：百达翡丽手工精饰机芯部件</p>
+                <p>{{articleList[0].Title}}</p>
               </div>
             </div>
             <div class="image-artical-right">
-              <div class="image-artical-right-cell">
-                <nuxt-link to="/show/2">
-                  <img src="../assets/img/case_images8@2x.png" alt="">
+              <div class="image-artical-right-cell" v-if="articleList[1]">
+                <nuxt-link :to="'/show/' + articleList[1].Id" :style="{backgroundImage: `url(${articleList[1].Img})`}">
+                  <!--<img :src="articleList[1].Img" alt="">-->
                 </nuxt-link>
                 <div class="title-bottom">
-                  <p>追光机：百达翡丽手工精饰机芯部件</p>
+                  <p>{{articleList[1].Title}}</p>
                 </div>
               </div>
-              <div class="image-artical-right-cell">
-                <nuxt-link to="/show/3">
-                 <img src="../assets/img/case_images9@2x.png" alt="">
+              <div class="image-artical-right-cell" v-if="articleList[2]">
+                <nuxt-link :to="'/show/' + articleList[2].Id" :style="{backgroundImage: `url(${articleList[2].Img})`}">
+                 <!--<img :src="articleList[2].Img" alt="">-->
                </nuxt-link>
                 <div class="title-bottom">
-                  <p>追光机：百达翡丽手工精饰机芯部件</p>
+                  <p>{{articleList[2].Title}}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="single-artical">
-          <nuxt-link to="/show/4">
-            <img src="../assets/img/case_images9@2x.png" alt="">
-          </nuxt-link>
-          <div class="title-bottom">
-            <p>追光机：百达翡丽手工精饰机芯部件</p>
-          </div>
-        </div>
+        <!--<div class="single-artical">-->
+          <!--<nuxt-link to="/show/4">-->
+            <!--<img src="../assets/img/case_images9@2x.png" alt="">-->
+          <!--</nuxt-link>-->
+          <!--<div class="title-bottom">-->
+            <!--<p>追光机：百达翡丽手工精饰机芯部件</p>-->
+          <!--</div>-->
+        <!--</div>-->
 
       </main>
 
@@ -158,41 +158,41 @@
           <VideoMobile v-for="(item, key) in list" :key="key" :item="item" :index="key" :ref="'player' + key"/>
         </div>
         <div class="main320-article">
-          <div class="main320-article-left">
-            <nuxt-link to="/show/1">
-              <img src="../assets/img/case_images7@2x.png" alt="">
+          <div class="main320-article-left" v-if="articleList[0]">
+            <nuxt-link :to="'/show/' + articleList[0].Id" :style="{backgroundImage: `url(${articleList[0].Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
+              <!--<img src="../assets/img/case_images7@2x.png" alt="">-->
             </nuxt-link>
             <div class="main320-article-shadow">
-              <span class="main320-article-info">追光者百达斐丽翻新</span>
+              <span class="main320-article-info">{{articleList[0].Title}}</span>
             </div>
           </div>
           <div class="main320-article-right">
-            <div class="main320-article-right-cell">
-              <nuxt-link to="/show/2">
+            <div class="main320-article-right-cell" v-if="articleList[1]">
+              <nuxt-link :to="'/show/' + articleList[1].Id" :style="{backgroundImage: `url(${articleList[1].Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
                 <img src="../assets/img/case_images7@2x.png" alt="">
               </nuxt-link>
               <div class="main320-article-shadow">
-                <span class="main320-article-info">追光者百达斐丽翻新</span>
+                <span class="main320-article-info">{{articleList[1].Title}}</span>
               </div>
             </div>
-            <div class="main320-article-right-cell">
-              <nuxt-link to="/show/3">
+            <div class="main320-article-right-cell" v-if="articleList[2]">
+              <nuxt-link :to="'/show/' + articleList[2].Id" :style="{backgroundImage: `url(${articleList[2].Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">
                 <img src="../assets/img/case_images7@2x.png" alt="">
               </nuxt-link>
               <div class="main320-article-shadow">
-                <span class="main320-article-info">追光者百达斐丽翻新</span>
+                <span class="main320-article-info">{{articleList[2].Title}}</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="main320-banner-article">
-          <nuxt-link to="/show/4">
-            <img src="../assets/img/case_images7@2x.png" alt="">
-          </nuxt-link>
-          <div class="main320-article-shadow">
-            <span class="main320-article-info">追光者百达斐丽翻新</span>
-          </div>
-        </div>
+        <!--<div class="main320-banner-article">-->
+          <!--<nuxt-link to="/show/4">-->
+            <!--<img src="../assets/img/case_images7@2x.png" alt="">-->
+          <!--</nuxt-link>-->
+          <!--<div class="main320-article-shadow">-->
+            <!--<span class="main320-article-info">追光者百达斐丽翻新</span>-->
+          <!--</div>-->
+        <!--</div>-->
       </div>
       <div class="line320"></div>
       <div class="comment320" style="position: relative;">
@@ -279,6 +279,7 @@
           {phone: '182*****774', time: '2018-05-10', content: '挺好的，配件都是原装进口帮我提前配好的，到了门店全程服务很贴心，也很快！', headImg: require('../assets/img/case_images_head9@2x.jpg'),imgList: [require('../assets/img/customer9_1.png')]},
           {phone: '183*****550', time: '2018-04-30', content: '老古董拿来修复下，技师很专业，服务也很好', headImg: require('../assets/img/case_images_head10@2x.jpg'),imgList: [require('../assets/img/customer10_1.jpg')]},
         ],
+        articleList: [],
         list: [
           {
             playerOptions: {
@@ -350,7 +351,13 @@
         previewActive: false
       }
     },
-    async asyncData({app}) {
+    async asyncData({app, store}) {
+      let caseOption = {
+        url: '/api/MaintenanceCase/%7BId%7D?SiteID=' + store.state.siteId,
+        methods: 'GET'
+      }
+      let {data} = await app.$axios(caseOption)
+      return { articleList: data }
     },
     created(){
       // for (var i = 1; i <= 20; i++) {
@@ -618,7 +625,7 @@
     left: 0;
     width: 100%;
     height: 76px;
-    background-color: #1F1F1F;
+    background: rgba(31,31,31,.8);
   }
 
   .title-bottom p {
@@ -656,6 +663,9 @@
     top: 0;
     width: 100%;
     height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat
   }
 
   .image-artical img {
@@ -690,6 +700,9 @@
     top: 0;
     width: 100%;
     height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat
   }
 
 
