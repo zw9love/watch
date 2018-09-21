@@ -45,7 +45,7 @@
                  @click="videoCellClick(item, key)">
               <x-img :src="require('../assets/img/case_images2@2x.png')" alt="" />
               <div class="content">
-                <p>修表即修行，西亨给您的腕表一份尊贵礼遇</p>
+                <p>{{item.info}}</p>
                 <div class="fixed">
                   <span class="fixed-icon"></span>
                   <span class="fixed-num">42</span>
@@ -55,7 +55,7 @@
 
           </div>
           <div class="title-bottom">
-            <p>追光机：百达翡丽手工精饰机芯部件 (Caliber CHR 29-535 PS)</p>
+            <p>{{item.info}}</p>
           </div>
         </div>
 
@@ -300,7 +300,8 @@
                 }
               ]
             },
-            playActive: false
+            playActive: false,
+            info: '西亨名表维修中心-百达翡丽维修案例'
           },
           {
             playerOptions: {
@@ -316,11 +317,12 @@
               sources: [
                 {
                   type: "video/mp4",
-                  src: "http://7xkwa7.media1.z0.glb.clouddn.com/sample_video_L"
+                  src: "http://pfeed79l8.bkt.clouddn.com/%E5%8A%B3%E5%8A%9B%E5%A3%AB%E6%89%8B%E8%A1%A8%E7%BB%B4%E4%BF%AE.mp4"
                 }
               ]
             },
-            playActive: false
+            playActive: false,
+            info: '西亨名表维修中心-劳力士手表维修'
           },
           {
             playerOptions: {
@@ -336,11 +338,54 @@
               sources: [
                 {
                   type: "video/mp4",
-                  src: "http://vjs.zencdn.net/v/oceans.mp4"
+                  src: "http://pfeed79l8.bkt.clouddn.com/5.mp4"
                 }
               ]
             },
-            playActive: false
+            playActive: false,
+            info: '西亨名表维修中心-瑞宝玫瑰金自动表维修'
+          },
+          {
+            playerOptions: {
+              height: '100%',
+              width: '100%',
+              // aspectRatio: '16:9',
+              autoplay: false,
+              muted: true,
+              language: 'ch',
+              playbackRates: [0.7, 1.0, 1.5, 2.0],
+              // poster: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg',
+              poster: require('../assets/img/case_images9@2x.png'),
+              sources: [
+                {
+                  type: "video/mp4",
+                  src: "http://pfeed79l8.bkt.clouddn.com/5_2.mp4"
+                }
+              ]
+            },
+            playActive: false,
+            info: '西亨名表维修中心-德国怀表改装腕表维修'
+          },
+          {
+            playerOptions: {
+              height: '100%',
+              width: '100%',
+              // aspectRatio: '16:9',
+              autoplay: false,
+              muted: true,
+              language: 'ch',
+              playbackRates: [0.7, 1.0, 1.5, 2.0],
+              // poster: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg',
+              poster: require('../assets/img/case_images9@2x.png'),
+              sources: [
+                {
+                  type: "video/mp4",
+                  src: "http://pfeed79l8.bkt.clouddn.com/5_4.mp4"
+                }
+              ]
+            },
+            playActive: false,
+            info: '西亨名表维修中心-浪琴男士黑色表盘维修'
           }
         ],
         items: [],
