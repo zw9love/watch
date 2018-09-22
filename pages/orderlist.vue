@@ -15,12 +15,12 @@
     <!--main-->
     <main class="main">
       <div class="main-btn">
-        <nuxt-link v-for="(item, key) in btnList" :key="key" @click.native="btnClick(key)" :to="item.href" class="main-btn-cell" :class="{'main-btn-active': mainBtbIndex === key}">
+        <nuxt-link v-for="(item, key) in btnList" :key="key" @click.native="btnClick(item, key)" :to="item.href" class="main-btn-cell" :class="{'main-btn-active': mainBtbIndex === key}">
           {{item.name}} {{item.num}}
         </nuxt-link>
       </div>
       <div class="main320-btn">
-        <nuxt-link v-for="(item, key) in btnList" :key="key" @click.native="btnClick(key)" :to="item.href" class="main320-btn-cell" :class="{'main320-btn-active': mainBtbIndex === key}">
+        <nuxt-link v-for="(item, key) in btnList" :key="key" @click.native="btnClick(item, key)" :to="item.href" class="main320-btn-cell" :class="{'main320-btn-active': mainBtbIndex === key}">
           {{item.name}} {{item.num}}
         </nuxt-link>
       </div>
@@ -128,8 +128,10 @@
       }
     },
     methods: {
-      btnClick(key){
+      btnClick(item, key){
         this.mainBtbIndex = key
+        // console.log(item)
+        this.total = item.num
       },
       currentChange(num){
         // this.$router.push({query: {pageNumber: num}})

@@ -1,7 +1,7 @@
 <template>
   <div class="main-cell">
     <div class="main-cell-title">
-      <span class="date">{{item.date}}</span>
+      <span class="date">{{item.AptDate}}</span>
       <span class="number">订单编号：{{item.Id}}</span>
       <span class="price">维修价格</span>
       <span class="discount">折扣</span>

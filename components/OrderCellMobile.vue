@@ -28,21 +28,21 @@
       <div class="main320-order-price">
         <div class="main320-order-price-cell">
           <span>维修价格</span>
-          <span>¥{{item.price}}</span>
+          <span>¥{{item.Price}}</span>
         </div>
         <div class="main320-order-price-cell">
           <span><span>维修折扣</span><span class="discount">（在线预约8折优惠）</span></span>
-          <span>¥{{parseInt(item.price * 0.2)}}</span>
+          <span>¥{{parseInt(item.Price * 0.2)}}</span>
         </div>
         <div class="main320-order-price-cell">
           <span>实付款</span>
-          <span class="price">¥{{parseInt(item.price * 0.8)}}</span>
+          <span class="price">¥{{item.AfterPrice}}</span>
         </div>
       </div>
       <div class="main320-order-line"></div>
       <div class="main320-order-detail">
-        <p>订单编号：{{item.ids}}</p>
-        <p>创建时间：{{item.date}}</p>
+        <p>订单编号：{{item.Id}}</p>
+        <p>创建时间：{{item.CreateTime}}</p>
       </div>
     </div>
   </div>
@@ -61,7 +61,7 @@
     },
     methods: {
       goDetails(){
-        this.$router.push({path: '/orderdetails/' + this.item.ids})
+        this.$router.push({path: '/orderdetails/' + this.item.Id})
       }
     }
   }

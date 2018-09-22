@@ -102,7 +102,7 @@
           {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes1@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no1@2x.png'), info: '等待客户取表'},
           {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes3@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no3@2x.png'), info: '维修完成'},
           {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes4@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no4@2x.png'), info: '维修中'},
-          {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes5@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no5@2x.png'), info: '备件等待中，备件大概需要2天'},
+          {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes5@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no5@2x.png'), info: '备件等待中'},
           {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes6@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no6@2x.png'), info: '检测中'},
           {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes7@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no7@2x.png'), info: '已送修'},
           {completed: false, completeSrc: require('../../assets/img/demand_list_plan_icon_yes8@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no8@2x.png'), info: '已提交维修订单'},

@@ -23,7 +23,7 @@
         <!--<img :src="item.playerOptions.poster" alt="">-->
       <!--</div>-->
       <div class="main320-article-shadow" v-if="!playActive">
-        <span class="main320-article-info">追光者百达斐丽翻新</span>
+        <span class="main320-article-info">{{item.info}}</span>
       </div>
     </div>
   </div>

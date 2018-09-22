@@ -48,14 +48,14 @@
                 <p>{{item.info}}</p>
                 <div class="fixed">
                   <span class="fixed-icon"></span>
-                  <span class="fixed-num">42</span>
+                  <span class="fixed-num">{{item.num}}</span>
                 </div>
               </div>
             </div>
 
           </div>
           <div class="title-bottom">
-            <p>{{item.info}}</p>
+            <p>{{pcVideoInfo}}</p>
           </div>
         </div>
 
@@ -301,7 +301,8 @@
               ]
             },
             playActive: false,
-            info: '西亨名表维修中心-百达翡丽维修案例'
+            info: '西亨名表维修中心-百达翡丽维修案例',
+            num: 999
           },
           {
             playerOptions: {
@@ -322,7 +323,8 @@
               ]
             },
             playActive: false,
-            info: '西亨名表维修中心-劳力士手表维修'
+            info: '西亨名表维修中心-劳力士手表维修',
+            num: 999
           },
           {
             playerOptions: {
@@ -343,7 +345,8 @@
               ]
             },
             playActive: false,
-            info: '西亨名表维修中心-瑞宝玫瑰金自动表维修'
+            info: '西亨名表维修中心-瑞宝玫瑰金自动表维修',
+            num: 999
           },
           {
             playerOptions: {
@@ -364,7 +367,8 @@
               ]
             },
             playActive: false,
-            info: '西亨名表维修中心-德国怀表改装腕表维修'
+            info: '西亨名表维修中心-德国怀表改装腕表维修',
+            num: 999
           },
           {
             playerOptions: {
@@ -385,7 +389,8 @@
               ]
             },
             playActive: false,
-            info: '西亨名表维修中心-浪琴男士黑色表盘维修'
+            info: '西亨名表维修中心-浪琴男士黑色表盘维修',
+            num: 999
           }
         ],
         items: [],
@@ -393,7 +398,8 @@
         scrollLock: false,
         showLoading: false,
         tip: '上拉加载更多',
-        previewActive: false
+        previewActive: false,
+        pcVideoInfo: '西亨名表维修中心-百达翡丽维修案例'
       }
     },
     async asyncData({app, store}) {
@@ -490,6 +496,7 @@
       },
       videoCellClick(item, key) {
         this.videoIndex = key
+        this.pcVideoInfo = item.info
       },
       bannerClick(){
         this.$router.push({path: '/servicelist'})
@@ -517,7 +524,7 @@
 <style scoped>
 
   .video-player-box {
-    height: 534px;
+    height: 540px;
     width: 928px;
   }
 
@@ -575,7 +582,7 @@
   .video-list {
     position: absolute;
     width: 352px;
-    height: 534px;
+    height: 540px;
     right: 0;
     top: 0;
     padding: 0 20px;
@@ -669,7 +676,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 76px;
+    height: 70px;
     background: rgba(31,31,31,.8);
   }
 
@@ -677,7 +684,10 @@
     padding: 0 20px;
     color: #BF9571;
     font-size: 26px;
-    line-height: 76px;
+    line-height: 70px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .image-artical {
