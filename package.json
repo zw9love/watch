@@ -8,7 +8,7 @@
     "dev": "cross-env NODE_ENV=dev HOST=0.0.0.0 PORT=3000 nuxt",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=prod HOST=0.0.0.0 PORT=8091 nuxt start",
-    "pm2": "pm2 start npm --name \"nuxt-watch\" -- run start",
+    "pm2": "pm2 start npm --name \"watch\" -- run start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
@@ -22,6 +22,7 @@
     "express-session": "^1.15.6",
     "mint-ui": "^2.2.13",
     "mockjs": "^1.0.1-beta3",
+    "node-cmd": "^3.0.0",
     "nuxt": "^1.0.0",
     "v-distpicker": "^1.0.17",
     "vue-picture-preview": "^1.2.0",
