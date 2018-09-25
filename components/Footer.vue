@@ -19,7 +19,8 @@
           </ul>
         </div>
         <div class="bottom-link-middle">
-          <p>opyright 2016-2018 西亨（www.xiheng.com) All Rights Reserved. 闽公网安备 35020302001030号</p>
+          <!--<p>opyright 2016-2018 西亨（www.xiheng.com) All Rights Reserved. 闽公网安备 35020302001030号</p>-->
+          <p>©opyright 2016-2018 北京宏瑞浩博商贸有限公司（watch-vip.cn) All Rights Reserved. 京ICP备18005285号-1</p>
         </div>
         <div class="bottom-link-bottom">
           <!--<img v-lazy="require('../assets/img/home_footer_images1@2x.png')" alt="" />-->

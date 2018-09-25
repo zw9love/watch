@@ -44,24 +44,34 @@
             'Content-Type': 'application/json'
           }
         })
+          .then((res) => {
+            let {code, msg} = res.data
+            switch (code){
+              case 1:
+                break;
+              case 2:
+                this.$store.dispatch({type: 'setModalInfo', val: '验证码发送次数已达到上限！'})
+                this.$store.dispatch({type: 'setSuccessActive', val: false})
+                return this.$store.dispatch({type: 'setModalActive', val: true})
+            }
+            this.verificationActive = true
+            let count = 30
+            this.verificationInfo = count-- + 'S'
+            this.countDownTimer = setInterval(o => {
+              this.verificationInfo = count-- + 'S'
+              if(count < 0){
+                // this.count = 30
+                this.verificationActive = false
+                this.verificationInfo = '获取验证码'
+                clearInterval(this.countDownTimer)
+              }
+            }, 1000)
+          })
           .catch(error => {
             this.$store.dispatch({type: 'setModalInfo', val: '验证码发送失败！'})
             this.$store.dispatch({type: 'setSuccessActive', val: true})
             this.$store.dispatch({type: 'setModalActive', val: true})
           })
-
-        this.verificationActive = true
-        let count = 30
-        this.verificationInfo = count-- + 'S'
-        this.countDownTimer = setInterval(o => {
-          this.verificationInfo = count-- + 'S'
-          if(count < 0){
-            // this.count = 30
-            this.verificationActive = false
-            this.verificationInfo = '获取验证码'
-            clearInterval(this.countDownTimer)
-          }
-        }, 1000)
 
       },
     }

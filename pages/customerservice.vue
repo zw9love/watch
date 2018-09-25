@@ -5,7 +5,7 @@
       <!--nav-->
       <div class="nav">
         <div class="nav-title">
-          <span><span class="spe-info">名表维修服务中心</span> 08号客服 正在为您服务...</span>
+          <span><span class="spe-info">名表维修服务中心</span> {{serviceName}} 正在为您服务...</span>
         </div>
         <div class="nav-end" @click="endTalk">
             <span class="nav-end-icon">
@@ -76,7 +76,7 @@
 
           <div style="padding: 0 10px">
             <div class="welcome">
-              <span>欢迎咨询在线客服，本次由小雅为您服务</span>
+              <span>欢迎咨询在线客服，本次由{{serviceName}}为您服务</span>
             </div>
 
             <ChatCellMobile v-for="(entry, key) in list" :key="key" :entry="entry"/>
@@ -173,6 +173,7 @@
           // {time: '2018-08-04 12:33:06', type: 'customer', infoType: 'image', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535116654791&di=4291caaeb7eda1d8bf3336f39ff8b30b&imgtype=0&src=http%3A%2F%2Fa1.hoopchina.com.cn%2Fattachment%2FDay_090602%2F49_709415_948e4af50e5ed27.jpg'},
         ],
         previewActive: false,
+        serviceName: ''
       }
     },
     created() {
@@ -182,14 +183,17 @@
       // alert(111)
       this.previewActive = true
       let mobileActive = window.innerWidth <= 768
+      let username = this.randomWord(false, 32)
       window.addEventListener('click', () => {
         this.bottom = '-125px'
         this.paddingBottom = '40px'
         this.emojiActive = false
       })
 
+      console.log(username)
+
       // ws = new WebSocket("ws://localhost:9090");
-      ws = new WebSocket("ws://192.168.1.216:1000/api/Chat/Connect?type=0&pwd=123456&user=%E6%B8%B8%E5%AE%A2201891968148");
+      ws = new WebSocket("ws://192.168.1.216:1000/api/Chat/Connect?type=0&pwd=123456&user=" + username);
       // // ws = new WebSocket("ws://192.168.1.216:1000/api/Chat/Connect?type=0&pwd=123456&user=cyf");
       //
       ws.onopen = () => {
@@ -205,6 +209,11 @@
       ws.onmessage = (evt) => {
         let received_msg = JSON.parse(evt.data);
         // received_msg.infoType = 'text'
+
+        if(received_msg.MesgType === 'getkflist'){
+          return this.serviceName = received_msg.Content.UserName
+        }
+
         let obj = {}
         obj.type = 'service'
         obj.infoType = received_msg.ContentType
@@ -231,7 +240,7 @@
       ws.onclose = () => {
         // 关闭 websocket
         console.log("连接已关闭...");
-        ws = new WebSocket("ws://192.168.1.216:1000/api/Chat/Connect?type=0&pwd=123456&user=%E6%B8%B8%E5%AE%A2201891968148");
+        ws = new WebSocket("ws://192.168.1.216:1000/api/Chat/Connect?type=0&pwd=123456&user=" + username);
       }
 
       window.addEventListener('beforeunload', () => {
@@ -242,6 +251,21 @@
       ws.close()
     },
     methods: {
+      randomWord(randomFlag, min, max){
+        var str = "",
+          range = min,
+          arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        let pos = ''
+        // 随机产生
+        if(randomFlag){
+          range = Math.round(Math.random() * (max-min)) + min;
+        }
+        for(var i=0; i<range; i++){
+          pos = Math.round(Math.random() * (arr.length-1));
+          str += arr[pos];
+        }
+        return str;
+      },
       getDouble(val) {
         val = val + ''
         if (val.length > 1) {
@@ -263,7 +287,7 @@
       smilePCClick() {
         this.emojiActive = true
       },
-      async uploadPcChange(e) {
+       uploadPcChange(e) {
         let reads = new FileReader();
         let file = e.target.files[0];
         let root = this
@@ -290,23 +314,40 @@
             let result = this.result
             img.src = result
             // console.log(result)
-            img.onload = function () {
-              root.$axios('/api/Chat/ExchangeImg?base64str=' + result, {
-                method: 'POST',
+            img.onload = async function () {
+              await ws.send(JSON.stringify({
+                MesgType: "Sent",
+                User: "游客",
+                SelectUser: root.serviceName,
+                Content: result,
+                ContentType: 'image',
+                time,
+                type: 'customer'
+              }))
+
+              let width = this.width < 760 ? this.width : 760
+              let time = root.getTime()
+              root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
+              root.$nextTick(function () {
+                root.pcToBottom()
               })
-                .then(res => {
-                  let width = this.width < 760 ? this.width : 760
-                  let time = root.getTime()
-                  root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
-                  root.$nextTick(function () {
-                    root.pcToBottom()
-                  })
-                })
-                .catch(error => {
-                  // root.$store.dispatch({type: 'setModalInfo', val: '文件上传失败！'})
-                  // root.$store.dispatch({type: 'setSuccessActive', val: false})
-                  // root.$store.dispatch({type: 'setModalActive', val: true})
-                })
+
+              // root.$axios('/api/Chat/ExchangeImg?base64str=' + result, {
+              //   method: 'POST',
+              // })
+              //   .then(res => {
+              //     let width = this.width < 760 ? this.width : 760
+              //     let time = root.getTime()
+              //     root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
+              //     root.$nextTick(function () {
+              //       root.pcToBottom()
+              //     })
+              //   })
+              //   .catch(error => {
+              //     // root.$store.dispatch({type: 'setModalInfo', val: '文件上传失败！'})
+              //     // root.$store.dispatch({type: 'setSuccessActive', val: false})
+              //     // root.$store.dispatch({type: 'setModalActive', val: true})
+              //   })
               // console.log(result)
               root.$refs.uploadPc.value = ''
             }
@@ -331,7 +372,7 @@
         ws.send(JSON.stringify({
           MesgType: "Sent",
           User: "游客",
-          SelectUser: "客服",
+          SelectUser: this.serviceName,
           Content: html,
           ContentType: 'text',
           time,
@@ -401,7 +442,7 @@
         ws.send(JSON.stringify({
           MesgType: "Sent",
           User: "游客",
-          SelectUser: "客服",
+          SelectUser: this.serviceName,
           Content: editorMobileHtml,
           ContentType: 'text',
           time,
@@ -444,23 +485,40 @@
             let img = new Image()
             let result = this.result
             img.src = result
-            img.onload = function () {
-              root.$axios('/api/Chat/ExchangeImg?base64str=' + result, {
-                method: 'POST',
+            img.onload = async function () {
+              await ws.send(JSON.stringify({
+                MesgType: "Sent",
+                User: "游客",
+                SelectUser: root.serviceName,
+                Content: result,
+                ContentType: 'image',
+                time,
+                type: 'customer'
+              }))
+
+              let width = this.width < 230 ? this.width : 230
+              let time = root.getTime()
+              root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
+              root.$nextTick(function () {
+                root.mobileToBottom()
               })
-                .then(res => {
-                  let width = this.width < 230 ? this.width : 230
-                  let time = root.getTime()
-                  root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
-                  root.$nextTick(function () {
-                    root.mobileToBottom()
-                  })
-                })
-                .catch(error => {
-                  root.$store.dispatch({type: 'setModalInfo', val: '文件上传失败！'})
-                  root.$store.dispatch({type: 'setSuccessActive', val: false})
-                  root.$store.dispatch({type: 'setModalActive', val: true})
-                })
+
+              // root.$axios('/api/Chat/ExchangeImg?base64str=' + result, {
+              //   method: 'POST',
+              // })
+              //   .then(res => {
+              //     let width = this.width < 230 ? this.width : 230
+              //     let time = root.getTime()
+              //     root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
+              //     root.$nextTick(function () {
+              //       root.mobileToBottom()
+              //     })
+              //   })
+              //   .catch(error => {
+              //     // root.$store.dispatch({type: 'setModalInfo', val: '文件上传失败！'})
+              //     // root.$store.dispatch({type: 'setSuccessActive', val: false})
+              //     // root.$store.dispatch({type: 'setModalActive', val: true})
+              //   })
               // console.log(result)
               root.$refs.photoMobile.value = ''
               root.$refs.camera.value = ''

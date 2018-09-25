@@ -49,7 +49,7 @@
     <!--服务品牌-->
     <div class="brand-container">
       <div>
-        <ServiceTitle info="SERVICE BRAND" name="服务品牌" content="汇聚国际顶尖奢华品牌"></ServiceTitle>
+        <ServiceTitle info="SERVICE BRAND" name="服务品牌" content="汇聚国际高端奢华品牌"></ServiceTitle>
         <div class="brand-main">
           <div class="brand-main-wrapper">
             <div class="brand-main-left">
@@ -158,7 +158,7 @@
           <li>
             <div class="service-project-main-cell">
               <x-img :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt=""/>
-              <h3 class="info">全套保养</h3>
+              <h3 class="info">表带服务</h3>
               <div class="line"></div>
               <div class="info-container">
                 <div class="info-left-container">
@@ -192,7 +192,7 @@
         <ul class="service-project-main320-cell">
           <li>
             <x-img :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt=""/>
-            <p>全套保养</p>
+            <p>表带服务</p>
           </li>
           <li>
             <x-img :src="require('../assets/img/home_serviceitems_icon5@2x.png')" alt=""/>
@@ -350,7 +350,7 @@
             </div>
             <div class="certification-infoContainer">
               <h1 class="certification-title">{{item.Name}}</h1>
-              <p class="certification-info" :title="item.Intro">
+              <p class="certification-info">
                 {{item.Intro}}
               </p>
             </div>
@@ -686,7 +686,7 @@
           <img :src="require('../assets/img/home_popup_button1@2x.png')" alt=""/>
           <div class="reservation-online-msg">
             <img :src="require('../assets/img/home_popup_button_icon1@2x.png')" alt=""/>
-            <span>在线预约</span>
+            <span>立即预约</span>
           </div>
         </nuxt-link>
       </div>
@@ -700,7 +700,7 @@
       <img :src="require('../assets/img/close.png')" alt="" class="close320" @click="closeMobile"/>
       <div class="reservation-shadow320-button">
         <nuxt-link to="/customerservice">在线咨询</nuxt-link>
-        <nuxt-link to="/servicelist">在线预约</nuxt-link>
+        <nuxt-link to="/servicelist">立即预约</nuxt-link>
       </div>
     </div>
     <Sidebar/>
