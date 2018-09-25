@@ -136,7 +136,7 @@
                   this.$store.dispatch({type: 'setSuccessActive', val: false})
                   return this.$store.dispatch({type: 'setModalActive', val: true})
                 }
-                this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/orderlist/all/1'})
+                this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/orderlist/all/1?tel=' + phone})
                 break
 
             }

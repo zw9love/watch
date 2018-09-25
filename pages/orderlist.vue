@@ -3,7 +3,7 @@
     <!--Header-->
     <Header :pageIndex="4"/>
     <HeaderMobile title="查询结果"/>
-    <Tabbar />
+    <Tabbar :tabbarStyle="{background: '#eee'}"/>
     <!--banner-->
     <div class="banner">
       <img :src="require('../assets/img/demand_banner@2x.png')" alt=""/>
@@ -63,11 +63,15 @@
         return redirect(302, '/process')
       }
     },
-    async asyncData ({ app, params, route }) {
+    async asyncData ({ app, params, route, query, redirect }) {
+
+      let tel = query.tel
+
+      if(!tel) return redirect(302, '/process')
 
       // 订单数量
       let orderNumOption = {
-        url: '/api/AptList/GetClassifyDate',
+        url: '/api/AptList/GetClassifyDate?mobile=' + tel,
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -75,9 +79,9 @@
       }
       let {data} = await app.$axios(orderNumOption)
       let btnList = [
-        {name: '全部订单', href: "/orderlist/all/1", num: data.TotalCount},
-        {name: '维修中', href: "/orderlist/repair/1", num: data.RepairCount},
-        {name: '已完成', href: "/orderlist/completed/1", num: data.CompletedCount},
+        {name: '全部订单', href: "/orderlist/all/1?tel=" + tel, num: data.TotalCount},
+        {name: '维修中', href: "/orderlist/repair/1?tel=" + tel, num: data.RepairCount},
+        {name: '已完成', href: "/orderlist/completed/1?tel=" + tel, num: data.CompletedCount},
       ]
 
       let mainBtbIndex = 0

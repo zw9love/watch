@@ -92,14 +92,24 @@
           'Content-Type': 'application/json'
         }
       }
-      let {data} = await app.$axios(orderOption)
-      return { item: data[0]}
+      let orderRes = await app.$axios(orderOption)
+
+      let processOption = {
+        url: '/api/AptList/GetAptRepairProcess?id=' + id,
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      let processRes = await app.$axios(processOption)
+
+      return { item: orderRes.data[0], processList: processRes.data}
     },
     data(){
       return {
         processList: [
-          {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no@2x.png'), info: '客户已取表'},
-          {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes1@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no1@2x.png'), info: '等待客户取表'},
+          // {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no@2x.png'), info: '客户已取表'},
+          // {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes1@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no1@2x.png'), info: '等待客户取表'},
           {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes3@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no3@2x.png'), info: '维修完成'},
           {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes4@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no4@2x.png'), info: '维修中'},
           {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes5@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no5@2x.png'), info: '备件等待中'},

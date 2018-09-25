@@ -1,6 +1,6 @@
 <template>
   <!--tabbar-->
-  <div class="tabbar-container">
+  <div class="tabbar-container" :style="tabbarStyle">
     <img :src="require('../assets/img/bottom_fix.png')" alt="" />
     <div class="tabbar-wrapper">
       <div class="tabbar-cell">
@@ -40,9 +40,17 @@
 <script>
   export default {
     name: "Tabbar",
+    props: {
+      tabbarStyle: {
+        type: Object,
+        default(){
+          return {}
+        }
+      }
+    },
     data(){
       return {
-        phoneShadowActive: false
+        phoneShadowActive: false,
       }
     },
     methods: {

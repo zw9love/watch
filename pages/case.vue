@@ -43,7 +43,7 @@
             </div>
             <div class="video-list-cell" v-for="(item, key) in list" :key="key" :style="{margin: key === 0 ? '0': ''}"
                  @click="videoCellClick(item, key)">
-              <x-img :src="require('../assets/img/case_images2@2x.png')" alt="" />
+              <x-img :src="item.smallPoster" alt="" />
               <div class="content">
                 <p>{{item.info}}</p>
                 <div class="fixed">
@@ -292,7 +292,7 @@
               playbackRates: [0.7, 1.0, 1.5, 2.0],
               // https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg
               // poster: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535116654791&di=4291caaeb7eda1d8bf3336f39ff8b30b&imgtype=0&src=http%3A%2F%2Fa1.hoopchina.com.cn%2Fattachment%2FDay_090602%2F49_709415_948e4af50e5ed27.jpg',
-              poster: require('../assets/img/case_images9@2x.png'),
+              poster: require('../assets/img/video_bg1.png'),
               sources: [
                 {
                   type: "video/mp4",
@@ -302,7 +302,8 @@
             },
             playActive: false,
             info: '西亨名表维修中心-百达翡丽维修案例',
-            num: 999
+            num: 999999,
+            smallPoster: require('../assets/img/video_bg1.png')
           },
           {
             playerOptions: {
@@ -314,7 +315,7 @@
               language: 'ch',
               playbackRates: [0.7, 1.0, 1.5, 2.0],
               // poster: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg',
-              poster: require('../assets/img/case_images9@2x.png'),
+              poster: require('../assets/img/video_bg2.png'),
               sources: [
                 {
                   type: "video/mp4",
@@ -324,7 +325,8 @@
             },
             playActive: false,
             info: '西亨名表维修中心-劳力士手表维修',
-            num: 999
+            num: 999999,
+            smallPoster: require('../assets/img/video_bg2.png')
           },
           {
             playerOptions: {
@@ -336,7 +338,7 @@
               language: 'ch',
               playbackRates: [0.7, 1.0, 1.5, 2.0],
               // poster: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg',
-              poster: require('../assets/img/case_images9@2x.png'),
+              poster: require('../assets/img/video_bg3.png'),
               sources: [
                 {
                   type: "video/mp4",
@@ -346,7 +348,8 @@
             },
             playActive: false,
             info: '西亨名表维修中心-瑞宝玫瑰金自动表维修',
-            num: 999
+            num: 999999,
+            smallPoster: require('../assets/img/video_bg3.png')
           },
           {
             playerOptions: {
@@ -358,7 +361,7 @@
               language: 'ch',
               playbackRates: [0.7, 1.0, 1.5, 2.0],
               // poster: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg',
-              poster: require('../assets/img/case_images9@2x.png'),
+              poster: require('../assets/img/video_bg4.jpg'),
               sources: [
                 {
                   type: "video/mp4",
@@ -368,7 +371,8 @@
             },
             playActive: false,
             info: '西亨名表维修中心-德国怀表改装腕表维修',
-            num: 999
+            num: 999999,
+            smallPoster: require('../assets/img/video_bg4.jpg')
           },
           {
             playerOptions: {
@@ -380,7 +384,7 @@
               language: 'ch',
               playbackRates: [0.7, 1.0, 1.5, 2.0],
               // poster: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535907347807&di=a5c1b8cf17ab5126cc3642d3da7f6b78&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0160d65549eb9900000115a832d224.jpg%402o.jpg',
-              poster: require('../assets/img/case_images9@2x.png'),
+              poster: require('../assets/img/video_bg5.png'),
               sources: [
                 {
                   type: "video/mp4",
@@ -390,7 +394,8 @@
             },
             playActive: false,
             info: '西亨名表维修中心-浪琴男士黑色表盘维修',
-            num: 999
+            num: 999999,
+            smallPoster: require('../assets/img/video_bg5.png')
           }
         ],
         items: [],

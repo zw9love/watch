@@ -5,7 +5,8 @@
 <script>
   export default {
     fetch ({ store, redirect }) {
-      return redirect(302, '/orderlist/all/1')
+      // return redirect(302, '/orderlist/all/1')
+      return redirect(302, '/process')
     }
   }
 </script>
