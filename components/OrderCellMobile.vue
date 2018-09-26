@@ -11,7 +11,7 @@
         <div class="main320-order-watch-info">
           <div class="main320-order-status">
             <h3>{{item.Remark}}</h3>
-            <span v-if="item.completeActive">已完成</span>
+            <span v-if="item.Type !== 0">已完成</span>
             <span v-else>维修中</span>
           </div>
           <!--<div class="main320-order-watch-service">-->

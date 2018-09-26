@@ -64,8 +64,8 @@
     methods: {
       loadMoreData(){
         // 可视窗的宽高
-        let width = document.documentElement.clientWidth
-        if(width > 768) return
+        // let width = document.documentElement.clientWidth
+        if(!this.loadMoreActive) return
         let height = document.documentElement.clientHeight
         window.addEventListener('scroll', o => {
           // 滚动轴距离
@@ -89,7 +89,7 @@
               })
                 .then((res) => {
                   setTimeout(o => {
-                    this.list = res.data.TotalList
+                    this.list = res.data.CompletedList
                     this.tip = '没有更多了'
                     this.showLoading = false
                   }, 500)

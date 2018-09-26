@@ -162,12 +162,12 @@
               <div class="line"></div>
               <div class="info-container">
                 <div class="info-left-container">
-                  <p>故障检测</p>
-                  <p>真假鉴定</p>
+                  <p>定制表带</p>
+                  <p>更换表带</p>
                 </div>
                 <div class="info-right-container">
-                  <p>订制表带</p>
-                  <p>免费wifi</p>
+                  <p>更换表节</p>
+                  <p>加表节</p>
                 </div>
               </div>
             </div>

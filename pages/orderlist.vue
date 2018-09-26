@@ -68,7 +68,7 @@
       let tel = query.tel
 
       if(!tel) return redirect(302, '/process')
-
+      console.log('orderlist')
       // 订单数量
       let orderNumOption = {
         url: '/api/AptList/GetClassifyDate?mobile=' + tel,

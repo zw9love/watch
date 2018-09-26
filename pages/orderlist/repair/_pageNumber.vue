@@ -89,7 +89,7 @@
               })
                 .then((res) => {
                   setTimeout(o => {
-                    this.list = res.data.TotalList
+                    this.list = res.data.RepairList
                     this.tip = '没有更多了'
                     this.showLoading = false
                   }, 500)

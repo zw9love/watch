@@ -25,7 +25,7 @@
         class="discount-info">（在线预约8折优惠）</span></span>
       <span class="realpay">¥{{item.AfterPrice}}</span>
 
-      <nuxt-link class="status complete" v-if="item.completeActive" :to="'/orderdetails/' + item.Id">
+      <nuxt-link class="status complete" v-if="item.Type !== 0" :to="'/orderdetails/' + item.Id">
         <img src="../assets/img/demand_list_button3@2x.png" alt="">
         <span class="status-info">已完成</span>
       </nuxt-link>
