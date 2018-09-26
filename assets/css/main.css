@@ -136,10 +136,15 @@
 
 .vux-header{
   /*background: linear-gradient(to bottom, #000, #4a4a4a 100%);*/
-  background: #333;
+  /*background: #333;*/
+  background: rgba(51, 51, 51, 0.9);
   /*background: rgba(51, 51, 51, 0.9)*/
   /*background: url("../img/header320.jpg");*/
   /*background-size: 100% 100%;*/
+}
+
+.vux-header .vux-header-title{
+  font-size: 16px!important;
 }
 
 img[lazy=loading] {

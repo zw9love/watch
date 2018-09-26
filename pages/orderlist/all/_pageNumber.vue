@@ -58,6 +58,7 @@
       }
     },
     mounted(){
+      this.loadMoreActive = (document.documentElement.clientWidth <= 768 && this.$store.state.btnList[0].num > 5)
       this.loadMoreData()
     },
     methods: {
@@ -78,8 +79,9 @@
             this.showLoading = true
             // this.loadMoreActive = true
             this.scrollLock = true
+            let tel = this.$route.query.tel
             this.$nextTick(o => {
-              this.$axios('/api/AptList/GetClassifyDate', {
+              this.$axios('/api/AptList/GetClassifyDate?mobile=' + tel, {
                   method: 'GET',
                   headers: {
                   'Content-Type': 'application/json'

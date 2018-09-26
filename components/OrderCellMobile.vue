@@ -14,10 +14,10 @@
             <span v-if="item.completeActive">已完成</span>
             <span v-else>维修中</span>
           </div>
-          <div class="main320-order-watch-service">
-            <span>手表型号：</span>
-            <span>5327G - 白金款式</span>
-          </div>
+          <!--<div class="main320-order-watch-service">-->
+            <!--<span>手表型号：</span>-->
+            <!--<span>5327G - 白金款式</span>-->
+          <!--</div>-->
           <div class="main320-order-watch-service">
             <span>手表服务：</span>
             <span>拆分机芯并清洗注油，据实际情况更换磨损，老化的机芯部件</span>
@@ -119,6 +119,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       flex: 1;
     }
 
@@ -127,7 +128,7 @@
     }
 
     .main320-order-watch-service {
-      margin-top: 10px;
+      margin-top: 20px;
       display: flex;
 
     }

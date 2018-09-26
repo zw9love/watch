@@ -14,7 +14,7 @@
       </span>
       <span class="number">
         <p class="watch-name"><span>百达斐丽</span></p>
-        <p>手表型号：<span>5327G - 白金款</span></p>
+        <!--<p>手表型号：<span>5327G - 白金款</span></p>-->
         <p class="watch-service">手表服务：<span>拆分机芯并清洗手表服务拆分机芯并清洗手表服务拆分机芯并清洗</span></p>
       </span>
       <span class="price">¥{{item.Price}}</span>
@@ -122,6 +122,7 @@
   }
 
   .main-cell-content p.watch-service {
+    margin-top: 20px;
   }
 
   .discount-info {

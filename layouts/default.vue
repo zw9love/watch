@@ -36,7 +36,13 @@ html {
   box-sizing: border-box;
 }
 
-@media (min-width: 768px) {
+/*html, body{*/
+  /*overflow-x:hidden;*/
+/*}*/
+
+
+/*@media (min-width: 768px) and (max-width: 1300px){*/
+@media (min-width: 768px){
   html{
     min-width: 1300px;
   }

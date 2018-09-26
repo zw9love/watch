@@ -315,6 +315,7 @@
             img.src = result
             // console.log(result)
             img.onload = async function () {
+
               await ws.send(JSON.stringify({
                 MesgType: "Sent",
                 User: "游客",
@@ -344,9 +345,9 @@
               //     })
               //   })
               //   .catch(error => {
-              //     // root.$store.dispatch({type: 'setModalInfo', val: '文件上传失败！'})
-              //     // root.$store.dispatch({type: 'setSuccessActive', val: false})
-              //     // root.$store.dispatch({type: 'setModalActive', val: true})
+              //     root.$store.dispatch({type: 'setModalInfo', val: '文件上传失败！'})
+              //     root.$store.dispatch({type: 'setSuccessActive', val: false})
+              //     root.$store.dispatch({type: 'setModalActive', val: true})
               //   })
               // console.log(result)
               root.$refs.uploadPc.value = ''

@@ -13,7 +13,7 @@
           <div class="reservation-details">
             <div class="reservation-details-wrapper">
               <div class="reservation-details-cell" v-for="(item, key) in processList" :key="key" :class="{'reservation-details-active': item.completed}">
-                <span class="date">2018-08-04</span>
+                <span class="date">{{item.CreateTime}}</span>
                 <span class="time">16:56</span>
                 <span class="image">
                 <x-img :src="item.completeSrc" alt="" v-if="item.completed"/>
@@ -36,7 +36,7 @@
         <OrderCellMobile :item="item" />
         <div class="orderdetails-reservation320">
           <div class="orderdetails-reservation320-cell" :class="{'orderdetails-reservation320-active': item.completed}" v-for="(item, key) in processList" :key="key">
-            <span class="date">2018-08-04</span>
+            <span class="date">{{item.CreateTime}}</span>
             <span class="time">16:56</span>
             <span class="image">
                 <x-img :src="item.completeSrc" alt="" v-if="item.completed"/>

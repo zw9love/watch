@@ -24,7 +24,8 @@ const store = () => new Vuex.Store({
     modalActive: false,
     successActive: false,
     modalInfo: '',
-    siteId: 1
+    siteId: 1,
+    btnList: []
   },
   mutations: {
     setCityName: (state, {val}) => {
@@ -41,6 +42,9 @@ const store = () => new Vuex.Store({
     },
     setModalInfo: (state, {val}) => {
       state.modalInfo = val
+    },
+    setBtnList: (state, {val}) => {
+      state.btnList = val
     },
     SET_USER: function (state, user) {
       state.authUser = user
@@ -61,6 +65,9 @@ const store = () => new Vuex.Store({
     },
     setModalInfo:  (context, data) => {
       context.commit('setModalInfo', data)
+    },
+    setBtnList:  (context, data) => {
+      context.commit('setBtnList', data)
     },
     nuxtServerInit({commit}, {req}) {
       // console.log(req.session.views)

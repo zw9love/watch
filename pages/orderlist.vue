@@ -3,7 +3,7 @@
     <!--Header-->
     <Header :pageIndex="4"/>
     <HeaderMobile title="查询结果"/>
-    <Tabbar :tabbarStyle="{background: '#eee'}"/>
+    <Tabbar :tabbarStyle="{background: 'transparent'}"/>
     <!--banner-->
     <div class="banner">
       <img :src="require('../assets/img/demand_banner@2x.png')" alt=""/>
@@ -63,7 +63,7 @@
         return redirect(302, '/process')
       }
     },
-    async asyncData ({ app, params, route, query, redirect }) {
+    async asyncData ({ app, params, route, query, redirect, store }) {
 
       let tel = query.tel
 
@@ -83,6 +83,8 @@
         {name: '维修中', href: "/orderlist/repair/1?tel=" + tel, num: data.RepairCount},
         {name: '已完成', href: "/orderlist/completed/1?tel=" + tel, num: data.CompletedCount},
       ]
+
+      store.dispatch({type: 'setBtnList', val: btnList})
 
       let mainBtbIndex = 0
       let total = 0
