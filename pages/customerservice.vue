@@ -213,7 +213,7 @@
         if(received_msg.MesgType === 'getkflist'){
           return this.serviceName = received_msg.Content.UserName
         }
-
+        console.log(received_msg)
         let obj = {}
         obj.type = 'service'
         obj.infoType = received_msg.ContentType
@@ -315,40 +315,45 @@
             img.src = result
             // console.log(result)
             img.onload = async function () {
-
+              let time = root.getTime()
               await ws.send(JSON.stringify({
                 MesgType: "Sent",
                 User: "游客",
                 SelectUser: root.serviceName,
                 Content: result,
-                ContentType: 'image',
+                ContentType: 'images',
+                MsgTime: time,
                 time,
                 type: 'customer'
               }))
-
-              let width = this.width < 760 ? this.width : 760
-              let time = root.getTime()
-              root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
-              root.$nextTick(function () {
-                root.pcToBottom()
-              })
-
-              // root.$axios('/api/Chat/ExchangeImg?base64str=' + result, {
-              //   method: 'POST',
+              //
+              // let width = this.width < 760 ? this.width : 760
+              // let time = root.getTime()
+              // root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
+              // root.$nextTick(function () {
+              //   root.pcToBottom()
               // })
-              //   .then(res => {
-              //     let width = this.width < 760 ? this.width : 760
-              //     let time = root.getTime()
-              //     root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
-              //     root.$nextTick(function () {
-              //       root.pcToBottom()
-              //     })
-              //   })
-              //   .catch(error => {
-              //     root.$store.dispatch({type: 'setModalInfo', val: '文件上传失败！'})
-              //     root.$store.dispatch({type: 'setSuccessActive', val: false})
-              //     root.$store.dispatch({type: 'setModalActive', val: true})
-              //   })
+              let fd = new FormData()
+              fd.append('base64str', result)
+              root.$axios('/api/Chat/ExchangeImg', {
+                method: 'POST',
+                data: fd,
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+              })
+                .then(res => {
+                  let width = this.width < 760 ? this.width : 760
+                  root.list.push({infoType: 'images', type: 'customer', time: time, src: result, content: result, width: width})
+                  root.$nextTick(function () {
+                    root.pcToBottom()
+                  })
+                })
+                .catch(error => {
+                  root.$store.dispatch({type: 'setModalInfo', val: '文件上传失败！'})
+                  root.$store.dispatch({type: 'setSuccessActive', val: false})
+                  root.$store.dispatch({type: 'setModalActive', val: true})
+                })
               // console.log(result)
               root.$refs.uploadPc.value = ''
             }
@@ -377,6 +382,7 @@
           Content: html,
           ContentType: 'text',
           time,
+          MsgTime: time,
           type: 'customer'
         }))
         this.$nextTick(function () {
@@ -447,6 +453,7 @@
           Content: editorMobileHtml,
           ContentType: 'text',
           time,
+          MsgTime: time,
           content: editorMobileHtml,
           infoType: 'text',
           type: 'customer'
@@ -487,39 +494,46 @@
             let result = this.result
             img.src = result
             img.onload = async function () {
+              let time = root.getTime()
               await ws.send(JSON.stringify({
                 MesgType: "Sent",
                 User: "游客",
                 SelectUser: root.serviceName,
                 Content: result,
-                ContentType: 'image',
+                ContentType: 'images',
                 time,
+                MsgTime: time,
                 type: 'customer'
               }))
-
-              let width = this.width < 230 ? this.width : 230
-              let time = root.getTime()
-              root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
-              root.$nextTick(function () {
-                root.mobileToBottom()
-              })
-
-              // root.$axios('/api/Chat/ExchangeImg?base64str=' + result, {
-              //   method: 'POST',
+              //
+              // let width = this.width < 230 ? this.width : 230
+              // let time = root.getTime()
+              // root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
+              // root.$nextTick(function () {
+              //   root.mobileToBottom()
               // })
-              //   .then(res => {
-              //     let width = this.width < 230 ? this.width : 230
-              //     let time = root.getTime()
-              //     root.list.push({infoType: 'image', type: 'customer', time: time, src: result, width: width})
-              //     root.$nextTick(function () {
-              //       root.mobileToBottom()
-              //     })
-              //   })
-              //   .catch(error => {
-              //     // root.$store.dispatch({type: 'setModalInfo', val: '文件上传失败！'})
-              //     // root.$store.dispatch({type: 'setSuccessActive', val: false})
-              //     // root.$store.dispatch({type: 'setModalActive', val: true})
-              //   })
+
+              let fd = new FormData()
+              fd.append('base64str', result)
+              root.$axios('/api/Chat/ExchangeImg', {
+                method: 'POST',
+                data: fd,
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+              })
+                .then(res => {
+                  let width = this.width < 230 ? this.width : 230
+                  root.list.push({infoType: 'images', type: 'customer', time: time, src: result, content: result, width: width})
+                  root.$nextTick(function () {
+                    root.mobileToBottom()
+                  })
+                })
+                .catch(error => {
+                  // root.$store.dispatch({type: 'setModalInfo', val: '文件上传失败！'})
+                  // root.$store.dispatch({type: 'setSuccessActive', val: false})
+                  // root.$store.dispatch({type: 'setModalActive', val: true})
+                })
               // console.log(result)
               root.$refs.photoMobile.value = ''
               root.$refs.camera.value = ''

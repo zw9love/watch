@@ -58,11 +58,11 @@
   import Tabbar from '../components/Tabbar'
   export default {
     name: "successOrder",
-    fetch ({ store, redirect }) {
-      if (!store.state.authUser) {
-        return redirect(302, '/process')
-      }
-    },
+    // fetch ({ store, redirect, query}) {
+    //   if (store.state.tel !== query.tel) {
+    //     return redirect(302, '/process')
+    //   }
+    // },
     components: {
       Header,
       Footer,

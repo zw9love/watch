@@ -19,9 +19,14 @@ router.use((req, res, next) => {
 // Add POST - /api/login
 router.post('/login', (req, res) => {
   // console.log('login接口。')
-  if (req.body.username === 'demo' && req.body.password === 'demo') {
-    req.session.authUser = { username: 'demo' }
-    return res.json({ username: 'demo' })
+  // if (req.body.username === 'demo' && req.body.password === 'demo') {
+  //   req.session.authUser = { username: 'demo' }
+  //   return res.json({ username: 'demo' })
+  // }
+  // console.log(req.body.tel)
+  if (req.body.tel) {
+    req.session.tel = req.body.tel
+    return res.json({ tel: req.body.tel})
   }
   res.status(401).json({ message: 'Bad credentials' })
 })
@@ -35,7 +40,7 @@ router.post('/logout', (req, res) => {
 
 // Add POST - /api/refresh
 router.post('/refresh', (req, res) => {
-  if (req.session.authUser) {
+  if (req.session.tel) {
     req.session.views++
     return res.json({ ok: true })
   }else{

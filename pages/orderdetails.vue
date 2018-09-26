@@ -7,8 +7,8 @@
 <script>
   import Tabbar from '../components/Tabbar'
   export default {
-    fetch ({ store, redirect }) {
-      if (!store.state.authUser) {
+    fetch ({ store, redirect, query}) {
+      if (!store.state.tel) {
         return redirect(302, '/process')
       }
     },

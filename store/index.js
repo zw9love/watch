@@ -25,7 +25,9 @@ const store = () => new Vuex.Store({
     successActive: false,
     modalInfo: '',
     siteId: 1,
-    btnList: []
+    btnList: [],
+    tel: '',
+    faultList: []
   },
   mutations: {
     setCityName: (state, {val}) => {
@@ -45,6 +47,9 @@ const store = () => new Vuex.Store({
     },
     setBtnList: (state, {val}) => {
       state.btnList = val
+    },
+    setTelNumber: (state, {val}) => {
+      state.tel = val
     },
     SET_USER: function (state, user) {
       state.authUser = user
@@ -69,17 +74,27 @@ const store = () => new Vuex.Store({
     setBtnList:  (context, data) => {
       context.commit('setBtnList', data)
     },
+    setTelNumber:  (context, data) => {
+      context.commit('setTelNumber', data)
+    },
     nuxtServerInit({commit}, {req}) {
       // console.log(req.session.views)
-      if (req.session && req.session.authUser) {
+      // if (req.session && req.session.authUser) {
+      //   // console.log('已经查找过。')
+      //   req.session.views++
+      //   commit('SET_USER', req.session.authUser)
+      // }else{
+      //   req.session.views = 1
+      // }
+      if (req.session && req.session.tel) {
         // console.log('已经查找过。')
         req.session.views++
-        commit('SET_USER', req.session.authUser)
+        commit('setTelNumber', {val: req.session.tel})
       }else{
         req.session.views = 1
       }
     },
-    login({commit}, {username, password, axios, self, jumpPath}) {
+    login({commit}, {username, password, tel, axios, self, jumpPath}) {
       return axios('/login', {
         // 发送客户端 cookies 到服务端
         credentials: 'same-origin',
@@ -88,23 +103,34 @@ const store = () => new Vuex.Store({
           'Content-Type': 'application/json'
         },
         data: JSON.stringify({
-          username,
-          password
+          // username,
+          // password,
+          tel
         })
       })
+        // .then((res) => {
+        //   if (res.status === 401) {
+        //     throw new Error('Bad credentials')
+        //   } else {
+        //     return res.data.username
+        //   }
+        // })
+        // .then((authUser) => {
+        //   commit('SET_USER', authUser)
+        // })
         .then((res) => {
           if (res.status === 401) {
             throw new Error('Bad credentials')
           } else {
-            return res.data.username
+            return res.data.tel
           }
         })
-        .then((authUser) => {
-          commit('SET_USER', authUser)
+        .then( tel => {
+          commit('setTelNumber', {val: tel})
         })
         .then(() => {
-          let path = jumpPath ? jumpPath : '/orderlist/all/1'
-          // console.log(path)
+          //console.log('跳转。')
+          let path = jumpPath ? jumpPath : '/orderlist/all/1?tel=' + tel
           self.$router.push({path})
           // self.$router.push({path: '/secret'})
         })
@@ -116,7 +142,7 @@ const store = () => new Vuex.Store({
         method: 'POST'
       })
         .then(() => {
-          commit('SET_USER', null)
+          commit('setTelNumber', null)
         })
     }
   }

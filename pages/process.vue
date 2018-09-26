@@ -122,7 +122,7 @@
           }
         })
           .then(res => {
-            console.log(res)
+            //console.log(res)
             let {code, msg, data} = res.data
             switch (code) {
               case 0:
@@ -136,7 +136,7 @@
                   this.$store.dispatch({type: 'setSuccessActive', val: false})
                   return this.$store.dispatch({type: 'setModalActive', val: true})
                 }
-                this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/orderlist/all/1?tel=' + phone})
+                this.$store.dispatch('login', {tel: phone, axios: this.$axios, self: this, jumpPath: '/orderlist/all/1?tel=' + phone})
                 break
 
             }

@@ -1,7 +1,7 @@
 <template>
   <div class="main320-order-cell" @click="goDetails">
     <div class="main320-order-title">
-      <span class="">北京西单旗舰店 ></span>
+      <!--<span class="">北京西单旗舰店 ></span>-->
     </div>
     <div class="main320-order-main">
       <div class="main320-order-watch">
@@ -10,7 +10,7 @@
         </div>
         <div class="main320-order-watch-info">
           <div class="main320-order-status">
-            <h3>百达斐丽</h3>
+            <h3>{{item.Remark}}</h3>
             <span v-if="item.completeActive">已完成</span>
             <span v-else>维修中</span>
           </div>
@@ -19,8 +19,9 @@
             <!--<span>5327G - 白金款式</span>-->
           <!--</div>-->
           <div class="main320-order-watch-service">
-            <span>手表服务：</span>
-            <span>拆分机芯并清洗注油，据实际情况更换磨损，老化的机芯部件</span>
+            <span>故障类型：</span>
+            <!--<span>拆分机芯并清洗注油，据实际情况更换磨损，老化的机芯部件</span>-->
+            <span>{{item.TroubleNoStr}}</span>
           </div>
         </div>
       </div>
@@ -32,7 +33,7 @@
         </div>
         <div class="main320-order-price-cell">
           <span><span>维修折扣</span><span class="discount">（在线预约8折优惠）</span></span>
-          <span>¥{{parseInt(item.Price * 0.2)}}</span>
+          <span>¥{{item.AfterPrice - item.Price}}</span>
         </div>
         <div class="main320-order-price-cell">
           <span>实付款</span>
@@ -118,8 +119,8 @@
     .main320-order-watch-info {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-around;
+      /*align-items: center;*/
       flex: 1;
     }
 

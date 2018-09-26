@@ -13,7 +13,7 @@
         <p class="content" v-if="entry.infoType === 'expression'">
           <img :src="entry.content" class="emoji-img"/>
         </p>
-        <p class="content" v-else-if="entry.infoType === 'image'">
+        <p class="content" v-else-if="entry.infoType === 'images'">
           <img :src="entry.content" preview-nav-enable="false" v-preview="entry.content" class="upload-img"/>
         </p>
         <p class="content" v-else v-html="entry.content">
@@ -28,8 +28,8 @@
         <p class="title">
           <span class="time" style="margin:0; color: #eee">{{entry.time}}</span>
         </p>
-        <p class="content" v-if="entry.infoType === 'image'">
-          <img :src="entry.src" preview-nav-enable="false" v-preview="entry.src" class="upload-img"/>
+        <p class="content" v-if="entry.infoType === 'images'">
+          <img :src="entry.content" preview-nav-enable="false" v-preview="entry.content" class="upload-img"/>
         </p>
         <p class="content" v-else v-html="entry.content">
         </p>

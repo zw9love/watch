@@ -58,8 +58,8 @@
       HeaderMobile,
       Tabbar
     },
-    fetch ({ store, redirect }) {
-      if (!store.state.authUser) {
+    fetch ({ store, redirect, query}) {
+      if (store.state.tel !== query.tel) {
         return redirect(302, '/process')
       }
     },
@@ -113,21 +113,22 @@
         total: 0
       }
     },
-    // created(){
-    //   // console.log(this.$route.name)
-    //   switch (this.$route.name){
-    //     case 'orderlist-index':
-    //     case 'orderlist-all-pageNumber':
-    //       this.mainBtbIndex = 0
-    //       break;
-    //     case 'orderlist-repair-pageNumber':
-    //       this.mainBtbIndex = 1
-    //       break;
-    //     case 'orderlist-completed-pageNumber':
-    //       this.mainBtbIndex = 2
-    //       break;
-    //   }
-    // },
+    watch: {
+      '$route': function(newVal){
+        switch (newVal.name){
+          case 'orderlist-index':
+          case 'orderlist-all-pageNumber':
+            this.mainBtbIndex = 0
+            break;
+          case 'orderlist-repair-pageNumber':
+            this.mainBtbIndex = 1
+            break;
+          case 'orderlist-completed-pageNumber':
+            this.mainBtbIndex = 2
+            break;
+        }
+      }
+    },
     computed: {
       currentPage(){
         return parseInt(this.$route.params.pageNumber) || 1
@@ -141,11 +142,11 @@
       },
       currentChange(num){
         // this.$router.push({query: {pageNumber: num}})
-        let path = this.$route.path
+        let {path, query} = this.$route
         // console.log(path)
         let keyIndex = path.lastIndexOf('/')
         let basePath = path.slice(0, keyIndex)
-        this.$router.push({path: basePath + '/' + num})
+        this.$router.push({path: basePath + '/' + num + '?tel=' + query.tel})
       }
     }
   }

@@ -1230,13 +1230,14 @@
                 this.$store.dispatch({type: 'setModalActive', val: true})
                 break;
               case 1:
-                this.$store.dispatch('login', {
-                  username: 'demo',
-                  password: 'demo',
-                  axios: this.$axios,
-                  self: this,
-                  jumpPath: '/successorderfast/' + id
-                })
+                // this.$store.dispatch('login', {
+                //   username: 'demo',
+                //   password: 'demo',
+                //   axios: this.$axios,
+                //   self: this,
+                //   jumpPath: '/successorderfast/' + id
+                // })
+                this.$router.push({path: '/successorderfast/' + id})
                 break
 
             }

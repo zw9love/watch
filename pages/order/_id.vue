@@ -366,7 +366,8 @@
                 this.$store.dispatch({type: 'setModalActive', val: true})
                 break;
               case 1:
-                this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorder/' + id})
+                // this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorder/' + id})
+                this.$router.push({path: '/successorder/' + id})
                 break
 
             }
@@ -450,7 +451,8 @@
                 this.$store.dispatch({type: 'setModalActive', val: true})
                 break;
               case 1:
-                this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorder/' + id})
+                // this.$store.dispatch('login', {username: 'demo', password: 'demo', axios: this.$axios, self: this, jumpPath: '/successorder/' + id})
+                this.$router.push({path: '/successorder/' + id})
                 break
 
             }

@@ -6,8 +6,8 @@
         <img src="../assets/img/customer_service_logo.png" alt="">
         <div class="main-cell-info">
           <!--<p class="name">在线客服08号-小张</p>-->
-          <p class="content" v-if="entry.infoType === 'image'">
-            <img :src="entry.src" preview-nav-enable="false" v-preview="entry.src" class="upload-img"/>
+          <p class="content" v-if="entry.infoType === 'images'">
+            <img :src="entry.content" preview-nav-enable="false" v-preview="entry.src" class="upload-img"/>
           </p>
           <p class="content" v-else-if="entry.infoType === 'expression'">
             <img :src="entry.content" class="emoji-img"/>
@@ -23,8 +23,8 @@
       <p class="store-info">{{entry.time}}</p>
       <div class="main-cell320 main-customer-cell320">
         <div class="main-cell-info">
-          <p class="content" v-if="entry.infoType === 'image'">
-            <img :src="entry.src" preview-nav-enable="false" v-preview="entry.src" class="upload-img"/>
+          <p class="content" v-if="entry.infoType === 'images'">
+            <img :src="entry.content" preview-nav-enable="false" v-preview="entry.content" class="upload-img"/>
           </p>
           <p class="content" v-else v-html="entry.content">
             <!--{{entry.content}}-->

@@ -11,6 +11,21 @@
     components: {
       Modal
     },
+    // fetch(){
+    //   console.log('default的fetch。')
+    // },
+    // async created(){
+    //   // 故障类型
+    //   let faultOption = {
+    //     url: '/api/AptList/GetFaultList',
+    //     method: 'GET',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   }
+    //   let faultRes = await app.$axios(faultOption)
+    //   this.$store.state.faultList = faultRes.data
+    // },
     methods: {
       close(){
         this.$store.dispatch({type: 'setModalActive', val: false})
