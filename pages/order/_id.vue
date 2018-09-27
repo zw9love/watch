@@ -25,7 +25,7 @@
               v-for="item in options"
               :key="item.Id"
               :label="item.BaseName"
-              :value="item.Id">
+              :value="item.BaseNo">
             </el-option>
           </el-select>
         </span>
@@ -242,7 +242,7 @@
       let obj = {}
       data.forEach((o, i) => {
         arr.push(o.BaseName)
-        obj[o.BaseName] = o.Id
+        obj[o.BaseName] = o.BaseNo
       })
 
       return { options: data, optionsMobile: arr, faultObject: obj}

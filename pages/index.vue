@@ -491,7 +491,7 @@
                     v-for="item in options"
                     :key="item.Id"
                     :label="item.BaseName"
-                    :value="item.Id">
+                    :value="item.BaseNo">
                   </el-option>
                 </el-select>
               </div>
