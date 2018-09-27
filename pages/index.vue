@@ -62,7 +62,8 @@
             <!--<nuxt-child/>-->
             <div class="brand-main-right">
               <ul>
-                <li v-for="(item, key) in brandPCList" :key="key" @click="goService">
+                <!--<li v-for="(item, key) in brandPCList" :key="key" @click="goService" :style="{backgroundImage: `url(${item.Img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}">-->
+                <li v-for="(item, key) in brandPCList" :key="key" @click="goService" >
                   <x-img :src="item.Img" alt=""/>
                 </li>
               </ul>
@@ -240,7 +241,7 @@
                     原厂品质
                   </span>
                   <span class="info">
-                    修后同原厂价格
+                    维修后符合原厂规格
                   </span>
                 </div>
               </div>
@@ -657,10 +658,10 @@
       <!--</p>-->
       <!--</div>-->
       <div class="store-info">
-        <h1>北京名表维修中心</h1>
-        <p>营业时间：09:00-19:00（节假日不休）</p>
-        <p>店铺地址：北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）</p>
-        <p>乘车线路： 乘坐3路、130路、132路、133路、658路、659路、858路到莲坂北</p>
+        <h1>西单君太综合店</h1>
+        <p>营业时间：09:00-21:00（节假日不休）</p>
+        <p>店铺地址：北京市西城区西单北大街甲133号君太百货一层北门西亨钟表店</p>
+        <!--<p>乘车线路： 乘坐3路、130路、132路、133路、658路、659路、858路到莲坂北</p>-->
         <!--<p><button @click="changePosition">改变位置</button></p>-->
       </div>
       <div id="store-map"></div>
