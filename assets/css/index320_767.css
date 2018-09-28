@@ -9,13 +9,54 @@
   html{overflow-x: hidden}
   body{max-width: 768px;min-width: 320px;overflow-x: hidden}
 
+  .home-mobile-header{
+    height: 46px;
+    background: #333;
+    line-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0 10px;
+    position: absolute;
+    left:0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .home-mobile-header >img:first-child{
+    width: 40px;
+    height: 20px;
+  }
+
+  .home-mobile-header >span{
+    color: #fff;
+    font-size: 16px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .home-mobile-header >a:last-child{
+    width: 23px;
+    height: 23px;
+    display: inline-block;
+  }
+
+  .home-mobile-header >a:last-child img{
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+  }
+
   /*
     普通样式
    */
   .container{
     padding-bottom: 14.285714%;
     /*padding-bottom: 22.222222%;*/
-    padding-top: 46px;
+    /*padding-top: 46px;*/
     /*height: 100vh;*/
     /*overflow-x: hidden;*/
     /*overflow-y: scroll;*/
@@ -71,17 +112,19 @@
   }
 
   .banner-container{
-    padding-top: 52.0639%;
+    padding-top: calc(52.0639% + 30px);
     height: auto;
+    position: relative;
+    /*margin-top: 20px;*/
   }
 
   .banner-container img.banner_phone{
     display: block;
     position: absolute;
     left: 0;
-    top: 0;
+    bottom: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 30px);
   }
 
   .navigation-container320{

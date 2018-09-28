@@ -8,7 +8,7 @@
 
       <!--banner-->
       <div class="banner" @click="bannerClick">
-        <img :src="require('../assets/img/case_banner@2x.png')" alt="" />
+        <img :src="require('../assets/img/case_banner@2x.jpg')" alt="" />
       </div>
 
       <!--main-->

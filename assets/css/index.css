@@ -7,7 +7,7 @@
 /*
     移动端隐藏结构
  */
-.navigation-container320{
+.navigation-container320, .home-mobile-header{
   display: none;
 }
 

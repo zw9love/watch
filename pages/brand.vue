@@ -8,7 +8,7 @@
 
     <!--banner-->
     <div class="banner" @click="$router.push({path: '/servicelist'})">
-      <img :src="require('../assets/img/brand_banner@2x.png')" alt="" />
+      <img :src="require('../assets/img/brand_banner@2x.jpg')" alt="" />
     </div>
 
     <div class="banner320">
@@ -254,7 +254,7 @@
         // 创建地址解析器实例
         let myGeo = new BMap.Geocoder();
         // 将地址解析结果显示在地图上,并调整地图视野
-        myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）", function (point) {
+        myGeo.getPoint("北京市西城区西单北大街甲133号君太百货一层北门西亨钟表店", function (point) {
           if (point) {
             map.centerAndZoom(point, 16);
             map.addOverlay(new BMap.Marker(point));

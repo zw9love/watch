@@ -3,36 +3,50 @@
   <div class="container" id="container">
     <Tabbar/>
     <Header/>
-    <HeaderMobile title="西亨名表维修中心" :showBack="false"/>
+    <!--<HeaderMobile title="西亨名表维修中心" :showBack="false"/>-->
+    <!--<div class="home-mobile-header">-->
+      <!--<img src="../assets/img/header_xiheng_mobile.png"/>-->
+      <!--<span>西亨名表维修中心</span>-->
+      <!--<a href="tel:400-136-8800">-->
+        <!--<img src="../assets/img/header_phone_mobile.png"/>-->
+      <!--</a>-->
+    <!--</div>-->
     <!--banner-->
     <div class="banner-container">
+      <div class="home-mobile-header">
+        <img src="../assets/img/header_xiheng_mobile.png"/>
+        <span>西亨名表维修中心</span>
+        <a href="tel:400-136-8800">
+          <img src="../assets/img/header_phone_mobile.png"/>
+        </a>
+      </div>
       <!--<img :src="require('../assets/img/home_banner_bg@2x.png')" alt="" class="banner_pc">-->
       <img :src="require('../assets/img/home_banner_bg@2x.jpg')" class="banner_pc"/>
       <img :src="require('../assets/img/home_banner320_bg@2x.png')" alt="" class="banner_phone">
       <!--<div class="banner-shadow">-->
       <!--<p>维修中心地址：北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）</p>-->
       <!--</div>-->
-      <div class="banner-shadow320">
-        <x-address title="title" v-model="addressValue" :list="addressData" :hide-district="true" class="mytest">
-          <template slot="title" slot-scope="props">
-            <span class="city">{{cityName}}</span>
-            <img :src="require('../assets/img/home_icon_position@2x.png')" alt="" class="arrow"/>
-          </template>
-        </x-address>
-        <!--<popup-picker :data="list1" v-model="value1" :columns="3" ref="picker">-->
-        <!--<template slot="title" slot-scope="props">-->
-        <!--<span class="city">{{ ($refs.picker && $refs.picker.getNameValues().split(' ')[1]) || '广州'}}</span>-->
-        <!--<img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow" />>-->
-        <!--</template>-->
-        <!--</popup-picker>-->
-        <!--<span class="city">北京</span>-->
-        <!--<img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow" />>-->
-        <div class="line"></div>
-        <form action="" @submit.prevent style="flex: 1;display: flex">
-          <input class="txt" type="search" placeholder="搜索" @keydown.enter.prevent="searchGlobal">
-        </form>
-        <img @click="searchGlobal" :src="require('../assets/img/home_top_search@2x.png')" alt="" class="search-btn"/>
-      </div>
+      <!--<div class="banner-shadow320">-->
+        <!--<x-address title="title" v-model="addressValue" :list="addressData" :hide-district="true" class="mytest">-->
+          <!--<template slot="title" slot-scope="props">-->
+            <!--<span class="city">{{cityName}}</span>-->
+            <!--<img :src="require('../assets/img/home_icon_position@2x.png')" alt="" class="arrow"/>-->
+          <!--</template>-->
+        <!--</x-address>-->
+        <!--&lt;!&ndash;<popup-picker :data="list1" v-model="value1" :columns="3" ref="picker">&ndash;&gt;-->
+        <!--&lt;!&ndash;<template slot="title" slot-scope="props">&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="city">{{ ($refs.picker && $refs.picker.getNameValues().split(' ')[1]) || '广州'}}</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow" />>&ndash;&gt;-->
+        <!--&lt;!&ndash;</template>&ndash;&gt;-->
+        <!--&lt;!&ndash;</popup-picker>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="city">北京</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<img src="../assets/img/home_icon_position@2x.png" alt="" class="arrow" />>&ndash;&gt;-->
+        <!--<div class="line"></div>-->
+        <!--<form action="" @submit.prevent style="flex: 1;display: flex">-->
+          <!--<input class="txt" type="search" placeholder="搜索" @keydown.enter.prevent="searchGlobal">-->
+        <!--</form>-->
+        <!--<img @click="searchGlobal" :src="require('../assets/img/home_top_search@2x.png')" alt="" class="search-btn"/>-->
+      <!--</div>-->
     </div>
     <!--navigation320-->
     <div class="navigation-container320">
@@ -159,16 +173,16 @@
           <li>
             <div class="service-project-main-cell">
               <x-img :src="require('../assets/img/home_serviceitems_icon4@2x.png')" alt=""/>
-              <h3 class="info">表带服务</h3>
+              <h3 class="info">特色服务</h3>
               <div class="line"></div>
               <div class="info-container">
                 <div class="info-left-container">
-                  <p>定制表带</p>
-                  <p>更换表带</p>
+                  <p>真伪鉴定</p>
+                  <p>表带服务</p>
                 </div>
                 <div class="info-right-container">
-                  <p>更换表节</p>
-                  <p>加表节</p>
+                  <p>故障检测</p>
+                  <p>在线预约</p>
                 </div>
               </div>
             </div>
@@ -873,7 +887,7 @@
         value4: [new Date(), new Date()],
         brandBtnList: [
           {name: '常见品牌', url: '/'},
-          {name: '顶级品牌', url: 'top'},
+          {name: '高端品牌', url: 'top'},
           {name: '奢华品牌', url: 'luxury'},
           {name: '豪华品牌', url: 'expensive'},
           {name: '亲民品牌', url: 'people'},
@@ -965,7 +979,7 @@
         let myGeo = new BMap.Geocoder();
         // 将地址解析结果显示在地图上,并调整地图视野
         // myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心（西单大悦城旁）", function (point) {
-        myGeo.getPoint("北京市西城区西单北大街甲133号西亨钟表维修中心", function (point) {
+        myGeo.getPoint("北京市西城区西单北大街甲133号君太百货一层北门西亨钟表店", function (point) {
           if (point) {
             // console.log(point)
             map.centerAndZoom(point, 16);

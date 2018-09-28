@@ -83,7 +83,7 @@
     data() {
       return {
         navigationList: [
-          {name: '网站首页', href: '/'},
+          {name: '首页', href: '/'},
           {name: '品牌门店', href: '/brand'},
           {name: '维修案例', href: '/case'},
           {name: '预约到店', href: '/servicelist'},

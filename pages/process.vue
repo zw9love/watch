@@ -6,7 +6,7 @@
 
       <!--banner-->
       <div class="banner">
-        <img :src="require('../assets/img/demand_banner@2x.png')" alt="" />
+        <img :src="require('../assets/img/demand_banner@2x.jpg')" alt="" />
       </div>
 
       <!--process-->
