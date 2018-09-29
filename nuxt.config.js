@@ -38,7 +38,7 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/logo.png' }
     ],
     script: [
-      {src: 'http://api.map.baidu.com/api?v=2.0&ak=L2fFIBoizTO5nxe7ypgsV3pHGmYw6tqx'},
+      {src: 'https://api.map.baidu.com/api?v=2.0&ak=L2fFIBoizTO5nxe7ypgsV3pHGmYw6tqx'},
     ],
   },
   // 数据交互

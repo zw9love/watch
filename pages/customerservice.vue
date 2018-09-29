@@ -589,7 +589,7 @@
 
   .banner {
     margin-top: 20px;
-    height: 380px;
+    /*height: 380px;*/
   }
 
   .banner img {
@@ -599,11 +599,11 @@
 
   .banner img:first-child {
     margin-right: 20px;
-    width: calc((100% - 20px) * 0.5242);
+    width: calc((100% - 20px) * 0.511326);
   }
 
   .banner img:last-child {
-    width: calc((100% - 20px) * 0.4758);
+    width: calc((100% - 20px) * 0.488674);
   }
 
   img {
