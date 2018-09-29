@@ -2,12 +2,12 @@
   <div>
     <div class="main-cell main-service-cell" v-if="entry.type !== 'customer'">
       <div class="main-cell-head">
-        <img src="../assets/img/customer_service_logo.png"/>
+        <img src="../assets/img/customer_service_own.jpg"/>
         <!--<img src="../assets/img/customer_service_logo.png" />-->
       </div>
       <div class="main-cell-info">
         <p class="title">
-          <span class="service-name">{{entry.name || '在线客服08号-小雅'}}</span>
+          <span class="service-name">{{entry.name}}</span>
           <span class="time">{{entry.time}}</span>
         </p>
         <p class="content" v-if="entry.infoType === 'expression'">
@@ -22,7 +22,7 @@
     </div>
     <div class="main-cell main-customer-cell" v-else>
       <div class="main-cell-head">
-        <img src="../assets/img/customer_service_logo.png"/>
+        <img src="../assets/img/customer_service_user.jpg"/>
       </div>
       <div class="main-cell-info">
         <p class="title">

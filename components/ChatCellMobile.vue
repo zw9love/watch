@@ -3,7 +3,7 @@
     <div v-if="entry.type !== 'customer'">
       <p class="store-info">{{entry.time}}</p>
       <div class="main-cell320 main-service-cell320">
-        <img src="../assets/img/customer_service_logo.png" alt="">
+        <img src="../assets/img/customer_service_own.jpg" alt="">
         <div class="main-cell-info">
           <!--<p class="name">在线客服08号-小张</p>-->
           <p class="content" v-if="entry.infoType === 'images'">
@@ -30,7 +30,7 @@
             <!--{{entry.content}}-->
           </p>
         </div>
-        <img src="../assets/img/customer_service_logo.png" alt="">
+        <img src="../assets/img/customer_service_user.jpg" alt="">
       </div>
     </div>
   </div>
