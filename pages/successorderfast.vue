@@ -157,7 +157,8 @@
     .container{
       display: block!important;
       margin-top: 76px;
-      padding-bottom: 14.285714%;
+      /*padding-bottom: 14.285714%;*/
+      padding-bottom: 22.222222%;
     }
 
     .banner{

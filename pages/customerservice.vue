@@ -23,7 +23,7 @@
       <main class="main" ref="main">
         <div class="main-container" ref="mainContainer">
           <div class="banner">
-            <img src="../assets/img/customer_service_left.jpg"/>
+            <img src="../assets/img/customer_service_left.jpeg"/>
             <img src="../assets/img/customer_service_right.jpg"/>
           </div>
           <!--<div class="main-tip"><span>2018-8-10 09:23:23 请求了对话</span></div>-->

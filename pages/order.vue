@@ -15,7 +15,8 @@
 <style scoped>
   @media (max-width: 768px) {
     .orderContainer{
-      padding-bottom: 14.285714%;
+      /*padding-bottom: 14.285714%;*/
+      padding-bottom: 22.222222%;
     }
   }
 </style>
