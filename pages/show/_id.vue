@@ -162,6 +162,10 @@
     line-height: 2em;
   }
 
+  #article img{
+    max-width: 800px;
+  }
+
   @media (max-width:768px){
     .navbar{
       display: none;

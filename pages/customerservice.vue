@@ -194,8 +194,8 @@
 
       // ws = new WebSocket("ws://localhost:9090");
       // ws = new WebSocket("ws://192.168.16.5:8981/api/Chat/Connect?type=0&pwd=123456&user=" + username);
-      ws = new WebSocket("ws://180.76.160.14:8981/api/Chat/Connect?type=0&pwd=123456&user=" + username);
-      // ws = new WebSocket("ws://api.pgwxd.com/api/Chat/Connect?type=0&pwd=123456&user=" + username);
+      // ws = new WebSocket("ws://180.76.182.113:8091/api/Chat/Connect?type=0&pwd=123456&user=" + username);
+      ws = new WebSocket("wss://api.pgwxd.com/api/Chat/Connect?type=0&pwd=123456&user=" + username);
       // // ws = new WebSocket("ws://192.168.1.216:1000/api/Chat/Connect?type=0&pwd=123456&user=cyf");
       //
       ws.onopen = () => {
@@ -243,8 +243,8 @@
         // 关闭 websocket
         console.log("连接已关闭...");
         // ws = new WebSocket("ws://192.168.1.216:1000/api/Chat/Connect?type=0&pwd=123456&user=" + username);
-        // ws = new WebSocket("ws://api.pgwxd.com/api/Chat/Connect?type=0&pwd=123456&user=" + username);
-        ws = new WebSocket("ws://180.76.160.14:8981/api/Chat/Connect?type=0&pwd=123456&user=" + username);
+        ws = new WebSocket("wss://api.pgwxd.com/api/Chat/Connect?type=0&pwd=123456&user=" + username);
+        // ws = new WebSocket("ws://180.76.182.113:8091/api/Chat/Connect?type=0&pwd=123456&user=" + username);
       }
 
       window.addEventListener('beforeunload', () => {

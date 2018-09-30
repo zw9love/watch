@@ -156,9 +156,17 @@ img[lazy=loading] {
   padding-bottom: 130px;
 }
 
+#article img{
+  max-width: 800px;
+}
+
 @media (max-width: 768px) {
   .container{
     padding-bottom: 0;
+  }
+
+  #article img{
+    max-width: calc(100% - 20px);
   }
 }
 

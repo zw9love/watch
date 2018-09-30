@@ -63,7 +63,8 @@ module.exports = {
       // target: 'http://0.0.0.0',
       // target: 'http://localhost:6789',
       // target: 'http://192.168.1.216:1000',
-      target: 'https://api.pgwxd.com/',
+      // target: 'https://api.pgwxd.com/',
+      target: 'http://180.76.182.113:8091',
       pathRewrite: {
         '^/bgapi/': ''
       },

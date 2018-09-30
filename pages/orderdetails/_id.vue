@@ -14,12 +14,12 @@
             <div class="reservation-details-wrapper">
               <div class="reservation-details-cell" v-for="(item, key) in processList" :key="key" :class="{'reservation-details-active': item.completed}">
                 <span class="date">{{item.CreateTime}}</span>
-                <span class="time">16:56</span>
+                <!--<span class="time">16:56</span>-->
                 <span class="image">
-                <x-img :src="item.completeSrc" alt="" v-if="item.completed"/>
-                <x-img :src="item.noCompleteSrc" alt="" v-else />
+                <x-img :src="processImgList[key].completeSrc" alt="" v-if="item.completed"/>
+                <x-img :src="processImgList[key].noCompleteSrc" alt="" v-else />
               </span>
-                <span class="info">{{item.info}}</span>
+                <span class="info">{{item.Msg}}</span>
               </div>
             </div>
           </div>
@@ -37,12 +37,12 @@
         <div class="orderdetails-reservation320">
           <div class="orderdetails-reservation320-cell" :class="{'orderdetails-reservation320-active': item.completed}" v-for="(item, key) in processList" :key="key">
             <span class="date">{{item.CreateTime}}</span>
-            <span class="time">16:56</span>
+            <!--<span class="time">16:56</span>-->
             <span class="image">
-                <x-img :src="item.completeSrc" alt="" v-if="item.completed"/>
-                <x-img :src="item.noCompleteSrc" alt="" v-else />
+                <x-img :src="processImgList[key].completeSrc" alt="" v-if="item.completed"/>
+                <x-img :src="processImgList[key].noCompleteSrc" alt="" v-else />
             </span>
-            <span class="content">{{item.info}}</span>
+            <span class="content">{{item.Msg}}</span>
           </div>
         </div>
       </main>
@@ -102,14 +102,16 @@
         }
       }
       let processRes = await app.$axios(processOption)
+      let processList = processRes.data
+      processList[processList.length - 1].completed = true
 
-      return { item: orderRes.data[0], processList: processRes.data}
+      return { item: orderRes.data[0], processList: processList}
     },
     data(){
       return {
-        processList: [
-          // {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no@2x.png'), info: '客户已取表'},
-          // {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes1@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no1@2x.png'), info: '等待客户取表'},
+        processImgList: [
+          {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no@2x.png'), info: '客户已取表'},
+          {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes1@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no1@2x.png'), info: '等待客户取表'},
           {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes3@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no3@2x.png'), info: '维修完成'},
           {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes4@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no4@2x.png'), info: '维修中'},
           {completed: true, completeSrc: require('../../assets/img/demand_list_plan_icon_yes5@2x.png'), noCompleteSrc: require('../../assets/img/demand_list_plan_icon_no5@2x.png'), info: '备件等待中'},

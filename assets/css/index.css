@@ -229,16 +229,20 @@
   margin: 0 auto;
   cursor: pointer;
   /*padding-top: 13.5%;*/
-  height: 260px;
+  padding-top: 10.3%;
+  /*height: 260px;*/
   position: relative;
 }
 
 .adver-container img {
   position: absolute;
-  left: 0;
+  left: 50%;
   top: 0;
-  width: 100%;
+  transform: translateX(-50%);
+  /*width: 100%;*/
+  width: auto;
   height: 100%;
+  max-height: 260px;
 }
 
 /*
